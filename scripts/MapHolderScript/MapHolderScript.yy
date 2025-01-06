@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"MapHolderScript",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"MapHolderScript",
+  "parent":{
+    "name":"MapHolder",
+    "path":"folders/Hex/MapHolder.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
