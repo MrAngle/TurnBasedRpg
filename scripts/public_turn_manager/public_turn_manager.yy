@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"public_turn_manager",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"public_turn_manager",
+  "parent":{
+    "name":"Turn",
+    "path":"folders/Objects/Game/Turn.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

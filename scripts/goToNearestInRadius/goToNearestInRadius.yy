@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"goToNearestInRadius",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"goToNearestInRadius",
+  "parent":{
+    "name":"MoveStategy",
+    "path":"folders/Objects/abstarct_moveable/MoveStategy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

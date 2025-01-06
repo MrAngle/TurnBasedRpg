@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"public_gui",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"public_gui",
+  "parent":{
+    "name":"Game_UI",
+    "path":"folders/Objects/Game/Game_UI.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

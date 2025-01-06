@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"publicPauseManager",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"publicPauseManager",
+  "parent":{
+    "name":"GamePause",
+    "path":"folders/Objects/Game/Game_UI/GamePause.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

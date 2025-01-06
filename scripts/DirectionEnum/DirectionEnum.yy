@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DirectionEnum",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DirectionEnum",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

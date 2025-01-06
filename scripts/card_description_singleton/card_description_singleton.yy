@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"card_description_singleton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"card_description_singleton",
+  "parent":{
+    "name":"Card",
+    "path":"folders/Objects/Game/Game_UI/Card.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

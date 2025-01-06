@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SkillExecutionSequencer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SkillExecutionSequencer",
+  "parent":{
+    "name":"SkillExecutor",
+    "path":"folders/Objects/Game/Skills/SkillExecutor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

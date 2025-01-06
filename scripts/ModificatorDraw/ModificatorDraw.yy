@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ModificatorDraw",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ModificatorDraw",
+  "parent":{
+    "name":"modificatorsScripts",
+    "path":"folders/Objects/modificatorsScripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DefauktPushBackSkillActions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DefauktPushBackSkillActions",
+  "parent":{
+    "name":"DefaultSkillActions",
+    "path":"folders/Objects/Game/Skills/SkillExecutor/DefaultSkillActions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

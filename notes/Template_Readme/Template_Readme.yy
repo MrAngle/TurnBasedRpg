@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"Template_Readme",
+  "name":"Template_Readme",
+  "parent":{
+    "name":"MagiczneIstoty",
+    "path":"MagiczneIstoty.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

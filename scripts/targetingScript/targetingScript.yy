@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"targetingScript",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"targetingScript",
+  "parent":{
+    "name":"targeting",
+    "path":"folders/Objects/Game/NPC/targeting.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

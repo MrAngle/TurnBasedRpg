@@ -1,0 +1,1 @@
+//self.pathFinder.reachedTarget = true;

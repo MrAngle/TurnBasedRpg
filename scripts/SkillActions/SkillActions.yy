@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SkillActions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SkillActions",
+  "parent":{
+    "name":"SkillExecutor",
+    "path":"folders/Objects/Game/Skills/SkillExecutor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

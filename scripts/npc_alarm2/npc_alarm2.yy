@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"npc_alarm2",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"npc_alarm2",
+  "parent":{
+    "name":"NPC",
+    "path":"folders/Objects/Game/NPC.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

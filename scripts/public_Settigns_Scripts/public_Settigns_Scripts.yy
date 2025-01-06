@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"public_Settigns_Scripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"public_Settigns_Scripts",
+  "parent":{
+    "name":"Settings",
+    "path":"folders/Objects/Game/Settings.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

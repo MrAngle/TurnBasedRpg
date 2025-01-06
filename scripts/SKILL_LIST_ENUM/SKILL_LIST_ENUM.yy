@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SKILL_LIST_ENUM",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SKILL_LIST_ENUM",
+  "parent":{
+    "name":"Skills",
+    "path":"folders/Objects/Game/Skills.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

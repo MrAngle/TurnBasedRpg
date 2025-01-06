@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DefaultSkillActions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DefaultSkillActions",
+  "parent":{
+    "name":"DefaultSkillActions",
+    "path":"folders/Objects/Game/Skills/SkillExecutor/DefaultSkillActions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

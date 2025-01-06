@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"pathFinderScript",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"pathFinderScript",
+  "parent":{
+    "name":"shortest_path",
+    "path":"folders/Objects/Game/NPC/shortest_path.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

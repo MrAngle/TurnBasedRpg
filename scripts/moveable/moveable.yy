@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"moveable",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"moveable",
+  "parent":{
+    "name":"abstarct_moveable",
+    "path":"folders/Objects/abstarct_moveable.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

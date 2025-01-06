@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"public_colony",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"public_colony",
+  "parent":{
+    "name":"Colony",
+    "path":"folders/Objects/Game/Colony.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

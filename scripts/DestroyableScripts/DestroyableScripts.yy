@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DestroyableScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DestroyableScripts",
+  "parent":{
+    "name":"abstract_destroyable",
+    "path":"folders/Objects/abstract_destroyable.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
