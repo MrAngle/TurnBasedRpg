@@ -75,9 +75,6 @@
     "name":"Spr_Char_03_Side",
     "path":"sprites/Spr_Char_03_Side/Spr_Char_03_Side.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_player_idle",
-    "path":"sprites/spr_player_idle/spr_player_idle.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

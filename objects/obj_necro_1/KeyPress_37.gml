@@ -1,0 +1,1 @@
+global.myCombatMapManager.move_to(self._row_index, self._col_index - 1, self);

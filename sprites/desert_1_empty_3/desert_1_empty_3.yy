@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"sprites",
-    "path":"folders/Hex/DesertTiles/desert_1_empty/sprites.yy",
+    "path":"folders/Hex/Combat/CombatMap/Tiles/DesertTiles/desert_1_empty/sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

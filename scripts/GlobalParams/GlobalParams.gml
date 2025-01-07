@@ -1,0 +1,1 @@
+global.TYPEOF_STRUCT = "struct";

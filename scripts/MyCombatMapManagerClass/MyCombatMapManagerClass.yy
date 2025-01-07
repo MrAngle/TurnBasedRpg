@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"MyCombatMapManagerClass",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"MyCombatMapManagerClass",
+  "parent":{
+    "name":"CombatMapHolder",
+    "path":"folders/Hex/Combat/CombatMapHolder.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

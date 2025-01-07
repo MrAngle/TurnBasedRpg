@@ -9,10 +9,13 @@
   "name":"abst_obj_hexagon",
   "overriddenProperties":[],
   "parent":{
-    "name":"Hex",
-    "path":"folders/Hex.yy",
+    "name":"Tiles",
+    "path":"folders/Hex/Combat/CombatMap/Tiles.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"abst_tile",
+    "path":"objects/abst_tile/abst_tile.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,10 +33,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Sprite286",
-    "path":"sprites/Sprite286/Sprite286.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

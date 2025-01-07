@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GlobalCombatParams",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GlobalCombatParams",
+  "parent":{
+    "name":"Combat",
+    "path":"folders/Hex/Combat.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
