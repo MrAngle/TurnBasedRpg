@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"CombatCharacterSideEnum",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"CombatCharacterSideEnum",
+  "parent":{
+    "name":"CombatCharacter",
+    "path":"folders/Hex/Combat/CombatCharacter.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

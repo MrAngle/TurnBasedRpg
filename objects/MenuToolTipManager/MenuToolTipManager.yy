@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"abst_ally",
+  "%Name":"MenuToolTipManager",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":37,"eventType":9,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"abst_ally",
+  "name":"MenuToolTipManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatCharacter",
-    "path":"folders/Hex/Combat/CombatCharacter.yy",
+    "name":"MenuManager",
+    "path":"folders/Hex/Combat/MenuManager.yy",
   },
-  "parentObjectId":{
-    "name":"abst_combat_character",
-    "path":"objects/abst_combat_character/abst_combat_character.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

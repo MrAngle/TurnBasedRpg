@@ -5,12 +5,12 @@
 //global.__map_rows = 100; // Liczba wierszy
 //global.__map_cols = 100; // Liczba kolumn
 
-global.myCombatMapHolder = noone; // MyCombatMapHolder
+//global.myCombatMapHolder = noone; // MyCombatMapHolder
 
-global.__map_tile_radius = 128 - 1; // Promień heksagonu (wysokość / 2)
-global.__map_tile_width = 214 - 1; // Szerokość heksagonu
-//var w = sqrt(3) * r; // Szerokość heksagonu
-global.__map_tile_height = 2 * global.__map_tile_radius; // Wysokość heksagonu
+//global.__map_tile_radius = 128 - 1; // Promień heksagonu (wysokość / 2)
+//global.__map_tile_width = 214 - 1; // Szerokość heksagonu
+////var w = sqrt(3) * r; // Szerokość heksagonu
+//global.__map_tile_height = 2 * global.__map_tile_radius; // Wysokość heksagonu
 
 function MyCombatMapHolder(_init_rows, _init_cols) {
     var map_instance = {
@@ -23,7 +23,7 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 			__my_map_holder_init(self);
         },
 
-		get_tile: function(_row, _col) {
+		get_tile: function(_row, _col) { // MyMapTile
 			return self.__map_holder[_row][_col];
 		},
 

@@ -1,18 +1,20 @@
-var cols = 13; // Liczba kolumn
-var rows = 10; // Liczba wierszy
+player_chars = [];
+enemy_chars = [];
+neutral_chars = [];
 
-var combatMapHolder = combat_map_generator_generate_random_desert_map(rows, cols);
-var combatMapManager = MyCombatMapManager(combatMapHolder);
-
+combatMapHolder = combat_map_generator_generate_random_desert_map(10, 13);
+combatMapManager = MyCombatMapManager(combatMapHolder);
 global.myCombatMapHolder = combatMapHolder;
 global.myCombatMapManager = combatMapManager;
 
 global.myCombatMapHolder.show_tiles();
 
-var character = instance_create_layer(0, 0, global.LAYERS_INSTANCES, obj_necro_1);
-global.myCombatMapHolder.get_tile(5, 5).set_tile(character, TileObjectTypeEnum.CHARACTER);
+var character = instance_create_layer(0, 0, global.LAYERS_INSTANCES, ObjNecro1);
+var menuTooltipManager = instance_create_layer(0, 0, global.LAYERS_INSTANCES, MenuToolTipManager);
+global.myCombatMapHolder.get_tile(5, 5).set_tile_auto_type(character);
 //my_map_show_map();
 
-var value = global.myCombatMapHolder.find_character_in_map(character);
-var value2 = global.myCombatMapHolder.find_character_in_map(character);
+var combatCharacterListClass = CombatCharacterListClass(global.myCombatMapManager.get_all_characters_on_map())
 
+var value = combatCharacterListClass.get_characters(CombatCharacterIndex.PLAYER);
+var value2 = global.myCombatMapManager.get_all_characters_on_map();

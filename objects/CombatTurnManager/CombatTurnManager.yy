@@ -1,20 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"abst_ally",
+  "%Name":"CombatTurnManager",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"abst_ally",
+  "name":"CombatTurnManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatCharacter",
-    "path":"folders/Hex/Combat/CombatCharacter.yy",
+    "name":"CombatTurnManager",
+    "path":"folders/Hex/Combat/CombatTurnManager.yy",
   },
-  "parentObjectId":{
-    "name":"abst_combat_character",
-    "path":"objects/abst_combat_character/abst_combat_character.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

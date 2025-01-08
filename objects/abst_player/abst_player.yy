@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"abst_ally",
+  "%Name":"abst_player",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"abst_ally",
+  "name":"abst_player",
   "overriddenProperties":[],
   "parent":{
     "name":"CombatCharacter",
     "path":"folders/Hex/Combat/CombatCharacter.yy",
   },
   "parentObjectId":{
-    "name":"abst_combat_character",
-    "path":"objects/abst_combat_character/abst_combat_character.yy",
+    "name":"abst_ally",
+    "path":"objects/abst_ally/abst_ally.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

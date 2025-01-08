@@ -1,17 +1,17 @@
-// // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
-// // https://help.yoyogames.com/hc/en-us/articles/360005277377
-
 function MyCombatMapManager(_combat_map_holder) {
     var combat_map_manager_instance = {
-        __combat_map_holder: _combat_map_holder, // number
+        __combat_map_holder: _combat_map_holder, // MyCombatMapHolder
 
 		// constructor
 		init: function() {
-			//__my_map_holder_init(self);
         },
 
 		move_to: function(_target_row_index, _target_col_index, _target_obj) {
 			__my_move_to(self, _target_row_index, _target_col_index, _target_obj)
+		},
+		
+		get_all_characters_on_map: function() {
+			return __get_all_characters_on_map(self)
 		},
 
     };
@@ -20,11 +20,47 @@ function MyCombatMapManager(_combat_map_holder) {
 	return combat_map_manager_instance;
 }
 
+function __get_all_characters_on_map(_obj) {
+    // Tworzenie list dla każdej grupy postaci
+    var players = [];
+	var enemies = [];
+    var neutrals = [];
+    
+    // Skanowanie mapy
+    for (var row = 0; row < _obj.__combat_map_holder.__rows; row++) {
+        var row_tiles = _obj.__combat_map_holder.__map_holder[row];
+        
+        for (var col = 0; col < _obj.__combat_map_holder.__cols; col++) {
+            var tile = row_tiles[col];
+            
+            // Jeśli kafelek jest zajęty
+            if (tile.has_character()) {
+                var character = tile.__character;
+                
+                // Przypisanie postaci do odpowiedniej listy
+                switch (character.my_character_side) {
+                    case CombatCharacterSideEnum.PLAYER:
+                        array_push(players, character);
+                        break;
+                    case CombatCharacterSideEnum.NEUTRAL:
+                        array_push(neutrals, character);
+                        break;
+                    case CombatCharacterSideEnum.ENEMY:
+                        array_push(enemies, character);
+                        break;
+                }
+            }
+        }
+    }
+    
+    // Zwrócenie listy list
+    return [players, enemies, neutrals];
+};
+
 function __my_move_to(_obj,_target_row_index, _target_col_index, _target_obj) {
 	var currentPositionMyMapTile = __combat_map_holder.get_tile(_target_obj._row_index, _target_obj._col_index);
 	var destinationMyMapTile = __combat_map_holder.get_tile(_target_row_index, _target_col_index);
 	
 	currentPositionMyMapTile.set_tile(noone, TileObjectTypeEnum.CHARACTER);
-	destinationMyMapTile.set_tile(_target_obj, TileObjectTypeEnum.CHARACTER);
-	
+	destinationMyMapTile.set_tile_auto_type(_target_obj);
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GlobalObjNames",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GlobalObjNames",
+  "parent":{
+    "name":"Combat",
+    "path":"folders/Hex/Combat.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

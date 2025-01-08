@@ -2,8 +2,10 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 enum TileObjectTypeEnum {
 	TERRAIN,
-	CHARACTER
+	CHARACTER,
+	NONE
 }
+
 
 function MyMapTile(_row_index, _col_index, _x_position, _y_position, _obj_terrain, _obj_character) {
     return {
@@ -15,9 +17,13 @@ function MyMapTile(_row_index, _col_index, _x_position, _y_position, _obj_terrai
         __character: _obj_character, //obj
         
         // Metoda: Sprawdzenie, czy kafelek jest zajęty przez postać
-        is_occupied: function() {
-            return (self.__character != noone);
-        },
+        //is_occupied: function() {
+        //    return (self.__character != noone);
+        //},
+		
+		has_character: function() {
+			return (self.__character != noone);
+		},
 		
 		show: function() {
 			if(self.__terrain != noone) 
@@ -28,6 +34,10 @@ function MyMapTile(_row_index, _col_index, _x_position, _y_position, _obj_terrai
 		
 		set_tile: function(_obj_tile, tileObjectTypeEnum) { //TileObjectTypeEnum
 			__my_set_tile(self, _obj_tile, tileObjectTypeEnum);
+		},
+		
+		set_tile_auto_type: function(_obj_tile) { 
+			__my_set_tile(self, _obj_tile, _obj_tile.my_hex_obj_type);
 		}
 
     };

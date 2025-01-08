@@ -1,19 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"desert_1_empty",
+  "%Name":"abst_obj_terrain",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"desert_1_empty",
+  "name":"abst_obj_terrain",
   "overriddenProperties":[],
   "parent":{
-    "name":"desert_1_empty",
-    "path":"folders/Hex/Combat/CombatMap/Tiles/DesertTiles/desert_1_empty.yy",
+    "name":"Tiles",
+    "path":"folders/Hex/Combat/CombatMap/Tiles.yy",
   },
   "parentObjectId":{
-    "name":"abst_obj_hexagon",
-    "path":"objects/abst_obj_hexagon/abst_obj_hexagon.yy",
+    "name":"abst_tile",
+    "path":"objects/abst_tile/abst_tile.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
