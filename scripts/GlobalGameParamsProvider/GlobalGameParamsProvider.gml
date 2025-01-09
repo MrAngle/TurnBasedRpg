@@ -1,11 +1,14 @@
-global.LAYERS_INSTANCES = "Instances";
 global.LAYERS_INVISIBLE = "Invisible";
 global.LAYERS_PAUSE_GUI = "PauseGUI";
-global.LAYERS_BACKGROUND = "Background";
-global.LAYERS_MANAGERS = "Managers";
-global.LAYERS_GROUND = "Ground";
 global.LAYERS_PAUSE_GUI_DESCRIPTIONS = "PauseGUI_Descriptions";
 global.LAYERS_MODIFIERS = "Modifiers";
+
+
+//global.LAYERS_GUI_MENU = "GUI_Menu";
+//global.LAYERS_INSTANCES = "Instances";
+//global.LAYERS_GROUND = "Ground";
+//global.LAYERS_MANAGERS = "Managers";
+//global.LAYERS_BACKGROUND = "Background";
 
 
 

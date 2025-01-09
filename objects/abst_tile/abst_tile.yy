@@ -10,8 +10,8 @@
   "name":"abst_tile",
   "overriddenProperties":[],
   "parent":{
-    "name":"Combat",
-    "path":"folders/Hex/Combat.yy",
+    "name":"SuperTile",
+    "path":"folders/Hex/Combat/SuperTile.yy",
   },
   "parentObjectId":null,
   "persistent":false,

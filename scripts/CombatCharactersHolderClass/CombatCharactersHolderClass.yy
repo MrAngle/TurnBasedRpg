@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"CombatCharacterListClass",
+  "%Name":"CombatCharactersHolderClass",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"CombatCharacterListClass",
+  "name":"CombatCharactersHolderClass",
   "parent":{
     "name":"CombatCharacter",
     "path":"folders/Hex/Combat/CombatCharacter.yy",

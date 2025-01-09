@@ -1,19 +1,20 @@
 if (	
-		my_tooltip_visible == true &&
+		my_menu_visible == true &&
 		!is_undefined(global.myActiveHoveredTile) && 
 		global.myActiveHoveredTile != noone && 
 		typeof(global.myActiveHoveredTile) == global.TYPEOF_STRUCT
 		) {
-	if(my_tooltip_expanded) {
+	if(my_menu_expanded) {
 		myToolTipTile = global.myActiveHoveredTile;
 		show_tooltip();
 	} else {
-		show_wrapped_tooltip_text();
+		show_wrapped_menu_text();
+		//show_wrapped_tooltip_text();
 	}
 }
 
 function show_tooltip() {
-	draw_set_font(MyFontGame_size_10); // Zakładam, że stworzyłeś czcionkę o nazwie "fnt_small_font"
+	draw_set_font(my_font); // Zakładam, że stworzyłeś czcionkę o nazwie "fnt_small_font"
 
     // Rysowanie tła panelu
     draw_set_color(c_black);
@@ -30,15 +31,15 @@ function show_tooltip() {
     draw_text(panel_x + 10, panel_y + 10, info);
 }
 
-function show_wrapped_tooltip_text() {
-	draw_set_font(MyFontGame_size_10); // Zakładam, że stworzyłeś czcionkę o nazwie "fnt_small_font"
+//function show_wrapped_tooltip_text() {
+//	draw_set_font(MyFontGame_size_10); // Zakładam, że stworzyłeś czcionkę o nazwie "fnt_small_font"
 
-    // Rysowanie tła panelu
-    draw_set_color(c_black);
-    draw_rectangle(panel_x, panel_y, panel_x + panel_width, panel_y + panel_height, false);
+//    // Rysowanie tła panelu
+//    draw_set_color(c_black);
+//    draw_rectangle(panel_x, panel_y, panel_x + panel_width, panel_y + panel_height, false);
 
-    var info = "Show Tooltip";
+//    var info = "Show Tooltip";
 
-    draw_set_color(c_white);
-    draw_text(panel_x + 10, panel_y + 10, info);
-}
+//    draw_set_color(c_white);
+//    draw_text(panel_x + 10, panel_y + 10, info);
+//}

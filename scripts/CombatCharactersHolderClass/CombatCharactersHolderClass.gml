@@ -4,7 +4,7 @@ enum CombatCharacterIndex {
 	NEUTRAL = 2
 }
 
-function CombatCharacterListClass(_character_list) {
+function CombatCharactersHolderClass(_character_list) {
     return {
 		__character_list: _character_list, // [players, enemies, neutrals];
         
@@ -15,6 +15,14 @@ function CombatCharacterListClass(_character_list) {
 		
 		get_characters: function(combat_character_index /* CombatCharacterIndex */) { 
 			return (self.__character_list[combat_character_index]);
+		},
+		
+		get_all_characters: function(combat_character_index /* CombatCharacterIndex */) { 
+			return self.__character_list; // [players, enemies, neutrals];
+		},
+		
+		set_characters: function(_character_list /* [players, enemies, neutrals] */) { 
+			self.__character_list = _character_list;
 		},
 
     };

@@ -32,7 +32,7 @@ function draw_hexagon(x, y, radius, color, border_thickness) {
         //draw_line(x1, y1, x2, y2);
 		draw_thick_line(x1, y1, x2, y2, border_thickness, color);
     }
-    //draw_set_color(c_white);
+    draw_set_color(c_white);
 }
 
 

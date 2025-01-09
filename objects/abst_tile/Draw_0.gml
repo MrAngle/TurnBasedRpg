@@ -1,6 +1,6 @@
 draw_self();
 
-draw_hexagon(x, y, my_draw_border_radius, my_draw_border_color, my_draw_border_thickness);
+//draw_hexagon(x, y, my_draw_border_radius, my_draw_border_color, my_draw_border_thickness);
 //draw_index(self)
 
 //function draw_index() {

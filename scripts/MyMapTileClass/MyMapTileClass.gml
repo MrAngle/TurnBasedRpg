@@ -47,6 +47,10 @@ function __my_set_tile(_obj, _obj_tile, tileObjectTypeEnum) {
 	switch tileObjectTypeEnum {
 	    case TileObjectTypeEnum.TERRAIN:
 			_obj.__terrain = _obj_tile;
+			if(_obj.__terrain.my_bg_instance != noone) {
+				_obj.__terrain.my_bg_instance.x = _obj.__x_position;
+				_obj.__terrain.my_bg_instance.y = _obj.__y_position;
+			}
 	        break;
 	    case TileObjectTypeEnum.CHARACTER:
 	        _obj.__character = _obj_tile;

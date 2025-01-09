@@ -14,7 +14,10 @@
     "name":"MenuManager",
     "path":"folders/Hex/Combat/MenuManager.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"abst_menu",
+    "path":"objects/abst_menu/abst_menu.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

@@ -1,3 +1,13 @@
 //[players, enemies, neutrals];
+trunCombatCharacters = global.myCombatCharactersHolderClass;
 
-game_characters = [];
+//init_turn() = function() {
+//}
+
+switch_to_player_turn = function() {
+	playerCharacters = trunCombatCharacters.get_characters(CombatCharacterIndex.PLAYER);
+	
+	for (var i = 0; i < array_length(playerCharacters); i++) {
+		playerCharacters[i].my_reset_turn();
+	}
+}
