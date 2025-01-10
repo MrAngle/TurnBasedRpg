@@ -1,6 +1,6 @@
 event_inherited();
 
-my_base_depth = my_base_depth + 3 * global.LAYERS_GROUND_DEPTH_PERIOD
+my_base_depth = my_base_depth + 3 * global.LAYERS.ground.depth_period
 
 
 my_bg_sprite = bg_desert_terrain_3_ground; // Przypisz sprite tła

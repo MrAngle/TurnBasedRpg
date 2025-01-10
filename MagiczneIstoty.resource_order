@@ -221,7 +221,6 @@
     {"name":"publicKeySelector","order":2,"path":"scripts/publicKeySelector/publicKeySelector.yy",},
     {"name":"publicPauseManager","order":4,"path":"scripts/publicPauseManager/publicPauseManager.yy",},
     {"name":"RetardedWorkarounds","order":8,"path":"scripts/RetardedWorkarounds/RetardedWorkarounds.yy",},
-    {"name":"Script57","order":7,"path":"scripts/Script57/Script57.yy",},
     {"name":"SKILL_LIST_ENUM","order":10,"path":"scripts/SKILL_LIST_ENUM/SKILL_LIST_ENUM.yy",},
     {"name":"SKILL_LIST_FACTORY","order":11,"path":"scripts/SKILL_LIST_FACTORY/SKILL_LIST_FACTORY.yy",},
     {"name":"SkillClass","order":5,"path":"scripts/SkillClass/SkillClass.yy",},

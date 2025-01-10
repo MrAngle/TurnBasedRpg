@@ -319,7 +319,6 @@
     {"id":{"name":"publicKeySelector","path":"scripts/publicKeySelector/publicKeySelector.yy",},},
     {"id":{"name":"publicPauseManager","path":"scripts/publicPauseManager/publicPauseManager.yy",},},
     {"id":{"name":"RetardedWorkarounds","path":"scripts/RetardedWorkarounds/RetardedWorkarounds.yy",},},
-    {"id":{"name":"Script57","path":"scripts/Script57/Script57.yy",},},
     {"id":{"name":"SKILL_LIST_ENUM","path":"scripts/SKILL_LIST_ENUM/SKILL_LIST_ENUM.yy",},},
     {"id":{"name":"SKILL_LIST_FACTORY","path":"scripts/SKILL_LIST_FACTORY/SKILL_LIST_FACTORY.yy",},},
     {"id":{"name":"SkillActions","path":"scripts/SkillActions/SkillActions.yy",},},

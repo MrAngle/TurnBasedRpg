@@ -18,6 +18,6 @@ my_reset_turn = function() {
 }
 
 
-my_base_depth = global.CHARACTERS_DEPTH;
+my_base_depth = global.LAYERS.characters.depth;
 
 my_abst_after_create();
