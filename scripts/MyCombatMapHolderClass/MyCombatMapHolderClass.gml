@@ -56,6 +56,12 @@ function __my_map_holder_init(_obj) {
 			var _x_position = pos_x + global.__map_tile_width;
 			var _y_position =  pos_y + global.__map_tile_height;
 			
+			//var pos_x = col * global.__map_tile_width + ((row % 2) * (global.__map_tile_width / 2)); // Przesunięcie co drugi wiersz
+	        //var pos_y = row * (1.5 * global.__map_tile_radius);
+			
+			//var _x_position = pos_x + global.__map_tile_width;
+			//var _y_position =  pos_y + global.__map_tile_height;
+			
 			var mapTile = MyMapTile(row, col, _x_position, _y_position, noone, noone);
 			
 			_obj.__map_holder[row][col] = mapTile;

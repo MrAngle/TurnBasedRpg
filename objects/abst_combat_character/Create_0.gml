@@ -3,9 +3,9 @@ properties_map_element_obj_type = MapElementObjectTypeEnum.CHARACTER;// Typ domy
 my_character_side = CombatCharacterSideEnum.NEUTRAL;
 my_obj_name = global.myGlobalObjName_Character;
 
-my_draw_border_color = c_blue;
-my_draw_border_radius = global.__map_tile_radius - 10;
-my_draw_border_thickness = 2;
+properties_border_decoration_color = c_blue;
+properties_border_decoration_radius = global.__map_tile_radius - 10;
+properties_border_decoration_thickness = 2;
 
 my_mouse_enter_function = global.MY_EMPTY_FUNCTION; //
 
