@@ -1,1 +1,1 @@
-global.myCombatMapManager.move_to(self._row_index, self._col_index + 1, self);
+global.myCombatMapManager.move_to(self.properties_map_element_row_index, self.properties_map_element_col_index + 1, self);

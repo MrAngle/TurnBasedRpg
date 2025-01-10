@@ -6,8 +6,8 @@ function MyCombatMapManager(_combat_map_holder) {
 		init: function() {
         },
 
-		move_to: function(_target_row_index, _target_col_index, _target_obj) {
-			__my_move_to(self, _target_row_index, _target_col_index, _target_obj)
+		move_to: function(_targetproperties_map_element_row_index, _targetproperties_map_element_col_index, _target_obj) {
+			__my_move_to(self, _targetproperties_map_element_row_index, _targetproperties_map_element_col_index, _target_obj)
 		},
 		
 		get_all_characters_on_map: function() {
@@ -57,10 +57,10 @@ function __get_all_characters_on_map(_obj) {
     return [players, enemies, neutrals];
 };
 
-function __my_move_to(_obj,_target_row_index, _target_col_index, _target_obj) {
-	var currentPositionMyMapTile = __combat_map_holder.get_tile(_target_obj._row_index, _target_obj._col_index);
-	var destinationMyMapTile = __combat_map_holder.get_tile(_target_row_index, _target_col_index);
+function __my_move_to(_obj,_targetproperties_map_element_row_index, _targetproperties_map_element_col_index, _target_obj) {
+	var currentPositionMyMapTile = __combat_map_holder.get_tile(_target_obj.properties_map_element_row_index, _target_obj.properties_map_element_col_index);
+	var destinationMyMapTile = __combat_map_holder.get_tile(_targetproperties_map_element_row_index, _targetproperties_map_element_col_index);
 	
-	currentPositionMyMapTile.set_tile(noone, TileObjectTypeEnum.CHARACTER);
+	currentPositionMyMapTile.set_tile(noone, MapElementObjectTypeEnum.CHARACTER);
 	destinationMyMapTile.set_tile_auto_type(_target_obj);
 }

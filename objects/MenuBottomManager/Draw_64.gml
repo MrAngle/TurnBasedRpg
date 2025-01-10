@@ -21,8 +21,8 @@
 
 //    // Wyświetlanie danych o kafelku
 //    var info = "Tile Info:\n";
-//    info += "Row: " + string(myToolTipTile.__row_index) + "\n";
-//    info += "Col: " + string(myToolTipTile.__col_index) + "\n";
+//    info += "Row: " + string(myToolTipTile._properties_map_element_row_index) + "\n";
+//    info += "Col: " + string(myToolTipTile._properties_map_element_col_index) + "\n";
 //    info += "Terrain: " + (is_undefined(myToolTipTile.__terrain) ? "None" : myToolTipTile.__terrain.my_obj_name) + "\n";
 //	info += "Character: " + (!myToolTipTile.has_character() ? "None" : myToolTipTile.__character.my_obj_name) + "\n";
 

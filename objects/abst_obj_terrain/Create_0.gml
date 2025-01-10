@@ -1,7 +1,7 @@
 event_inherited();
-my_base_depth = global.LAYERS.ground.depth;
+properties_layer_base_depth = global.LAYERS.ground.depth;
 
-my_hex_obj_type = TileObjectTypeEnum.TERRAIN;
+properties_map_element_obj_type = MapElementObjectTypeEnum.TERRAIN;
 my_obj_name = global.myGlobalObjName_Terrain; // nazwa obiektu
 
 my_draw_border_color = c_white;
@@ -17,18 +17,18 @@ after_create_event = function() {
 	after_create_executed = true;
 } // should be as last action of create event of every child
 
-set_depth = function(_depth) {
-	__abst_tile_set_depth(_depth);
+layer_set_depth = function(_depth) {
+	__layer_set_depth(_depth);
 	__abst_obj_terrain_set_depth(_depth);
 }
 
-set_x = function(_x) {
-    __abst_tile_set_x(_x);
+map_element_set_x = function(_x) {
+    __map_element_set_x(_x);
     __abst_obj_terrain_set_x(_x);
 }
 
-set_y = function(_y) {
-    __abst_tile_set_y(_y);
+map_element_set_y = function(_y) {
+    __map_element_set_y(_y);
     __abst_obj_terrain_set_y(_y);
 }
 

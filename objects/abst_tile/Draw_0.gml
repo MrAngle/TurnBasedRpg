@@ -6,7 +6,7 @@ draw_self();
 //function draw_index() {
 //	// Wyświetl numer kolumny i wiersza
 //	// Wyświetl numer kolumny i wiersza na środku heksagonu
-//	var text = string(self._row_index) + "," + string(self._col_index);
+//	var text = string(self.properties_map_element_row_index) + "," + string(self.properties_map_element_col_index);
 
 //	// Oblicz pozycję tekstu na środku heksagonu
 //	var text_x = x - (string_width(text) * 0.5); // Centrowanie w poziomie

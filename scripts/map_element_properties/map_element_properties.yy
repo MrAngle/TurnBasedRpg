@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"map_element_properties",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"map_element_properties",
+  "parent":{
+    "name":"properties",
+    "path":"folders/Hex/Combat/Scripts/properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
