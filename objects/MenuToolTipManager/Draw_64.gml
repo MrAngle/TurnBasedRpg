@@ -25,6 +25,7 @@ function show_tooltip() {
     info += "Row: " + string(myToolTipTile.__row_index) + "\n";
     info += "Col: " + string(myToolTipTile.__col_index) + "\n";
     info += "Terrain: " + (is_undefined(myToolTipTile.__terrain) ? "None" : myToolTipTile.__terrain.my_obj_name) + "\n";
+    info += "BG: " + (is_undefined(myToolTipTile.__terrain.properties_bg_instance) ? "None" : "With bg") + "\n";
 	info += "Character: " + (!myToolTipTile.has_character() ? "None" : myToolTipTile.__character.my_obj_name) + "\n";
 
     draw_set_color(c_white);

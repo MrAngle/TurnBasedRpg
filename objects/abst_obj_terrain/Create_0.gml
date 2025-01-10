@@ -6,13 +6,54 @@ my_obj_name = global.myGlobalObjName_Terrain; // nazwa obiektu
 
 my_draw_border_color = c_white;
 
-my_bg_sprite = noone;
-my_bg_instance = noone;
+properties_load_background_decoration();
 
-my_terrain_after_create = function() {
-	if(my_bg_sprite != noone) {
-		my_bg_instance = instance_create_layer(x, y, global.LAYERS.ground.id, my_bg_sprite);
-		my_bg_instance.sprite_index = my_bg_sprite;
-		my_bg_instance.depth = my_base_depth + 1;
+after_create_event = function() {
+	if (!after_create_executed) {
+		__abst_obj_terrain_after_create();
+		__abst_tile_after_create();
 	}
+
+	after_create_executed = true;
+} // should be as last action of create event of every child
+
+set_depth = function(_depth) {
+	__abst_tile_set_depth(_depth);
+	__abst_obj_terrain_set_depth(_depth);
 }
+
+set_x = function(_x) {
+    __abst_tile_set_x(_x);
+    __abst_obj_terrain_set_x(_x);
+}
+
+set_y = function(_y) {
+    __abst_tile_set_y(_y);
+    __abst_obj_terrain_set_y(_y);
+}
+
+// IMPL ABST
+__abst_obj_terrain_set_depth = function(_depth) {
+	properties_bg_set_depth(_depth);
+}
+
+__abst_obj_terrain_set_x = function(_x) {
+    if (properties_bg_instance != noone) {
+        properties_bg_instance.x = _x;
+    }
+};
+
+__abst_obj_terrain_set_y = function(_y) {
+    if (properties_bg_instance != noone) {
+        properties_bg_instance.y = _y;
+    }
+};
+
+__abst_obj_terrain_after_create = function() {
+	
+	properties_bg_print();
+    //if (my_bg_sprite != noone) {
+    //    my_bg_instance = instance_create_layer(x, y, global.LAYERS.ground.id, my_bg_sprite);
+    //    my_bg_instance.sprite_index = my_bg_sprite;
+    //}
+};

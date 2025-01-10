@@ -47,10 +47,10 @@ function __my_set_tile(_obj, _obj_tile, tileObjectTypeEnum) {
 	switch tileObjectTypeEnum {
 	    case TileObjectTypeEnum.TERRAIN:
 			_obj.__terrain = _obj_tile;
-			if(_obj.__terrain.my_bg_instance != noone) {
-				_obj.__terrain.my_bg_instance.x = _obj.__x_position;
-				_obj.__terrain.my_bg_instance.y = _obj.__y_position;
-			}
+			//if(_obj.__terrain.my_bg_instance != noone) {
+			//	_obj.__terrain.my_bg_instance.x = _obj.__x_position;
+			//	_obj.__terrain.my_bg_instance.y = _obj.__y_position;
+			//}
 	        break;
 	    case TileObjectTypeEnum.CHARACTER:
 	        _obj.__character = _obj_tile;
@@ -63,8 +63,8 @@ function __my_set_tile(_obj, _obj_tile, tileObjectTypeEnum) {
 }
 
 function __my_set_tile_coordinates(_obj, _obj_tile) {
-	_obj_tile.x = _obj.__x_position;
-	_obj_tile.y = _obj.__y_position;
+	_obj_tile.set_x_y(_obj.__x_position, _obj.__y_position);
+	//_obj_tile.set_y();
 
 	_obj_tile._row_index = _obj.__row_index;
 	_obj_tile._col_index =  _obj.__col_index;

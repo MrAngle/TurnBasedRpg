@@ -1,5 +1,7 @@
 global.LAYERS = noone;
 
+global.LAYERS_BACKGROUND_DEPTH_DIFF = 1;
+
 function init_layers() {
     var GUI_GAME_MENU_DEPTH = 50;
     var GUI_MENU_DEPTH = GUI_GAME_MENU_DEPTH + 50;
@@ -35,7 +37,7 @@ function init_layers() {
             id: layer_create(GROUND_DEPTH),
             depth: GROUND_DEPTH,
 			desert_depth: GROUND_DEPTH,
-			depth_period: 2
+			depth_period: 5
         },
         managers: {
             id: layer_create(MANAGERS_DEPTH),

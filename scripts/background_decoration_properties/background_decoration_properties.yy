@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"background_decoration_properties",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"background_decoration_properties",
+  "parent":{
+    "name":"properties",
+    "path":"folders/Hex/Combat/Scripts/properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

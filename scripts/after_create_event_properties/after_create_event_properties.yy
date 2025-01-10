@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"after_create_event_properties",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"after_create_event_properties",
+  "parent":{
+    "name":"properties",
+    "path":"folders/Hex/Combat/Scripts/properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
