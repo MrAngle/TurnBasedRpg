@@ -9,15 +9,15 @@
 
 function HexFieldSelectorDecorationFactory(_myMapTile, _selectorTypeEnum) 
 {
-	if(_myMapTile == undefined || _myMapTile == noone || _selectorDecorationTypeEnum == noone) {
+	if(_myMapTile == undefined || _myMapTile == noone || _selectorTypeEnum == noone) {
 		return;
 	}
 	var hexFieldSelectorDecoration = instance_create_layer(0, 0, global.LAYERS.selectors.id, HexFieldSelectorDecoration);
 	with (hexFieldSelectorDecoration)
 	{
 		hexFieldSelectorDecoration.myMapTileToDecorate = _myMapTile;
-		hexFieldSelectorDecoration.selectorDecorationTypeEnum = _selectorDecorationTypeEnum;
-		hexFieldSelectorDecoration.layer_set_default_depth(global.LAYERS.selectors.depth + _selectorDecorationTypeEnum);
+		hexFieldSelectorDecoration.selectorTypeEnum = _selectorTypeEnum;
+		hexFieldSelectorDecoration.HexFieldSelectorDecoration_run_after_constructor();
 	}
 	
 	return hexFieldSelectorDecoration;

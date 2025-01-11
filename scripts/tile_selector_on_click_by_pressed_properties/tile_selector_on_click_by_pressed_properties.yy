@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"tile_selector_on_click_by_pressed_properties",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"tile_selector_on_click_by_pressed_properties",
+  "parent":{
+    "name":"properties",
+    "path":"folders/Hex/Combat/Scripts/properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

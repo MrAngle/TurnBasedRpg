@@ -36,3 +36,11 @@ function helper_is_object(_data) {
 
     return false;
 }
+
+function helper_create_undefined_array(_size) {
+    var arr = array_create(_size); // Tworzy tablicę
+    for (var i = 0; i < _size; i++) {
+        arr[i] = undefined; // Wypełnia wartością `undefined`
+    }
+    return arr;
+}

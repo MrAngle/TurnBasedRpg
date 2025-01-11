@@ -1,5 +1,9 @@
-if(isDrawDecorationActive) {
-	if(tileToDecorate) {
+
+draw_self();
+
+
+//if(isDrawDecorationActive) {
+//	if(tileToDecorate) {
 		
-	}
-}
+//	}
+//}
