@@ -3,9 +3,11 @@ global.LAYERS = noone;
 global.LAYERS_BACKGROUND_DEPTH_DIFF = 1;
 
 function init_layers() {
+	var GAME_CURSOR_DEPTH = -1000;
     var GUI_GAME_MENU_DEPTH = 50;
     var GUI_MENU_DEPTH = GUI_GAME_MENU_DEPTH + 50;
-    var ATTACKS_DEPTH = GUI_MENU_DEPTH + 1000;
+	var SELECTORS_DEPTH = GUI_MENU_DEPTH + 50;
+    var ATTACKS_DEPTH = SELECTORS_DEPTH + 50;
     var CHARACTERS_DEPTH = ATTACKS_DEPTH + 1000;
     var DECORATION_DEPTH = CHARACTERS_DEPTH + 1000;
     var GROUND_DEPTH = DECORATION_DEPTH + 1000;
@@ -13,6 +15,10 @@ function init_layers() {
     var BACKGROUND_DEPTH = MANAGERS_DEPTH + 1000;
 
     global.LAYERS = {
+		game_cursor: {
+            id: layer_create(GAME_CURSOR_DEPTH),
+            depth: GAME_CURSOR_DEPTH
+        },
         gui_game_menu: {
             id: layer_create(GUI_GAME_MENU_DEPTH),
             depth: GUI_GAME_MENU_DEPTH
@@ -20,6 +26,10 @@ function init_layers() {
         gui_menu: {
             id: layer_create(GUI_MENU_DEPTH),
             depth: GUI_MENU_DEPTH
+        },
+		selectors: {
+            id: layer_create(SELECTORS_DEPTH),
+            depth: SELECTORS_DEPTH
         },
         attacks: {
             id: layer_create(ATTACKS_DEPTH),

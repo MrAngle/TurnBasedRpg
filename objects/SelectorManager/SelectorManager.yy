@@ -1,20 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"MenuBottomManager",
+  "%Name":"SelectorManager",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"MenuBottomManager",
+  "name":"SelectorManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"MenuManager",
-    "path":"folders/Hex/Combat/MenuManager.yy",
+    "name":"HexSelector",
+    "path":"folders/Hex/Combat/CombatMap/HexSelector.yy",
   },
   "parentObjectId":{
-    "name":"abst_menu",
-    "path":"objects/abst_menu/abst_menu.yy",
+    "name":"abst_super_manager",
+    "path":"objects/abst_super_manager/abst_super_manager.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

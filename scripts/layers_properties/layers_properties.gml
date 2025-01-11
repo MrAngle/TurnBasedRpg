@@ -8,6 +8,11 @@ function properties_load_layer()
 		__layer_set_depth(_depth);
 	}
 	
+	layer_set_default_depth = function(_depth) {
+		properties_layer_base_depth = _depth;
+		__layer_set_depth(properties_layer_base_depth);
+	}
+	
 	__layer_set_depth = function(_depth) {
 		self.depth = _depth;
 	}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"HexFieldSelectorDecorationScript",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"HexFieldSelectorDecorationScript",
+  "parent":{
+    "name":"HexFieldPointerDecoration",
+    "path":"folders/Hex/Combat/CombatMap/HexSelector/HexFieldPointerDecoration.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

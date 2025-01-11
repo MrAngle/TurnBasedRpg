@@ -1,18 +1,33 @@
+init_layers();
+instance_create_layer(0, 0, global.LAYERS.managers.id, DebuggerInstance);
+instance_create_layer(0, 0, global.LAYERS.game_cursor.id, cursor_obj_game);
+instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
+
 player_chars = [];
 enemy_chars = [];
 neutral_chars = [];
 
-init_layers();
 
-combatMapHolder = combat_map_generator_generate_random_desert_map(10, 13);
+
+combatMapHolder = combat_map_generator_generate_random_desert_map(8, 13);
 combatMapManager = MyCombatMapManager(combatMapHolder);
-menuTooltipManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuToolTipManager);
-menuBottomManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuBottomManager);
-menuCharsTurnManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuCharsTurnManager);
+
+
+
+
 global.myCombatMapHolder = combatMapHolder;
 global.myCombatMapManager = combatMapManager;
-global.myMenuTooltipManager = menuTooltipManager;
-global.myMenuCharsTurnManager = menuCharsTurnManager;
+
+//menuTooltipManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuToolTipManager);
+//menuBottomManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuSelectedCharManager);
+//menuCharsTurnManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuCharsTurnManager);
+
+//global.myCombatMapManager = combatMapManager;
+//global.myMenuTooltipManager = menuTooltipManager;
+//global.myMenuCharsTurnManager = menuCharsTurnManager;
+
+menuCharsTurnManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuManager);
+
 
 global.myCombatMapHolder.show_tiles();
 
@@ -28,6 +43,8 @@ global.myCombatCharactersHolderClass = combatCharactersHolderClass;
 combatTurnManager = instance_create_layer(0, 0, global.LAYERS.managers.id, CombatTurnManager);
 global.myCombatTurnManager = combatTurnManager;
 
+
+instance_create_layer(0, 0, global.LAYERS.selectors.id, TileSelector);
 
 
 

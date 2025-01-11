@@ -1,0 +1,5 @@
+if(isDrawDecorationActive) {
+	if(tileToDecorate) {
+		
+	}
+}

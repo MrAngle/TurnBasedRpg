@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SelectorTilesHolderClass",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SelectorTilesHolderClass",
+  "parent":{
+    "name":"HexSelector",
+    "path":"folders/Hex/Combat/CombatMap/HexSelector.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

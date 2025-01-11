@@ -4,7 +4,7 @@ properties_layer_base_depth = global.LAYERS.ground.depth;
 properties_map_element_obj_type = MapElementObjectTypeEnum.TERRAIN;
 my_obj_name = global.myGlobalObjName_Terrain; // nazwa obiektu
 
-properties_border_decoration_color = c_white;
+properties_border_decoration_default_color = c_white;
 
 properties_load_background_decoration();
 

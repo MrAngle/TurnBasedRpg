@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"destination_point_selector_properties",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"destination_point_selector_properties",
+  "parent":{
+    "name":"properties",
+    "path":"folders/Hex/Combat/Selector/properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

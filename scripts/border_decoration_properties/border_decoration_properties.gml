@@ -4,7 +4,7 @@ function properties_load_border_decoration()
 {
 	properties_is_border_decoration = true;
 	
-	properties_border_decoration_color = c_white;
+	properties_border_decoration_default_color = c_white;
 	properties_border_decoration_radius = global.__map_tile_radius;
 	properties_border_decoration_thickness = 3;
 	
@@ -13,7 +13,7 @@ function properties_load_border_decoration()
 			x, 
 			y, 
 			properties_border_decoration_radius, 
-			properties_border_decoration_color, 
+			properties_border_decoration_default_color, 
 			properties_border_decoration_thickness)
 	}
 
@@ -25,7 +25,7 @@ function properties_load_border_decoration()
 		var angle_offset = -30; // Przesunięcie o -30° (dla "odwrócenia" heksagonu)
 
 	    // Rysowanie obramowania
-	    //draw_set_color(c_black);
+	    var use_color = __border_decoration_get_color();
 	    for (var i = 0; i < points; i++) {
 	        var x1 = x + lengthdir_x(radius + border_thickness, angle_offset + i * step);
 	        var y1 = y + lengthdir_y(radius + border_thickness, angle_offset + i * step);
@@ -35,7 +35,7 @@ function properties_load_border_decoration()
 	        var y2 = y + lengthdir_y(radius + border_thickness, angle_offset + ((i + 1) % points) * step);
 
 	        //draw_line(x1, y1, x2, y2);
-			__border_decoration_draw_thick_line(x1, y1, x2, y2, border_thickness, color);
+			__border_decoration_draw_thick_line(x1, y1, x2, y2, border_thickness, use_color);
 	    }
 	    draw_set_color(c_white);
 	}
@@ -54,6 +54,14 @@ function properties_load_border_decoration()
 	    draw_vertex_color(x2 - dx, y2 - dy, color, 1);
 	    draw_vertex_color(x2 + dx, y2 + dy, color, 1);
 	    draw_primitive_end();
+	}
+	
+	__border_decoration_get_color = function() {
+	    if(helper_has_property_true(self, "properties_is_on_click_element") && properties_on_click_is_selected == true) {
+			return c_yellow;
+		} else {
+			return properties_border_decoration_default_color;
+		}
 	}
 	
 	

@@ -1,16 +1,4 @@
-// róznica kafelkow góra dół 21 pixeli góra i dół 
 
-// Tworzenie pustej tablicy
-//global.__map_holder = array_create(100);
-//global.__map_rows = 100; // Liczba wierszy
-//global.__map_cols = 100; // Liczba kolumn
-
-//global.myCombatMapHolder = noone; // MyCombatMapHolder
-
-//global.__map_tile_radius = 128 - 1; // Promień heksagonu (wysokość / 2)
-//global.__map_tile_width = 214 - 1; // Szerokość heksagonu
-////var w = sqrt(3) * r; // Szerokość heksagonu
-//global.__map_tile_height = 2 * global.__map_tile_radius; // Wysokość heksagonu
 
 function MyCombatMapHolder(_init_rows, _init_cols) {
     var map_instance = {
@@ -19,12 +7,16 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 		__map_holder: array_create(_init_rows), // Array of arrays of MyMapTile class
         
 		// constructor
-		init: function() {
+		__init_MyCombatMapHolder: function() {
 			__my_map_holder_init(self);
         },
 
 		get_tile: function(_row, _col) { // MyMapTile
 			return self.__map_holder[_row][_col];
+		},
+		
+		get_tile_centrum_coodinators: function(_row, _col) { // MyMapTile
+			return [self.__map_holder[_row][_col].__x_position, self.__map_holder[_row][_col].__y_position];
 		},
 
 		show_tiles: function() {
@@ -36,7 +28,7 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 		}
     };
 	
-	map_instance.init();
+	map_instance.__init_MyCombatMapHolder();
 	return map_instance;
 }
 

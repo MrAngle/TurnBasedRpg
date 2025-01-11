@@ -11,7 +11,10 @@
     "name":"CombatManager",
     "path":"folders/Hex/Combat/CombatManager.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"abst_super_manager",
+    "path":"objects/abst_super_manager/abst_super_manager.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
