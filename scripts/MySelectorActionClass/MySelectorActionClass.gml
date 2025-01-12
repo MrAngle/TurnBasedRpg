@@ -27,7 +27,21 @@ function MySelectorActionClass(_selector_function, _numberOfTilesToSelect,
 					__SELECTOR_STORE_STRATEGY);
 	    },
 		
+		// Metoda destrukcji
+        destroy: function() {
+            // Sprawdzenie i zniszczenie SelectorTilesHolderClass
+            if (self.__result_selectedTiles != noone) {
+                self.__result_selectedTiles.destroy();
+                self.__result_selectedTiles = noone;
+            }
+            self.__action_finished = true;
+        },
+		
 		execute: function(_self) {
+			if(!helper_is_boolean(__action_finished)) { // wrongly set function
+				__action_finished = true;
+			}
+			
 			if(__action_finished) {
 				return;
 			}
@@ -69,7 +83,26 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 			if(__selector_action_index >= ds_list_size(__selector_MySelectorActions)) {
 				__selector_actions_finished = true;
 			}
-		}
+		},
+		
+		// Metoda destrukcji
+        destroy: function() {
+            var actions = self.__selector_MySelectorActions;
+
+            if (actions != noone) {
+                // Iteracja przez wszystkie akcje w liście
+                for (var i = 0; i < ds_list_size(actions); i++) {
+                    var action = actions[| i];
+                    if (action != noone) {
+                        // Wywołanie metody destroy dla każdej akcji
+                        action.destroy();
+                    }
+                }
+                // Zniszczenie listy
+                ds_list_destroy(actions);
+                self.__selector_MySelectorActions = noone;
+            }
+        }
 	};
 	
 	_mySelectorActionManagerClass.__init_MySelectorActionManagerClass();

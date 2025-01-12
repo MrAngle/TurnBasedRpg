@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"MyActionClass",
+  "%Name":"OLDSelectorTilesHolderClass",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"MyActionClass",
+  "name":"OLDSelectorTilesHolderClass",
   "parent":{
     "name":"OLD_SCRIPTS",
     "path":"folders/Hex/Combat/CombatMap/HexSelector/OLD_SCRIPTS.yy",

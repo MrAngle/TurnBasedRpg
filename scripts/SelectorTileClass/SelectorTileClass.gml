@@ -20,7 +20,7 @@ function SelectorTileClass(_myMapTile, _SELECTOR_TYPE_ENUM) {
         },
 		
 		        // Funkcja usuwania
-        selector_destroy: function() {
+        destroy: function() {
             if (instance_exists(self.__hexFieldSelectorDecoration)) {
                 instance_destroy(self.__hexFieldSelectorDecoration);
             }

@@ -18,14 +18,15 @@ if(selectorActionManager.__selector_actions_finished == true) {
 		resultTile0.__character);
 	
 	
-	var selectorActionCharacter = MySelectorActionClass(selector_select_character(1), 1);
-	var selectorActionWithoutCharacter = MySelectorActionClass(selector_select_tile_without_characters(2), 2);
+	var selectorActionCharacter = MySelectorActionClass(selector_select_character(2), 2, SELECTOR_TYPE_ENUM.ACTIVE);
+	var selectorActionWithoutCharacter = MySelectorActionClass(selector_select_tile_without_characters(1), 1);
 
 	var mySelectorActionList = ds_list_create();
 
 	ds_list_add(mySelectorActionList, selectorActionCharacter);
 	ds_list_add(mySelectorActionList, selectorActionWithoutCharacter);
 
+	selectorActionManager.destroy();
 	selectorActionManager = MySelectorActionManagerClass(mySelectorActionList);
 	
 }

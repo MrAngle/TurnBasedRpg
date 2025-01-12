@@ -10,7 +10,7 @@ enum SELECTOR_STORE_STRATEGY {
 function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_STORE_STRATEGY) {
     var map_SelectorTilesHolderClass = {
 		__selector_maxElements: _maxElements,
-		__selector_SelectorTileClass: ds_list_create(),
+		__selector_SelectorTileClass: ds_list_create(), // list of SelectorTileClass
         __selector_type: _SELECTOR_TYPE_ENUM, // SELECTOR_TYPE_ENUM
 		__selector_store_strategy: _SELECTOR_STORE_STRATEGY,
 		
@@ -32,6 +32,25 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
 				add_selector_tile_SelectorTileClass(_SelectorTileClass);
 			}
 		},
+		
+        // Metoda destrukcji
+        destroy: function() {
+            var list = self.__selector_SelectorTileClass;
+
+            if (list != noone) {
+                // Iteracja po liście
+                for (var i = 0; i < ds_list_size(list); i++) {
+                    var tile = list[| i];
+                    if (tile != noone) {
+                        // Wywołanie destruktora dla SelectorTileClass
+                        tile.destroy();
+                    }
+                }
+                // Zniszczenie listy
+                ds_list_destroy(list);
+                self.__selector_SelectorTileClass = noone;
+            }
+        },
 		
 		add_selector_tile_SelectorTileClass: function(_SelectorTileClass) {
 			var _addElementFunc = __get_selector_store_function_add_SelectorTileClass()
