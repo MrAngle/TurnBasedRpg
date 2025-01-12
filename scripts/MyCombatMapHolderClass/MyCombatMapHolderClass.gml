@@ -69,7 +69,7 @@ function __passes_all_filters(_filters, _myMapTile) {
 	// Przeprowadzamy wszystkie filtry na danym kafelku
     for (var i = 0; i < array_length(_filters); i++) {
         var filter_function = _filters[i];
-        if (!filter_function(_myMapTile)) {
+        if (!filter_function.filterFunc(_myMapTile)) {
             return false;
         }
     }
@@ -135,4 +135,7 @@ function __find_character_in_map(map_holder, rows, cols, obj_target) {
     // Jeśli nie znaleziono, zwróć `undefined` lub null
     return undefined;
 }
+
+
+
 

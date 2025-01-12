@@ -65,7 +65,7 @@ function MySelectorActionClass(_selector_function, _MySelectorActionClassOptiona
             self.__action_finished = true;
         },
 		
-		start: function(_self) {
+		load_possible_moves: function(_self) {
 			self.__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass();
 			if(__possible_tiles_to_choose_function != noone) {
 				var _selectableTile_arrayMyMapTiles = 
@@ -76,9 +76,10 @@ function MySelectorActionClass(_selector_function, _MySelectorActionClassOptiona
 					);
 				
 				if(!helper_array_is_undefined_or_empty(_selectableTile_arrayMyMapTiles)) {
-					self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass = SelectorTilesHolderClass(99, 
+					self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass = SelectorTilesHolderClass(
+						helper_array_length_safe(_selectableTile_arrayMyMapTiles), 
 						SELECTOR_TYPE_ENUM.POSSIBLE_MOVES, 
-						SELECTOR_STORE_STRATEGY.IGNORE_WHEN_MAX,
+						SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX,
 						_selectableTile_arrayMyMapTiles);
 				}
 			}
@@ -95,7 +96,7 @@ function MySelectorActionClass(_selector_function, _MySelectorActionClassOptiona
 				__action_finished = true;
 				__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass(self);
 			} else {
-				self.start();
+				self.load_possible_moves();
 			}
 		},
 			
@@ -127,7 +128,7 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 		start: function(_self) {
 			var _actionToInvoke = __selector_MySelectorActions[| __selector_action_index];
 			
-			_actionToInvoke.start(_self);
+			_actionToInvoke.load_possible_moves(_self);
 		},
 		
 		execute: function(_self) {
@@ -145,7 +146,10 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 					return;
 				}
 				__selector_action_index = __selector_action_index + 1;
-				__selector_MySelectorActions[| __selector_action_index].start(_self);
+				
+				__selector_MySelectorActions[| __selector_action_index].__previous_result_SelectorTilesHolderClass =
+					__selector_MySelectorActions[| __selector_action_index - 1].__result_SelectorTilesHolderClass
+				__selector_MySelectorActions[| __selector_action_index].load_possible_moves(_self);
 			}
 		},
 		

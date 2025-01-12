@@ -78,6 +78,13 @@ function helper_array_is_undefined_or_empty(arrayToCheck) {
 	return arrayToCheck == undefined || array_length(arrayToCheck) == 0;
 }
 
+function helper_array_length_safe(arrayToCheck) {
+    if (arrayToCheck == undefined) {
+        return 0; // Tablica jest undefined, więc traktujemy ją jako pustą
+    }
+    return array_length(arrayToCheck); // Zwracamy rzeczywisty rozmiar tablicy
+}
+
 function helper_object_is_undefined_or_empty(objectToCheck) {
 	return objectToCheck == undefined || objectToCheck == noone;
 }

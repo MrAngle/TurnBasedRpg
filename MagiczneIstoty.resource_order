@@ -254,6 +254,7 @@
     {"name":"RetardedWorkarounds","order":8,"path":"scripts/RetardedWorkarounds/RetardedWorkarounds.yy",},
     {"name":"Script79","order":5,"path":"scripts/Script79/Script79.yy",},
     {"name":"SelectorFunctionClass","order":2,"path":"scripts/SelectorFunctionClass/SelectorFunctionClass.yy",},
+    {"name":"SelectorManagerSchemas","order":16,"path":"scripts/SelectorManagerSchemas/SelectorManagerSchemas.yy",},
     {"name":"SelectorTileClass","order":7,"path":"scripts/SelectorTileClass/SelectorTileClass.yy",},
     {"name":"SelectorTilesHolderClass","order":11,"path":"scripts/SelectorTilesHolderClass/SelectorTilesHolderClass.yy",},
     {"name":"SKILL_LIST_ENUM","order":10,"path":"scripts/SKILL_LIST_ENUM/SKILL_LIST_ENUM.yy",},
