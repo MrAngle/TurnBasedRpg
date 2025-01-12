@@ -80,7 +80,6 @@ function getMySelectorActionManagerClass()
 	var selectorActionWithoutCharacter = MySelectorActionClass(all_empty_tile_in_distance());
 	var selectorActionWithoutCharacter2 = MySelectorActionClass(all_empty_tile_in_distance());
 
-
 	var testselector4 = MySelectorActionClassOptionalConstrParams();
 	testselector4._numberOfTilesToSelect = 3;
 	testselector4._SELECTOR_TYPE_ENUM = SELECTOR_TYPE_ENUM.ACTIVE;

@@ -1,4 +1,5 @@
 event_inherited();
+panel_height = 200;
 myToolTipTile = noone;
 wrapped_menu_text = "Show Tooltip";
 //my_tooltip_expanded = true;

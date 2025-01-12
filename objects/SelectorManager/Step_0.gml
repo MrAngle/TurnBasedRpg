@@ -1,4 +1,4 @@
-if(selectorActionManager.__selector_actions_finished == true) {
+if(!helper_struct_is_undefined_or_empty(selectorActionManager) && selectorActionManager.__selector_actions_finished == true) {
 	
 	var allSelectsList = selectorActionManager.__selector_MySelectorActions;
 	

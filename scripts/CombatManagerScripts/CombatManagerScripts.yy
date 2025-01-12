@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"CombatManagerScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"CombatManagerScripts",
+  "parent":{
+    "name":"CombatManager",
+    "path":"folders/Hex/Combat/CombatManager.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

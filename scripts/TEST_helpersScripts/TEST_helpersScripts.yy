@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TEST_helpersScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TEST_helpersScripts",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Hex/Combat/CombatMap/HexSelector/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,5 +1,4 @@
 show_debug_message("START - INIT Selector Manager - ALARM 0");
-
-selectorActionManager = getMySelectorActionManagerClass();
+init_func();
 
 show_debug_message("FINISH - INIT Selector Manager - ALARM 0");

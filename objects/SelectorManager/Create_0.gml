@@ -2,9 +2,9 @@ instance_create_layer(0, 0, global.LAYERS.selectors.id, HexHoverFieldDecoration)
 instance_create_layer(0, 0, global.LAYERS.selectors.id, HexActiveFieldDecoration);
 
 checkCondition = true;
-selectorActionManager = noone;
+selectorActionManager = undefined;
 //selectorActionManager = getMySelectorActionManagerClass();
-alarm[0] = global.ALARM_PERIOD_MINIMUM;
+alarm[0] = global.ALARM_TIME_COMBAT_MANAGER_INIT + 1;
 
 global.TILE_SELECTOR_EVENT_ON_CLICK = function(_self) {
 	selectorActionManager.execute(_self);
