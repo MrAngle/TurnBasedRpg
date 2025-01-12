@@ -1,7 +1,31 @@
-if(checkCondition == true) {
+if(selectorActionManager.__selector_actions_finished == true) {
+	
+	var allSelectsList = selectorActionManager.__selector_MySelectorActions;
+	
+	// resolve move action
+	var _charTile = allSelectsList[|0];
+	var _destinationTile = allSelectsList[|1];
+	
+	var resultTile0 = _charTile.__result_selectedTiles.__selector_SelectorTileClass[| 0].__selector_myMapTile;
+	var resultTile1 = _destinationTile.__result_selectedTiles.__selector_SelectorTileClass[| 0].__selector_myMapTile;
+	
+	//resultTile0.__character.properties_map_element_row_index = resultTile1._properties_map_element_row_index;
+	//resultTile1.__character.properties_map_element_col_index = resultTile1._properties_map_element_col_index;
+	
+	global.myCombatMapManager.move_to(
+		 resultTile1._properties_map_element_row_index, 
+		 resultTile1._properties_map_element_col_index, 
+		resultTile0.__character);
 	
 	
-	
-	
+	var selectorActionCharacter = MySelectorActionClass(selector_select_character(1), 1);
+	var selectorActionWithoutCharacter = MySelectorActionClass(selector_select_tile_without_characters(2), 2);
+
+	var mySelectorActionList = ds_list_create();
+
+	ds_list_add(mySelectorActionList, selectorActionCharacter);
+	ds_list_add(mySelectorActionList, selectorActionWithoutCharacter);
+
+	selectorActionManager = MySelectorActionManagerClass(mySelectorActionList);
 	
 }

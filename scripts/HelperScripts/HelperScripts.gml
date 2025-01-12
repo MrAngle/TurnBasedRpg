@@ -44,3 +44,10 @@ function helper_create_undefined_array(_size) {
     }
     return arr;
 }
+
+function helper_is_empty(_obj) {
+	if(_obj == undefined || _obj == noone) {
+		return true;
+	}
+	return false;
+}

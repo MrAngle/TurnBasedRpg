@@ -21,6 +21,10 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
 			//HexFieldSelectorDecorationFactory(__hex_selectedFieldDecoration, _SELECTOR_TYPE_ENUM)
         },
 		
+		get_size: function() {
+			return ds_list_size(self.__selector_SelectorTileClass);
+		},
+		
 		add_tile_MyMapTile: function(_MyMapTile) {
 			if(__can_add_selector_tile() == true) {
 				var _SelectorTileClass = SelectorTileClass(_MyMapTile, __selector_type);
