@@ -19,6 +19,10 @@ HexFieldSelectorDecoration_run_after_constructor = function() {
 		case SELECTOR_TYPE_ENUM.SELECTED:
 			sprite_index = default_hover_hex_sprite
 			break;
+		case SELECTOR_TYPE_ENUM.POSSIBLE_MOVES:
+			sprite_index = default_possible_move_hex_sprite
+			break;
+			
 		default:
 		    // Nieznana strategia, zwracamy false jako domyślną wartość
 		    show_debug_message("Unknown SELECTOR_TYPE_ENUM: " + string(self.selectorTypeEnum));

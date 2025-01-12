@@ -1,13 +1,23 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
+enum SELECTOR_TYPE_ENUM {
+	HOVER, // ITS use also for layers
+	SELECTED,
+	ACTIVE,
+	POSSIBLE_MOVES
+}
+
 enum SELECTOR_STORE_STRATEGY {
 	REPLACE_FIRST_WHEN_MAX,
 	REPLACE_LAST_WHEN_MAX,
 	IGNORE_WHEN_MAX
 }
 
-function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_STORE_STRATEGY) {
+
+
+
+function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_STORE_STRATEGY, _myMapTilesArray = noone) {
     var map_SelectorTilesHolderClass = {
 		__selector_maxElements: _maxElements,
 		__selector_SelectorTileClass: ds_list_create(), // list of SelectorTileClass
@@ -17,7 +27,19 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
 		// __selector_allow_use_same_tile - TO DO
         
 		// constructor
-		__init_SelectorTilesHolderClass: function() {
+		__init_SelectorTilesHolderClass: function(_argMyMapTilesArray) {
+			
+			// Dodajemy kafelki z tablicy, jeśli została podana
+            if (_argMyMapTilesArray != noone) {
+                for (var i = 0; i < array_length(_argMyMapTilesArray); i++) {
+                    var tile = _argMyMapTilesArray[i];
+                    if (tile != noone) {
+                        self.add_tile_MyMapTile(tile);
+                    }
+                }
+            }
+			
+			//_myMapTilesArray(
 			//HexFieldSelectorDecorationFactory(__hex_selectedFieldDecoration, _SELECTOR_TYPE_ENUM)
         },
 		
@@ -25,15 +47,22 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
 			return ds_list_size(self.__selector_SelectorTileClass);
 		},
 		
-		add_tile_MyMapTile: function(_MyMapTile) {
-			if(__can_add_selector_tile() == true) {
-				var _SelectorTileClass = SelectorTileClass(_MyMapTile, __selector_type);
-				
-				add_selector_tile_SelectorTileClass(_SelectorTileClass);
-			}
-		},
+		// Metoda zwracająca wszystkie _myMapTile jako tablicę
+        get_all_myMapTiles: function() {
+            var myMapTiles = []; // Tworzymy pustą tablicę
+
+            // Iterujemy przez listę SelectorTileClass
+            for (var i = 0; i < ds_list_size(self.__selector_SelectorTileClass); i++) {
+                var selectorTile = self.__selector_SelectorTileClass[| i];
+                if (selectorTile != noone && selectorTile.__selector_myMapTile != noone) {
+                    array_push(myMapTiles, selectorTile.__selector_myMapTile);
+                }
+            }
+
+            return myMapTiles; // Zwracamy tablicę myMapTiles
+        },
 		
-		// Sprawdź, czy myMapTile już istnieje
+				// Sprawdź, czy myMapTile już istnieje
         contains_tile: function(myMapTile) {
             var list = self.__selector_SelectorTileClass;
 
@@ -47,6 +76,14 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
             }
             return false;
         },
+		
+		add_tile_MyMapTile: function(_MyMapTile) {
+			if(__can_add_selector_tile() == true) {
+				var _SelectorTileClass = SelectorTileClass(_MyMapTile, __selector_type);
+				
+				add_selector_tile_SelectorTileClass(_SelectorTileClass);
+			}
+		},
 		
 		add_selector_tile_SelectorTileClass: function(_SelectorTileClass) {
 			var _addElementFunc = __get_selector_store_function_add_SelectorTileClass()
@@ -159,6 +196,6 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
         },
     };
 	
-	map_SelectorTilesHolderClass.__init_SelectorTilesHolderClass();
+	map_SelectorTilesHolderClass.__init_SelectorTilesHolderClass(_myMapTilesArray);
 	return map_SelectorTilesHolderClass;
 }

@@ -1,12 +1,6 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
-enum SELECTOR_TYPE_ENUM {
-	HOVER, // ITS use also for layers
-	SELECTED,
-	ACTIVE,
-}
-
 function SelectorTileClass(_myMapTile, _SELECTOR_TYPE_ENUM) {
     var map_SelectedTileClass = {
         __selector_myMapTile: _myMapTile, // myMapTile

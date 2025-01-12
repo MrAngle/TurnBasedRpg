@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GlobalObjNames",
+  "%Name":"GlobalAlarmPeriods",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GlobalObjNames",
+  "name":"GlobalAlarmPeriods",
   "parent":{
     "name":"globals",
     "path":"folders/Hex/Combat/Scripts/globals.yy",

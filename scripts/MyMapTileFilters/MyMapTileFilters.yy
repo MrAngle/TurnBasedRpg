@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GlobalObjNames",
+  "%Name":"MyMapTileFilters",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GlobalObjNames",
+  "name":"MyMapTileFilters",
   "parent":{
-    "name":"globals",
-    "path":"folders/Hex/Combat/Scripts/globals.yy",
+    "name":"CombatMapHolder",
+    "path":"folders/Hex/Combat/CombatMapHolder.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

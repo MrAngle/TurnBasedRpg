@@ -27,22 +27,27 @@ function MySelectorActionClass(_selector_function, _MySelectorActionClassOptiona
 {
     var _mySelectorActionClass = {
 		__selector_function: _selector_function, // (_self, SelectorTilesHolderClass)
-		__possible_tiles_to_choose_function: _MySelectorActionClassOptionalConstrParams._possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass)
-		__numberOfTilesToSelect: _MySelectorActionClassOptionalConstrParams._numberOfTilesToSelect,
-		__SELECTOR_TYPE: _MySelectorActionClassOptionalConstrParams._SELECTOR_TYPE_ENUM,
-		__SELECTOR_STORE_STRATEGY: _MySelectorActionClassOptionalConstrParams._SELECTOR_STORE_STRATEGY,
+		__possible_tiles_to_choose_function: 
+			_MySelectorActionClassOptionalConstrParams._possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass, SelectorTilesHolderClass)
+		__numberOfTilesToSelect: 
+			_MySelectorActionClassOptionalConstrParams._numberOfTilesToSelect,
+		__SELECTOR_TYPE: 
+			_MySelectorActionClassOptionalConstrParams._SELECTOR_TYPE_ENUM,
+		__SELECTOR_STORE_STRATEGY: 
+			_MySelectorActionClassOptionalConstrParams._SELECTOR_STORE_STRATEGY,
 		//__next_MySelectorActionClass: _next_MySelectorActionClass, // MySelectorActionClass
 		
 		//_previous_selected_SelectorTilesHolderClass
-		__result_selectedTiles: noone, // SelectorTilesHolderClass
-		__selector_possible_tiles_to_choose_selectedTiles: noone, // SelectorTilesHolderClass
+		__result_SelectorTilesHolderClass: noone, // SelectorTilesHolderClass
+		__previous_result_SelectorTilesHolderClass: noone,
+		__selector_possible_tiles_to_choose_SelectorTilesHolderClass: noone, // SelectorTilesHolderClass
 		//__previous_MySelectorActionClass: _previous_MySelectorActionClass, // MySelectorActionClass
 		
 		__action_finished: false,
 		
 		// constructor
 		__init_MySelectorActionClass: function() {
-			__result_selectedTiles = 
+			__result_SelectorTilesHolderClass = 
 				SelectorTilesHolderClass(
 					__numberOfTilesToSelect, 
 					__SELECTOR_TYPE, 
@@ -52,15 +57,31 @@ function MySelectorActionClass(_selector_function, _MySelectorActionClassOptiona
 		// Metoda destrukcji
         destroy: function() {
             // Sprawdzenie i zniszczenie SelectorTilesHolderClass
-            if (self.__result_selectedTiles != noone) {
-                self.__result_selectedTiles.destroy();
-                self.__result_selectedTiles = noone;
+            if (self.__result_SelectorTilesHolderClass != noone) {
+                self.__result_SelectorTilesHolderClass.destroy();
+                self.__result_SelectorTilesHolderClass = noone;
             }
+			__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass();
             self.__action_finished = true;
         },
 		
 		start: function(_self) {
-			__possible_tiles_to_choose_function(_self, __result_selectedTiles);
+			self.__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass();
+			if(__possible_tiles_to_choose_function != noone) {
+				var _selectableTile_arrayMyMapTiles = 
+					__possible_tiles_to_choose_function(
+						_self, 
+						__result_SelectorTilesHolderClass, 
+						__previous_result_SelectorTilesHolderClass
+					);
+				
+				if(!helper_array_is_undefined_or_empty(_selectableTile_arrayMyMapTiles)) {
+					self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass = SelectorTilesHolderClass(99, 
+						SELECTOR_TYPE_ENUM.POSSIBLE_MOVES, 
+						SELECTOR_STORE_STRATEGY.IGNORE_WHEN_MAX,
+						_selectableTile_arrayMyMapTiles);
+				}
+			}
 		},
 		
 		execute: function(_self) {
@@ -68,12 +89,22 @@ function MySelectorActionClass(_selector_function, _MySelectorActionClassOptiona
 				return;
 			}
 			
-			__selector_function(_self, __result_selectedTiles);
+			__selector_function(_self, __result_SelectorTilesHolderClass);
 			
-			if(__result_selectedTiles.get_size() >= __numberOfTilesToSelect) {
-				__action_finished = true;	
+			if(__result_SelectorTilesHolderClass.get_size() >= __numberOfTilesToSelect) {
+				__action_finished = true;
+				__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass(self);
+			} else {
+				self.start();
 			}
-		}
+		},
+			
+		__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass: function() {
+			if (self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass != noone) {
+                self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass.destroy();
+                self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass = noone;
+            }
+		},
 	};
 	
 	_mySelectorActionClass.__init_MySelectorActionClass();
@@ -93,6 +124,12 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 		__init_MySelectorActionManagerClass: function() {
 	    },
 		
+		start: function(_self) {
+			var _actionToInvoke = __selector_MySelectorActions[| __selector_action_index];
+			
+			_actionToInvoke.start(_self);
+		},
+		
 		execute: function(_self) {
 			if(__selector_action_index >= ds_list_size(__selector_MySelectorActions)) {
 				__selector_actions_finished = true;
@@ -103,11 +140,12 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 			_actionToInvoke.execute(_self);
 			
 			if(_actionToInvoke.__action_finished) {
+				if(__selector_action_index >= ds_list_size(__selector_MySelectorActions) - 1) {
+					__selector_actions_finished = true;
+					return;
+				}
 				__selector_action_index = __selector_action_index + 1;
-			}
-			
-			if(__selector_action_index >= ds_list_size(__selector_MySelectorActions)) {
-				__selector_actions_finished = true;
+				__selector_MySelectorActions[| __selector_action_index].start(_self);
 			}
 		},
 		

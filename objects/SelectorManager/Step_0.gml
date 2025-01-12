@@ -6,8 +6,8 @@ if(selectorActionManager.__selector_actions_finished == true) {
 	var _charTile = allSelectsList[|0];
 	var _destinationTile = allSelectsList[|1];
 	
-	var resultTile0 = _charTile.__result_selectedTiles.__selector_SelectorTileClass[| 0].__selector_myMapTile;
-	var resultTile1 = _destinationTile.__result_selectedTiles.__selector_SelectorTileClass[| 0].__selector_myMapTile;
+	var resultTile0 = _charTile.__result_SelectorTilesHolderClass.__selector_SelectorTileClass[| 0].__selector_myMapTile;
+	var resultTile1 = _destinationTile.__result_SelectorTilesHolderClass.__selector_SelectorTileClass[| 0].__selector_myMapTile;
 	
 	//resultTile0.__character.properties_map_element_row_index = resultTile1._properties_map_element_row_index;
 	//resultTile1.__character.properties_map_element_col_index = resultTile1._properties_map_element_col_index;

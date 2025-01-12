@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GlobalCombatParams",
   "parent":{
-    "name":"Combat",
-    "path":"folders/Hex/Combat.yy",
+    "name":"globals",
+    "path":"folders/Hex/Combat/Scripts/globals.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -55,3 +55,33 @@ function helper_is_empty(_obj) {
 	}
 	return false;
 }
+
+//function helper_filter_function_is_in_array(_arrayToCheck) {
+//	closedFunction = {
+//		__arrayToCheck: _arrayToCheck,
+//		toReturn: function(_objectToCheck) {
+//	        for (var i = 0; i < array_length(__arrayToCheck); i++) {
+//	            if (__arrayToCheck[i] == _objectToCheck) {
+//	                return true;
+//	            }
+//	        }
+//	        return false;
+//	    }
+//	}
+//	return closedFunction.toReturn;
+//}
+
+
+
+
+function helper_array_is_undefined_or_empty(arrayToCheck) {
+	return arrayToCheck == undefined || array_length(arrayToCheck) == 0;
+}
+
+function helper_object_is_undefined_or_empty(objectToCheck) {
+	return objectToCheck == undefined || objectToCheck == noone;
+}
+
+function helper_struct_is_undefined_or_empty(structToCheck) {
+	return structToCheck == undefined || structToCheck == noone;
+}
