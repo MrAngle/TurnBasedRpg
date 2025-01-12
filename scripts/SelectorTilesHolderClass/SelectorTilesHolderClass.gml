@@ -38,9 +38,6 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
                     }
                 }
             }
-			
-			//_myMapTilesArray(
-			//HexFieldSelectorDecorationFactory(__hex_selectedFieldDecoration, _SELECTOR_TYPE_ENUM)
         },
 		
 		get_size: function() {
@@ -48,7 +45,7 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
 		},
 		
 		// Metoda zwracająca wszystkie _myMapTile jako tablicę
-        get_all_myMapTiles: function() {
+        get_all_myMapTiles_as_array: function() {
             var myMapTiles = []; // Tworzymy pustą tablicę
 
             // Iterujemy przez listę SelectorTileClass
