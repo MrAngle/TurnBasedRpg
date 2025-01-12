@@ -357,7 +357,7 @@
     {"id":{"name":"QueueAction","path":"scripts/QueueAction/QueueAction.yy",},},
     {"id":{"name":"RetardedWorkarounds","path":"scripts/RetardedWorkarounds/RetardedWorkarounds.yy",},},
     {"id":{"name":"Script79","path":"scripts/Script79/Script79.yy",},},
-    {"id":{"name":"Script81","path":"scripts/Script81/Script81.yy",},},
+    {"id":{"name":"SelectorFunctionClass","path":"scripts/SelectorFunctionClass/SelectorFunctionClass.yy",},},
     {"id":{"name":"SelectorTileClass","path":"scripts/SelectorTileClass/SelectorTileClass.yy",},},
     {"id":{"name":"SelectorTilesHolderClass","path":"scripts/SelectorTilesHolderClass/SelectorTilesHolderClass.yy",},},
     {"id":{"name":"SKILL_LIST_ENUM","path":"scripts/SKILL_LIST_ENUM/SKILL_LIST_ENUM.yy",},},

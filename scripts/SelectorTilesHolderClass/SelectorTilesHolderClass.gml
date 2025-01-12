@@ -33,7 +33,33 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
 			}
 		},
 		
-        // Metoda destrukcji
+		// Sprawdź, czy myMapTile już istnieje
+        contains_tile: function(myMapTile) {
+            var list = self.__selector_SelectorTileClass;
+
+            if (list != noone) {
+                for (var i = 0; i < ds_list_size(list); i++) {
+                    var tile = list[| i];
+                    if (tile != noone && tile.__selector_myMapTile == myMapTile) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        },
+		
+		add_selector_tile_SelectorTileClass: function(_SelectorTileClass) {
+			var _addElementFunc = __get_selector_store_function_add_SelectorTileClass()
+			
+			var _SelectorTileClassToReplace = __get_replaced_tile(_SelectorTileClass);
+			_addElementFunc(_SelectorTileClass);
+			
+			if(_SelectorTileClassToReplace != undefined && _SelectorTileClassToReplace != noone) {
+				_SelectorTileClassToReplace.destroy();
+			}
+		},
+		
+		// Metoda destrukcji
         destroy: function() {
             var list = self.__selector_SelectorTileClass;
 
@@ -51,17 +77,6 @@ function SelectorTilesHolderClass(_maxElements, _SELECTOR_TYPE_ENUM, _SELECTOR_S
                 self.__selector_SelectorTileClass = noone;
             }
         },
-		
-		add_selector_tile_SelectorTileClass: function(_SelectorTileClass) {
-			var _addElementFunc = __get_selector_store_function_add_SelectorTileClass()
-			
-			var _SelectorTileClassToReplace = __get_replaced_tile(_SelectorTileClass);
-			_addElementFunc(_SelectorTileClass);
-			
-			if(_SelectorTileClassToReplace != undefined && _SelectorTileClassToReplace != noone) {
-				_SelectorTileClassToReplace.selector_destroy();
-			}
-		},
 		
         __get_selector_store_function_add_SelectorTileClass: function() {
             switch (self.__selector_store_strategy) {

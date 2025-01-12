@@ -1,19 +1,41 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
-function MySelectorActionClass(_selector_function, _numberOfTilesToSelect, 
+
+//MySelectorActionClass
+
+
+function MySelectorActionClassOptionalConstrParams() {
+    return {
+        _possible_tiles_to_choose_function: noone,
+        _numberOfTilesToSelect: 1,
+        _SELECTOR_TYPE_ENUM: SELECTOR_TYPE_ENUM.SELECTED,
+        _SELECTOR_STORE_STRATEGY: SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX,
+        _previous_selected_SelectorTilesHolderClass: noone
+    };
+}
+
+
+
+function MySelectorActionClass(_selector_function, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
 // opt
-	_SELECTOR_TYPE_ENUM = SELECTOR_TYPE_ENUM.SELECTED,
-	_SELECTOR_STORE_STRATEGY = SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX)
+	//_possible_tiles_to_choose_function = noone,
+	//_numberOfTilesToSelect = 1,
+	//_SELECTOR_TYPE_ENUM = SELECTOR_TYPE_ENUM.SELECTED,
+	//_SELECTOR_STORE_STRATEGY = SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX,
+	//_previous_selected_SelectorTilesHolderClass = noone)
 {
     var _mySelectorActionClass = {
-		__selector_function: _selector_function,
-		__numberOfTilesToSelect: _numberOfTilesToSelect,
-		__SELECTOR_TYPE: _SELECTOR_TYPE_ENUM,
-		__SELECTOR_STORE_STRATEGY: _SELECTOR_STORE_STRATEGY,
+		__selector_function: _selector_function, // (_self, SelectorTilesHolderClass)
+		__possible_tiles_to_choose_function: _MySelectorActionClassOptionalConstrParams._possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass)
+		__numberOfTilesToSelect: _MySelectorActionClassOptionalConstrParams._numberOfTilesToSelect,
+		__SELECTOR_TYPE: _MySelectorActionClassOptionalConstrParams._SELECTOR_TYPE_ENUM,
+		__SELECTOR_STORE_STRATEGY: _MySelectorActionClassOptionalConstrParams._SELECTOR_STORE_STRATEGY,
 		//__next_MySelectorActionClass: _next_MySelectorActionClass, // MySelectorActionClass
 		
+		//_previous_selected_SelectorTilesHolderClass
 		__result_selectedTiles: noone, // SelectorTilesHolderClass
+		__selector_possible_tiles_to_choose_selectedTiles: noone, // SelectorTilesHolderClass
 		//__previous_MySelectorActionClass: _previous_MySelectorActionClass, // MySelectorActionClass
 		
 		__action_finished: false,
@@ -37,16 +59,20 @@ function MySelectorActionClass(_selector_function, _numberOfTilesToSelect,
             self.__action_finished = true;
         },
 		
+		start: function(_self) {
+			__possible_tiles_to_choose_function(_self, __result_selectedTiles);
+		},
+		
 		execute: function(_self) {
-			if(!helper_is_boolean(__action_finished)) { // wrongly set function
-				__action_finished = true;
-			}
-			
 			if(__action_finished) {
 				return;
 			}
 			
-			__action_finished = __selector_function(_self, __result_selectedTiles);
+			__selector_function(_self, __result_selectedTiles);
+			
+			if(__result_selectedTiles.get_size() >= __numberOfTilesToSelect) {
+				__action_finished = true;	
+			}
 		}
 	};
 	
@@ -102,6 +128,7 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
                 ds_list_destroy(actions);
                 self.__selector_MySelectorActions = noone;
             }
+
         }
 	};
 	

@@ -55,18 +55,20 @@ selector_select_character = function(_numberOfCharacters) {
 
 	closedFunction = {
 		closedNumberOfCharacters: _numberOfCharacters,
+		tilesPossibleToSelect: function(_self, _) {
+		},
 		toReturn: function(_self, closed_properties_selector_selected_tiles) {
 			var _MyMapTile = global.myCombatMapHolder.get_tile(_self.properties_map_element_row_index, _self.properties_map_element_col_index);
 
-			if(_MyMapTile.has_character()) {
+			if(_MyMapTile.has_character() /*&& !closed_properties_selector_selected_tiles.contains_tile(_MyMapTile) */) {
 				closed_properties_selector_selected_tiles.add_tile_MyMapTile(_MyMapTile);
 			}
 		
-			if(closed_properties_selector_selected_tiles.get_size() >= closedNumberOfCharacters) {
-				return true;
-			}
+			//if(closed_properties_selector_selected_tiles.get_size() >= closedNumberOfCharacters) {
+			//	return true;
+			//}
 		
-			return false;
+			//return false;
 		}
 	}
 	return closedFunction.toReturn;
@@ -86,19 +88,21 @@ selector_select_tile_without_characters = function(_numberOfTilesToSelect) {
 				closed_properties_selector_selected_tiles.add_tile_MyMapTile(_MyMapTile);
 			}
 		
-			if(closed_properties_selector_selected_tiles.get_size() >= closed_numberOfTilesToSelect) {
-				return true;
-			}
+			//if(closed_properties_selector_selected_tiles.get_size() >= closed_numberOfTilesToSelect) {
+			//	return true;
+			//}
 		
-			return false;
+			//return false;
 		}
 	}
 	return closedFunction.toReturn;
 }
 
+var testselector = MySelectorActionClassOptionalConstrParams();
+testselector._SELECTOR_TYPE_ENUM = SELECTOR_TYPE_ENUM.ACTIVE;
 
-var selectorActionCharacter = MySelectorActionClass(selector_select_character(2), 2, SELECTOR_TYPE_ENUM.ACTIVE);
-var selectorActionWithoutCharacter = MySelectorActionClass(selector_select_tile_without_characters(1), 1);
+var selectorActionCharacter = MySelectorActionClass(selector_select_character(1), testselector);
+var selectorActionWithoutCharacter = MySelectorActionClass(selector_select_tile_without_characters(1), testselector);
 
 var mySelectorActionList = ds_list_create();
 
