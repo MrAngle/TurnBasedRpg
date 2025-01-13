@@ -1,14 +1,20 @@
-frame_counter = 0; // Licznik klatek
-test_passed = true; // Flaga określająca wynik testu
+//frame_counter = 0; // Licznik klatek
+//test_passed = true; // Flaga określająca wynik testu
 
-    // Pobranie kafelka na współrzędnych (1, 4)
-tile = global.myCombatMapHolder.get_tile(5, 5);
+//    // Pobranie kafelka na współrzędnych (1, 4)
+//tile = global.myCombatMapHolder.get_tile(5, 5);
 
-    // Sprawdzenie poprawności kafelka
-if (tile == noone) {
-    show_debug_message("Test failed: Tile (1, 4) does not exist.");
-    return false;
-}
+//    // Sprawdzenie poprawności kafelka
+//if (tile == noone) {
+//    show_debug_message("Test failed: Tile (1, 4) does not exist.");
+//    return false;
+//}
 
 
-startTest = false;
+//startTest = false;
+
+
+// INIT 
+//testActionsManager = TEST_SC_SelectorAction_chain();
+
+alarm[2] = global.ALARM_PERIOD_MINIMUM + 10;

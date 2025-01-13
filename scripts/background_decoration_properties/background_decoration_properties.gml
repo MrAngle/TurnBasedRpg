@@ -11,6 +11,8 @@ function properties_load_background_decoration()
 		if (properties_bg_sprite != noone && !instance_exists(properties_bg_instance)) {
 	        properties_bg_instance = instance_create_layer(x, y, global.LAYERS.ground.id, background_obj);
 	        properties_bg_instance.sprite_index = properties_bg_sprite;
+			var randomValue = irandom_range(0, 360);
+			properties_bg_instance.image_angle = randomValue;
 			properties_bg_set_default_depth();
 	    }
 	};

@@ -4,6 +4,7 @@ global.myCombatTurnManager = noone; // CombatTurnManager
 global.myMenuTooltipManager = noone;
 global.myMenuCharsTurnManager = noone; // MenuCharsTurnManager (obj)
 global.myMenuSelectedCharManager = noone;
+global.mySelectorManager = noone; // SelectorManager
 
 // Store:
 global.myCombatMapHolder = noone; // MyCombatMapHolder

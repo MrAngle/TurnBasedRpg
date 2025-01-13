@@ -35,7 +35,7 @@
 
 //my_start_combat();
 
-init_func = INIT_CombatManager;
+init_func = global.____STATIC_LOAD_MANAGER;
 
 global.ALARM_TIME_COMBAT_MANAGER_INIT = global.ALARM_PERIOD_MINIMUM;
 

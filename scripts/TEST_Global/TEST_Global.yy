@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TEST_Global",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TEST_Global",
+  "parent":{
+    "name":"globals",
+    "path":"folders/Hex/Combat/Scripts/globals.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -12,6 +12,8 @@ after_create_event = function() {
 	if (!after_create_executed) {
 		__abst_obj_terrain_after_create();
 		__abst_tile_after_create();
+		
+		self.image_xscale = choose(1, -1); // 1 = brak odbicia, -1 = odbicie lustrzane
 	}
 
 	after_create_executed = true;

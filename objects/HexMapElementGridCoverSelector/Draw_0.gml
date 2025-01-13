@@ -1,3 +1,3 @@
 draw_self();
 
-//border_decoration_draw_hexagon();
+border_decoration_draw_hexagon();
