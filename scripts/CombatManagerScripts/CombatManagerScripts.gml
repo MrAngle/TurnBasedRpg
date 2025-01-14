@@ -55,6 +55,9 @@ global.____STATIC_LOAD_MANAGER = function() {
 
 
 global.___INIT_MANAGER = function() {
+	global.__INIT_COMBAT_GLOBAL();
+	
+	var test = global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP;
 	init_layers();
 	instance_create_layer(0, 0, global.LAYERS.managers.id, DebuggerInstance);
 	instance_create_layer(0, 0, global.LAYERS.game_cursor.id, cursor_obj_game);
