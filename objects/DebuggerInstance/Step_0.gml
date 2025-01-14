@@ -15,8 +15,6 @@ if(properties_debugger_is_enabled) {
 	var count_gui_game_menu = array_length(layer_get_all_elements(global.LAYERS.gui_game_menu.id));
 	
 	var count_managing_instances = count_managers + count_gui_menu + count_gui_game_menu;
-	
-	
 
 	// Przejdź przez wszystkie instancje
 	//with (all) {
@@ -24,7 +22,6 @@ if(properties_debugger_is_enabled) {
 	//        count_managers += 1;
 	//    }
 	//}
-	
 	
     
     // Liczba wszystkich instancji

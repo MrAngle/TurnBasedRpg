@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"Object101",
-  "eventList":[],
+  "%Name":"SUPER_INIT_MANAGER",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"Object101",
+  "name":"SUPER_INIT_MANAGER",
   "overriddenProperties":[],
   "parent":{
     "name":"Combat",

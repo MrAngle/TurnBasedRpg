@@ -1,7 +1,3 @@
-
-
-
-
 function MyCombatMapHolder(_init_rows, _init_cols) {
     var map_instance = {
         __rows: _init_rows, // number

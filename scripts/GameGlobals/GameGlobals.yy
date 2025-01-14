@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GlobalObjNames",
+  "%Name":"GameGlobals",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GlobalObjNames",
+  "name":"GameGlobals",
   "parent":{
-    "name":"globals",
-    "path":"folders/Hex/Combat/Scripts/globals.yy",
+    "name":"GameMenu",
+    "path":"folders/Hex/GameMenu.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

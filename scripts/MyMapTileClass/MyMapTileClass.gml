@@ -7,11 +7,6 @@ enum MapElementObjectTypeEnum {
 	NONE
 }
 
-global.METRICS_SelectorsCount = 0;
-global.METRICS_MyMapTileCount = 0;
-global.METRICS_TerrainCount = 0;
-global.METRICS_CharacterCount = 0;
-
 function MyMapTile(properties_map_element_row_index, properties_map_element_col_index, _x_position, _y_position, _obj_terrain, _obj_character) {
     var _new_MyMapTile = {
 		_properties_map_element_row_index: properties_map_element_row_index,
@@ -29,7 +24,7 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 		
 		__init_MyMapTile: function() {
 			__create_hex_selector(self);
-			global.METRICS_MyMapTileCount = global.METRICS_MyMapTileCount + 1;
+			global.COMBAT_GLOBALS.METRICS.TILE_COUNT = global.COMBAT_GLOBALS.METRICS.TILE_COUNT + 1;
         },
 		
 		has_character: function() {
@@ -57,7 +52,7 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 			
 			__my_set_tile_coordinates(_MyMapTile, _MyMapTile.__shape_selector);
 			
-			global.METRICS_SelectorsCount = global.METRICS_SelectorsCount + 1;
+			global.COMBAT_GLOBALS.METRICS.SELECTORS_COUNT = global.COMBAT_GLOBALS.METRICS.SELECTORS_COUNT + 1;
 		}
     };
 	

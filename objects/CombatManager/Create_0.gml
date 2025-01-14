@@ -1,5 +1,5 @@
+// REQUIRE TO LOAD LAYERS AND GLOBALS
+show_debug_message("START - INIT Selector Manager - ALARM 0");
 init_func = global.____STATIC_LOAD_MANAGER;
-
-//global.COMBAT_GLOBALS.ALARM.COMBAT_MANAGER_INIT_DELAY = global.COMBAT_GLOBALS.ALARM.PERIOD_MINIMUM;
-
-alarm[0] = 1; // TODO CHange
+init_func();
+show_debug_message("FINISH - INIT Selector Manager - ALARM 0");

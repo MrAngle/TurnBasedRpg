@@ -1,7 +1,7 @@
 event_inherited();
 properties_map_element_obj_type = MapElementObjectTypeEnum.CHARACTER;// Typ domyślny dla kafelków
 my_character_side = CombatCharacterSideEnum.NEUTRAL;
-my_obj_name = global.myGlobalObjName_Character;
+//my_obj_name = global.myGlobalObjName_Character;
 
 //properties_border_decoration_default_color = c_blue;
 //properties_border_decoration_radius = global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_RADIUS - 80;

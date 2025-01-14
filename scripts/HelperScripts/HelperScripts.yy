@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"HelperScripts",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Hex/Combat/Scripts.yy",
+    "name":"Helpers",
+    "path":"folders/Hex/Combat/Scripts/Helpers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

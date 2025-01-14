@@ -1,20 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"CombatManager",
+  "%Name":"GameMenu",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"CombatManager",
+  "name":"GameMenu",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatManager",
-    "path":"folders/Hex/Combat/CombatManager.yy",
+    "name":"GameMenu",
+    "path":"folders/Hex/GameMenu.yy",
   },
-  "parentObjectId":{
-    "name":"abst_super_manager",
-    "path":"objects/abst_super_manager/abst_super_manager.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

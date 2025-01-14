@@ -1,9 +1,9 @@
-global.myGlobalObjName_None = "None";
-global.myGlobalObjName_Terrain = "Terrain";
-global.myGlobalObjName_Character = "Character";
+//global.myGlobalObjName_None = "None";
+//global.myGlobalObjName_Terrain = "Terrain";
+//global.myGlobalObjName_Character = "Character";
 
-global.myGlobalObjName_Necro = "Necro";
-global.myGlobalObjName_Desert = "Desert";
+//global.myGlobalObjName_Necro = "Necro";
+//global.myGlobalObjName_Desert = "Desert";
 
 //global.COMBAT_GLOBALS.MANAGERS.MENU_SELECTED_CHAR
 // Funkcja inicjalizacji domyślnych wartości
@@ -37,6 +37,12 @@ global.__INIT_COMBAT_GLOBAL = function() {
 			PERIOD_MINIMUM: vALARM_PERIOD_MINIMUM, // MINIMUM PERIOD BETWEEN ALARMS 
 			COMBAT_MANAGER_INIT_DELAY: vALARM_PERIOD_MINIMUM // MINIMUM PERIOD BETWEEN ALARMS 
 		},
+		METRICS: {
+			SELECTORS_COUNT: 0,
+			TILE_COUNT: 0,
+			//TERRAIN_COUNT: 0,
+			//CHARACTERS_COUNT: 0
+		},
         VISUAL_PROPERTIES: {
             TILE_RADIUS: vTILE_RADIUS, // Promień heksagonu (wysokość / 2)
             TILE_WIDTH: sqrt(3) * vTILE_RADIUS, // Szerokość heksagonu
@@ -56,6 +62,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	    STORE: {},
 	    COMBAT_PROPERTIES: {},
 		ALARM: {},
+		METRICS: {},
 	    VISUAL_PROPERTIES: {},
 	    __GLOBAL_DEFAULTS: arg_GLOBAL_DEFAULTS,
 
@@ -66,6 +73,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	        self.__RESET_GROUP(self.STORE, self.__GLOBAL_DEFAULTS.STORE);
 	        self.__RESET_GROUP(self.COMBAT_PROPERTIES, self.__GLOBAL_DEFAULTS.COMBAT_PROPERTIES);
 	        self.__RESET_GROUP(self.ALARM, self.__GLOBAL_DEFAULTS.ALARM);
+	        self.__RESET_GROUP(self.METRICS, self.__GLOBAL_DEFAULTS.METRICS);
 	        self.__RESET_GROUP(self.VISUAL_PROPERTIES, self.__GLOBAL_DEFAULTS.VISUAL_PROPERTIES);
 	    },
         

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"TileDrawScripts",
   "parent":{
-    "name":"Combat",
-    "path":"folders/Hex/Combat.yy",
+    "name":"Helpers",
+    "path":"folders/Hex/Combat/Scripts/Helpers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
