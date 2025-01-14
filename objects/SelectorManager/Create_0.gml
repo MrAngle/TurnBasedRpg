@@ -4,7 +4,7 @@ instance_create_layer(0, 0, global.LAYERS.selectors.id, HexActiveFieldDecoration
 checkCondition = true;
 selectorActionManager = undefined;
 //selectorActionManager = getMySelectorActionManagerClass();
-alarm[0] = global.ALARM_TIME_COMBAT_MANAGER_INIT + 1;
+alarm[0] = global.COMBAT_GLOBALS.ALARM.COMBAT_MANAGER_INIT_DELAY + 1;
 
 global.TILE_SELECTOR_EVENT_ON_CLICK = function(_self) {
 	selectorActionManager.execute(_self);
@@ -20,5 +20,5 @@ __selector_state_select_reset = function() {
 
 
 __get_map_tile = function(_row_index, _col_index) {
-	return global.myCombatMapHolder.get_tile(_row_index, _col_index);
+	return global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_row_index, _col_index);
 }

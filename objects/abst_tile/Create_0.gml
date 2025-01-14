@@ -1,6 +1,9 @@
 // DRAW PROPERTIES
 my_obj_name = global.myGlobalObjName_None
 
+var object_name = object_get_name(object_index);
+show_debug_message("Nazwa obiektu: " + object_name);
+
 // on mouse enter
 //my_mouse_enter_function = global.MY_EMPTY_FUNCTION;
 

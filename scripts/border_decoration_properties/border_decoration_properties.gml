@@ -5,7 +5,7 @@ function properties_load_border_decoration()
 	properties_is_border_decoration = true;
 	
 	properties_border_decoration_default_color = c_white;
-	properties_border_decoration_radius = global.__map_tile_radius;
+	properties_border_decoration_radius = global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_RADIUS;
 	properties_border_decoration_thickness = 3;
 	
 	border_decoration_draw_hexagon = function() {

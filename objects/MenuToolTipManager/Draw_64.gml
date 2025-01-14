@@ -1,11 +1,11 @@
 if (	
 		my_menu_visible == true &&
-		!is_undefined(global.myActiveHoveredTile) && 
-		global.myActiveHoveredTile != noone && 
-		typeof(global.myActiveHoveredTile) == global.TYPEOF_STRUCT
+		!is_undefined(global.COMBAT_GLOBALS.MAP.HOVERED_TILE) && 
+		global.COMBAT_GLOBALS.MAP.HOVERED_TILE != noone && 
+		typeof(global.COMBAT_GLOBALS.MAP.HOVERED_TILE) == global.TYPEOF_STRUCT
 		) {
 	if(my_menu_expanded) {
-		myToolTipTile = global.myActiveHoveredTile;
+		myToolTipTile = global.COMBAT_GLOBALS.MAP.HOVERED_TILE;
 		show_tooltip();
 	} else {
 		show_wrapped_menu_text();

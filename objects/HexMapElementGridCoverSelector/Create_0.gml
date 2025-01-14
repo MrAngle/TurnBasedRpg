@@ -10,9 +10,9 @@ properties_load_tile_selector_on_select_by_pressed();
 properties_layer_base_depth = global.LAYERS.selectors.depth;
 
 on_mouse_enter_func = function() {
-	global.myActiveHoveredTile = global.myCombatMapHolder.get_tile(
+	global.COMBAT_GLOBALS.MAP.HOVERED_TILE = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(
 		self.properties_map_element_row_index, 
 		self.properties_map_element_col_index
 	);
-	//global.myActiveHoveredTile.__terrain.properties_border_decoration_default_color = c_ltgrey;
+	//global.COMBAT_GLOBALS.MAP.HOVERED_TILE.__terrain.properties_border_decoration_default_color = c_ltgrey;
 }

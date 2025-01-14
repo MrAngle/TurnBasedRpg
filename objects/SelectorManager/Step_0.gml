@@ -12,7 +12,7 @@ if(!helper_struct_is_undefined_or_empty(selectorActionManager) && selectorAction
 	//resultTile0.__character.properties_map_element_row_index = resultTile1._properties_map_element_row_index;
 	//resultTile1.__character.properties_map_element_col_index = resultTile1._properties_map_element_col_index;
 	
-	global.myCombatMapManager.move_to(
+	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.move_to(
 		 resultTile1._properties_map_element_row_index, 
 		 resultTile1._properties_map_element_col_index, 
 		resultTile0.__character);

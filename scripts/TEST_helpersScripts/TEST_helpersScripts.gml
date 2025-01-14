@@ -31,7 +31,7 @@ function helper_simulate_click_at_position_function(_x_arg, _y_arg) {
 function helper_simulate_click_at_index(_x_index, _y_index) {
     // Pobranie obiektu w danym punkcie
 	
-	var tile = global.myCombatMapHolder.get_tile(_x_index, _y_index);
+	var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_x_index, _y_index);
 	var _x = tile.__x_position;
 	var _y = tile.__y_position;
 	
@@ -99,7 +99,7 @@ function helper_check_if_char_in_tile(arg_x_index, arg_y_index, arg_objType) {
 		_y_index: arg_y_index,
 		
 		toReturn: function() {
-			var tile = global.myCombatMapHolder.get_tile(_x_index, _y_index);
+			var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_x_index, _y_index);
 			if(tile.__character.object_index == _objType) {
 				show_debug_message("object in  INDEX (" + string(_x_index) + ", " + string(_y_index) + ")");
 			} else {

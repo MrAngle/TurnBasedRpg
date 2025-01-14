@@ -14,25 +14,25 @@ global.____INIT_DEFAULT_MANAGER = function() {
 	combatMapHolder = combat_map_generator_generate_random_desert_map(8, 13);
 	combatMapManager = MyCombatMapManager(combatMapHolder);
 
-	global.myCombatMapHolder = combatMapHolder;
-	global.myCombatMapManager = combatMapManager;
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER = combatMapHolder;
+	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP = combatMapManager;
 
 	menuCharsTurnManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuManager);
 
 
-	global.myCombatMapHolder.show_tiles();
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.show_tiles();
 
 	var character = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 	var character2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 
-	global.myCombatMapHolder.get_tile(5, 5).set_tile_auto_type(character);
-	global.myCombatMapHolder.get_tile(3, 5).set_tile_auto_type(character2);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(character);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 5).set_tile_auto_type(character2);
 
 
-	combatCharactersHolderClass = CombatCharactersHolderClass(global.myCombatMapManager.get_all_characters_on_map())
-	global.myCombatCharactersHolderClass = combatCharactersHolderClass;
+	combatCharactersHolderClass = CombatCharactersHolderClass(global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.get_all_characters_on_map())
+	global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER = combatCharactersHolderClass;
 	combatTurnManager = instance_create_layer(0, 0, global.LAYERS.managers.id, CombatTurnManager);
-	global.myCombatTurnManager = combatTurnManager;
+	global.COMBAT_GLOBALS.MANAGERS.COMBAT_TURN = combatTurnManager;
 
 	instance_create_layer(0, 0, global.LAYERS.selectors.id, TileSelector);
 
@@ -57,14 +57,14 @@ global.____STATIC_LOAD_MANAGER = function() {
 global.___INIT_MANAGER = function() {
 	global.__INIT_COMBAT_GLOBAL();
 	
-	var test = global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP;
+	var test = global.COMBAT_GLOBALS.MANAGERS.COMBAT_TURN;
 	init_layers();
 	instance_create_layer(0, 0, global.LAYERS.managers.id, DebuggerInstance);
 	instance_create_layer(0, 0, global.LAYERS.game_cursor.id, cursor_obj_game);
-	global.mySelectorManager = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
+	global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
 
-	global.myCombatMapHolder = combat_map_generator_generate_random_desert_map(8, 13);
-	global.myCombatMapManager = MyCombatMapManager(global.myCombatMapHolder);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER = combat_map_generator_generate_random_desert_map(8, 13);
+	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP = MyCombatMapManager(global.COMBAT_GLOBALS.MAP.MAP_HOLDER);
 	global.myMenuManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuManager);
 }
 
@@ -72,16 +72,16 @@ global.___LOAD_CHARACTERS_ACTIONS = function() {
 	var character = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 	var character2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 
-	global.myCombatMapHolder.get_tile(5, 5).set_tile_auto_type(character);
-	global.myCombatMapHolder.get_tile(3, 10).set_tile_auto_type(character2);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(character);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character2);
 }
 
 global.___AFTER_CREATE_MANAGER = function() {
-	global.myCombatMapHolder.show_tiles();
-	combatCharactersHolderClass = CombatCharactersHolderClass(global.myCombatMapManager.get_all_characters_on_map())
-	global.myCombatCharactersHolderClass = combatCharactersHolderClass;
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.show_tiles();
+	combatCharactersHolderClass = CombatCharactersHolderClass(global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.get_all_characters_on_map())
+	global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER = combatCharactersHolderClass;
 	combatTurnManager = instance_create_layer(0, 0, global.LAYERS.managers.id, CombatTurnManager);
-	global.myCombatTurnManager = combatTurnManager;
+	global.COMBAT_GLOBALS.MANAGERS.COMBAT_TURN = combatTurnManager;
 
 	instance_create_layer(0, 0, global.LAYERS.selectors.id, TileSelector);
 

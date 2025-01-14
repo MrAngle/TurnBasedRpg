@@ -1,5 +1,5 @@
 //[players, enemies, neutrals];
-trunCombatCharacters = global.myCombatCharactersHolderClass;
+trunCombatCharacters = global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER;
 
 //init_turn() = function() {
 //}

@@ -2,6 +2,6 @@ menuTooltipManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, Menu
 menuCharsTurnManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuCharsTurnManager);
 menuSelectedCharManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuSelectedCharManager);
 
-global.myMenuTooltipManager = menuTooltipManager;
-global.myMenuCharsTurnManager = menuCharsTurnManager;
-global.myMenuSelectedCharManager = menuSelectedCharManager;
+global.COMBAT_GLOBALS.MENU.TOOLTIP = menuTooltipManager;
+global.COMBAT_GLOBALS.MENU.CHARS_TURN = menuCharsTurnManager;
+global.COMBAT_GLOBALS.MENU.SELECTED_CHAR = menuSelectedCharManager;

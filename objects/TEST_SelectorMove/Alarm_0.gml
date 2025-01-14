@@ -2,7 +2,7 @@
 //test_passed = true; // Flaga określająca wynik testu
 
 //    // Pobranie kafelka na współrzędnych (1, 4)
-//tile = global.myCombatMapHolder.get_tile(5, 5);
+//tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5);
 
 //    // Sprawdzenie poprawności kafelka
 //if (tile == noone) {
@@ -17,4 +17,4 @@
 // INIT 
 //testActionsManager = TEST_SC_SelectorAction_chain();
 
-alarm[2] = global.ALARM_PERIOD_MINIMUM + 10;
+alarm[2] = global.COMBAT_GLOBALS.ALARM.PERIOD_MINIMUM + 10;

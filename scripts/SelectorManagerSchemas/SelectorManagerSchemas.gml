@@ -6,7 +6,7 @@ function getMySelectorActionManagerClass()
 		closedFunction = {
 			closedNumberOfCharacters: _numberOfCharacters,
 			toReturn: function(_self, closed_properties_selector_selected_tiles) {
-				var _MyMapTile = global.myCombatMapHolder.get_tile(_self.properties_map_element_row_index, _self.properties_map_element_col_index);
+				var _MyMapTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_self.properties_map_element_row_index, _self.properties_map_element_col_index);
 
 				if(_MyMapTile.has_character() /*&& !closed_properties_selector_selected_tiles.contains_tile(_MyMapTile) */) {
 					closed_properties_selector_selected_tiles.add_tile_MyMapTile(_MyMapTile);
@@ -21,7 +21,7 @@ function getMySelectorActionManagerClass()
 			closed_numberOfTilesToSelect: _numberOfTilesToSelect,
 			//closed_properties_selector_selected_tiles: properties_selector_selected_tiles,
 			toReturn: function(_self, closed_properties_selector_selected_tiles) {
-				var _MyMapTile = global.myCombatMapHolder.get_tile(_self.properties_map_element_row_index, _self.properties_map_element_col_index);
+				var _MyMapTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_self.properties_map_element_row_index, _self.properties_map_element_col_index);
 
 				if(!_MyMapTile.has_character()) {
 					closed_properties_selector_selected_tiles.add_tile_MyMapTile(_MyMapTile);
@@ -37,7 +37,7 @@ function getMySelectorActionManagerClass()
 				var notIncludeThisTilesFunc = mapTile_filter_element_is_not_in_array(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
 				var containsCharacter = mapTile_filter_element_contains_character();
 				//var notIncludeThisTilesFunc = helper_object_is_undefined_or_empty(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
-			    var tiles_with_characters = global.myCombatMapHolder.get_tiles_with_characters([notIncludeThisTilesFunc, containsCharacter]);
+			    var tiles_with_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([notIncludeThisTilesFunc, containsCharacter]);
 			
 				return tiles_with_characters;
 			}
@@ -49,7 +49,7 @@ function getMySelectorActionManagerClass()
 		closedFunction = {
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var tilesWithoutCharactersFunc = mapTile_filter_element_NOT_contains_character();
-			    var tiles_without_characters = global.myCombatMapHolder.get_tiles_with_characters([tilesWithoutCharactersFunc]);
+			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([tilesWithoutCharactersFunc]);
 			
 				return tiles_without_characters;
 			}
@@ -63,7 +63,7 @@ function getMySelectorActionManagerClass()
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var tilesWithoutCharactersFunc = mapTile_filter_element_NOT_contains_character();
 				var tilesInDistance = mapTile_filter_within_distance(__previous_result_SelectorTilesHolderClass.get_all_myMapTiles_as_array()[0], __distance);
-			    var tiles_without_characters = global.myCombatMapHolder.get_tiles_with_characters([tilesWithoutCharactersFunc, tilesInDistance]);
+			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([tilesWithoutCharactersFunc, tilesInDistance]);
 			
 				return tiles_without_characters;
 			}

@@ -6,8 +6,8 @@ function TEST_SC_SelectorAction_chain()
 		var character = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 		var character2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 
-		global.myCombatMapHolder.get_tile(5, 5).set_tile_auto_type(character);
-		global.myCombatMapHolder.get_tile(3, 10).set_tile_auto_type(character2);
+		global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(character);
+		global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character2);
 	}
 	
 	testActionsManager = TEST_actionsManager();
@@ -28,8 +28,8 @@ function TEST_SC_SelectorAction_chain_cancel()
 		var character = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 		var character2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 
-		global.myCombatMapHolder.get_tile(5, 5).set_tile_auto_type(character);
-		global.myCombatMapHolder.get_tile(3, 10).set_tile_auto_type(character2);
+		global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(character);
+		global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character2);
 	}
 	
 	testActionsManager = TEST_actionsManager();

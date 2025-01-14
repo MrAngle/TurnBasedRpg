@@ -27,20 +27,20 @@ function properties_load_on_click_element()
 
 function select_map_tile(_row_index, _col_index) {
 
-	var selectedTile = global.myCombatMapHolder.get_tile(_row_index, _col_index);
-	if(selectedTile != global.mySelectedTile) {
-		global.mySelectedTile = selectedTile;
+	var selectedTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_row_index, _col_index);
+	if(selectedTile != global.COMBAT_GLOBALS.MAP.SELECTED_TILE) {
+		global.COMBAT_GLOBALS.MAP.SELECTED_TILE = selectedTile;
 		
-		if(global.mySelectedCharacter == noone) {
-			global.mySelectedCharacter = selectedTile.__character;
+		if(global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER == noone) {
+			global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER = selectedTile.__character;
 		}
 		
 	} else {
-		global.mySelectedTile = noone;
-		global.mySelectedCharacter = noone;
+		global.COMBAT_GLOBALS.MAP.SELECTED_TILE = noone;
+		global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER = noone;
 	}
 }
 
 //function set_border_col(_row_index, _col_index) {
-//	global.mySelectedTile = global.myCombatMapHolder.get_tile(_row_index, _col_index);
+//	global.COMBAT_GLOBALS.MAP.SELECTED_TILE = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_row_index, _col_index);
 //}

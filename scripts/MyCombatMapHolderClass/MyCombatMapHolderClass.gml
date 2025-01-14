@@ -86,17 +86,17 @@ function __my_map_holder_init(_obj) {
 	for (var row = 0; row < _obj.__rows; row++) {
 	    for (var col = 0; col < _obj.__cols; col++) {
 	        // Oblicz pozycję X i Y dla każdego heksagonu
-	        var pos_x = col * global.__map_tile_width + ((row % 2) * (global.__map_tile_width / 2)); // Przesunięcie co drugi wiersz
-	        var pos_y = row * (1.5 * global.__map_tile_radius);
+	        var pos_x = col * global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_WIDTH + ((row % 2) * (global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_WIDTH / 2)); // Przesunięcie co drugi wiersz
+	        var pos_y = row * (1.5 * global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_RADIUS);
 			
-			var _x_position = pos_x + global.__map_tile_width;
-			var _y_position =  pos_y + global.__map_tile_height;
+			var _x_position = pos_x + global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_WIDTH;
+			var _y_position =  pos_y + global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_HEIGHT;
 			
-			//var pos_x = col * global.__map_tile_width + ((row % 2) * (global.__map_tile_width / 2)); // Przesunięcie co drugi wiersz
-	        //var pos_y = row * (1.5 * global.__map_tile_radius);
+			//var pos_x = col * global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_WIDTH + ((row % 2) * (global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_WIDTH / 2)); // Przesunięcie co drugi wiersz
+	        //var pos_y = row * (1.5 * global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_RADIUS);
 			
-			//var _x_position = pos_x + global.__map_tile_width;
-			//var _y_position =  pos_y + global.__map_tile_height;
+			//var _x_position = pos_x + global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_WIDTH;
+			//var _y_position =  pos_y + global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_HEIGHT;
 			
 			var mapTile = MyMapTile(row, col, _x_position, _y_position, noone, noone);
 			

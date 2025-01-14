@@ -215,7 +215,6 @@
     {"name":"directionangleable","order":1,"path":"scripts/directionangleable/directionangleable.yy",},
     {"name":"DirectionEnum","order":4,"path":"scripts/DirectionEnum/DirectionEnum.yy",},
     {"name":"DrawAnimations","order":3,"path":"scripts/DrawAnimations/DrawAnimations.yy",},
-    {"name":"GlobalAlarmPeriods","order":3,"path":"scripts/GlobalAlarmPeriods/GlobalAlarmPeriods.yy",},
     {"name":"GlobalGameParamsProvider","order":5,"path":"scripts/GlobalGameParamsProvider/GlobalGameParamsProvider.yy",},
     {"name":"GlobalLayersParams","order":1,"path":"scripts/GlobalLayersParams/GlobalLayersParams.yy",},
     {"name":"GlobalObjNames","order":2,"path":"scripts/GlobalObjNames/GlobalObjNames.yy",},

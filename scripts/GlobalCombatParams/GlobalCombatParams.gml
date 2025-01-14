@@ -1,67 +1,46 @@
-// Managers:
-global.myCombatMapManager = noone; // MyCombatMapManager
-global.myCombatTurnManager = noone; // CombatTurnManager
-global.myMenuTooltipManager = noone;
-global.myMenuCharsTurnManager = noone; // MenuCharsTurnManager (obj)
-global.myMenuSelectedCharManager = noone;
-global.mySelectorManager = noone; // SelectorManager
+global.myGlobalObjName_None = "None";
+global.myGlobalObjName_Terrain = "Terrain";
+global.myGlobalObjName_Character = "Character";
 
-// Store:
-global.myCombatMapHolder = noone; // MyCombatMapHolder
-global.myCombatCharactersHolderClass = noone; // CombatCharactersHolderClass
+global.myGlobalObjName_Necro = "Necro";
+global.myGlobalObjName_Desert = "Desert";
 
-// General Combat properties:
-global.mySelectedTile = noone; // Struct MyMapTile
-global.mySelectedCharacter = noone; // Object abst_combat_character
-global.myActiveTile = noone; // Struct MyMapTile
-global.myActiveHoveredTile = noone; // Struct MyMapTile
-
-
-// Visual properties:
-global.__map_tile_radius = 128; // Promień heksagonu (wysokość / 2)
-//global.__map_tile_width = 214 - 1; // Szerokość heksagonu
-//global.__map_tile_width = 222; // Szerokość heksagonu
-global.__map_tile_width = (sqrt(3) * global.__map_tile_radius); // Szerokość heksagonu
-//var w = sqrt(3) * r; // Szerokość heksagonu
-global.__map_tile_height = 2 * global.__map_tile_radius; // Wysokość heksagonu
-
-
-
-
-
-
-
-//global.TEST_ACTIVE = true;
-
-//global.TEST_PASSED = true;
-
-
-
+//global.COMBAT_GLOBALS.MANAGERS.MENU_SELECTED_CHAR
 // Funkcja inicjalizacji domyślnych wartości
 global.__INIT_COMBAT_GLOBAL = function() {
+	var vTILE_RADIUS = 128;
+	var vALARM_PERIOD_MINIMUM = 1;
+	
     var GLOBAL_DEFAULTS = {
         MANAGERS: {
-            COMBAT_MAP: noone,
-            COMBAT_TURN: noone,
-            MENU_TOOLTIP: noone,
-            MENU_CHARS_TURN: noone,
-            MENU_SELECTED_CHAR: noone,
-            SELECTOR: noone
+            COMBAT_MAP: noone, // MyCombatMapManager  // global.myCombatMapManager
+            COMBAT_TURN: noone, // CombatTurnManager
+            SELECTOR: noone // SelectorManager
         },
+		MENU: {
+			TOOLTIP: noone, // MenuToolTipManager
+            CHARS_TURN: noone, // MenuCharsTurnManager (obj)
+            SELECTED_CHAR: noone, // MenuSelectedCharManager
+		},
+		MAP: {
+			MAP_HOLDER: noone, // MyCombatMapHolder
+			SELECTED_TILE: noone, // STRUCT MyMapTile
+            SELECTED_CHARACTER: noone, // Object abst_combat_character
+            HOVERED_TILE: noone // Struct MyMapTile
+		},
         STORE: {
-            COMBAT_MAP_HOLDER: noone,
-            COMBAT_CHARACTERS_HOLDER: noone
+            COMBAT_CHARACTERS_HOLDER: noone // CombatCharactersHolderClass
         },
         COMBAT_PROPERTIES: {
-            SELECTED_TILE: noone,
-            SELECTED_CHARACTER: noone,
-            ACTIVE_TILE: noone,
-            ACTIVE_HOVERED_TILE: noone
         },
+		ALARM: {
+			PERIOD_MINIMUM: vALARM_PERIOD_MINIMUM, // MINIMUM PERIOD BETWEEN ALARMS 
+			COMBAT_MANAGER_INIT_DELAY: vALARM_PERIOD_MINIMUM // MINIMUM PERIOD BETWEEN ALARMS 
+		},
         VISUAL_PROPERTIES: {
-            TILE_RADIUS: 128,
-            TILE_WIDTH: sqrt(3) * 128,
-            TILE_HEIGHT: 2 * 128
+            TILE_RADIUS: vTILE_RADIUS, // Promień heksagonu (wysokość / 2)
+            TILE_WIDTH: sqrt(3) * vTILE_RADIUS, // Szerokość heksagonu
+            TILE_HEIGHT: 2 * vTILE_RADIUS // Wysokość heksagonu
         }
     };
     
@@ -72,15 +51,21 @@ global.__INIT_COMBAT_GLOBAL = function() {
 function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	var globalsStruct = {
 	    MANAGERS: {},
+		MENU: {},
+		MAP: {},
 	    STORE: {},
 	    COMBAT_PROPERTIES: {},
+		ALARM: {},
 	    VISUAL_PROPERTIES: {},
 	    __GLOBAL_DEFAULTS: arg_GLOBAL_DEFAULTS,
 
 	    __INIT: function() {
 	        self.__RESET_GROUP(self.MANAGERS, self.__GLOBAL_DEFAULTS.MANAGERS);
+			self.__RESET_GROUP(self.MENU, self.__GLOBAL_DEFAULTS.MENU);
+			self.__RESET_GROUP(self.MAP, self.__GLOBAL_DEFAULTS.MAP);
 	        self.__RESET_GROUP(self.STORE, self.__GLOBAL_DEFAULTS.STORE);
 	        self.__RESET_GROUP(self.COMBAT_PROPERTIES, self.__GLOBAL_DEFAULTS.COMBAT_PROPERTIES);
+	        self.__RESET_GROUP(self.ALARM, self.__GLOBAL_DEFAULTS.ALARM);
 	        self.__RESET_GROUP(self.VISUAL_PROPERTIES, self.__GLOBAL_DEFAULTS.VISUAL_PROPERTIES);
 	    },
         

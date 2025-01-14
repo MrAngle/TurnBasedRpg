@@ -1,9 +1,9 @@
-var test = typeof(global.mySelectedCharacter);
+var test = typeof(global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER);
 if (	
 		my_menu_visible == true &&
-		!is_undefined(global.mySelectedCharacter) && 
-		global.mySelectedCharacter != noone && 
-		typeof(global.mySelectedCharacter) == global.TYPEOF_REF
+		!is_undefined(global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER) && 
+		global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER != noone && 
+		typeof(global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER) == global.TYPEOF_REF
 		) {
 	if(my_menu_expanded) {
 		draw_set_color(c_black);
@@ -12,7 +12,7 @@ if (
 		// Oblicz odstępy między ikonami
 
 		
-		draw_characters([global.mySelectedCharacter]);
+		draw_characters([global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER]);
 	} else {
 		show_wrapped_tooltip_text();
 	}

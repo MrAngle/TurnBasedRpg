@@ -318,7 +318,6 @@
     {"id":{"name":"directionangleable","path":"scripts/directionangleable/directionangleable.yy",},},
     {"id":{"name":"DirectionEnum","path":"scripts/DirectionEnum/DirectionEnum.yy",},},
     {"id":{"name":"DrawAnimations","path":"scripts/DrawAnimations/DrawAnimations.yy",},},
-    {"id":{"name":"GlobalAlarmPeriods","path":"scripts/GlobalAlarmPeriods/GlobalAlarmPeriods.yy",},},
     {"id":{"name":"GlobalCombatParams","path":"scripts/GlobalCombatParams/GlobalCombatParams.yy",},},
     {"id":{"name":"GlobalGameParamsProvider","path":"scripts/GlobalGameParamsProvider/GlobalGameParamsProvider.yy",},},
     {"id":{"name":"GlobalLayersParams","path":"scripts/GlobalLayersParams/GlobalLayersParams.yy",},},

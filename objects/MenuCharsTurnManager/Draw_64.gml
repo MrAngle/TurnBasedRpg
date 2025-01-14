@@ -1,8 +1,8 @@
 if (	
 		my_menu_visible == true &&
-		!is_undefined(global.myCombatCharactersHolderClass) && 
-		global.myCombatCharactersHolderClass != noone && 
-		typeof(global.myCombatCharactersHolderClass) == global.TYPEOF_STRUCT
+		!is_undefined(global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER) && 
+		global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER != noone && 
+		typeof(global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER) == global.TYPEOF_STRUCT
 		) {
 	if(my_menu_expanded) {
 		draw_set_color(c_black);
@@ -11,7 +11,7 @@ if (
 		// Oblicz odstępy między ikonami
 
 		
-		draw_characters(global.myCombatCharactersHolderClass.get_characters(CombatCharacterIndex.PLAYER));
+		draw_characters(global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER.get_characters(CombatCharacterIndex.PLAYER));
 	} else {
 		show_wrapped_tooltip_text();
 	}
