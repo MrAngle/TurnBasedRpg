@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GameGlobals",
+  "%Name":"TEST_suites",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GameGlobals",
+  "name":"TEST_suites",
   "parent":{
-    "name":"GameMenu",
-    "path":"folders/Hex/GAME/GameMenu.yy",
+    "name":"Tests",
+    "path":"folders/Hex/Combat/CombatMap/HexSelector/Tests.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"GameMenu",
-    "path":"folders/Hex/GameMenu.yy",
+    "path":"folders/Hex/GAME/GameMenu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

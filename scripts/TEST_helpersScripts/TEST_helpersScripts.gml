@@ -104,7 +104,7 @@ function helper_check_if_char_in_tile(arg_x_index, arg_y_index, arg_objType) {
 				show_debug_message("object in  INDEX (" + string(_x_index) + ", " + string(_y_index) + ")");
 			} else {
 				show_debug_message("[FAIL] object is not in  INDEX (" + string(_x_index) + ", " + string(_y_index) + ")");
-				global.TEST_PASSED = false
+				global.GAME_GLOBALS.TEST.PASSED = false
 			}
 		}
 	}

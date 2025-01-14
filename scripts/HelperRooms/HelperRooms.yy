@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GameGlobals",
+  "%Name":"HelperRooms",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GameGlobals",
+  "name":"HelperRooms",
   "parent":{
-    "name":"GameMenu",
-    "path":"folders/Hex/GAME/GameMenu.yy",
+    "name":"GAME",
+    "path":"folders/Hex/GAME.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

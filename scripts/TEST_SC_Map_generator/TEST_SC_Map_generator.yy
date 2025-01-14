@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TEST_Global",
+  "%Name":"TEST_SC_Map_generator",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TEST_Global",
+  "name":"TEST_SC_Map_generator",
   "parent":{
     "name":"Tests",
     "path":"folders/Hex/Combat/CombatMap/HexSelector/Tests.yy",

@@ -67,6 +67,10 @@ function helper_array_length_safe(arrayToCheck) {
     return array_length(arrayToCheck); // Zwracamy rzeczywisty rozmiar tablicy
 }
 
+function helper_function_is_undefined_or_noone(functionToCheck) {
+	return functionToCheck == undefined || functionToCheck == noone;
+}
+
 function helper_object_is_undefined_or_empty(objectToCheck) {
 	return objectToCheck == undefined || objectToCheck == noone;
 }
