@@ -13,10 +13,7 @@
     "name":"Level",
     "path":"folders/Objects/Level.yy",
   },
-  "parentObjectId":{
-    "name":"abst_destroyable_obstacle",
-    "path":"objects/abst_destroyable_obstacle/abst_destroyable_obstacle.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

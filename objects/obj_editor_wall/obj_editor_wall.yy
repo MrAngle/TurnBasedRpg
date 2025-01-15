@@ -9,10 +9,7 @@
     "name":"Level",
     "path":"folders/Objects/Level.yy",
   },
-  "parentObjectId":{
-    "name":"abst_collision_super_parent",
-    "path":"objects/abst_collision_super_parent/abst_collision_super_parent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

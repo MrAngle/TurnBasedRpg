@@ -1,1 +1,0 @@
-onClickedAction(paramToUseForFunction, self);

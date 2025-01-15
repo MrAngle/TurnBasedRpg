@@ -9,10 +9,7 @@
     "name":"Enemies",
     "path":"folders/Objects/Game/Enemies.yy",
   },
-  "parentObjectId":{
-    "name":"abst_destroyable_collision_movable",
-    "path":"objects/abst_destroyable_collision_movable/abst_destroyable_collision_movable.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

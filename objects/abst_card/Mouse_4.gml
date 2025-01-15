@@ -1,1 +1,0 @@
-functionOnMouseClick(self);

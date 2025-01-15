@@ -48,3 +48,11 @@ function __GAME_GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	globalsStruct.__INIT();
 	return globalsStruct;
 }
+
+global.TYPEOF_STRUCT = "struct";
+global.TYPEOF_OBJECT = "object";
+global.TYPEOF_REF = "ref";
+
+global.MY_ROOM_SPEED = room_speed;
+global.MY_EMPTY_FUNCTION = function() {};
+global.MY_EMPTY_FUNCTION_WITH_2_PARAMS = function(_obj, _source) {};

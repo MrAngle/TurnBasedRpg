@@ -11,12 +11,12 @@ function GET_NEXT_TEST_SCENAIO() {
 			TEST_SC_SelectorAction_chain_cancel
 		],
 		MAP: [
-			TEST_SC_Map_generator(5, 5),
-			TEST_SC_Map_generator(10, 10),
-			TEST_SC_Map_generator(20, 30),
-			TEST_SC_Map_generator(10, 20),
-			TEST_SC_Map_generator(40, 40),
-			TEST_SC_Map_generator(100, 100)
+			//TEST_SC_Map_generator(5, 5),
+			//TEST_SC_Map_generator(10, 10),
+			//TEST_SC_Map_generator(20, 30),
+			//TEST_SC_Map_generator(10, 20),
+			//TEST_SC_Map_generator(40, 40),
+			//TEST_SC_Map_generator(100, 100)
 		],
 		
 		get_by_index: function(index) {

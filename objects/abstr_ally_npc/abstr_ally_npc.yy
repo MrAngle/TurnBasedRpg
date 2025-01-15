@@ -14,10 +14,7 @@
     "name":"NPC",
     "path":"folders/Objects/Game/NPC.yy",
   },
-  "parentObjectId":{
-    "name":"abstr_ally",
-    "path":"objects/abstr_ally/abstr_ally.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

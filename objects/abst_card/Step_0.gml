@@ -1,4 +1,0 @@
-
-functionByFrameStep(self);
-
-	
