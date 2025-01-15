@@ -11,10 +11,7 @@
     "name":"Enemies",
     "path":"folders/Objects/Game/Enemies.yy",
   },
-  "parentObjectId":{
-    "name":"abstr_enemy_npc",
-    "path":"objects/abstr_enemy_npc/abstr_enemy_npc.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

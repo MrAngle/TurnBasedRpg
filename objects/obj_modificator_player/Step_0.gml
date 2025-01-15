@@ -1,3 +1,0 @@
-processModificatorIconByStep(self);
-
-//processModificatorDOTSByStep(self);
