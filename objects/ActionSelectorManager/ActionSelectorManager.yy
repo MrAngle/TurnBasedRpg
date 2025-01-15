@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"DestinationPointSelector",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"ActionSelectorManager",
+  "eventList":[],
   "managed":true,
-  "name":"DestinationPointSelector",
+  "name":"ActionSelectorManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"Selector",
-    "path":"folders/Hex/Combat/Selector.yy",
+    "name":"CombatActionSelector",
+    "path":"folders/Hex/Combat/CombatActionSelector.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,5 +29,5 @@
   "solid":false,
   "spriteId":null,
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

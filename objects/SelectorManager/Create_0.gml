@@ -1,5 +1,5 @@
 instance_create_layer(0, 0, global.LAYERS.selectors.id, HexHoverFieldDecoration);
-instance_create_layer(0, 0, global.LAYERS.selectors.id, HexActiveFieldDecoration);
+//instance_create_layer(0, 0, global.LAYERS.selectors.id, HexActiveFieldDecoration);
 
 checkCondition = true;
 selectorActionManager = undefined;

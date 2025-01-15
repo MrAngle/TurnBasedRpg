@@ -3,16 +3,16 @@ trunCombatCharacters = global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER;
 
 //init_turn() = function() {
 //}
-is_player_turn = true;
+//is_player_turn = true;
 
-turn_selector = noone;
+//turn_selector = noone;
 
 //global.chara
 
-switch_to_player_turn = function() {
-	playerCharacters = trunCombatCharacters.get_characters(CombatCharacterIndex.PLAYER);
+//switch_to_player_turn = function() {
+//	playerCharacters = trunCombatCharacters.get_characters(CombatCharacterIndex.PLAYER);
 	
-	for (var i = 0; i < array_length(playerCharacters); i++) {
-		playerCharacters[i].my_reset_turn();
-	}
-}
+//	for (var i = 0; i < array_length(playerCharacters); i++) {
+//		playerCharacters[i].my_reset_turn();
+//	}
+//}

@@ -87,10 +87,10 @@ global.___AFTER_CREATE_MANAGER = function() {
 	combatTurnManager = instance_create_layer(0, 0, global.LAYERS.managers.id, CombatTurnManager);
 	global.COMBAT_GLOBALS.MANAGERS.COMBAT_TURN = combatTurnManager;
 
-	instance_create_layer(0, 0, global.LAYERS.selectors.id, TileSelector);
+	//instance_create_layer(0, 0, global.LAYERS.selectors.id, TileSelector);
 
-	my_start_combat = function() {
-		combatTurnManager.switch_to_player_turn();
-	}
-	my_start_combat();
+	//my_start_combat = function() {
+	//	combatTurnManager.switch_to_player_turn();
+	//}
+	//my_start_combat();
 }

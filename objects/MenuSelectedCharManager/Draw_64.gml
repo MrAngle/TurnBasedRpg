@@ -28,12 +28,12 @@ function draw_characters(_character_list) {
 	    var char = _character_list[i];
 
 	    // Rysuj tło dla ikony (kolor zależny od statusu)
-	    if (char.my_turn_finished) {
-	        draw_set_color(c_gray); // Postać wykonała ruch
-	    } else {
-	        draw_set_color(c_green); // Postać dostępna
-	    }
-	    draw_rectangle(icon_x, panel_y + padding, icon_x + icon_size, panel_y + padding + icon_size, false);
+	    //if (char.my_turn_finished) {
+	    //    draw_set_color(c_gray); // Postać wykonała ruch
+	    //} else {
+	    //    draw_set_color(c_green); // Postać dostępna
+	    //}
+	    //draw_rectangle(icon_x, panel_y + padding, icon_x + icon_size, panel_y + padding + icon_size, false);
 
 	    // Rysuj sprite postaci
 	    draw_sprite(char.sprite_index, 0, icon_x + icon_size / 2, panel_y + padding + icon_size / 2);
