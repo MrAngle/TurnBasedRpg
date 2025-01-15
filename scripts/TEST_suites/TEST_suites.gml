@@ -2,12 +2,12 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
 
-global.TEST_DEFAULT_SCENARIO_DELAY = 20;
-global.TEST_FINISH_SCENARIO = true; // TO STOP SCENARIO
+global.TEST_DEFAULT_SCENARIO_DELAY = 2;
+global.TEST_FINISH_SCENARIO = false; // TO STOP SCENARIO
 function GET_NEXT_TEST_SCENAIO() {
     var SUITES = {
         SELECTOR: [
-			TEST_SC_SelectorAction_chain, 
+			//TEST_SC_SelectorAction_chain, 
 			TEST_SC_SelectorAction_chain_cancel
 		],
 		MAP: [

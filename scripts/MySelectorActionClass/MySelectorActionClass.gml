@@ -15,8 +15,6 @@ function MySelectorActionClassOptionalConstrParams() {
     };
 }
 
-
-
 function MySelectorActionClass(_possible_tiles_to_choose_function, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
 {
     var _mySelectorActionClass = {

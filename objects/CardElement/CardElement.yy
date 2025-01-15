@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"ActionSelectorManager",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"CardElement",
+  "eventList":[],
   "managed":true,
-  "name":"ActionSelectorManager",
+  "name":"CardElement",
   "overriddenProperties":[],
   "parent":{
     "name":"CombatActionSelector",
@@ -29,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"CardTemplate",
+    "path":"sprites/CardTemplate/CardTemplate.yy",
+  },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
