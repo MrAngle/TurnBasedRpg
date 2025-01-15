@@ -16,13 +16,6 @@ testActionsManager.add(function() {
 		helper_room_move_to_previous_room();
 	}
 }, global.TEST_DEFAULT_SCENARIO_DELAY);
-//global.GAME_GLOBALS.TEST.SCENARIO_INDEX
 
-//var suites = GET_NEXT_TEST_SCENAIO()();
-
-//testActionsManager
-
-//FINISHED
-// AFTER MANAGER LOAD
-alarm[2] = 10;
+alarm[2] = 20; // START TEST with delay
 show_debug_message("FINISH - INIT TEST_SelectorMove");

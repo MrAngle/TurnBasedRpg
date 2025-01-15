@@ -1,5 +1,5 @@
 selectorActionManager.cancel_current_move(self);
 
-global.TILE_SELECTOR_EVENT_ON_CLICK = function(_self) {
-	selectorActionManager.execute(_self);
-}
+//global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = function(_self) {
+//	selectorActionManager.execute(_self);
+//}

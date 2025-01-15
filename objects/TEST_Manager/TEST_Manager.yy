@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"TEST_SelectorMove",
+  "%Name":"TEST_Manager",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"TEST_SelectorMove",
+  "name":"TEST_Manager",
   "overriddenProperties":[],
   "parent":{
-    "name":"Tests",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector/Tests.yy",
+    "name":"TEST",
+    "path":"folders/Hex/TEST.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,5 +32,5 @@
   "solid":false,
   "spriteId":null,
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

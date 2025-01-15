@@ -1,5 +1,5 @@
 image_alpha = 0;
-
+//mask_index = -1;
 properties_load_map_element();
 //properties_load_on_click_element();
 properties_load_border_decoration();

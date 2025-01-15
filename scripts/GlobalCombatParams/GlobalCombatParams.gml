@@ -5,11 +5,19 @@
 //global.myGlobalObjName_Necro = "Necro";
 //global.myGlobalObjName_Desert = "Desert";
 
+
+//global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = function(_self) { // Remember to pass reference
+//	show_debug_message("tile_selector_on_click_element is not set for object: " + string(_self.id));
+//}
+
 //global.COMBAT_GLOBALS.MANAGERS.MENU_SELECTED_CHAR
 // Funkcja inicjalizacji domyślnych wartości
 global.__INIT_COMBAT_GLOBAL = function() {
 	var vTILE_RADIUS = 128;
 	var vALARM_PERIOD_MINIMUM = 1;
+	var defONClickEvent = function(_self) { // Remember to pass reference
+		show_debug_message("tile_selector_on_click_element is not set for object: " + string(_self.id));
+	}
 	
     var GLOBAL_DEFAULTS = {
         MANAGERS: {
@@ -27,6 +35,9 @@ global.__INIT_COMBAT_GLOBAL = function() {
 			SELECTED_TILE: noone, // STRUCT MyMapTile
             SELECTED_CHARACTER: noone, // Object abst_combat_character
             HOVERED_TILE: noone // Struct MyMapTile
+		},
+		SELECTOR: {
+			ON_CLICK_EVENT_FUNCTION: defONClickEvent
 		},
         STORE: {
             COMBAT_CHARACTERS_HOLDER: noone // CombatCharactersHolderClass
@@ -59,6 +70,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	    MANAGERS: {},
 		MENU: {},
 		MAP: {},
+		SELECTOR: {},
 	    STORE: {},
 	    COMBAT_PROPERTIES: {},
 		ALARM: {},
@@ -70,6 +82,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	        self.__RESET_GROUP(self.MANAGERS, self.__GLOBAL_DEFAULTS.MANAGERS);
 			self.__RESET_GROUP(self.MENU, self.__GLOBAL_DEFAULTS.MENU);
 			self.__RESET_GROUP(self.MAP, self.__GLOBAL_DEFAULTS.MAP);
+	        self.__RESET_GROUP(self.SELECTOR, self.__GLOBAL_DEFAULTS.SELECTOR);
 	        self.__RESET_GROUP(self.STORE, self.__GLOBAL_DEFAULTS.STORE);
 	        self.__RESET_GROUP(self.COMBAT_PROPERTIES, self.__GLOBAL_DEFAULTS.COMBAT_PROPERTIES);
 	        self.__RESET_GROUP(self.ALARM, self.__GLOBAL_DEFAULTS.ALARM);

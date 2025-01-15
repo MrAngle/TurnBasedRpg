@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"TEST_SC_Map_generator",
   "parent":{
-    "name":"Tests",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector/Tests.yy",
+    "name":"Scenarios",
+    "path":"folders/Hex/TEST/Scenarios.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

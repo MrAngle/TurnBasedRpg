@@ -6,7 +6,7 @@
   "name":"TEST_actionsManager",
   "parent":{
     "name":"Tests",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector/Tests.yy",
+    "path":"folders/Hex/TEST/Tests.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

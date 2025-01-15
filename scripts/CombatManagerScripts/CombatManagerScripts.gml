@@ -62,12 +62,14 @@ global.___INIT_MANAGER = function() {
 
 	instance_create_layer(0, 0, global.LAYERS.managers.id, DebuggerInstance);
 	instance_create_layer(0, 0, global.LAYERS.game_cursor.id, cursor_obj_game);
-	global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
+	//global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
 
 	global.__INIT_COMBAT_MAP_HOLER();
-	//global.COMBAT_GLOBALS.MAP.MAP_HOLDER = combat_map_generator_generate_random_desert_map(8, 13);
 	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP = MyCombatMapManager(global.COMBAT_GLOBALS.MAP.MAP_HOLDER);
 	global.myMenuManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuManager);
+
+	global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
+
 }
 
 global.___LOAD_CHARACTERS_ACTIONS = function() {

@@ -3,7 +3,7 @@
 
 
 global.TEST_DEFAULT_SCENARIO_DELAY = 20;
-global.TEST_FINISH_SCENARIO = true;
+global.TEST_FINISH_SCENARIO = true; // TO STOP SCENARIO
 function GET_NEXT_TEST_SCENAIO() {
     var SUITES = {
         SELECTOR: [
@@ -11,11 +11,12 @@ function GET_NEXT_TEST_SCENAIO() {
 			TEST_SC_SelectorAction_chain_cancel
 		],
 		MAP: [
+			TEST_SC_Map_generator(5, 5),
 			TEST_SC_Map_generator(10, 10),
 			TEST_SC_Map_generator(20, 30),
 			TEST_SC_Map_generator(10, 20),
 			TEST_SC_Map_generator(40, 40),
-			TEST_SC_Map_generator(50, 50)
+			TEST_SC_Map_generator(100, 100)
 		],
 		
 		get_by_index: function(index) {
@@ -41,25 +42,3 @@ function GET_NEXT_TEST_SCENAIO() {
 	
 	return SUITES.get_by_index(global.GAME_GLOBALS.TEST.SCENARIO_INDEX);
 };
-
-
-//function __TEST_SUITES(arg_SUITES) {
-//	var globalsStruct = {
-//	    SUITES: {},
-//	    __SUITES: arg_SUITES,
-
-//	    __INIT: function() {
-//	        self.__RESET_GROUP(self.SUITES, self.__SUITES.SUITES);
-//	    },
-        
-//	    __RESET_GROUP: function(global_variable, default_values) {
-//	        var keys = variable_struct_get_names(default_values);
-//	        for (var i = 0; i < array_length(keys); i++) {
-//	            var key = keys[i];
-//	            variable_struct_set(global_variable, key, variable_struct_get(default_values, key));
-//	        }
-//	    }
-//	};
-//	globalsStruct.__INIT();
-//	return globalsStruct;
-//}
