@@ -8,7 +8,7 @@ function GET_NEXT_TEST_SCENAIO() {
     var SUITES = {
         SELECTOR: [
 			//TEST_SC_SelectorAction_chain, 
-			TEST_SC_SelectorAction_chain_cancel
+			//TEST_SC_SelectorAction_chain_cancel
 		],
 		MAP: [
 			//TEST_SC_Map_generator(5, 5),

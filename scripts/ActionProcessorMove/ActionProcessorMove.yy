@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionProcessorMove",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionProcessorMove",
+  "parent":{
+    "name":"ACTION_PROCESSORS",
+    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTION_PROCESSORS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

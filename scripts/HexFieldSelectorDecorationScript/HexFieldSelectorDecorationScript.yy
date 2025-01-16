@@ -6,7 +6,7 @@
   "name":"HexFieldSelectorDecorationScript",
   "parent":{
     "name":"HexFieldPointerDecoration",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector/HexFieldPointerDecoration.yy",
+    "path":"folders/Hex/Combat/HexSelector/HexFieldPointerDecoration.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

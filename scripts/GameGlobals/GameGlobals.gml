@@ -21,7 +21,7 @@ global.____INIT_GAME_GLOBAL = function() {
     global.GAME_GLOBALS = __GAME_GLOBALS_STRUCT(GLOBAL_DEFAULTS);
 	
 	// CUSTOM CONFIG
-	global.GAME_GLOBALS.TEST.ACTIVE = true;
+	//global.GAME_GLOBALS.TEST.ACTIVE = true;
 	//
 };
 

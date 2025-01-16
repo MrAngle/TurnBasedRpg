@@ -53,7 +53,7 @@ function __get_all_characters_on_map(_obj) {
         }
     }
     
-    // Zwrócenie listy list
+    // Zwrócenie arraya
     return [players, enemies, neutrals];
 };
 

@@ -23,7 +23,8 @@ global.__INIT_COMBAT_GLOBAL = function() {
         MANAGERS: {
             COMBAT_MAP: noone, // MyCombatMapManager  // global.myCombatMapManager
             COMBAT_TURN: noone, // CombatTurnManager
-            SELECTOR: noone // SelectorManager
+            SELECTOR: noone, // SelectorManager
+			ACTION_SELECTOR: noone // ActionSelectorManager
         },
 		MENU: {
 			TOOLTIP: noone, // MenuToolTipManager

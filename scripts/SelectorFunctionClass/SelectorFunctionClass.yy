@@ -6,7 +6,7 @@
   "name":"SelectorFunctionClass",
   "parent":{
     "name":"OLD_SCRIPTS",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector/OLD_SCRIPTS.yy",
+    "path":"folders/Hex/Combat/HexSelector/OLD_SCRIPTS.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

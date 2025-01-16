@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ActionSelectorTemplate",
+  "%Name":"ActionClass",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ActionSelectorTemplate",
+  "name":"ActionClass",
   "parent":{
     "name":"CombatActionSelector",
     "path":"folders/Hex/Combat/CombatActionSelector.yy",

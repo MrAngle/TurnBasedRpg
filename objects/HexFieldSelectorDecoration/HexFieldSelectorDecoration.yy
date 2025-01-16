@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"HexFieldPointerDecoration",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector/HexFieldPointerDecoration.yy",
+    "path":"folders/Hex/Combat/HexSelector/HexFieldPointerDecoration.yy",
   },
   "parentObjectId":null,
   "persistent":false,

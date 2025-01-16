@@ -3,13 +3,12 @@ instance_create_layer(0, 0, global.LAYERS.selectors.id, HexHoverFieldDecoration)
 
 checkCondition = true;
 selectorActionManager = undefined;
-//selectorActionManager = getMySelectorActionManagerClass();
 alarm[0] = global.COMBAT_GLOBALS.ALARM.COMBAT_MANAGER_INIT_DELAY + 1; // TODO Should be managed by other manager
 
-global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = function(_self) {
-	//if(helper_function_is_undefined_or_noone()
-	selectorActionManager.execute(_self);
-}
+//global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = function(_self) {
+//	//if(helper_function_is_undefined_or_noone()
+//	selectorActionManager.execute(_self);
+//}
 
 __selector_state_select_reset = function() {
 	properties_selector_active_tile = noone; // MyMapTile

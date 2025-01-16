@@ -46,7 +46,7 @@
   "origin":4,
   "parent":{
     "name":"HexSelector",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector.yy",
+    "path":"folders/Hex/Combat/HexSelector.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

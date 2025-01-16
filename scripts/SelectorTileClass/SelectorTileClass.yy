@@ -6,7 +6,7 @@
   "name":"SelectorTileClass",
   "parent":{
     "name":"HexSelector",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector.yy",
+    "path":"folders/Hex/Combat/HexSelector.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

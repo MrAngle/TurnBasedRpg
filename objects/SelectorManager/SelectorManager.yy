@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"HexSelector",
-    "path":"folders/Hex/Combat/CombatMap/HexSelector.yy",
+    "path":"folders/Hex/Combat/HexSelector.yy",
   },
   "parentObjectId":{
     "name":"abst_super_manager",

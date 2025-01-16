@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionSelectorSelectCharacter",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionSelectorSelectCharacter",
+  "parent":{
+    "name":"ACTION_SELECTORS",
+    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTION_SELECTORS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

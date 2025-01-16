@@ -1,6 +1,9 @@
 //[players, enemies, neutrals];
 trunCombatCharacters = global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER;
 
+combatCharactersHolderClass = CombatCharactersHolderClass(global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.get_all_characters_on_map())
+global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER = combatCharactersHolderClass;
+
 //init_turn() = function() {
 //}
 //is_player_turn = true;

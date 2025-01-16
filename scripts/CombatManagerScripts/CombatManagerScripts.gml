@@ -70,9 +70,8 @@ global.___INIT_MANAGER = function() {
 
 	global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
 
-
 	instance_create_layer(0, 0, global.LAYERS.managers.id, CameraManager);
-	instance_create_layer(0, 0, global.LAYERS.managers.id, ActionSelectorManager);
+	global.COMBAT_GLOBALS.MANAGERS.ACTION_SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, ActionSelectorManager);
 }
 
 global.___LOAD_CHARACTERS_ACTIONS = function() {
