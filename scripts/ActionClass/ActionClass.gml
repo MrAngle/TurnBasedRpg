@@ -9,7 +9,6 @@ function ActionClass(arg_MySelectorActionManagerClass, arg_ActionProcessorClass)
 		
 		start: function(_self) {
 			__mySelectorActionManagerClass.start(self)
-			global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = self.execute;
 		},
 		
 		execute: function(_self) {
