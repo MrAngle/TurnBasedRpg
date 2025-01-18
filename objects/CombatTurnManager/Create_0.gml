@@ -4,6 +4,9 @@ trunCombatCharacters = global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER;
 combatCharactersHolderClass = CombatCharactersHolderClass(global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.get_all_characters_on_map())
 global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER = combatCharactersHolderClass;
 
+properties_turn_init_action_selector = noone;
+properties_active_turn_character = noone; // abst_combat_character
+
 //init_turn() = function() {
 //}
 //is_player_turn = true;

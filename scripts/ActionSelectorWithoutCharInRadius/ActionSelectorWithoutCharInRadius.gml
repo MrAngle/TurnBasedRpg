@@ -8,7 +8,7 @@ function Action_Selector_Without_Char_In_Radius(arg_radius = 1, arg_elements_to_
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var tilesWithoutCharactersFunc = mapTile_filter_element_NOT_contains_character();
 				var tilesInDistance = mapTile_filter_within_distance(__previous_result_SelectorTilesHolderClass.get_all_myMapTiles_as_array()[0], __distance);
-			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([tilesWithoutCharactersFunc, tilesInDistance]);
+			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([tilesWithoutCharactersFunc, tilesInDistance]);
 			
 				return tiles_without_characters;
 			}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"turn_manager_properties",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"turn_manager_properties",
+  "parent":{
+    "name":"properties",
+    "path":"folders/Hex/Combat/Scripts/properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

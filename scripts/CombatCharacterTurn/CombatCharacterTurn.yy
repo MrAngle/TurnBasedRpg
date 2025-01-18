@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"CombatCharacterTurn",
+  "isCompatibility":false,
+  "isDnD":true,
+  "name":"CombatCharacterTurn",
+  "parent":{
+    "name":"CombatCharacter",
+    "path":"folders/Hex/Combat/CombatCharacter.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

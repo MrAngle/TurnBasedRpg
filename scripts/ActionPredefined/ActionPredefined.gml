@@ -11,17 +11,21 @@ function Action_Predefined_Move_In_Radius(arg_inRadius, autoStart = true)
 	var selectorManager = MySelectorActionManagerClass(mySelectorActionList);
 	var _actionClass = ActionClass(selectorManager, actionProcessor);
 
-	//var closedAction = function(arg_actionClass) {
-	//	var closedFunction = {
-	//		__actionClass: arg_actionClass,
-	//		toReturn: function(_self) {
-	//			if(!helper_struct_is_undefined_or_empty(__actionClass) ) {
-	//				__actionClass.execute(_self);
-	//			}
-	//		}
-	//	}
-	//	return closedFunction.toReturn;
-	//}
+	return _actionClass;
+}
+
+function Action_Predefined_Select_Character_For_Turn() 
+{
+	// SELECTOR
+	var mySelectorActionList = ds_list_create();
+	ds_list_add(mySelectorActionList, Action_Selector_All_Active_Chars());
+	var selectorManager = MySelectorActionManagerClass(mySelectorActionList);
 	
+	// ACTION PROCESSOR
+	var actionProcessor = ActionProcessorClass(Action_Processor_Make_Turn_Active_For_Char());
+	
+	// ACTION
+	var _actionClass = ActionClass(selectorManager, actionProcessor);
+
 	return _actionClass;
 }

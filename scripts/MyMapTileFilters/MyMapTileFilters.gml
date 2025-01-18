@@ -27,6 +27,19 @@ function mapTile_filter_element_contains_character() {
 	return closedFunction;
 }
 
+function mapTile_filter_element_contains_character_and_can_perform_action() {
+	closedFunction = {
+		filterFunc: function(_myMapTileObjectToCheck) {
+			if(helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
+				return false;
+			}
+			
+			return _myMapTileObjectToCheck.__character.__properties_action_can_perform;
+	    }
+	}
+	return closedFunction;
+}
+
 //function mapTile_filter_element_contains_character() {
 //	closedFunction = {
 //		toReturn: function(_myMapTileObjectToCheck) {

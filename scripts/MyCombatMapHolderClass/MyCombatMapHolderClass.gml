@@ -26,12 +26,12 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 		},
 		
 		// Nowa metoda: Znajdź wszystkie kafelki z postaciami
-        get_tiles_with_characters: function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
-            return  __get_tiles_with_characters(self, _filtersToCheck);
+        get_tiles: function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
+            return  __get_tiles(self, _filtersToCheck);
         }
 		
-		//get_tiles_with_characters: function(_should_ignore_element_function = ][) { // _filter_function(element) - return true 
-        //    return  __get_tiles_with_characters(self, _should_ignore_element_function);
+		//get_tiles: function(_should_ignore_element_function = ][) { // _filter_function(element) - return true 
+        //    return  __get_tiles(self, _should_ignore_element_function);
         //}
     };
 	
@@ -39,7 +39,7 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 	return map_instance;
 }
 
-function __get_tiles_with_characters(_obj, _filtersToCheck = []) {
+function __get_tiles(_obj, _filtersToCheck = []) {
     var tiles_with_characters = []; // Tworzymy pustą tablicę
 
     for (var row = 0; row < _obj.__rows; row++) {

@@ -37,7 +37,7 @@ function getMySelectorActionManagerClass()
 				var notIncludeThisTilesFunc = mapTile_filter_element_is_not_in_array(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
 				var containsCharacter = mapTile_filter_element_contains_character();
 				//var notIncludeThisTilesFunc = helper_object_is_undefined_or_empty(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
-			    var tiles_with_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([notIncludeThisTilesFunc, containsCharacter]);
+			    var tiles_with_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([notIncludeThisTilesFunc, containsCharacter]);
 			
 				return tiles_with_characters;
 			}
@@ -49,7 +49,7 @@ function getMySelectorActionManagerClass()
 		closedFunction = {
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var tilesWithoutCharactersFunc = mapTile_filter_element_NOT_contains_character();
-			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([tilesWithoutCharactersFunc]);
+			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([tilesWithoutCharactersFunc]);
 			
 				return tiles_without_characters;
 			}
@@ -63,7 +63,7 @@ function getMySelectorActionManagerClass()
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var tilesWithoutCharactersFunc = mapTile_filter_element_NOT_contains_character();
 				var tilesInDistance = mapTile_filter_within_distance(__previous_result_SelectorTilesHolderClass.get_all_myMapTiles_as_array()[0], __distance);
-			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles_with_characters([tilesWithoutCharactersFunc, tilesInDistance]);
+			    var tiles_without_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([tilesWithoutCharactersFunc, tilesInDistance]);
 			
 				return tiles_without_characters;
 			}
