@@ -85,65 +85,6 @@ function helper_add_method() {
 		    };
 	}
 }
-		
-	//	__can_add_selector_tile: function() {
-	//	    var currentCount = array_length(self.__selector_SelectorTileClass);
-
-	//	    switch (self.__selector_store_strategy) {
-	//	        case SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX:
-	//	            // W strategii zastępowania zawsze można dodać element (zastąpienie)
-	//	            return true;
-
-	//	        case SELECTOR_STORE_STRATEGY.REPLACE_LAST_WHEN_MAX:
-	//	            // W strategii zastępowania zawsze można dodać element (zastąpienie)
-	//	            return true;
-
-	//	        case SELECTOR_STORE_STRATEGY.IGNORE_WHEN_MAX:
-	//	            // W strategii ignorowania, dodanie jest możliwe tylko, gdy liczba elementów jest mniejsza od maksymalnej
-	//	            return currentCount < self.__selector_maxElements;
-
-	//	        default:
-	//	            // Nieznana strategia, zwracamy false jako domyślną wartość
-	//	            show_debug_message("Unknown strategy: " + string(self.__selector_store_strategy));
-	//	            return false;
-	//	    }
-	//	},
-		
-	//	__get_replaced_tile: function(_SelectorTileClass) {
-	//	    var currentCount = array_length(self.__selector_SelectorTileClass);
-    
-	//	    switch (self.__selector_store_strategy) {
-	//	        case SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX:
-	//	            if (currentCount >= self.__selector_maxElements) {
-	//	                // Pierwszy element zostanie zastąpiony
-	//	                return self.__selector_SelectorTileClass[0];
-	//	            }
-	//	            break;
-
-	//	        case SELECTOR_STORE_STRATEGY.REPLACE_LAST_WHEN_MAX:
-	//	            if (currentCount >= self.__selector_maxElements) {
-	//	                // Ostatni element zostanie zastąpiony
-	//	                return self.__selector_SelectorTileClass[currentCount - 1];
-	//	            }
-	//	            break;
-
-	//	        case SELECTOR_STORE_STRATEGY.IGNORE_WHEN_MAX:
-	//	            if (currentCount >= self.__selector_maxElements) {
-	//	                // Nic nie zostanie zastąpione
-	//	                return undefined;
-	//	            }
-	//	            break;
-
-	//	        default:
-	//	            show_debug_message("Unknown strategy: " + string(self.__selector_store_strategy));
-	//	            return undefined;
-	//	    }
-
-	//	    // Jeśli dodanie jest możliwe bez zastąpienia, zwracamy undefined
-	//	    return undefined;
-	//	}
-    //};
-	
 	
 	
 	

@@ -4,7 +4,8 @@ global.LAYERS_BACKGROUND_DEPTH_DIFF = 1;
 
 function init_layers() {
 	var GAME_CURSOR_DEPTH = -1000;
-    var GUI_GAME_MENU_DEPTH = 50;
+    var GUI_CARD_SELECTOR_DEPTH = 50;
+    var GUI_GAME_MENU_DEPTH = GUI_CARD_SELECTOR_DEPTH + 50;
     var GUI_MENU_DEPTH = GUI_GAME_MENU_DEPTH + 50;
 	var SELECTORS_DEPTH = GUI_MENU_DEPTH + 50;
     var ATTACKS_DEPTH = SELECTORS_DEPTH + 50;
@@ -18,6 +19,10 @@ function init_layers() {
 		game_cursor: {
             id: layer_create(GAME_CURSOR_DEPTH),
             depth: GAME_CURSOR_DEPTH
+        },
+		gui_card_selector: {
+            id: layer_create(GUI_CARD_SELECTOR_DEPTH),
+            depth: GUI_CARD_SELECTOR_DEPTH
         },
         gui_game_menu: {
             id: layer_create(GUI_GAME_MENU_DEPTH),
@@ -47,6 +52,7 @@ function init_layers() {
             id: layer_create(GROUND_DEPTH),
             depth: GROUND_DEPTH,
 			desert_depth: GROUND_DEPTH,
+			grass_depth: GROUND_DEPTH - 50,
 			depth_period: 5
         },
         managers: {

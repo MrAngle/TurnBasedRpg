@@ -14,11 +14,11 @@ function Action_Predefined_Move_In_Radius(arg_inRadius, autoStart = true)
 	return _actionClass;
 }
 
-function Action_Predefined_Select_Character_For_Turn() 
+function Action_Predefined_Select_Character_To_Prepare_Turn() 
 {
 	// SELECTOR
 	var mySelectorActionList = ds_list_create();
-	ds_list_add(mySelectorActionList, Action_Selector_All_Active_Chars());
+	ds_list_add(mySelectorActionList, Action_Selector_All_Active_Chars_Without_Selected_Actions());
 	var selectorManager = MySelectorActionManagerClass(mySelectorActionList);
 	
 	// ACTION PROCESSOR

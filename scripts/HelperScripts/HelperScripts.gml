@@ -72,7 +72,7 @@ function helper_function_is_undefined_or_noone(functionToCheck) {
 }
 
 function helper_object_is_undefined_or_empty(objectToCheck) {
-	return objectToCheck == undefined || objectToCheck == noone;
+	return objectToCheck == undefined || objectToCheck == noone || !instance_exists(objectToCheck);
 }
 
 function helper_struct_is_undefined_or_empty(structToCheck) {

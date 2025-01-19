@@ -4,6 +4,9 @@ function properties_load_character_turn()
 {
 	__properties_action_can_perform = true;
 	__properties_action_to_perform = noone; // ActionClass
+	__properties_actions_selected_to_perform = []; // ActionClass
+	__properties_action_is_prepared_for_turn = false; // ActionClass
+	__properties_action_is_action_done = false; // ActionClass
 	
 	action_perform = function(arg_character) {
 		//var closedAction = function(arg_actionClass) {
@@ -24,10 +27,21 @@ function properties_load_character_turn()
 		//closedAction(arg_self);
 	}
 	
-	action_set = function(arg_ActionClass) {
-		__properties_action_to_perform = arg_ActionClass
+	action_start = function() {
+		__properties_action_to_perform = __properties_actions_selected_to_perform[0]
 		__properties_action_to_perform.start(self);
 		
 		global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = self.action_perform(self);
 	}
+	
+	actions_selected_to_perform_set = function(arg_ActionClassArray) {
+		__properties_actions_selected_to_perform = arg_ActionClassArray;
+		__properties_action_is_prepared_for_turn = true;
+		//__properties_action_to_perform = arg_ActionClass
+		//__properties_action_to_perform.start(self);
+		
+		//global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = self.action_perform(self);
+	}
+	
+	
 }

@@ -18,7 +18,7 @@
 
 
 //cam = camera_create();
-//camera_set_view_size(cam, 3840, 2160);
+
 //camera_x = camera_get_view_x(cam);
 //camera_y = camera_get_view_y(cam);
 
@@ -30,7 +30,10 @@ camera_y = camera_get_view_y(cam);
 // Prędkość kamery
 camera_speed = 20;
 
+//camera_set_view_size(cam, 3840, 2160);
+//camera_set_view_size(cam, 1600, 900);
 view_camera[0] = cam;
+
 
 // Zmienne kierunku
 move_left = false;

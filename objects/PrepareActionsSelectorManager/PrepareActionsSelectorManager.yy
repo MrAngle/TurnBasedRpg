@@ -1,21 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"CombatTurnManager",
+  "%Name":"PrepareActionsSelectorManager",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"CombatTurnManager",
+  "name":"PrepareActionsSelectorManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatTurnManager",
-    "path":"folders/Hex/Combat/CombatTurnManager.yy",
+    "name":"CombatActionSelector",
+    "path":"folders/Hex/Combat/CombatActionSelector.yy",
   },
-  "parentObjectId":{
-    "name":"abst_super_manager",
-    "path":"objects/abst_super_manager/abst_super_manager.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

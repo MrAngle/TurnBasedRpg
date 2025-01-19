@@ -1,20 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"CombatTurnManager",
+  "%Name":"abst_obj_grass",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"CombatTurnManager",
+  "name":"abst_obj_grass",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatTurnManager",
-    "path":"folders/Hex/Combat/CombatTurnManager.yy",
+    "name":"GrassTiles",
+    "path":"folders/Hex/Combat/CombatMap/Tiles/GrassTiles.yy",
   },
   "parentObjectId":{
-    "name":"abst_super_manager",
-    "path":"objects/abst_super_manager/abst_super_manager.yy",
+    "name":"abst_obj_terrain",
+    "path":"objects/abst_obj_terrain/abst_obj_terrain.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -35,5 +34,5 @@
   "solid":false,
   "spriteId":null,
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

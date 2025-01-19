@@ -1,18 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"ActionSelectorManager",
+  "%Name":"grass_1_ground",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"ActionSelectorManager",
+  "name":"grass_1_ground",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatActionSelector",
-    "path":"folders/Hex/Combat/CombatActionSelector.yy",
+    "name":"grass_1_empty",
+    "path":"folders/Hex/Combat/CombatMap/Tiles/GrassTiles/grass_1_empty.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"abst_obj_grass",
+    "path":"objects/abst_obj_grass/abst_obj_grass.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"grass_terrain_1_ground",
+    "path":"sprites/grass_terrain_1_ground/grass_terrain_1_ground.yy",
+  },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

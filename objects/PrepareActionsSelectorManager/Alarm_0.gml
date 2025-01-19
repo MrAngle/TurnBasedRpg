@@ -1,3 +1,7 @@
+alarm[0] = 60;
+
+show_debug_message("selected: " + string(__actions_selected));
+
 //if(properties_active_turn_character
 
 //var action = Action_Predefined_Move_In_Radius(3);

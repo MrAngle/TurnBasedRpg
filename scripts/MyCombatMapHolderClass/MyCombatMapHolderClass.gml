@@ -25,14 +25,9 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 			return __find_character_in_map(self.__map_holder, self.__rows, self.__cols, _obj_target);
 		},
 		
-		// Nowa metoda: Znajdź wszystkie kafelki z postaciami
         get_tiles: function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
             return  __get_tiles(self, _filtersToCheck);
         }
-		
-		//get_tiles: function(_should_ignore_element_function = ][) { // _filter_function(element) - return true 
-        //    return  __get_tiles(self, _should_ignore_element_function);
-        //}
     };
 	
 	map_instance.__init_MyCombatMapHolder();
@@ -40,25 +35,19 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 }
 
 function __get_tiles(_obj, _filtersToCheck = []) {
-    var tiles_with_characters = []; // Tworzymy pustą tablicę
+    var result_tiles = []; // Tworzymy pustą tablicę
 
     for (var row = 0; row < _obj.__rows; row++) {
         for (var col = 0; col < _obj.__cols; col++) {
             var tile = _obj.__map_holder[row][col];
 			
 			if(_filtersToCheck == undefined || __passes_all_filters(_filtersToCheck, tile)) {
-				array_push(tiles_with_characters, tile);
+				array_push(result_tiles, tile);
 			}
-			
-            //if (tile != noone && tile.has_character()) {
-            //    if (_should_ignore_element_function == undefined || _should_ignore_element_function(tile)) {
-            //        array_push(tiles_with_characters, tile);
-            //    }
-            //}
         }
     }
 
-    return tiles_with_characters; // Zwracamy tablicę
+    return result_tiles; // Zwracamy tablicę
 }
 
 function __passes_all_filters(_filters, _myMapTile) {
