@@ -126,6 +126,7 @@
     {"name":"ActionSelectorSelectCharacter","order":1,"path":"scripts/ActionSelectorSelectCharacter/ActionSelectorSelectCharacter.yy",},
     {"name":"background_decoration_properties","order":2,"path":"scripts/background_decoration_properties/background_decoration_properties.yy",},
     {"name":"border_decoration_properties","order":3,"path":"scripts/border_decoration_properties/border_decoration_properties.yy",},
+    {"name":"character_turn_executor_properties","order":11,"path":"scripts/character_turn_executor_properties/character_turn_executor_properties.yy",},
     {"name":"character_turn_properties","order":9,"path":"scripts/character_turn_properties/character_turn_properties.yy",},
     {"name":"Combat","order":1,"path":"scripts/Combat/Combat.yy",},
     {"name":"CombatCharactersHolderClass","order":5,"path":"scripts/CombatCharactersHolderClass/CombatCharactersHolderClass.yy",},

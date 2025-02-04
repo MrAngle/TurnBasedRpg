@@ -35,6 +35,7 @@ function mapTile_filter_element_contains_character_and_can_perform_action() {
 			}
 			
 			return _myMapTileObjectToCheck.__character.__properties_action_can_perform;
+			//return _myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn;
 	    }
 	}
 	return closedFunction;
@@ -47,7 +48,8 @@ function mapTile_filter_element_contains_character_and_is_NOT_prepared_for_turn(
 				return false;
 			}
 			
-			return !(_myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn);
+			//return !(_myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn);
+			return !(_myMapTileObjectToCheck.__character.actions_is_prepared_for_turn());
 	    }
 	}
 	return closedFunction;

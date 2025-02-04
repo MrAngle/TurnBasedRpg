@@ -1,90 +1,90 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
-enum LIST_STORE_REPLACE_STRATEGY {
-	REPLACE_FIRST_WHEN_MAX,
-	REPLACE_LAST_WHEN_MAX,
-	IGNORE_WHEN_MAX
-}
+//enum LIST_STORE_REPLACE_STRATEGY {
+//	REPLACE_FIRST_WHEN_MAX,
+//	REPLACE_LAST_WHEN_MAX,
+//	IGNORE_WHEN_MAX
+//}
 
-function helper_add_function_for_list(_dsListToUse, _maxElements, _LIST_STORE_REPLACE_STRATEGY) {
-    switch (self.__selector_store_strategy) {
-        case LIST_STORE_REPLACE_STRATEGY.REPLACE_FIRST_WHEN_MAX:
-            return function(_SelectorTileClass) {
-                var currentCount = ds_list_size(self.__selector_SelectorTileClass);
-                if (currentCount >= self.__selector_maxElements) {
-                    // Usuń pierwszy element przed zastąpieniem
-                    ds_list_delete(self.__selector_SelectorTileClass, 0);
-                }
-                ds_list_add(self.__selector_SelectorTileClass, _SelectorTileClass);
-            };
+//function helper_add_function_for_list(_dsListToUse, _maxElements, _LIST_STORE_REPLACE_STRATEGY) {
+//    switch (self.__selector_store_strategy) {
+//        case LIST_STORE_REPLACE_STRATEGY.REPLACE_FIRST_WHEN_MAX:
+//            return function(_SelectorTileClass) {
+//                var currentCount = ds_list_size(self.__selector_SelectorTileClass);
+//                if (currentCount >= self.__selector_maxElements) {
+//                    // Usuń pierwszy element przed zastąpieniem
+//                    ds_list_delete(self.__selector_SelectorTileClass, 0);
+//                }
+//                ds_list_add(self.__selector_SelectorTileClass, _SelectorTileClass);
+//            };
 
-        case LIST_STORE_REPLACE_STRATEGY.REPLACE_LAST_WHEN_MAX:
-            return function(_SelectorTileClass) {
-                var currentCount = ds_list_size(self.__selector_SelectorTileClass);
-                if (currentCount >= self.__selector_maxElements) {
-                    // Usuń ostatni element przed zastąpieniem
-                    ds_list_delete(self.__selector_SelectorTileClass, currentCount - 1);
-                }
-                ds_list_add(self.__selector_SelectorTileClass, _SelectorTileClass);
-            };
+//        case LIST_STORE_REPLACE_STRATEGY.REPLACE_LAST_WHEN_MAX:
+//            return function(_SelectorTileClass) {
+//                var currentCount = ds_list_size(self.__selector_SelectorTileClass);
+//                if (currentCount >= self.__selector_maxElements) {
+//                    // Usuń ostatni element przed zastąpieniem
+//                    ds_list_delete(self.__selector_SelectorTileClass, currentCount - 1);
+//                }
+//                ds_list_add(self.__selector_SelectorTileClass, _SelectorTileClass);
+//            };
 
-        case LIST_STORE_REPLACE_STRATEGY.IGNORE_WHEN_MAX:
-            return function(_SelectorTileClass) {
-                var currentCount = ds_list_size(self.__selector_SelectorTileClass);
-                if (currentCount < self.__selector_maxElements) {
-                    ds_list_add(self.__selector_SelectorTileClass, _SelectorTileClass);
-                }
-                // W przeciwnym razie nic nie robimy
-            };
+//        case LIST_STORE_REPLACE_STRATEGY.IGNORE_WHEN_MAX:
+//            return function(_SelectorTileClass) {
+//                var currentCount = ds_list_size(self.__selector_SelectorTileClass);
+//                if (currentCount < self.__selector_maxElements) {
+//                    ds_list_add(self.__selector_SelectorTileClass, _SelectorTileClass);
+//                }
+//                // W przeciwnym razie nic nie robimy
+//            };
 
-        default:
-            return function(_SelectorTileClass) {
-                show_debug_message("Unknown strategy: " + string(self.__selector_store_strategy));
-            };
-    }
-}
+//        default:
+//            return function(_SelectorTileClass) {
+//                show_debug_message("Unknown strategy: " + string(self.__selector_store_strategy));
+//            };
+//    }
+//}
 
 
-function helper_add_method() {
-	switch (self.__selector_store_strategy) {
-		case SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX:
-		    return function(_SelectorTileClass) {
-		        var currentCount = array_length(self.__selector_SelectorTileClass);
-		        if (currentCount >= self.__selector_maxElements) {
-		            // Zastępujemy pierwszy element
-		            self.__selector_SelectorTileClass[0] = _SelectorTileClass;
-		        } else {
-		            array_push(self.__selector_SelectorTileClass, _SelectorTileClass);
-		        }
-		    };
+//function helper_add_method() {
+//	switch (self.__selector_store_strategy) {
+//		case SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX:
+//		    return function(_SelectorTileClass) {
+//		        var currentCount = array_length(self.__selector_SelectorTileClass);
+//		        if (currentCount >= self.__selector_maxElements) {
+//		            // Zastępujemy pierwszy element
+//		            self.__selector_SelectorTileClass[0] = _SelectorTileClass;
+//		        } else {
+//		            array_push(self.__selector_SelectorTileClass, _SelectorTileClass);
+//		        }
+//		    };
 
-		case SELECTOR_STORE_STRATEGY.REPLACE_LAST_WHEN_MAX:
-		    return function(_SelectorTileClass) {
-		        var currentCount = array_length(self.__selector_SelectorTileClass);
-		        if (currentCount >= self.__selector_maxElements) {
-		            // Zastępujemy ostatni element
-		            self.__selector_SelectorTileClass[currentCount - 1] = _SelectorTileClass;
-		        } else {
-		            array_push(self.__selector_SelectorTileClass, _SelectorTileClass);
-		        }
-		    };
+//		case SELECTOR_STORE_STRATEGY.REPLACE_LAST_WHEN_MAX:
+//		    return function(_SelectorTileClass) {
+//		        var currentCount = array_length(self.__selector_SelectorTileClass);
+//		        if (currentCount >= self.__selector_maxElements) {
+//		            // Zastępujemy ostatni element
+//		            self.__selector_SelectorTileClass[currentCount - 1] = _SelectorTileClass;
+//		        } else {
+//		            array_push(self.__selector_SelectorTileClass, _SelectorTileClass);
+//		        }
+//		    };
 
-		case SELECTOR_STORE_STRATEGY.IGNORE_WHEN_MAX:
-		    return function(_SelectorTileClass) {
-		        var currentCount = array_length(self.__selector_SelectorTileClass);
-		        if (currentCount < self.__selector_maxElements) {
-		            array_push(self.__selector_SelectorTileClass, _SelectorTileClass);
-		        }
-		        // W przeciwnym razie nic nie robimy
-		    };
+//		case SELECTOR_STORE_STRATEGY.IGNORE_WHEN_MAX:
+//		    return function(_SelectorTileClass) {
+//		        var currentCount = array_length(self.__selector_SelectorTileClass);
+//		        if (currentCount < self.__selector_maxElements) {
+//		            array_push(self.__selector_SelectorTileClass, _SelectorTileClass);
+//		        }
+//		        // W przeciwnym razie nic nie robimy
+//		    };
 
-		default:
-		    return function(_SelectorTileClass) {
-		        show_debug_message("Unknown strategy: " + string(self.__selector_store_strategy));
-		    };
-	}
-}
+//		default:
+//		    return function(_SelectorTileClass) {
+//		        show_debug_message("Unknown strategy: " + string(self.__selector_store_strategy));
+//		    };
+//	}
+//}
 	
 	
 	

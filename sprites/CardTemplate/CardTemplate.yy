@@ -2,9 +2,9 @@
   "$GMSprite":"",
   "%Name":"CardTemplate",
   "bboxMode":0,
-  "bbox_bottom":511,
+  "bbox_bottom":799,
   "bbox_left":0,
-  "bbox_right":511,
+  "bbox_right":649,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":512,
+  "height":800,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"18a95cfb-7b4d-4ff0-bd77-96e4c65d938e","blendMode":0,"displayName":"default","isLocked":false,"name":"18a95cfb-7b4d-4ff0-bd77-96e4c65d938e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":512,
+  "width":650,
 }

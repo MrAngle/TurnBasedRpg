@@ -49,12 +49,20 @@ function helper_create_undefined_array(_size) {
     return arr;
 }
 
-function helper_is_empty(_obj) {
+function helper_is_not_definied(_obj) {
 	if(_obj == undefined || _obj == noone) {
 		return true;
 	}
 	return false;
 }
+
+function helper_is_definied(_obj) {
+	if(_obj == undefined || _obj == noone) {
+		return false;
+	}
+	return true;
+}
+
 
 function helper_array_is_undefined_or_empty(arrayToCheck) {
 	return arrayToCheck == undefined || array_length(arrayToCheck) == 0;

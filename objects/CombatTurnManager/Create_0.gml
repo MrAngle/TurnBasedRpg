@@ -61,15 +61,19 @@ __currentCharIndex = 0;
 __currentCharActionExecute = noone;
 __charactersToPerformAction = [];
 __execute_action_turn = function() {
+	
+	//if(helper_object_is_undefined_or_empty(__currentCharActionExecute)) {
+	//	__currentCharIndex = __currentCharIndex + 1;
+	//}
+
+	
 	if(helper_object_is_undefined_or_empty(__currentCharActionExecute)) {
 		__currentCharActionExecute = __charactersToPerformAction[__currentCharIndex];
-		
-		if(helper_object_is_undefined_or_empty(__currentCharActionExecute)) {
-			__currentCharIndex = __currentCharIndex + 1;
-		} else {
-			__currentCharActionExecute.action_start();
-		}
+		__currentCharActionExecute.action_start();
 	}
+	
+
+	
 	//__prepare_turn_characters
 	////if(are_all_prepared(__prepare_turn_characters)) {
 	////	__currentPhaseEnum = TURN_PHASE_ENUM.CHARACTER_ACTION_EXECUTION;
@@ -90,7 +94,8 @@ are_all_prepared = function(instance_array) {
         var inst = instance_array[i];
         
         // Sprawdzamy czy element jest instancją, istnieje i zmienna jest ustawiona
-        if (!instance_exists(inst) || !inst.__properties_action_is_prepared_for_turn) {
+        //if (!instance_exists(inst) || !inst.__properties_action_is_prepared_for_turn) {
+        if (!instance_exists(inst) || !inst.actions_is_prepared_for_turn()) {
             return false; // Jeśli którykolwiek warunek nie jest spełniony, zwracamy false
         }
     }

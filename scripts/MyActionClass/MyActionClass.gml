@@ -25,7 +25,7 @@ function MyActionClass(_current_function, _next_MyActionClass)
 			
 			var goToNextAction = __current_function(_self);
 			if(goToNextAction == true) {
-				if(!helper_is_empty(__next_MyActionClass)) {
+				if(!helper_is_not_definied(__next_MyActionClass)) {
 					__current_function = __next_MyActionClass.__current_function;
 				} else {
 					__action_finished = true;
