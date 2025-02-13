@@ -6,14 +6,15 @@
 
 properties_turn_init_action_selector = noone;
 properties_active_turn_character = noone; // abst_combat_character
-properties_character_to_prepare_actions = noone; // abst_combat_character
+//properties_character_to_prepare_actions = noone; // abst_combat_character
 
 
 __set_character_to_prepare_actions = function(arg_character) {
-	properties_character_to_prepare_actions = arg_character;
-	
+	//properties_character_to_prepare_actions = arg_character;
+	global.COMBAT_GLOBALS.ACTION_PREPARATION.CURRENT_CHARACTER_TO_PREPARE = arg_character;
+	 
 	global.COMBAT_GLOBALS.MANAGERS.ACTION_SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, PrepareActionsSelectorManager);
-	global.COMBAT_GLOBALS.MANAGERS.ACTION_SELECTOR.properties_character_to_prepare_actions = properties_character_to_prepare_actions;
+	//global.COMBAT_GLOBALS.MANAGERS.ACTION_SELECTOR.properties_character_to_prepare_actions = properties_character_to_prepare_actions;
 }
 
 
@@ -60,30 +61,27 @@ __prepare_turn = function() {
 __currentCharIndex = 0;
 __currentCharActionExecute = noone;
 __charactersToPerformAction = [];
-__execute_action_turn = function() {
+
+
+__init_execute_action_turn = function() {
+	
+	//__currentPhaseEnum = TURN_PHASE_ENUM.PREPARE_TURN;
 	
 	//if(helper_object_is_undefined_or_empty(__currentCharActionExecute)) {
-	//	__currentCharIndex = __currentCharIndex + 1;
+	//	__currentCharActionExecute = __charactersToPerformAction[__currentCharIndex];
+	//	__currentCharActionExecute.turn_exe_action_start();
 	//}
+}
 
-	
+
+__execute_action_turn = function() {
 	if(helper_object_is_undefined_or_empty(__currentCharActionExecute)) {
 		__currentCharActionExecute = __charactersToPerformAction[__currentCharIndex];
-		__currentCharActionExecute.action_start();
+		__currentCharActionExecute.turn_exe_action_start();
+		
+		global.COMBAT_GLOBALS.COMBAT_PROPERTIES.END_TURN_BUTTON = 
+			instance_create_layer(0, 0, global.LAYERS.gui_game_menu.id, CombatTurnEndTurnButton);
 	}
-	
-
-	
-	//__prepare_turn_characters
-	////if(are_all_prepared(__prepare_turn_characters)) {
-	////	__currentPhaseEnum = TURN_PHASE_ENUM.CHARACTER_ACTION_EXECUTION;
-	////}
-	//__currentCharIndex
-	//__properties_action_is_action_done
-	//for (var i = 0; i < array_length(__prepare_turn_characters); ++i) {
-	//    // code here
-	//}
-	
 }
 
 
@@ -95,7 +93,7 @@ are_all_prepared = function(instance_array) {
         
         // Sprawdzamy czy element jest instancją, istnieje i zmienna jest ustawiona
         //if (!instance_exists(inst) || !inst.__properties_action_is_prepared_for_turn) {
-        if (!instance_exists(inst) || !inst.actions_is_prepared_for_turn()) {
+        if (!instance_exists(inst) || !inst.prepare_turn_is_prepared_for_turn()) {
             return false; // Jeśli którykolwiek warunek nie jest spełniony, zwracamy false
         }
     }

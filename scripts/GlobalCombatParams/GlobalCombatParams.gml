@@ -37,6 +37,9 @@ global.__INIT_COMBAT_GLOBAL = function() {
             SELECTED_CHARACTER: noone, // Object abst_combat_character
             HOVERED_TILE: noone // Struct MyMapTile
 		},
+		ACTION_PREPARATION: {
+			CURRENT_CHARACTER_TO_PREPARE: noone // abst_combat_character
+		},
 		SELECTOR: {
 			ON_CLICK_EVENT_FUNCTION: defONClickEvent
 		},
@@ -44,6 +47,7 @@ global.__INIT_COMBAT_GLOBAL = function() {
             COMBAT_CHARACTERS_HOLDER: noone // CombatCharactersHolderClass
         },
         COMBAT_PROPERTIES: {
+			END_TURN_BUTTON: noone // CombatTurnEndTurnButton
         },
 		ALARM: {
 			PERIOD_MINIMUM: vALARM_PERIOD_MINIMUM, // MINIMUM PERIOD BETWEEN ALARMS 
@@ -71,6 +75,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	    MANAGERS: {},
 		MENU: {},
 		MAP: {},
+		ACTION_PREPARATION: {},
 		SELECTOR: {},
 	    STORE: {},
 	    COMBAT_PROPERTIES: {},
@@ -83,6 +88,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	        self.__RESET_GROUP(self.MANAGERS, self.__GLOBAL_DEFAULTS.MANAGERS);
 			self.__RESET_GROUP(self.MENU, self.__GLOBAL_DEFAULTS.MENU);
 			self.__RESET_GROUP(self.MAP, self.__GLOBAL_DEFAULTS.MAP);
+			self.__RESET_GROUP(self.ACTION_PREPARATION, self.__GLOBAL_DEFAULTS.ACTION_PREPARATION);
 	        self.__RESET_GROUP(self.SELECTOR, self.__GLOBAL_DEFAULTS.SELECTOR);
 	        self.__RESET_GROUP(self.STORE, self.__GLOBAL_DEFAULTS.STORE);
 	        self.__RESET_GROUP(self.COMBAT_PROPERTIES, self.__GLOBAL_DEFAULTS.COMBAT_PROPERTIES);

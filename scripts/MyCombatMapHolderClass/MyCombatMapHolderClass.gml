@@ -25,6 +25,10 @@ function MyCombatMapHolder(_init_rows, _init_cols) {
 			return __find_character_in_map(self.__map_holder, self.__rows, self.__cols, _obj_target);
 		},
 		
+		get_tile_by_character: function(_character) { // _filter_function(element) - return true 
+            return  __get_tile_by_character(self, _character);
+        },
+		
         get_tiles: function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
             return  __get_tiles(self, _filtersToCheck);
         }
@@ -104,6 +108,23 @@ function __my_show_tiles(_obj) {
 		}
 	}
 }
+
+function __get_tile_by_character(_self, obj_character) {
+    for (var row = 0; row < _self.__rows; row++) {
+        for (var col = 0; col < _self.__cols; col++) {
+            var tile = _self.__map_holder[row][col];
+
+            // Sprawdź, czy postać na kafelku to szukana postać
+            if (!is_undefined(tile.__character) && tile.__character == obj_character) {
+                return tile;
+            }
+        }
+    }
+
+    // Jeśli nie znaleziono, zwróć `undefined` lub null
+    return undefined;
+}
+
 
 function __find_character_in_map(map_holder, rows, cols, obj_target) {
     for (var row = 0; row < rows; row++) {

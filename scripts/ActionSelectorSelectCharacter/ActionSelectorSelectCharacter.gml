@@ -8,7 +8,7 @@ function Action_Selector_All_Active_Chars(arg_NumberToSelect = 1)
 		closedFunction = {
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var notIncludeThisTilesFunc = mapTile_filter_element_is_not_in_array(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
-				var containsCharacter = mapTile_filter_element_contains_character_and_can_perform_action();
+				var containsCharacter = mapTile_filter_element_contains_character();
 				//var notIncludeThisTilesFunc = helper_object_is_undefined_or_empty(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
 			    var tiles_with_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([notIncludeThisTilesFunc, containsCharacter]);
 			
@@ -34,7 +34,7 @@ function Action_Selector_All_Active_Chars_Without_Selected_Actions(arg_NumberToS
 		closedFunction = {
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var notIncludeThisTilesFunc = mapTile_filter_element_is_not_in_array(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
-				var containsCharacter = mapTile_filter_element_contains_character_and_can_perform_action();
+				var containsCharacter = mapTile_filter_element_contains_character();
 				var isNotPreparedForTurn = mapTile_filter_element_contains_character_and_is_NOT_prepared_for_turn();
 				//var notIncludeThisTilesFunc = helper_object_is_undefined_or_empty(__result_SelectorTilesHolderClass.get_all_myMapTiles_as_array());
 			    var tiles_with_characters = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([notIncludeThisTilesFunc, containsCharacter, isNotPreparedForTurn]);

@@ -18,7 +18,8 @@ function MySelectorActionClassOptionalConstrParams() {
 function MySelectorActionClass(_possible_tiles_to_choose_function, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
 {
     var _mySelectorActionClass = {
-		__possible_tiles_to_choose_function: _possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass, SelectorTilesHolderClass)
+		__possible_tiles_to_choose_function: 
+			_possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass, SelectorTilesHolderClass)
 		__selector_function: 
 			_MySelectorActionClassOptionalConstrParams._selector_function, // (_self, SelectorTilesHolderClass)
 		__numberOfTilesToSelect: 
@@ -127,7 +128,6 @@ function MySelectorActionClass(_possible_tiles_to_choose_function, _MySelectorAc
 			__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass();
             self.__action_finished = true;
         },
-		
 			
 		__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass: function() {
 			if (self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass != noone) {

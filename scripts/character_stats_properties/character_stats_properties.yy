@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"character_turn_executor_properties",
+  "%Name":"character_stats_properties",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"character_turn_executor_properties",
+  "name":"character_stats_properties",
   "parent":{
     "name":"properties",
     "path":"folders/Hex/Combat/Scripts/properties.yy",

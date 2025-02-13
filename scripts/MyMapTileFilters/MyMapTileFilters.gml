@@ -34,7 +34,8 @@ function mapTile_filter_element_contains_character_and_can_perform_action() {
 				return false;
 			}
 			
-			return _myMapTileObjectToCheck.__character.__properties_action_can_perform;
+			//return !_myMapTileObjectToCheck.__character.prepare_turn_is_prepared_for_turn();
+			//return _myMapTileObjectToCheck.__character.__properties_action_can_perform;
 			//return _myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn;
 	    }
 	}
@@ -49,35 +50,11 @@ function mapTile_filter_element_contains_character_and_is_NOT_prepared_for_turn(
 			}
 			
 			//return !(_myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn);
-			return !(_myMapTileObjectToCheck.__character.actions_is_prepared_for_turn());
+			return !(_myMapTileObjectToCheck.__character.prepare_turn_is_prepared_for_turn());
 	    }
 	}
 	return closedFunction;
 }
-
-
-//function mapTile_filter_element_contains_character_and_is_NOT_prepared_for_turn() {
-//	closedFunction = {
-//		filterFunc: function(_myMapTileObjectToCheck) {
-//			if(helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
-//				return false;
-//			}
-			
-//			return !(_myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn);
-//	    }
-//	}
-//	return closedFunction;
-//}
-
-
-//function mapTile_filter_element_contains_character() {
-//	closedFunction = {
-//		toReturn: function(_myMapTileObjectToCheck) {
-//			return !helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character);
-//	    }
-//	}
-//	return closedFunction;
-//}
 
 function mapTile_filter_element_NOT_contains_character() {
 	closedFunction = {
@@ -87,23 +64,6 @@ function mapTile_filter_element_NOT_contains_character() {
 	}
 	return closedFunction;
 }
-
-//function mapTile_filter_within_distance(_myMapTileSource, _distance) {
-//    closedFunction = {
-//        __source_row: _myMapTileSource._properties_map_element_row_index,
-//        __source_col: _myMapTileSource._properties_map_element_col_index,
-//        __distance: _distance,
-//        filterFunc: function(_myMapTileObjectToCheck) {
-//            // Obliczamy różnice między wierszami i kolumnami
-//            var row_diff = abs(_myMapTileObjectToCheck._properties_map_element_row_index - self.__source_row);
-//            var col_diff = abs(_myMapTileObjectToCheck._properties_map_element_col_index - self.__source_col);
-
-//            // Sprawdzamy, czy kafelek znajduje się w odległości manhattańskiej <= __distance
-//            return (row_diff + col_diff) <= self.__distance;
-//        }
-//    };
-//    return closedFunction;
-//}
 
 function mapTile_filter_within_distance(_myMapTileSource, _distance) {
     closedFunction = {
@@ -146,27 +106,3 @@ function offset_to_axial(row, col) {
     return [q, r];
 }
 
-//function offset_to_axial(row, col) {
-//    var q = col - ceil(row / 2); // Kolumny przesunięte w zależności od rzędu
-//    var r = row;                 // Rzędy pozostają takie same
-//    return [q, r];
-//}
-
-//function mapTile_filter_element_contains_character() {
-//	closedFunction = {
-//		toReturn: function(_objectToCheck) {
-//			return helper_array_is_contain_element(_arrayToCheck, _objectToCheck);
-//	    }
-//	}
-//	return closedFunction.toReturn;
-//}
-
-//function helper_function_element_is_not_in_array(_arrayToCheck) {
-//	closedFunction = {
-//		__arrayToCheck: _arrayToCheck,
-//		toReturn: function(_objectToCheck) {
-//			return !helper_array_is_contain_element(__arrayToCheck, _objectToCheck);
-//	    }
-//	}
-//	return closedFunction.toReturn;
-//}

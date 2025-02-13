@@ -1,4 +1,18 @@
-alarm[0] = 60;
+//alarm[0] = 60;
+
+//action_0 = instance_create_layer(0, 0, global.LAYERS.gui_card_selector.id, CardElement);
+
+//action_0.__actionClass = Action_Predefined_Move_In_Radius(5, properties_character_to_prepare_actions);
+////action_0.__actionSelectorManager = self;
+
+//__actions_to_select = [action_0];
+//__actions_selected = [];
+
+//__on_click_action_element = function(_cardElement /* CardElement */) {
+//	array_push(__actions_selected, _cardElement.__actionClass)
+//}
+
+
 
 show_debug_message("selected: " + string(__actions_selected));
 
