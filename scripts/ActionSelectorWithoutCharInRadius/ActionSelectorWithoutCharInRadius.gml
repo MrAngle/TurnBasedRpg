@@ -6,6 +6,7 @@ function Action_Selector_Without_Char_In_Radius(arg_invoker_char, arg_base_radiu
 		closedFunction = {
 			__distance: closed_arg_base_radius,
 			__invoker: closed_arg_invoker_char,
+			__action_selector_id: "Action_Selector_Without_Char_In_Radius",
 			toReturn: function(_self, __result_SelectorTilesHolderClass, __previous_result_SelectorTilesHolderClass) {
 				var tilesWithoutCharactersFunc = mapTile_filter_element_NOT_contains_character();
 				

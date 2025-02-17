@@ -3,7 +3,7 @@
 function Action_Predefined_Move_In_Radius(arg_invoker_char, arg_inRadius, autoStart = true) 
 {
 	var mySelectorActionList = ds_list_create();
-	//ds_list_add(mySelectorActionList, Action_Selector_All_Active_Chars());
+	
 	ds_list_add(mySelectorActionList, Action_Selector_Without_Char_In_Radius(arg_invoker_char, arg_inRadius));
 	
 	var actionProcessor = ActionProcessorClass(Action_Processor_Move());

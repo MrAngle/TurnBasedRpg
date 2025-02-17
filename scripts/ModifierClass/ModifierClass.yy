@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ModifierClass",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ModifierClass",
+  "parent":{
+    "name":"Modifiers",
+    "path":"folders/Hex/Combat/Modifiers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

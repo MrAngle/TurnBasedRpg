@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ActionProperties",
+  "%Name":"ActionGroupProperties",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ActionProperties",
+  "name":"ActionGroupProperties",
   "parent":{
     "name":"ACTIONS_TEMPLATES",
     "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES.yy",

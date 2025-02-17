@@ -1,13 +1,11 @@
 {
-  "$GMScript":"v1",
-  "%Name":"ActionProperties",
-  "isCompatibility":false,
-  "isDnD":false,
-  "name":"ActionProperties",
+  "$GMNotes":"",
+  "%Name":"ActionRules",
+  "name":"ActionRules",
   "parent":{
     "name":"ACTIONS_TEMPLATES",
     "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES.yy",
   },
-  "resourceType":"GMScript",
+  "resourceType":"GMNotes",
   "resourceVersion":"2.0",
 }

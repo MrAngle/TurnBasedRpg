@@ -1,0 +1,89 @@
+// SELECTOR
+
+Radius - 
+modyfikator ruchu/strzału/czaru
+modificator function:
+
+ActionModifier() { 
+	calculateModifier(ActionClass) return value (digit)
+}
+function(ActionClass), return 
+
+Mnożniki ( 
+Dodawanie
+
+((Mnożnik * base)Xn + (Dodawane) ) * Scale
+
+
+Modyfikatory funkcyjne
+(Bazowe)
+Co drugie pole
+Kierunek
+Linie
+Stozek
+
+Buffy i debuffy -
+  związane z ruch/strzał/czar
+wartość - określa kolejność procesowania
+
+var ACTION_PROPERTIES = {
+	MOVEMENT: {
+	    BASE: 1,
+	    SPEED_SCALING: 1,
+	},
+	PHYSICAL_ATTACK: {
+	    BASE_DAMAGE: 1,
+	    STRENGTH_SCALING: 1
+	},
+	MAGIC_ATTACK: {
+	    BASE_DAMAGE: 1,
+	    INT_SCALING: 1
+	}
+};
+
+// przypadki do rozpatrzenia:
+- zwykly ruch
+- wybór postaci i wykonanie w ramach niego akcji
+- obliczanie modyfikatorow na podstawie celu
+
+
+Action {
+	Invoker
+	SubActions []
+}
+
+
+SubAction {
+	SubActionProperties {
+		TYPE {
+			MOVEMENT
+		}
+		SELECTOR {
+			STATS {
+				radius,
+				scaling
+				SELECT_TYPE
+			},
+			INCLUDE_TILES_SHAPE {
+				
+			}
+		}
+		EXECUTOR {
+		
+		}
+		
+	}
+	
+	TargetSelector() {
+		calculateTargers(SubActionProperties, Invoker) return Targets[]
+		__calculateSelectorProperties()
+	}
+	
+	Executor() {
+		
+	}
+	
+}
+
+
+
