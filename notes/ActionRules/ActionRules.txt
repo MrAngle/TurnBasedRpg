@@ -29,15 +29,15 @@ wartość - określa kolejność procesowania
 var ACTION_PROPERTIES = {
 	MOVEMENT: {
 	    BASE: 1,
-	    SPEED_SCALING: 1,
+	    SCALING: 1,
 	},
 	PHYSICAL_ATTACK: {
-	    BASE_DAMAGE: 1,
-	    STRENGTH_SCALING: 1
+	    BASE: 1,
+	    SCALING: 1
 	},
 	MAGIC_ATTACK: {
-	    BASE_DAMAGE: 1,
-	    INT_SCALING: 1
+	    BASE: 1,
+	    SCALING: 1
 	}
 };
 
@@ -49,8 +49,80 @@ var ACTION_PROPERTIES = {
 
 Action {
 	Invoker
-	SubActions []
+	
+	SelectorProperties[n] {
+		TYPE {
+			MOVEMENT
+		}
+		STATS
+		{
+			radius,
+			scaling
+			SELECT_TYPE
+		},
+		INCLUDE_TILES_SHAPE {
+			ALL_IN_RADIUS
+		}
+	}
+	
+	// 
+	LAST_SELECTED_TARGET = 
+	var ACTION_PROPERTIES = {
+		prepareExeFunction: {
+			MoveAction(Source, Target) {
+	
+			}
+		}
+		ACTION_FUNCTION : function(Invoker, StatsSource, Target)
+		DAMAGE_STATS {
+		    MOVEMENT: {
+		        //BASE: 1,
+		        //SPEED_SCALING: 1,
+		    },
+		    PHYSICAL_ATTACK: {
+		        BASE_DAMAGE: 10,
+				SCALING: function(invoker, target)
+		        //STRENGTH_SCALING: 1
+		    },
+		    MAGIC_ATTACK: {
+		        BASE_DAMAGE: 1,
+		        INT_SCALING: 1
+		    }
+		}
+		EFFECTS {
+			PUSH
+		}
+	};
+	
+	SelectorActions[] (SelectorActions(SelectorProperties[n], invoker, sources)
+
+
+	ActionProcessor(SelectorActions[], invoker)
 }
+
+// MOVE
+
+MoveAction(ELEMENT_SOURCE.IVOKER, ELEMENT_SOURCE.LAST_SELECTED)
+
+MoveAction(Source, Target) {
+	
+}
+
+Action {
+	STATS {
+		MOVEMENT
+	}
+	Source,
+	Target
+	function(Source, Target) {
+	}
+	
+	execute() {
+		function
+	}
+}
+
+
 
 
 SubAction {

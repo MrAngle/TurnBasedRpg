@@ -28,7 +28,7 @@
 //}
 
 
-function Action_Selector_All_Active_Chars_Without_Selected_Actions(arg_NumberToSelect = 1) 
+function Action_Selector_All_Active_Chars_Without_Selected_Actions(arg_ActionSelectorProperties) 
 {
 	var all_active_characters = function() {
 		closedFunction = {
@@ -48,9 +48,9 @@ function Action_Selector_All_Active_Chars_Without_Selected_Actions(arg_NumberToS
 
 	var testselector = MySelectorActionClassOptionalConstrParams();
 	testselector._SELECTOR_TYPE_ENUM = SELECTOR_TYPE_ENUM.ACTIVE;
-	testselector._numberOfTilesToSelect = arg_NumberToSelect;
+	testselector._numberOfTilesToSelect = 1;
 
-	var selectorActionCharacter = MySelectorActionClass(all_active_characters(), testselector);
+	var selectorActionCharacter = MySelectorActionClass(arg_ActionSelectorProperties, all_active_characters(), testselector);
 	
 	return selectorActionCharacter;
 }

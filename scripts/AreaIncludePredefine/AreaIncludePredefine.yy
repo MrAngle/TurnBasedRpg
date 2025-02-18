@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"AreaIncludePredefine",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"AreaIncludePredefine",
+  "parent":{
+    "name":"ActionSelectorFilters",
+    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTION_SELECTORS/ActionSelectorFilters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

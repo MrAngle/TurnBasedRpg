@@ -7,7 +7,7 @@
 
 function MySelectorActionClassOptionalConstrParams() {
     return {
-        _selector_function: noone,
+        //_selector_function: noone,
         _numberOfTilesToSelect: 1,
         _SELECTOR_TYPE_ENUM: SELECTOR_TYPE_ENUM.SELECTED,
         _SELECTOR_STORE_STRATEGY: SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX,
@@ -15,26 +15,22 @@ function MySelectorActionClassOptionalConstrParams() {
     };
 }
 
-function MySelectorActionClass(_possible_tiles_to_choose_function, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
+function MySelectorActionClass(arg_ActionSelectorProperties, _possible_tiles_to_choose_function, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
 {
     var _mySelectorActionClass = {
+		__actionSelectorProperties: arg_ActionSelectorProperties,
 		__possible_tiles_to_choose_function: 
 			_possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass, SelectorTilesHolderClass)
-		__selector_function: 
-			_MySelectorActionClassOptionalConstrParams._selector_function, // (_self, SelectorTilesHolderClass)
 		__numberOfTilesToSelect: 
 			_MySelectorActionClassOptionalConstrParams._numberOfTilesToSelect,
 		__SELECTOR_TYPE: 
 			_MySelectorActionClassOptionalConstrParams._SELECTOR_TYPE_ENUM,
 		__SELECTOR_STORE_STRATEGY: 
 			_MySelectorActionClassOptionalConstrParams._SELECTOR_STORE_STRATEGY,
-		//__next_MySelectorActionClass: _next_MySelectorActionClass, // MySelectorActionClass
-		
-		//_previous_selected_SelectorTilesHolderClass
+
 		__result_SelectorTilesHolderClass: noone, // SelectorTilesHolderClass
 		__previous_result_SelectorTilesHolderClass: _MySelectorActionClassOptionalConstrParams._previous_selected_SelectorTilesHolderClass, // SelectorTilesHolderClass
 		__selector_possible_tiles_to_choose_SelectorTilesHolderClass: noone, // SelectorTilesHolderClass
-		//__previous_MySelectorActionClass: _previous_MySelectorActionClass, // MySelectorActionClass
 		
 		__action_finished: false,
 		
@@ -55,12 +51,14 @@ function MySelectorActionClass(_possible_tiles_to_choose_function, _MySelectorAc
 			self.__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass();
 			
 			if(__possible_tiles_to_choose_function != noone) {
+				//var _selectableTile_arrayMyMapTiles = 
+				//	__possible_tiles_to_choose_function(
+				//		_self, 
+				//		__result_SelectorTilesHolderClass, 
+				//		__previous_result_SelectorTilesHolderClass
+				//	);
 				var _selectableTile_arrayMyMapTiles = 
-					__possible_tiles_to_choose_function(
-						_self, 
-						__result_SelectorTilesHolderClass, 
-						__previous_result_SelectorTilesHolderClass
-					);
+					calculateTilesToSelect();
 				
 				if(!helper_array_is_undefined_or_empty(_selectableTile_arrayMyMapTiles)) {
 					self.__selector_possible_tiles_to_choose_SelectorTilesHolderClass = SelectorTilesHolderClass(
@@ -70,6 +68,41 @@ function MySelectorActionClass(_possible_tiles_to_choose_function, _MySelectorAc
 						_selectableTile_arrayMyMapTiles);
 				}
 			}
+		},
+		
+		calculateTilesToSelect: function() {
+		    var combinedTiles = []; // Tablica sumująca wszystkie wyniki AREA_INCLUDE_FUNCS
+    
+		    // **1. Przetwarzanie AREA_INCLUDE_FUNCS** (sumowanie wszystkich wyników)
+		    var areaFuncs = __actionSelectorProperties.AREA_INCLUDE_FUNCS;
+		    for (var i = 0; i < array_length(areaFuncs); i++) {
+		        var resultTiles = areaFuncs[i].getTilesToInclude(); // Wywołanie funkcji zwracającej tablicę kafelków
+		        combinedTiles = array_concat(combinedTiles, resultTiles); // Sumowanie wyników
+		    }
+
+		    // **2. Przetwarzanie TILE_INCLUDE_RULE_FUNCS** (filtrowanie wynikowej tablicy)
+		    var filteredTiles = []; // Nowa tablica z przefiltrowanymi wartościami
+		    var ruleFuncs = __actionSelectorProperties.TILE_INCLUDE_RULE_FUNCS;
+
+		    for (var j = 0; j < array_length(combinedTiles); j++) {
+		        var tile = combinedTiles[j];
+		        var isValid = true; // Zakładamy, że każdy element jest poprawny
+
+		        // Sprawdzamy każdą regułę w TILE_INCLUDE_RULE_FUNCS
+		        for (var k = 0; k < array_length(ruleFuncs); k++) {
+		            if (!ruleFuncs[k].filterFunc(tile)) { // Jeśli jakakolwiek funkcja zwróci false -> odrzucamy
+		                isValid = false;
+		                break;
+		            }
+		        }
+
+		        // Jeśli przeszło wszystkie reguły -> dodajemy do listy końcowej
+		        if (isValid) {
+		            array_push(filteredTiles, tile);
+		        }
+		    }
+
+		    return filteredTiles; // Zwracamy końcową tablicę przefiltrowanych kafelków
 		},
 		
 		execute: function(_self) {
