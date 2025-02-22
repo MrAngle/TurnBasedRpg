@@ -15,12 +15,13 @@ function MySelectorActionClassOptionalConstrParams() {
     };
 }
 
-function MySelectorActionClass(arg_ActionSelectorProperties, _possible_tiles_to_choose_function, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
+function MySelectorActionClass(arg_ActionSelectorProperties, _MySelectorActionClassOptionalConstrParams = MySelectorActionClassOptionalConstrParams())
 {
     var _mySelectorActionClass = {
-		__actionSelectorProperties: arg_ActionSelectorProperties,
-		__possible_tiles_to_choose_function: 
-			_possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass, SelectorTilesHolderClass)
+		__actionSelectorProperties: 
+			arg_ActionSelectorProperties,
+		//__possible_tiles_to_choose_function: 
+		//	_possible_tiles_to_choose_function, // (_self, SelectorTilesHolderClass, SelectorTilesHolderClass)
 		__numberOfTilesToSelect: 
 			_MySelectorActionClassOptionalConstrParams._numberOfTilesToSelect,
 		__SELECTOR_TYPE: 
@@ -50,7 +51,7 @@ function MySelectorActionClass(arg_ActionSelectorProperties, _possible_tiles_to_
 
 			self.__destroy__selector_possible_tiles_to_choose_SelectorTilesHolderClass();
 			
-			if(__possible_tiles_to_choose_function != noone) {
+			//if(__possible_tiles_to_choose_function != noone) {
 				//var _selectableTile_arrayMyMapTiles = 
 				//	__possible_tiles_to_choose_function(
 				//		_self, 
@@ -67,7 +68,7 @@ function MySelectorActionClass(arg_ActionSelectorProperties, _possible_tiles_to_
 						SELECTOR_STORE_STRATEGY.REPLACE_FIRST_WHEN_MAX,
 						_selectableTile_arrayMyMapTiles);
 				}
-			}
+			//}
 		},
 		
 		calculateTilesToSelect: function() {

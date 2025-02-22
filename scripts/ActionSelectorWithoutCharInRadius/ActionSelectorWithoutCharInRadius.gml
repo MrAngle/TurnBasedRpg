@@ -21,6 +21,6 @@ function Action_Selector_Without_Char_In_Radius(arg_ActionSelectorProperties, ar
 		return closedFunction.toReturn;
 	}
 	
-	var selectorActionWithoutCharacter = MySelectorActionClass(arg_ActionSelectorProperties, all_empty_tile_in_distance(arg_base_radius, arg_invoker_char));
+	var selectorActionWithoutCharacter = MySelectorActionClass(arg_ActionSelectorProperties);
 	return selectorActionWithoutCharacter;
 }

@@ -1,22 +1,52 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
+			//,{
+			//	TYPE: global.STATISTICS.MOVEMENT,
+			//	BASE_VALUE_FUNC: VALUE_FUNC(1),
+			//	SCALING_VALUE_FUNC: VALUE_FUNC(1),
+			//	STAT_SOURCE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER),
+			//	CALCULATE_VALUE_FUNC: function() {
+			//        return BASE_VALUE_FUNC() + (SCALING_VALUE_FUNC() * char[TYPE]); // Zakładając, że MOVEMENT to klucz w obiekcie postaci
+			//    }
+			//}
+
 function Action_Predefined_Move_In_Radius(arg_invoker_char, arg_inRadius, autoStart = true) 
 {
 	var _actionClass = ActionClass();
+	var sklEx = SKILL_EXCTRACTOR(_actionClass);
+	//getValueFunc
+	var selectorMovementStats = StatsClass({
+				    STAT_TYPE: global.STATISTICS.MOVEMENT,
+				    BASE_VALUE_FUNC: VALUE_FUNC(1),
+				    SCALING_VALUE_FUNC: VALUE_FUNC(0.5),
+				    STAT_SOURCE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)
+				})
 	
 	var SELECTOR_PROPERTIES = [
 	{
+		SKILL_NAME: "Action_Selector_Without_Char_In_Radius",
 		STATS: {
-			TYPE: global.STATISTICS.MOVEMENT,
-			BASE: 1,
-			SCALING: 1,
-			STAT_SOURCE_FUNC: AC_EXCTRACTOR_FUNC(_actionClass, AC_EXTRACTOR_ENUM.INVOKER)
-			//STAT_SOURCE: EXTRACTOR_INVOKER(arg_actionClass),
+			PROPERTIES: [
+				selectorMovementStats
+			],
+			calculateTotal: function() {}
 		},
+		
 		AREA_INCLUDE_FUNCS: [
-			AreaIncludeClass(
-				ActionSelectorAreaFilter_AllTilesInDistance(AC_EXCTRACTOR_FUNC(_actionClass, AC_EXTRACTOR_ENUM.INVOKER))
-				)
+			AreaFilterClass(
+				{
+				    AREA_FILTER_FUNC: ActionAreaFilterBuilder_AllTilesInDistance,
+				    STATS_CALC_FUNC: selectorMovementStats.getValueFunc(),
+				    SOURCE_TILE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)
+				}
+			)
+			
+				//{
+				//}
+				//ActionAreaFilterBuilder_AllTilesInDistance(
+				//	sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)
+				//)
+			//)
 		],
 		TILE_INCLUDE_RULE_FUNCS: [
 			mapTile_filter_element_NOT_contains_character()
@@ -40,17 +70,29 @@ function Action_Predefined_Move_In_Radius(arg_invoker_char, arg_inRadius, autoSt
 function Action_Predefined_Select_Character_To_Prepare_Turn() 
 {
 	var _actionClass = ActionClass();
+	var sklEx = SKILL_EXCTRACTOR(_actionClass);
 	
 	var SELECTOR_PROPERTIES = [
 	{
-		STATS: {
-			TYPE: global.STATISTICS.MOVEMENT,
-			BASE: 1,
-			SCALING: 1,
-			STAT_SOURCE_FUNC: AC_EXCTRACTOR_FUNC(_actionClass, AC_EXTRACTOR_ENUM.INVOKER)
-		},
+		PROPERTIES: [
+			StatsClass({
+				STAT_TYPE: global.STATISTICS.MOVEMENT,
+				BASE_VALUE_FUNC: VALUE_FUNC(1),
+				SCALING_VALUE_FUNC: VALUE_FUNC(0.5),
+				STAT_SOURCE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)
+			})
+		],
 		AREA_INCLUDE_FUNCS: [
-			AreaIncludeClass(ActionSelectorAreaFilter_AllTiles())
+			AreaFilterClass(
+				{
+				    AREA_FILTER_FUNC: ActionAreaFilterBuilder_AllTiles,
+				    STATS_CALC_FUNC: function() { return 0 },
+				    SOURCE_TILE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER),
+				    //CONDITION_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)
+				}
+			)
+		
+			//AreaFilterClass(ActionAreaFilterBuilder_AllTiles())
 		],
 		TILE_INCLUDE_RULE_FUNCS: [
 			mapTile_filter_element_contains_character(),

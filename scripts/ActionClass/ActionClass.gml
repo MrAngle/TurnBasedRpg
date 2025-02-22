@@ -57,13 +57,30 @@ function ACTION_EXCTRACTOR(arg_Action, arg_AC_EXTRACTOR_ENUM) {
     }
 }
 
-function AC_EXCTRACTOR_FUNC(arg_action, arg_AC_EXTRACTOR_ENUM) {
-	var closedFunc = {
+//function AC_EXCTRACTOR_FUNC(arg_action, arg_AC_EXTRACTOR_ENUM) {
+//	var closedFunc = {
+//		__action: arg_action,
+//		__AC_EXTRACTOR_ENUM: arg_AC_EXTRACTOR_ENUM,
+//		toReturn: function() {
+//			return ACTION_EXCTRACTOR(__action, __AC_EXTRACTOR_ENUM);
+//		}
+//	}
+//	return closedFunc.toReturn;
+//}
+
+function SKILL_EXCTRACTOR(arg_action) {
+	var sklEx = {
 		__action: arg_action,
-		__AC_EXTRACTOR_ENUM: arg_AC_EXTRACTOR_ENUM,
-		toReturn: function() {
-			return ACTION_EXCTRACTOR(__action, __AC_EXTRACTOR_ENUM);
+		EXCTRACTOR_FUNC: function(arg_AC_EXTRACTOR_ENUM) {
+			var closedFunc = {
+				__AC_EXTRACTOR_ENUM: arg_AC_EXTRACTOR_ENUM,
+				__local_action: __action,
+				toReturn: function() {
+					return ACTION_EXCTRACTOR(__local_action, __AC_EXTRACTOR_ENUM);
+				}
+			}
+			return closedFunc.toReturn;
 		}
 	}
-	return closedFunc.toReturn;
+	return sklEx;
 }

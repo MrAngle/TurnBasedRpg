@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"CalculateStats",
+  "%Name":"SkillsFunctionOrganiser",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"CalculateStats",
+  "name":"SkillsFunctionOrganiser",
   "parent":{
     "name":"ACTIONS",
     "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTIONS.yy",

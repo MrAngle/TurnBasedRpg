@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"AreaIncludeClass",
+  "%Name":"AreaFilterClass",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"AreaIncludeClass",
+  "name":"AreaFilterClass",
   "parent":{
     "name":"ActionSelectorFilters",
     "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTION_SELECTORS/ActionSelectorFilters.yy",

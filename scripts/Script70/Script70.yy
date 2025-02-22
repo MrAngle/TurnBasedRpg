@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"CalculateStats",
+  "%Name":"Script70",
   "isCompatibility":false,
-  "isDnD":false,
-  "name":"CalculateStats",
+  "isDnD":true,
+  "name":"Script70",
   "parent":{
     "name":"ACTIONS",
     "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTIONS.yy",
