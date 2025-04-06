@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"MySelectorActionClass",
   "parent":{
-    "name":"CombatActionSelector",
-    "path":"folders/Hex/Combat/CombatActionSelector.yy",
+    "name":"CombatActionSelector_OLD",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -10,6 +10,7 @@ global.STATISTICS = {
     MOVEMENT: "MOVEMENT",
     PHYSICAL_ATTACK: "PHYSICAL_ATTACK",
     MAGIC_ATTACK: "MAGIC_ATTACK",
+    HP: "HP",
 	
 	CALCULATE_VALUE_FUNC: "CALCULATE_VALUE_FUNC"
 };
@@ -22,12 +23,15 @@ function properties_load_character_stats()
 	        CALCULATE_VALUE_FUNC: __CALCULATE_MODIFIERS_MOVEMENT_FUNCTION(self)
 	    },
 	    PHYSICAL_ATTACK: {
-	        BASE_DAMAGE: 1,
+	        BASE: 1,
 	        STRENGTH_SCALING: 1
 	    },
 	    MAGIC_ATTACK: {
-	        BASE_DAMAGE: 1,
+	        BASE: 1,
 	        INT_SCALING: 1
+	    },
+		HP: {
+	        BASE: 10,
 	    }
 	};
 	

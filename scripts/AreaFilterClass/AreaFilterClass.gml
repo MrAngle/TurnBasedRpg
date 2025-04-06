@@ -1,4 +1,4 @@
-global.AREA_FILTER_NAME_AREA_FILTER_FUNC = "AREA_FILTER_FUNC"; // function(properties) return array of tiles // required
+global.AREA_FILTER_NAME_AREA_FILTER_BUILDER_FUNC = "AREA_FILTER_BUILDER_FUNC"; // function(properties) return array of tiles // required
 global.AREA_FILTER_NAME_STATS_CALC_FUNC = "STATS_CALC_FUNC"; // function() return related stats value // required
 global.AREA_FILTER_NAME_SOURCE_TILE_FUNC = "SOURCE_TILE_FUNC"; // function() return tile struct // required
 global.AREA_FILTER_NAME_CONDITION_FUNC = "CONDITION_FUNC"; // return true or false
@@ -25,7 +25,7 @@ function AreaFilterClass(arg_struct_constr)
 		//__conditionFunc: undefined,   // return true or false
 		
 		__init: function() {
-			var area_filter_builder = variable_struct_get(__priv_params_struct, global.AREA_FILTER_NAME_AREA_FILTER_FUNC)
+			var area_filter_builder = variable_struct_get(__priv_params_struct, global.AREA_FILTER_NAME_AREA_FILTER_BUILDER_FUNC)
 			__priv_area_filter_func = area_filter_builder(__priv_params_struct);
 			//__statsCalcFunc = variable_struct_get(arg_struct_constr, global.AREA_FILTER_NAME_STATS_CALC_FUNC)
 			//__sourceTileFunc = variable_struct_get(arg_struct_constr, global.AREA_FILTER_NAME_SOURCE_TILE_FUNC)
@@ -44,7 +44,7 @@ function AreaFilterClass(arg_struct_constr)
 		getTilesToInclude: function() {
 			if(isConditionTrue()) {
 				//var localAreaFilterFunc = 
-				//	variable_struct_get(__priv_params_struct, global.AREA_FILTER_NAME_AREA_FILTER_FUNC)
+				//	variable_struct_get(__priv_params_struct, global.AREA_FILTER_NAME_AREA_FILTER_BUILDER_FUNC)
 				
 				//var returnValue =  localAreaFilterFunc(__priv_params_struct);
 				var returnValue = __priv_area_filter_func();

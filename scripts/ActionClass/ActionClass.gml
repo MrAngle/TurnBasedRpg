@@ -43,7 +43,9 @@ function ActionClass()
 
 enum AC_EXTRACTOR_ENUM {
 	INVOKER,
-	LAST_SELECTED_TARGET
+	LAST_SELECTED_TARGET,
+	FIRST_SELECTOR,
+	FIRST_SELECTOR_PROPERTIES,
 }
 
 function ACTION_EXCTRACTOR(arg_Action, arg_AC_EXTRACTOR_ENUM) {
@@ -52,10 +54,16 @@ function ACTION_EXCTRACTOR(arg_Action, arg_AC_EXTRACTOR_ENUM) {
             return arg_Action.getInvoker();
         case AC_EXTRACTOR_ENUM.LAST_SELECTED_TARGET:
             //return arg_Action.LAST_SELECTED_TARGET; // Pobiera "Last Selected Target"
+		case AC_EXTRACTOR_ENUM.FIRST_SELECTOR:
+            return arg_Action.__mySelectorActionManagerClass.get_selector_by_index(0);
+		case AC_EXTRACTOR_ENUM.FIRST_SELECTOR_PROPERTIES:
+            return ACTION_EXCTRACTOR(arg_Action, AC_EXTRACTOR_ENUM.FIRST_SELECTOR).get_action_selector_properties();
         default:
             return undefined; // Jeśli wartość nie pasuje, zwraca undefined
     }
 }
+
+
 
 //function AC_EXCTRACTOR_FUNC(arg_action, arg_AC_EXTRACTOR_ENUM) {
 //	var closedFunc = {

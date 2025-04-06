@@ -6,7 +6,8 @@ properties_character_to_prepare_actions = noone; // abst_combat_character
 alarm[0] = 1;
 
 
-action_0.__actionClass = Action_Predefined_Move_In_Radius(global.COMBAT_GLOBALS.ACTION_PREPARATION.CURRENT_CHARACTER_TO_PREPARE, 5);
+action_0.__actionClass = 
+	Action_Predefined_Move_In_Radius(global.COMBAT_GLOBALS.ACTION_PREPARATION.CURRENT_CHARACTER_TO_PREPARE, 5);
 //action_0.__actionSelectorManager = self;
 
 __actions_to_select = [action_0];

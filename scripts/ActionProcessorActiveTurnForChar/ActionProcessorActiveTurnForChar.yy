@@ -6,7 +6,7 @@
   "name":"ActionProcessorActiveTurnForChar",
   "parent":{
     "name":"ACTION_PROCESSORS",
-    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTION_PROCESSORS.yy",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD/ACTIONS_TEMPLATES/ACTION_PROCESSORS.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

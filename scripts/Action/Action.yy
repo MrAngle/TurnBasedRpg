@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Action",
+  "isCompatibility":false,
+  "isDnD":true,
+  "name":"Action",
+  "parent":{
+    "name":"CombatAction",
+    "path":"folders/Hex/Combat/CombatAction.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

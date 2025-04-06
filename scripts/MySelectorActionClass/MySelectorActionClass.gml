@@ -1,10 +1,3 @@
-// // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
-// // https://help.yoyogames.com/hc/en-us/articles/360005277377
-
-
-//MySelectorActionClass
-
-
 function MySelectorActionClassOptionalConstrParams() {
     return {
         //_selector_function: noone,
@@ -43,6 +36,10 @@ function MySelectorActionClass(arg_ActionSelectorProperties, _MySelectorActionCl
 					__SELECTOR_TYPE, 
 					__SELECTOR_STORE_STRATEGY);
 	    },
+		
+		get_action_selector_properties: function() {
+			return __actionSelectorProperties;
+		},
 
 		load_possible_moves: function(_self) {
 			if(helper_struct_is_undefined_or_empty(__result_SelectorTilesHolderClass)) { // after cancel
@@ -218,14 +215,14 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 				}
 				__selector_action_index = __selector_action_index + 1;
 				
-				get_current_action().__previous_result_SelectorTilesHolderClass =
+				get_current_selector().__previous_result_SelectorTilesHolderClass =
 					__selector_MySelectorActions[| __selector_action_index - 1].__result_SelectorTilesHolderClass
-				get_current_action().load_possible_moves(_self);
+				get_current_selector().load_possible_moves(_self);
 			}
 		},
 		
 		cancel_current_move: function(_self) {
-			get_current_action().__cancel_move(_self);
+			get_current_selector().__cancel_move(_self);
 			
 			if(__selector_action_index == 0) {
 				__selector_actions_cancelled = true;
@@ -234,11 +231,15 @@ function MySelectorActionManagerClass(_dsListOfMySelectorActionClass)
 			}
 			
 			// rest selected move
-			get_current_action().__reset_move(_self);
+			get_current_selector().__reset_move(_self);
 		},
 		
-		get_current_action: function() {
+		get_current_selector: function() {
 			return __selector_MySelectorActions[| __selector_action_index];
+		},
+		
+		get_selector_by_index: function(arg_index) {
+			return __selector_MySelectorActions[| arg_index];
 		},
 		
 		// Metoda destrukcji

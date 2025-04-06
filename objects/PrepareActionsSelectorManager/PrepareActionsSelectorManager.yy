@@ -11,8 +11,8 @@
   "name":"PrepareActionsSelectorManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"CombatActionSelector",
-    "path":"folders/Hex/Combat/CombatActionSelector.yy",
+    "name":"CombatActionSelector_OLD",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD.yy",
   },
   "parentObjectId":null,
   "persistent":false,

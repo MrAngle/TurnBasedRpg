@@ -4,7 +4,7 @@
   "name":"ActionRules",
   "parent":{
     "name":"ACTIONS_TEMPLATES",
-    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES.yy",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD/ACTIONS_TEMPLATES.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",

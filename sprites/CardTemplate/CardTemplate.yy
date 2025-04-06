@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"CombatActionSelector",
-    "path":"folders/Hex/Combat/CombatActionSelector.yy",
+    "name":"CombatActionSelector_OLD",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

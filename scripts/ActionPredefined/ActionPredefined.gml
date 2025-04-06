@@ -1,16 +1,6 @@
-// // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
-// // https://help.yoyogames.com/hc/en-us/articles/360005277377
-			//,{
-			//	TYPE: global.STATISTICS.MOVEMENT,
-			//	BASE_VALUE_FUNC: VALUE_FUNC(1),
-			//	SCALING_VALUE_FUNC: VALUE_FUNC(1),
-			//	STAT_SOURCE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER),
-			//	CALCULATE_VALUE_FUNC: function() {
-			//        return BASE_VALUE_FUNC() + (SCALING_VALUE_FUNC() * char[TYPE]); // Zakładając, że MOVEMENT to klucz w obiekcie postaci
-			//    }
-			//}
 
-function Action_Predefined_Move_In_Radius(arg_invoker_char, arg_inRadius, autoStart = true) 
+
+function Action_Predefined_Move_In_Radius(arg_invoker_char) 
 {
 	var _actionClass = ActionClass();
 	var sklEx = SKILL_EXCTRACTOR(_actionClass);
@@ -35,7 +25,7 @@ function Action_Predefined_Move_In_Radius(arg_invoker_char, arg_inRadius, autoSt
 		AREA_INCLUDE_FUNCS: [
 			AreaFilterClass(
 				{
-				    AREA_FILTER_FUNC: ActionAreaFilterBuilder_AllTilesInDistance,
+				    AREA_FILTER_BUILDER_FUNC: ActionAreaFilterBuilder_AllTilesInDistance,
 				    STATS_CALC_FUNC: selectorMovementStats.getValueFunc(),
 				    SOURCE_TILE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)
 				}
@@ -55,7 +45,8 @@ function Action_Predefined_Move_In_Radius(arg_invoker_char, arg_inRadius, autoSt
 	
 	var mySelectorActionList = ds_list_create();
 	
-	ds_list_add(mySelectorActionList, Action_Selector_Without_Char_In_Radius(SELECTOR_PROPERTIES[0], arg_invoker_char, arg_inRadius));
+	//ds_list_add(mySelectorActionList, MySelectorActionClass(SELECTOR_PROPERTIES[0]) Action_Selector_Without_Char_In_Radius(SELECTOR_PROPERTIES[0], arg_invoker_char, arg_inRadius));
+	ds_list_add(mySelectorActionList, MySelectorActionClass(SELECTOR_PROPERTIES[0]));
 	
 	var actionProcessor = ActionProcessorClass(Action_Processor_Move());
 
@@ -85,7 +76,7 @@ function Action_Predefined_Select_Character_To_Prepare_Turn()
 		AREA_INCLUDE_FUNCS: [
 			AreaFilterClass(
 				{
-				    AREA_FILTER_FUNC: ActionAreaFilterBuilder_AllTiles,
+				    AREA_FILTER_BUILDER_FUNC: ActionAreaFilterBuilder_AllTiles,
 				    STATS_CALC_FUNC: function() { return 0 },
 				    SOURCE_TILE_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER),
 				    //CONDITION_FUNC: sklEx.EXCTRACTOR_FUNC(AC_EXTRACTOR_ENUM.INVOKER)

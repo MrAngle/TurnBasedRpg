@@ -6,7 +6,7 @@
   "name":"SkillsFunctionOrganiser",
   "parent":{
     "name":"ACTIONS",
-    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTIONS.yy",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD/ACTIONS_TEMPLATES/ACTIONS.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

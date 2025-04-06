@@ -6,7 +6,7 @@
   "name":"ActionSelectorClass",
   "parent":{
     "name":"ACTION_SELECTORS",
-    "path":"folders/Hex/Combat/CombatActionSelector/ACTIONS_TEMPLATES/ACTION_SELECTORS.yy",
+    "path":"folders/Hex/Combat/CombatActionSelector_OLD/ACTIONS_TEMPLATES/ACTION_SELECTORS.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

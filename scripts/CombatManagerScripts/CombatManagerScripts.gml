@@ -2,7 +2,7 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 function INIT_CombatManager() 
 {
-	global.____INIT_DEFAULT_MANAGER();
+	//global.____INIT_DEFAULT_MANAGER();
 }
 
 //global.____INIT_DEFAULT_MANAGER = function() {
@@ -69,9 +69,7 @@ global.___INIT_MANAGER = function() {
 	global.myMenuManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuManager);
 
 	global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
-
 	instance_create_layer(0, 0, global.LAYERS.managers.id, CameraManager);
-	//global.COMBAT_GLOBALS.MANAGERS.ACTION_SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, ActionSelectorManager);
 }
 
 global.___LOAD_CHARACTERS_ACTIONS = function() {
@@ -86,8 +84,8 @@ global.___AFTER_CREATE_MANAGER = function() {
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.show_tiles();
 	//combatCharactersHolderClass = CombatCharactersHolderClass(global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.get_all_characters_on_map())
 	//global.COMBAT_GLOBALS.STORE.ACTIVE_CHARACTERS_HOLDER = combatCharactersHolderClass;
-	combatTurnManager = instance_create_layer(0, 0, global.LAYERS.managers.id, CombatTurnManager);
-	global.COMBAT_GLOBALS.MANAGERS.COMBAT_TURN = combatTurnManager;
+	//combatTurnManager = instance_create_layer(0, 0, global.LAYERS.managers.id, CombatTurnManager);
+	//global.COMBAT_GLOBALS.MANAGERS.COMBAT_TURN = combatTurnManager;
 
 	//instance_create_layer(0, 0, global.LAYERS.selectors.id, TileSelector);
 
