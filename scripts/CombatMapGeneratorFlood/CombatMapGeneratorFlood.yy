@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"CombatMapGeneratorFlood",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"CombatMapGeneratorFlood",
+  "parent":{
+    "name":"CombatMap",
+    "path":"folders/Hex/Combat/CombatMap.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

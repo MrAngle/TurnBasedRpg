@@ -27,6 +27,18 @@ function mapTile_filter_element_contains_character() {
 	return closedFunction;
 }
 
+
+function mapTile_filter_element_contains_player_character() {
+	closedFunction = {
+		filterFunc: function(_myMapTileObjectToCheck) {
+			if(!helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
+				return _myMapTileObjectToCheck.__character.my_character_side == CombatCharacterSideEnum.PLAYER
+			}
+	    }
+	}
+	return closedFunction;
+}
+
 function mapTile_filter_element_contains_character_and_can_perform_action() {
 	closedFunction = {
 		filterFunc: function(_myMapTileObjectToCheck) {

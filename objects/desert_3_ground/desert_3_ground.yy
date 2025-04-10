@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"desert_3_empty",
-    "path":"folders/Hex/Combat/CombatMap/Tiles/DesertTiles/desert_3_empty.yy",
+    "path":"folders/Hex/Combat/CombatMap/Tiles/Terrain/DesertTiles/desert_3_empty.yy",
   },
   "parentObjectId":{
     "name":"abst_obj_desert",

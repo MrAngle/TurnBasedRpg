@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PathFinding",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PathFinding",
+  "parent":{
+    "name":"CombatAction",
+    "path":"folders/Hex/Combat/CombatAction.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

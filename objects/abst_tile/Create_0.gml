@@ -1,3 +1,4 @@
+event_inherited();
 // DRAW PROPERTIES
 my_obj_name = helper_string_parse_to_name(object_get_name(object_index));
 

@@ -53,7 +53,8 @@ global.____STATIC_LOAD_MANAGER = function() {
 }
 
 global.__INIT_COMBAT_MAP_HOLER = function() {
-	global.COMBAT_GLOBALS.MAP.MAP_HOLDER = combat_map_generator_generate_random_desert_map(8, 13);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER = combat_map_generator_generate_connected_desert_map(11, 13);
+	//global.COMBAT_GLOBALS.MAP.MAP_HOLDER = combat_map_generator_generate_random_desert_map(11, 13);
 }
 
 global.___INIT_MANAGER = function() {
@@ -68,16 +69,21 @@ global.___INIT_MANAGER = function() {
 	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP = MyCombatMapManager(global.COMBAT_GLOBALS.MAP.MAP_HOLDER);
 	global.myMenuManager = instance_create_layer(0, 0, global.LAYERS.gui_menu.id, MenuManager);
 
+
 	global.COMBAT_GLOBALS.MANAGERS.SELECTOR = instance_create_layer(0, 0, global.LAYERS.managers.id, SelectorManager);
 	instance_create_layer(0, 0, global.LAYERS.managers.id, CameraManager);
 }
 
 global.___LOAD_CHARACTERS_ACTIONS = function() {
 	var character = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
-	var character2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
+	var enemyObj = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
+	var enemyObj2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
+	var enemyObj3 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 
-	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(character);
-	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character2);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(enemyObj);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(0, 0).set_tile_auto_type(enemyObj2);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(10, 10).set_tile_auto_type(enemyObj3);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character);
 }
 
 global.___AFTER_CREATE_MANAGER = function() {
@@ -93,4 +99,5 @@ global.___AFTER_CREATE_MANAGER = function() {
 	//	combatTurnManager.switch_to_player_turn();
 	//}
 	//my_start_combat();
+		instance_create_layer(0, 0, global.LAYERS.gui_menu.id, UserActionManager);
 }

@@ -26,13 +26,13 @@
   "origin":4,
   "parent":{
     "name":"sprites",
-    "path":"folders/Hex/Combat/CombatMap/Tiles/DesertTiles/desert_1_empty/sprites.yy",
+    "path":"folders/Hex/Combat/CombatMap/Tiles/Terrain/DesertTiles/desert_1_empty/sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"desert_1_empty_2",
     "autoRecord":true,
     "backdropHeight":768,

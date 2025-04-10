@@ -4,6 +4,7 @@ enum MapElementObjectTypeEnum {
 	TERRAIN,
 	CHARACTER,
 	SELECTOR,
+	OBSTACLE,
 	NONE
 }
 
@@ -15,6 +16,7 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 		__y_position: _y_position, // jako middle centre
         __terrain: _obj_terrain, //obj
         __character: _obj_character, //obj
+        __obstacle: _obj_character, //obj
         __shape_selector: noone, // HexMapElementGridCoverSeletor
         
         // Metoda: Sprawdzenie, czy kafelek jest zajęty przez postać
@@ -28,12 +30,14 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
         },
 		
 		has_character: function() {
-			return (self.__character != noone);
+			return helper_object_exists(self.__character);
 		},
 		
 		show: function() {
 			if(self.__terrain != noone) 
 				self.__terrain.visible = true;
+			if(self.__obstacle != noone) 
+				self.__obstacle.visible = true;
 			if(self.__character != noone)
 				self.__character.visible = true;
 		},
@@ -62,8 +66,11 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 
 function __my_set_tile(_obj, _obj_tile, MapElementObjectTypeEnum) {
 	switch MapElementObjectTypeEnum {
-	    case MapElementObjectTypeEnum.TERRAIN:
+		case MapElementObjectTypeEnum.TERRAIN:
 			_obj.__terrain = _obj_tile;
+	        break;
+	    case MapElementObjectTypeEnum.OBSTACLE:
+			_obj.__obstacle = _obj_tile;
 	        break;
 	    case MapElementObjectTypeEnum.CHARACTER:
 	        _obj.__character = _obj_tile;

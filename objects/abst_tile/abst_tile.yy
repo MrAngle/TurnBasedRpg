@@ -11,7 +11,10 @@
     "name":"SuperTile",
     "path":"folders/Hex/Combat/SuperTile.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"super_abst_drawable",
+    "path":"objects/super_abst_drawable/super_abst_drawable.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

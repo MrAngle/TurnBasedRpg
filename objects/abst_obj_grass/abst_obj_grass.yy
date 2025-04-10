@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"GrassTiles",
-    "path":"folders/Hex/Combat/CombatMap/Tiles/GrassTiles.yy",
+    "path":"folders/Hex/Combat/CombatMap/Tiles/Terrain/GrassTiles.yy",
   },
   "parentObjectId":{
     "name":"abst_obj_terrain",

@@ -26,9 +26,17 @@ function show_tooltip() {
     info += "Col: " + string(myToolTipTile._properties_map_element_col_index) + "\n";
     info += "x: " + string(myToolTipTile.__x_position) + "\n";
     info += "y " + string(myToolTipTile.__y_position) + "\n";
-    info += "Terrain: " + (is_undefined(myToolTipTile.__terrain) ? "None" : myToolTipTile.__terrain.my_obj_name) + "\n";
-    info += "BG: " + (is_undefined(myToolTipTile.__terrain.properties_bg_instance) ? "None" : "With bg") + "\n";
-	info += "Character: " + (!myToolTipTile.has_character() ? "None" : myToolTipTile.__character.my_obj_name) + "\n";
+    //info += "Terrain: " + (is_undefined(myToolTipTile.__terrain) ? "None" : myToolTipTile.__terrain.my_obj_name) + "\n";
+    //info += "BG: " + (is_undefined(myToolTipTile.__terrain.properties_bg_instance) ? "None" : "With bg") + "\n";
+	
+	if(myToolTipTile.has_character()) {
+		var tooltipChar = myToolTipTile.__character;
+		info += "Character: " + tooltipChar.my_obj_name + "\n";
+		info += "Character HP: " + string(tooltipChar.priv_character_statistics.HP.CURRENT_HP) + "\n";
+	} else {
+		info += "Character: None\n";
+	}
+
 
     draw_set_color(c_white);
     draw_text(panel_x + 10, panel_y + 10, info);

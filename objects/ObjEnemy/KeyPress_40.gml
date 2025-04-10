@@ -1,0 +1,1 @@
+//global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.move_to(self.properties_map_element_row_index + 1, self.properties_map_element_col_index, self);

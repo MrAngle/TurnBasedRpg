@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.660312,
+  "duration":0.6603175,
   "name":"snd_baddie_defeated",
   "parent":{
     "name":"Characters",

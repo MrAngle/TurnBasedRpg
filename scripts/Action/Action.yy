@@ -2,7 +2,7 @@
   "$GMScript":"v1",
   "%Name":"Action",
   "isCompatibility":false,
-  "isDnD":true,
+  "isDnD":false,
   "name":"Action",
   "parent":{
     "name":"CombatAction",
