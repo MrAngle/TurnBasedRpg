@@ -10,6 +10,7 @@ function init_layers() {
 	var SELECTORS_DEPTH = GUI_MENU_DEPTH + 50;
     var ATTACKS_DEPTH = SELECTORS_DEPTH + 50;
     var CHARACTERS_DEPTH = ATTACKS_DEPTH + 1000;
+    var OBSTACLES_DEPTH = CHARACTERS_DEPTH + 1000;
     var DECORATION_DEPTH = CHARACTERS_DEPTH + 1000;
     var GROUND_DEPTH = DECORATION_DEPTH + 1000;
     var MANAGERS_DEPTH = GROUND_DEPTH + 1000;
@@ -44,6 +45,10 @@ function init_layers() {
             id: layer_create(CHARACTERS_DEPTH),
             depth: CHARACTERS_DEPTH
         },
+		obstacles: {
+			id: layer_create(OBSTACLES_DEPTH),
+            depth: OBSTACLES_DEPTH
+		},
         decoration: {
             id: layer_create(DECORATION_DEPTH),
             depth: DECORATION_DEPTH

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"InputManager",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"InputManager",
+  "parent":{
+    "name":"Settings",
+    "path":"folders/Hex/GAME/Settings.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_coin",
-    "path":"sprites/spr_coin/spr_coin.yy",
+    "name":"stone_1_obstacle",
+    "path":"sprites/stone_1_obstacle/stone_1_obstacle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

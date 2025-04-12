@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LoggerScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LoggerScripts",
+  "parent":{
+    "name":"logger",
+    "path":"folders/Hex/Combat/Scripts/logger.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExceptionsScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExceptionsScripts",
+  "parent":{
+    "name":"exceptions",
+    "path":"folders/Hex/Combat/Scripts/exceptions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -39,6 +39,16 @@ function mapTile_filter_element_contains_player_character() {
 	return closedFunction;
 }
 
+function mapTile_filter_element_contains_turn_entity() {
+	closedFunction = {
+		filterFunc: function(_myMapTileObjectToCheck) {
+			return _myMapTileObjectToCheck.has_turn_entity();
+	    }
+	}
+	return closedFunction;
+}
+
+
 function mapTile_filter_element_contains_character_and_can_perform_action() {
 	closedFunction = {
 		filterFunc: function(_myMapTileObjectToCheck) {

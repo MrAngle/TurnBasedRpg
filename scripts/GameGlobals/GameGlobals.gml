@@ -1,6 +1,18 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
+global.LOG_LEVEL = {
+    INFO: "INFO",
+    ERROR: "ERROR",
+	CRITICAL: "CRITICAL"
+};
+
+global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION = {
+    ON: function(msg, log_level) { show_debug_message("[" + log_level +"]" + msg); },
+    OFF:     function(msg, log_level) {}, // for production should be OFF to not impact on performance
+};
+
+
 //global.GAME_GLOBALS.TEST.PASSED
 global.____INIT_GAME_GLOBAL = function() {
 	var vTILE_RADIUS = 128;
@@ -15,6 +27,10 @@ global.____INIT_GAME_GLOBAL = function() {
         },
 		ROOM: {
 			PREVIOUS_ROOM: noone
+		},
+		DEVELOPER_SETTINGS: {
+			IGNORE_EXCEPTIONS: false,
+			LOG_FUNCTION: global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION.ON
 		}
     };
     
@@ -30,11 +46,13 @@ function __GAME_GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	var globalsStruct = {
 	    TEST: {},
 	    ROOM: {},
+	    DEVELOPER_SETTINGS: {},
 	    __GLOBAL_DEFAULTS: arg_GLOBAL_DEFAULTS,
 
 	    __INIT: function() {
 	        self.__RESET_GROUP(self.TEST, self.__GLOBAL_DEFAULTS.TEST);
 	        self.__RESET_GROUP(self.ROOM, self.__GLOBAL_DEFAULTS.ROOM);
+	        self.__RESET_GROUP(self.DEVELOPER_SETTINGS, self.__GLOBAL_DEFAULTS.DEVELOPER_SETTINGS);
 	    },
         
 	    __RESET_GROUP: function(global_variable, default_values) {

@@ -46,7 +46,7 @@ function flood_fill_accessible_tiles(map, startRow, startCol) {
 				!ds_map_exists(visited, key)) {
 
 				var tile = map.get_tile(nRow, nCol);
-				if (tile != undefined && tile.__obstacle == noone) {
+				if (tile != undefined && tile.is_walkable()) {
 					ds_map_add(visited, key, true);
 					ds_queue_enqueue(queue, [nRow, nCol]);
 				}
@@ -98,7 +98,7 @@ randomize();
 				tile_type = choose(desert_2_ground, grass_1_ground);
 			} else {
 				var roll = irandom_range(0, 100);
-				if (roll < 40) {
+				if (roll < 25) {
 					tile_type = obstacle_test; // przeszkoda
 				} else {
 					tile_type = choose(desert_2_ground, grass_1_ground);
@@ -116,28 +116,6 @@ if (path == undefined) {
     return combat_map_generator_generate_connected_desert_map(rows, cols); // restart
 }
 
-	// 2. Sprawdź czy WSZYSTKIE pola bez przeszkód są dostępne
-	//var reachable = flood_fill_accessible_tiles(_map, 0, 0);
-	//var all_ok = true;
-
-	//for (var row = 0; row < rows && all_ok; row++) {
-	//	for (var col = 0; col < cols && all_ok; col++) {
-	//		var tile = _map.get_tile(row, col);
-	//		if (tile.__obstacle == noone) {
-	//			var key = string(row) + "," + string(col);
-	//			if (!ds_map_exists(reachable, key)) {
-	//				all_ok = false;
-	//			}
-	//		}
-	//	}
-	//}
-
-	//ds_map_destroy(reachable);
-
-	//if (!all_ok) {
-	//	//instance_destroy_all(); // opcjonalnie — usuwa stare tile'e
-	//	return combat_map_generator_generate_connected_desert_map(rows, cols); // restart
-	//}
 
 ensure_map_connectivity(_map, 5, 5);
 	return _map;
@@ -158,7 +136,7 @@ function ensure_map_connectivity(map, startRow, startCol) {
 		for (var row = 0; row < max_rows; row++) {
 			for (var col = 0; col < max_cols; col++) {
 				var tile = map.get_tile(row, col);
-				if (tile.__obstacle == noone) {
+				if (tile.is_walkable()) {
 					var key = string(row) + "," + string(col);
 					if (!ds_map_exists(reachable, key)) {
 						// Znajdź najbliższą przeszkodę do usunięcia (losowo)

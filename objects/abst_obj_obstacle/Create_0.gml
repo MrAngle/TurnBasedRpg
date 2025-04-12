@@ -1,5 +1,5 @@
 event_inherited();
-properties_layer_base_depth = global.LAYERS.ground.depth;
+properties_layer_base_depth = global.LAYERS.obstacles.depth;
 
 properties_map_element_obj_type = MapElementObjectTypeEnum.OBSTACLE;
 //my_obj_name = global.myGlobalObjName_Terrain; // nazwa obiektu

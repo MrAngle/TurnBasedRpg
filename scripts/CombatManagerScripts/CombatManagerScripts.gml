@@ -60,6 +60,7 @@ global.__INIT_COMBAT_MAP_HOLER = function() {
 global.___INIT_MANAGER = function() {
 	global.__INIT_COMBAT_GLOBAL();
 	init_layers();
+	init_action_type_map();
 
 	instance_create_layer(0, 0, global.LAYERS.managers.id, DebuggerInstance);
 	instance_create_layer(0, 0, global.LAYERS.game_cursor.id, cursor_obj_game);
@@ -99,5 +100,7 @@ global.___AFTER_CREATE_MANAGER = function() {
 	//	combatTurnManager.switch_to_player_turn();
 	//}
 	//my_start_combat();
-		instance_create_layer(0, 0, global.LAYERS.gui_menu.id, UserActionManager);
+	instance_create_layer(0, 0, global.LAYERS.gui_menu.id, ControllerUserActionManager);
+	instance_create_layer(0, 0, global.LAYERS.gui_menu.id, ActionTurnHandler);
+
 }

@@ -32,7 +32,7 @@ function show_tooltip() {
 	if(myToolTipTile.has_character()) {
 		var tooltipChar = myToolTipTile.__character;
 		info += "Character: " + tooltipChar.my_obj_name + "\n";
-		info += "Character HP: " + string(tooltipChar.priv_character_statistics.HP.CURRENT_HP) + "\n";
+		info += "Character HP: " + string(tooltipChar.PRIV_CHAR_STAT.HP.CURRENT_HP) + "\n";
 	} else {
 		info += "Character: None\n";
 	}

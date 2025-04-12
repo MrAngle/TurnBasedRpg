@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GameGlobals",
   "parent":{
-    "name":"GameMenu",
-    "path":"folders/Hex/GAME/GameMenu.yy",
+    "name":"GAME",
+    "path":"folders/Hex/GAME.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -69,7 +69,7 @@
 
 
 
-function get_target_tile_to_nearest_enemy(startRow, startCol) {
+function get_target_tile_to_nearest_enemy(source_Char, startRow, startCol) {
 	var max_rows = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.__rows;
 	var max_cols = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.__cols;
 	
@@ -104,7 +104,7 @@ var hex_directions_odd = [
 		var fromCol = currentNode[3];
 		
 		if (global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(currentRow, currentCol).has_character() &&
-			isEnemy(currentRow, currentCol)) {
+			isEnemy(source_Char, currentRow, currentCol)) {
 				
 			while (fromRow != startRow || fromCol != startCol) {
 				currentRow = fromRow;
@@ -151,14 +151,14 @@ function isWalkable(arg_row, arg_col) {
 	var destTile = global.COMBAT_GLOBALS.MAP
 		.MAP_HOLDER.get_tile(arg_row, arg_col);
 
-	return helper_object_not_exists(destTile.__obstacle)
+	return destTile.is_walkable();
 }
 
 
-function isEnemy(currentRow, currentCol) {
+function isEnemy(source_Char, currentRow, currentCol) {
 	var destTile = global.COMBAT_GLOBALS.MAP
 		.MAP_HOLDER.get_tile(currentRow, currentCol);
 
 	return helper_object_exists(destTile.__character) && 
-			destTile.__character.my_character_side == CombatCharacterSideEnum.ENEMY
+			destTile.__character.my_character_side != source_Char.my_character_side
 }

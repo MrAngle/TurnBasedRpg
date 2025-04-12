@@ -33,6 +33,18 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 			return helper_object_exists(self.__character);
 		},
 		
+		has_turn_entity: function() {
+			return helper_object_exists(self.__character);
+		},
+		
+		get_turn_entity: function() {
+			return self.__character;
+		},
+		
+		is_walkable: function() {
+			return helper_object_not_exists(self.__obstacle);
+		},
+		
 		show: function() {
 			if(self.__terrain != noone) 
 				self.__terrain.visible = true;

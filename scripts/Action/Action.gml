@@ -1,45 +1,18 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
-global.STATISTICS = {
-    MOVEMENT: "MOVEMENT",
-    PHYSICAL_ATTACK: "PHYSICAL_ATTACK",
-    MAGIC_ATTACK: "MAGIC_ATTACK",
-    HP: "HP",
-	
-	CALCULATE_VALUE_FUNC: "CALCULATE_VALUE_FUNC"
-};
+enum EVENT_ACTION_TYPE {
+	ATTACK,
+	STEP,
+	STAND
+}
 
-//enum EVENT_ACTION_TYPE {
-//	ATTACK,
-//	STEP,
-//	STAND
-//}
-
-function performEvent(arg_source_char, arg_destinarion_row, arg_destination_col) 
+function Action_TEMPLETE() 
 {
-	var destTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(arg_destinarion_row, arg_destination_col);
-
-	if(helper_object_not_exists(destTile.__character)) {
-		performMoveAction(
-			arg_source_char, 
-			destTile._properties_map_element_row_index, 
-			destTile._properties_map_element_col_index
-		)
-	} else {
-		var destCharacter = destTile.__character;
-		performAttackAction(arg_source_char, destCharacter);
+	var SKILL_TYPE_VAR = EVENT_ACTION_TYPE.ATTACK;
+	var ACTION_PROPERTIES = 
+	{
+		SKILL_TYPE: SKILL_TYPE_VAR,
+		INVOKER_CHAR: noone, // character
+		ACTION_COST: function(SKILL_TYPE_VAR) {}
 	}
-
-}
-
-function performMoveAction(arg_source_char, arg_destinarion_row, arg_destination_col) {
-	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.move_to(
-		arg_destinarion_row,
-		arg_destination_col,
-		arg_source_char);
-}
-
-function performAttackAction(arg_source_char, arg_dest_char) {
-	arg_dest_char.receiveDamage(arg_source_char.getAttackValue());
-	
 }
