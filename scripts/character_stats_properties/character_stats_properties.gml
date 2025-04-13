@@ -95,28 +95,26 @@ function properties_load_character_stats(_self)
 			//DRAW_HP: drawHp
 	    }
 	};
+	
+	__STATS = privGetStats(__SELF());
 
 	receiveDamage = function(arg_attack_value) {
-		PRIV_CHAR_STAT.HP.CURRENT_HP = PRIV_CHAR_STAT.HP.CURRENT_HP - arg_attack_value;
+		__STATS().HP.CURRENT_HP = __STATS().HP.CURRENT_HP - arg_attack_value;
 		if(PRIV_CHAR_STAT.HP.CURRENT_HP < 1) {
 			instance_destroy();
 		}
 	}
 	
-	//getAttackValue = function(arg_attacked_by_char) {
-	//	return PRIV_CHAR_STAT.PHYSICAL_ATTACK.BASE;
-	//}
-	
 	getAttackValue = function(arg_attacked_by_char) {
-		return REFERENCE.PRIV_CHAR_STAT.PHYSICAL_ATTACK.BASE;
+		return __STATS().PHYSICAL_ATTACK.BASE;
 	}
 	
 	getActionPoints = function() {
-		return PRIV_CHAR_STAT.REFERENCE.PRIV_CHAR_STAT.ACTION_POINTS;
+		return __STATS().ACTION_POINTS;
 	}
 	
 	addActionPoints = function(argNumActionPointsToAdd) {
-		PRIV_CHAR_STAT.REFERENCE.PRIV_CHAR_STAT.ACTION_POINTS = PRIV_CHAR_STAT.REFERENCE.PRIV_CHAR_STAT.ACTION_POINTS + argNumActionPointsToAdd;
+		__STATS().ACTION_POINTS = __STATS().ACTION_POINTS + argNumActionPointsToAdd;
 	}
 
 
@@ -125,9 +123,18 @@ function properties_load_character_stats(_self)
 		_self.draw_container[arLenght] = drawHp_returnFunc(_self)
 	}
 	
-	character_action_properties(PRIV_CHAR_STAT.REFERENCE)
+	character_action_properties(__STATS().REFERENCE)
 }
 
+function privGetStats(_self) {
+	var closedFunction = {
+		param_self: _self,
+		toReturn: function() {
+			return param_self.PRIV_CHAR_STAT;
+		}
+	}
+	return closedFunction.toReturn;
+}
 
 function drawHp_returnFunc(_self) {
 	var closedFunction = {

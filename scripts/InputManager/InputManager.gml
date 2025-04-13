@@ -23,34 +23,102 @@
 //    }
 //};
 
+//enum ActionTypeEnum {
+//    MOVE,
+//    AUTO_ACTION
+//}
+
+//global.EVENT_NAME = {
+//    AUTO_ACTION:     "auto_action",
+//    MOVE_LEFT:       "move_left",
+//    MOVE_RIGHT:      "move_right",
+//    MOVE_UP_LEFT:    "move_up_left",
+//    MOVE_UP_RIGHT:   "move_up_right",
+//    MOVE_DOWN_LEFT:  "move_down_left",
+//    MOVE_DOWN_RIGHT: "move_down_right"
+//};
+
+
+//global.INPUT_CONFIG = {
+//    auto_action: {
+//        name: global.EVENT_NAME.AUTO_ACTION,
+//        keys: [vk_space]
+//    },
+//    move_left: {
+//        name: global.EVENT_NAME.MOVE_LEFT,
+//        keys: [vk_numpad4]
+//    },
+//    move_right: {
+//        name: global.EVENT_NAME.MOVE_RIGHT,
+//        keys: [vk_numpad6]
+//    },
+//    move_up_left: {
+//        name: global.EVENT_NAME.MOVE_UP_LEFT,
+//        keys: [vk_numpad7]
+//    },
+//    move_up_right: {
+//        name: global.EVENT_NAME.MOVE_UP_RIGHT,
+//        keys: [vk_numpad9]
+//    },
+//    move_down_left: {
+//        name: global.EVENT_NAME.MOVE_DOWN_LEFT,
+//        keys: [vk_numpad1]
+//    },
+//    move_down_right: {
+//        name: global.EVENT_NAME.MOVE_DOWN_RIGHT,
+//        keys: [vk_numpad3]
+//    }
+//};
+
+
+enum CommandEventId {
+    AUTO_ACTION,       // np. spacja – automatycznie atakuj lub podejdź do wroga
+
+    MOVE_LEFT,
+    MOVE_RIGHT,
+    MOVE_UP_LEFT,
+    MOVE_UP_RIGHT,
+    MOVE_DOWN_LEFT,
+    MOVE_DOWN_RIGHT,
+
+    // Przyszłościowo – dla menu, dialogów, itp.
+    CONFIRM,
+    CANCEL,
+    INTERACT
+}
+
 
 global.INPUT_CONFIG = {
-    auto_action: {
-        name: "auto_action",
-        keys: [vk_space]
-    },
-    move_left: {
-        name: "move_left",
-        keys: [vk_numpad4]
-    },
-    move_right: {
-        name: "move_right",
-        keys: [vk_numpad6]
-    },
-    move_up_left: {
-        name: "move_up_left",
-        keys: [vk_numpad7]
-    },
-    move_up_right: {
-        name: "move_up_right",
-        keys: [vk_numpad9]
-    },
-    move_down_left: {
-        name: "move_down_left",
-        keys: [vk_numpad1]
-    },
-    move_down_right: {
-        name: "move_down_right",
-        keys: [vk_numpad3]
+    combat: {
+        auto_action: {
+            event_id: CommandEventId.AUTO_ACTION,
+            keys: [vk_space]
+        },
+        move_left: {
+            event_id: CommandEventId.MOVE_LEFT,
+            keys: [vk_numpad4]
+        },
+        move_right: {
+            event_id: CommandEventId.MOVE_RIGHT,
+            keys: [vk_numpad6]
+        },
+        move_up_left: {
+            event_id: CommandEventId.MOVE_UP_LEFT,
+            keys: [vk_numpad7]
+        },
+        move_up_right: {
+            event_id: CommandEventId.MOVE_UP_RIGHT,
+            keys: [vk_numpad9]
+        },
+        move_down_left: {
+            event_id: CommandEventId.MOVE_DOWN_LEFT,
+            keys: [vk_numpad1]
+        },
+        move_down_right: {
+            event_id: CommandEventId.MOVE_DOWN_RIGHT,
+            keys: [vk_numpad3]
+        }
     }
 };
+
+

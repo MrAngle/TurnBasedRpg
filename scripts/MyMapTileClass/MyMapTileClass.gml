@@ -29,6 +29,15 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 			global.COMBAT_GLOBALS.METRICS.TILE_COUNT = global.COMBAT_GLOBALS.METRICS.TILE_COUNT + 1;
         },
 		
+		getRow: function() {
+			return self._properties_map_element_row_index;
+		},
+		
+		getCol: function() {
+			return self._properties_map_element_col_index;
+		},
+		
+		
 		has_character: function() {
 			return helper_object_exists(self.__character);
 		},

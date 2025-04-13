@@ -1,21 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"super_abst_drawable",
+  "%Name":"super_abst_LUCA",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"super_abst_drawable",
+  "name":"super_abst_LUCA",
   "overriddenProperties":[],
   "parent":{
     "name":"SuperTile",
     "path":"folders/Hex/Combat/SuperTile.yy",
   },
-  "parentObjectId":{
-    "name":"super_abst_LUCA",
-    "path":"objects/super_abst_LUCA/super_abst_LUCA.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

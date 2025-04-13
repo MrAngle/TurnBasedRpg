@@ -1,35 +1,48 @@
-enum ActionTurnEnum {
+enum ActionTurnStateEnum {
 	CALCULATE_NEXT_TURN_ENTITY,
 	
 	WAITING_FOR_USER_INPUT, // -> PERFORM ACTION
-	PREPARE_ACTION,
+	PROCESS_AI_INTENT,
+	PREPARE_ACTION_INTENT_TO_ACTION,
 	PERFORM_ACTION,
 }
 
 function onStepTurnProcessor() {
 	switch (global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE) {
-	    case ActionTurnEnum.CALCULATE_NEXT_TURN_ENTITY:
+	    case ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY = getNextTurnEntity();
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
 				getNextStateBasedOnSide(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY)
 	        break;
 
-	    case ActionTurnEnum.PERFORM_ACTION:
-			processCurrentAction();
+		case ActionTurnStateEnum.PROCESS_AI_INTENT:
+			
+			break;
+
+	    case ActionTurnStateEnum.PERFORM_ACTION:
+			processCurrentAction(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT);
 		
 	        // Wykonanie zaplanowanej akcji
 	        //perform_current_action();
 	        break;
-		//case PREPARE_ACTION:
-		//	break;
-
-	    case ActionTurnEnum.WAITING_FOR_USER_INPUT:
-	        global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION = get_action_from_input(global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER);
-			if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION)) {
-				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnEnum.PERFORM_ACTION;
-			}
+		case ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION:
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT = resolve_action_from_intent(
+				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID,
+				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY
+			);
 			
+			if(helper_is_not_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT)) {
+				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
+					ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY
+			}
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
+					ActionTurnStateEnum.PERFORM_ACTION
+			
+			break;
+
+	    case ActionTurnStateEnum.WAITING_FOR_USER_INPUT:
+			waitingForUserInput()
 			break;
 
 	    default:
@@ -38,22 +51,39 @@ function onStepTurnProcessor() {
 	}
 }
 
-function getActionToPerform(arg_turnEntity) {
-	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
-		return ActionTurnEnum.WAITING_FOR_USER_INPUT;
-	} else {
-		return ActionTurnEnum.PERFORM_ACTION
+function actionIntentToAction() {
+	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
+		get_action_intent_from_last_input();
+	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PERFORM_ACTION;
 	}
 }
 
+function waitingForUserInput() {
+	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
+		get_action_intent_from_last_input();
+	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION;
+	}
+}
 
+function getActionToPerform(arg_turnEntity) {
+	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
+		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
+	} else {
+		return ActionTurnStateEnum.PERFORM_ACTION
+	}
+}
 
 function getNextStateBasedOnSide(arg_turnEntity) {
 	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
-		return ActionTurnEnum.WAITING_FOR_USER_INPUT;
+		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
 	} else {
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION = variable_struct_get(global.ACTION_TYPE_MAP, global.INPUT_CONFIG.auto_action.name)
-		return ActionTurnEnum.PERFORM_ACTION
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = ActionIntentId.AUTO_ACTION;
+		
+		//global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_COMMAND_EVENT_INPUT = 
+		//	variable_struct_get(global.ACTION_TYPE_MAP, global.INPUT_CONFIG.auto_action.name)
+		return ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION
 	}
 }
 
@@ -90,53 +120,85 @@ function get_turn_entity_with_least_action_points() {
 }
 
 
-function processCurrentAction() {
-	var action_meta = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION;
-	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY;
+function processCurrentAction(arg_action) {
+	var action = arg_action;
 
-	if (!is_undefined(action_meta)) {
-	    var row_index = character.properties_map_element_row_index;
-	    var col_index = character.properties_map_element_col_index;
+	if (helper_is_definied(action)) {
+		var character = action.INVOKER_CHAR;
+		var tile = action.DESTINATION_TILE;
 
-	    switch (action_meta.type) {
-	        case ActionTypeEnum.AUTO_ACTION:
-	            var target = get_target_tile_to_nearest_enemy(character, row_index, col_index);
-	            performEvent(character, target[0], target[1]);
-	            break;
+		// Wykonaj akcję na podstawie typu
+		switch (action.SKILL_TYPE) {
+			case EVENT_ACTION_TYPE.STEP:
+				performEvent(character, tile.getRow(), tile.getCol());
+				break;
+			case EVENT_ACTION_TYPE.ATTACK:
+				performEvent(character, tile.getRow(), tile.getCol());
+				break;
 
-	        case ActionTypeEnum.MOVE:
-	            switch (action_meta.action_id) {
-	                case ActionIdEnum.MOVE_LEFT:
-	                    performEvent(character, row_index, col_index - 1);
-	                    break;
+			case EVENT_ACTION_TYPE.STAND:
+				// np. nie rób nic, albo zakończ turę bez ruchu
+				break;
+		}
 
-	                case ActionIdEnum.MOVE_RIGHT:
-	                    performEvent(character, row_index, col_index + 1);
-	                    break;
+		// Dodaj punkty akcji (tymczasowo, później koszt zależny od typu)
+		character.addActionPoints(4); // albo: action.ACTION_COST()
 
-	                case ActionIdEnum.MOVE_UP_LEFT:
-	                    performEvent(character, row_index - 1, row_index % 2 == 0 ? col_index - 1 : col_index);
-	                    break;
-
-	                case ActionIdEnum.MOVE_UP_RIGHT:
-	                    performEvent(character, row_index - 1, row_index % 2 == 0 ? col_index : col_index + 1);
-	                    break;
-
-	                case ActionIdEnum.MOVE_DOWN_LEFT:
-	                    performEvent(character, row_index + 1, row_index % 2 == 0 ? col_index - 1 : col_index);
-	                    break;
-
-	                case ActionIdEnum.MOVE_DOWN_RIGHT:
-	                    performEvent(character, row_index + 1, row_index % 2 == 0 ? col_index : col_index + 1);
-	                    break;
-	            }
-	            break;
-	    }
+		// Wyczyść po przetworzeniu
+		global.INPUT_LAST_TRIGGER = undefined;
+		global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
 	}
-
-	// Wyczyść po przetworzeniu
-	character.addActionPoints(4);
-	global.INPUT_LAST_TRIGGER = undefined;
-	global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
-	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnEnum.CALCULATE_NEXT_TURN_ENTITY;
 }
+
+
+//function processCurrentAction() {
+//	var action_meta = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_COMMAND_EVENT_INPUT;
+//	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY;
+
+//	if (!is_undefined(action_meta)) {
+//	    var row_index = character.properties_map_element_row_index;
+//	    var col_index = character.properties_map_element_col_index;
+
+//	    switch (action_meta.type) {
+//	        case ActionTypeEnum.AUTO_ACTION:
+//	            var target = get_target_tile_to_nearest_enemy(character, row_index, col_index);
+//	            performEvent(character, target[0], target[1]);
+//	            break;
+
+//	        case ActionTypeEnum.MOVE:
+//	            switch (action_meta.action_id) {
+//	                case ActionIdEnum.MOVE_LEFT:
+//	                    performEvent(character, row_index, col_index - 1);
+//	                    break;
+
+//	                case ActionIdEnum.MOVE_RIGHT:
+//	                    performEvent(character, row_index, col_index + 1);
+//	                    break;
+
+//	                case ActionIdEnum.MOVE_UP_LEFT:
+//	                    performEvent(character, row_index - 1, row_index % 2 == 0 ? col_index - 1 : col_index);
+//	                    break;
+
+//	                case ActionIdEnum.MOVE_UP_RIGHT:
+//	                    performEvent(character, row_index - 1, row_index % 2 == 0 ? col_index : col_index + 1);
+//	                    break;
+
+//	                case ActionIdEnum.MOVE_DOWN_LEFT:
+//	                    performEvent(character, row_index + 1, row_index % 2 == 0 ? col_index - 1 : col_index);
+//	                    break;
+
+//	                case ActionIdEnum.MOVE_DOWN_RIGHT:
+//	                    performEvent(character, row_index + 1, row_index % 2 == 0 ? col_index : col_index + 1);
+//	                    break;
+//	            }
+//	            break;
+//	    }
+//	}
+
+//	// Wyczyść po przetworzeniu
+//	character.addActionPoints(4);
+//	global.INPUT_LAST_TRIGGER = undefined;
+//	global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
+//	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
+//}
