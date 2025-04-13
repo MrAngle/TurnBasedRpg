@@ -84,7 +84,9 @@ enum CommandEventId {
     // Przyszłościowo – dla menu, dialogów, itp.
     CONFIRM,
     CANCEL,
-    INTERACT
+    INTERACT,
+	
+	STAND
 }
 
 
@@ -117,7 +119,12 @@ global.INPUT_CONFIG = {
         move_down_right: {
             event_id: CommandEventId.MOVE_DOWN_RIGHT,
             keys: [vk_numpad3]
-        }
+        },
+		
+		stand: {
+            event_id: CommandEventId.STAND,
+            keys: [vk_numpad5]
+        },
     }
 };
 

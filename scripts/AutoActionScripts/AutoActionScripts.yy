@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ActionMapper",
+  "%Name":"AutoActionScripts",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ActionMapper",
+  "name":"AutoActionScripts",
   "parent":{
     "name":"CombatAction",
     "path":"folders/Hex/Combat/CombatAction.yy",

@@ -1,13 +1,13 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
-global.STATISTICS = {
-    MOVEMENT: "MOVEMENT",
-    PHYSICAL_ATTACK: "PHYSICAL_ATTACK",
-    MAGIC_ATTACK: "MAGIC_ATTACK",
-    HP: "HP",
+//global.STATISTICS = {
+//    MOVEMENT: "MOVEMENT",
+//    PHYSICAL_ATTACK: "PHYSICAL_ATTACK",
+//    MAGIC_ATTACK: "MAGIC_ATTACK",
+//    HP: "HP",
 	
-	CALCULATE_VALUE_FUNC: "CALCULATE_VALUE_FUNC"
-};
+//	CALCULATE_VALUE_FUNC: "CALCULATE_VALUE_FUNC"
+//};
 
 //enum EVENT_ACTION_TYPE {
 //	ATTACK,

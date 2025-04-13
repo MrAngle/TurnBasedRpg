@@ -1,0 +1,89 @@
+// // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
+// // https://help.yoyogames.com/hc/en-us/articles/360005277377
+function AutoActionScripts() 
+{
+
+}
+
+
+//function autoActionResolveIntent(character) {
+//	var row = character.properties_map_element_row_index;
+//	var col = character.properties_map_element_col_index;
+
+//	var tile = get_target_tile_to_nearest_enemy(character, row, col);
+//	if (is_undefined(tile)) {
+//		return ActionIntentId.STAND; // fallback jeśli nie znaleziono celu
+//	}
+
+//	var target_row = tile[0];
+//	var target_col = tile[1];
+
+//	var row_diff = target_row - row;
+//	var col_diff = target_col - col;
+
+//	// Na podstawie różnicy wybieramy intencję ruchu (hex-grid)
+//	if (row_diff == 0 && col_diff < 0) return ActionIntentId.MOVE_LEFT;
+//	if (row_diff == 0 && col_diff > 0) return ActionIntentId.MOVE_RIGHT;
+
+//	if (row_diff < 0) {
+//		if (row % 2 == 0) {
+//			if (col_diff == 0) return ActionIntentId.MOVE_UP_RIGHT;
+//			if (col_diff == -1) return ActionIntentId.MOVE_UP_LEFT;
+//		} else {
+//			if (col_diff == 1) return ActionIntentId.MOVE_UP_RIGHT;
+//			if (col_diff == 0) return ActionIntentId.MOVE_UP_LEFT;
+//		}
+//	}
+
+//	if (row_diff > 0) {
+//		if (row % 2 == 0) {
+//			if (col_diff == 0) return ActionIntentId.MOVE_DOWN_RIGHT;
+//			if (col_diff == -1) return ActionIntentId.MOVE_DOWN_LEFT;
+//		} else {
+//			if (col_diff == 1) return ActionIntentId.MOVE_DOWN_RIGHT;
+//			if (col_diff == 0) return ActionIntentId.MOVE_DOWN_LEFT;
+//		}
+//	}
+
+//	// Fallback
+//	return ActionIntentId.STAND;
+//}
+
+
+function autoActionResolveIntent(character) {
+	var row = character.properties_map_element_row_index;
+	var col = character.properties_map_element_col_index;
+
+	var tile = get_target_tile_to_nearest_enemy(character, row, col);
+	if (is_undefined(tile)) {
+		return ActionIntentId.STAND;
+	}
+
+	var target_row = tile[0];
+	var target_col = tile[1];
+
+	var dir = get_direction_towards_position(row, col, target_row, target_col);
+
+	if (dir != noone) {
+		return get_intent_from_direction(dir);
+	}
+
+	return ActionIntentId.STAND;
+}
+
+
+
+function get_direction_towards_position(from_row, from_col, to_row, to_col) {
+	var row_diff = to_row - from_row;
+	var col_diff = to_col - from_col;
+
+	// Porównujemy przesunięcia z możliwymi kierunkami
+	for (var dir = 0; dir < 6; dir++) { // Zakładamy 6 kierunków
+		var offset = helper_get_direction_offset(dir, from_row);
+		if (offset[0] == row_diff && offset[1] == col_diff) {
+			return dir; // zwraca DirectionId
+		}
+	}
+
+	return noone; // brak dopasowania
+}

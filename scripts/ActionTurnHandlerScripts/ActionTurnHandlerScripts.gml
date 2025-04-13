@@ -17,33 +17,23 @@ function onStepTurnProcessor() {
 	        break;
 
 		case ActionTurnStateEnum.PROCESS_AI_INTENT:
-			
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
+				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY);
+		
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION;
 			break;
 
-	    case ActionTurnStateEnum.PERFORM_ACTION:
-			processCurrentAction(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT);
-		
-	        // Wykonanie zaplanowanej akcji
-	        //perform_current_action();
-	        break;
 		case ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION:
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT = resolve_action_from_intent(
-				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID,
-				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY
-			);
-			
-			if(helper_is_not_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT)) {
-				global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
-					ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY
-			}
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
-					ActionTurnStateEnum.PERFORM_ACTION
-			
+			processPrepareActionIntentToAction();
 			break;
 
 	    case ActionTurnStateEnum.WAITING_FOR_USER_INPUT:
 			waitingForUserInput()
 			break;
+		
+	    case ActionTurnStateEnum.PERFORM_ACTION:
+			processCurrentAction(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT);
+	        break;
 
 	    default:
 	        LOG_CRITICAL_MESSAGE("⚠️ Nieznany stan tury: " + string(arg_CurrentTurnState));
@@ -51,19 +41,44 @@ function onStepTurnProcessor() {
 	}
 }
 
-function actionIntentToAction() {
-	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
-		get_action_intent_from_last_input();
-	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
+function processPrepareActionIntentToAction() {
+	var intent_id = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID;
+	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY;
+
+	var action = resolve_action_from_intent(intent_id, character);
+	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT = action;
+
+	if (helper_is_not_definied(action)) {
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
+	} else {
 		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PERFORM_ACTION;
 	}
 }
 
+//function actionIntentToAction() {
+//	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
+//		get_action_intent_from_last_input();
+//	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
+//		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PERFORM_ACTION;
+//	}
+//}
+
 function waitingForUserInput() {
+	
+	if(isLastInputAutoAction()) {
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PROCESS_AI_INTENT;
+		return;
+	}
+	
 	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
 		get_action_intent_from_last_input();
 	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
+		
+		//if(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID == CommandEventId.AUTO_ACTION) {
+		//	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PROCESS_AI_INTENT;
+		//} else {
 		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION;
+		//}
 	}
 }
 
@@ -79,14 +94,10 @@ function getNextStateBasedOnSide(arg_turnEntity) {
 	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
 		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
 	} else {
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = ActionIntentId.AUTO_ACTION;
-		
-		//global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_COMMAND_EVENT_INPUT = 
-		//	variable_struct_get(global.ACTION_TYPE_MAP, global.INPUT_CONFIG.auto_action.name)
-		return ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION
+		//global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = ActionIntentId.AUTO_ACTION;
+		return ActionTurnStateEnum.PROCESS_AI_INTENT
 	}
 }
-
 
 function getNextTurnEntity() {
 	return get_turn_entity_with_least_action_points();
@@ -128,7 +139,7 @@ function processCurrentAction(arg_action) {
 		var tile = action.DESTINATION_TILE;
 
 		// Wykonaj akcję na podstawie typu
-		switch (action.SKILL_TYPE) {
+		switch (action.EVENT_ACTION_TYPE_ID) {
 			case EVENT_ACTION_TYPE.STEP:
 				performEvent(character, tile.getRow(), tile.getCol());
 				break;
@@ -150,55 +161,3 @@ function processCurrentAction(arg_action) {
 		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
 	}
 }
-
-
-//function processCurrentAction() {
-//	var action_meta = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_COMMAND_EVENT_INPUT;
-//	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY;
-
-//	if (!is_undefined(action_meta)) {
-//	    var row_index = character.properties_map_element_row_index;
-//	    var col_index = character.properties_map_element_col_index;
-
-//	    switch (action_meta.type) {
-//	        case ActionTypeEnum.AUTO_ACTION:
-//	            var target = get_target_tile_to_nearest_enemy(character, row_index, col_index);
-//	            performEvent(character, target[0], target[1]);
-//	            break;
-
-//	        case ActionTypeEnum.MOVE:
-//	            switch (action_meta.action_id) {
-//	                case ActionIdEnum.MOVE_LEFT:
-//	                    performEvent(character, row_index, col_index - 1);
-//	                    break;
-
-//	                case ActionIdEnum.MOVE_RIGHT:
-//	                    performEvent(character, row_index, col_index + 1);
-//	                    break;
-
-//	                case ActionIdEnum.MOVE_UP_LEFT:
-//	                    performEvent(character, row_index - 1, row_index % 2 == 0 ? col_index - 1 : col_index);
-//	                    break;
-
-//	                case ActionIdEnum.MOVE_UP_RIGHT:
-//	                    performEvent(character, row_index - 1, row_index % 2 == 0 ? col_index : col_index + 1);
-//	                    break;
-
-//	                case ActionIdEnum.MOVE_DOWN_LEFT:
-//	                    performEvent(character, row_index + 1, row_index % 2 == 0 ? col_index - 1 : col_index);
-//	                    break;
-
-//	                case ActionIdEnum.MOVE_DOWN_RIGHT:
-//	                    performEvent(character, row_index + 1, row_index % 2 == 0 ? col_index : col_index + 1);
-//	                    break;
-//	            }
-//	            break;
-//	    }
-//	}
-
-//	// Wyczyść po przetworzeniu
-//	character.addActionPoints(4);
-//	global.INPUT_LAST_TRIGGER = undefined;
-//	global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
-//	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
-//}
