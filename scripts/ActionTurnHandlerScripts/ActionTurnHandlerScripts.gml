@@ -73,12 +73,7 @@ function waitingForUserInput() {
 	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
 		get_action_intent_from_last_input();
 	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
-		
-		//if(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID == CommandEventId.AUTO_ACTION) {
-		//	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PROCESS_AI_INTENT;
-		//} else {
 		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION;
-		//}
 	}
 }
 
@@ -139,15 +134,15 @@ function processCurrentAction(arg_action) {
 		var tile = action.DESTINATION_TILE;
 
 		// Wykonaj akcję na podstawie typu
-		switch (action.EVENT_ACTION_TYPE_ID) {
-			case EVENT_ACTION_TYPE.STEP:
+		switch (action.ACTION_TYPE_ID) {
+			case ACTION_TYPE.STEP:
 				performEvent(character, tile.getRow(), tile.getCol());
 				break;
-			case EVENT_ACTION_TYPE.ATTACK:
+			case ACTION_TYPE.ATTACK:
 				performEvent(character, tile.getRow(), tile.getCol());
 				break;
 
-			case EVENT_ACTION_TYPE.STAND:
+			case ACTION_TYPE.STAND:
 				// np. nie rób nic, albo zakończ turę bez ruchu
 				break;
 		}
