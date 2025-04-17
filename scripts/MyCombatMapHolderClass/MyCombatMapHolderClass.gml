@@ -91,7 +91,6 @@ function __my_map_holder_init(_obj) {
 			//var _y_position =  pos_y + global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_HEIGHT;
 			
 			var mapTile = MyMapTileBuilder(row, col, _x_position, _y_position, noone, noone);
-		
 			_obj.__map_holder[row][col] = mapTile;
 	    }
 	}

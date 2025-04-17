@@ -45,6 +45,10 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     __obstacle = _obj_character;
     __shape_selector = noone;
 
+	getInteractiveObject = function() {
+        return __character;
+    };
+
     getRow = function() {
         return _properties_map_element_row_index;
     };
