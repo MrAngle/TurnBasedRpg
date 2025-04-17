@@ -106,7 +106,8 @@ randomize();
 			}
 
 			var tile = instance_create_layer(0, 0, global.LAYERS.ground.id, tile_type);
-			_map.get_tile(row, col).set_tile_auto_type(tile);
+			var selectedTile = _map.get_tile(row, col);
+			selectedTile.set_tile_auto_type(tile);
 			tile.visible = false;
 		}
 	}

@@ -53,10 +53,9 @@ function get_target_position_from_intent(intent_id, character) {
 
 /// @function resolve_skill_type
 /// @param {number} character - Liczba wierszy
-/// @param {MyMapTile} tile 
+/// @param {Struct.MyMapTile} tile
 function resolve_skill_type(character, tile) {
-    var s = tile;
-    
+
 	var target_character = tile.__character;
 	if (helper_object_not_exists(target_character)) {
 	    return ACTION_TYPE.STEP;
