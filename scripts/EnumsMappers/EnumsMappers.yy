@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"EnumsMappers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"EnumsMappers",
+  "parent":{
+    "name":"Enums",
+    "path":"folders/Hex/Enums.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -8,8 +8,28 @@ enum MapElementObjectTypeEnum {
 	NONE
 }
 
+
+/**
+ * Tworzy nowy kafelek mapy bitewnej (MyMapTile) z określonymi właściwościami i metodami.
+ *
+ * @function MyMapTile
+ * @param {Real} properties_map_element_row_index - Indeks wiersza kafelka na mapie.
+ * @param {Real} properties_map_element_col_index - Indeks kolumny kafelka na mapie.
+ * @param {Real} _x_position - Pozycja X środka kafelka.
+ * @param {Real} _y_position - Pozycja Y środka kafelka.
+ * @param {Asset.GMObject} _obj_terrain - Obiekt terenu przypisany do kafelka.
+ * @param {Asset.GMObject} _obj_character - Obiekt postaci przypisany do kafelka.
+ * @returns {Object} Obiekt reprezentujący kafelek mapy bitewnej.
+ */
 function MyMapTile(properties_map_element_row_index, properties_map_element_col_index, _x_position, _y_position, _obj_terrain, _obj_character) {
     var _new_MyMapTile = {
+    /// @property {Real} row_index - Indeks wiersza kafelka.
+    /// @property {Real} col_index - Indeks kolumny kafelka.
+    /// @property {Real} x_position - Pozycja X środka kafelka.
+    /// @property {Real} y_position - Pozycja Y środka kafelka.
+    /// @property {Asset.GMObject} terrain - Obiekt terenu przypisany do kafelka.
+    /// @property {Asset.GMObject} character - Obiekt postaci przypisany do kafelka.
+        
 		_properties_map_element_row_index: properties_map_element_row_index,
 		_properties_map_element_col_index: properties_map_element_col_index,
 		__x_position: _x_position, // jako middle centre
@@ -29,6 +49,9 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 			global.COMBAT_GLOBALS.METRICS.TILE_COUNT = global.COMBAT_GLOBALS.METRICS.TILE_COUNT + 1;
         },
 		
+        /// @function getRow
+        /// @description Zwraca indeks wiersza kafelka.
+        /// @returns {Real}
 		getRow: function() {
 			return self._properties_map_element_row_index;
 		},

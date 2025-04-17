@@ -54,7 +54,7 @@ function AreaFilterClass(arg_struct_constr)
 		}
 	}
 	
-	localFilterClass.__init(arg_struct_constr);
+	localFilterClass.__init();
 	return localFilterClass;
 }
 

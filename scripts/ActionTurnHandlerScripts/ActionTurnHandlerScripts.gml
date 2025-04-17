@@ -55,14 +55,6 @@ function processPrepareActionIntentToAction() {
 	}
 }
 
-//function actionIntentToAction() {
-//	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
-//		get_action_intent_from_last_input();
-//	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
-//		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PERFORM_ACTION;
-//	}
-//}
-
 function waitingForUserInput() {
 	
 	if(isLastInputAutoAction()) {
@@ -124,7 +116,6 @@ function get_turn_entity_with_least_action_points() {
 
     return lowest_turnEntity;
 }
-
 
 function processCurrentAction(arg_action) {
 	var action = arg_action;

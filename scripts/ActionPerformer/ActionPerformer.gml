@@ -19,6 +19,7 @@ function performEvent(arg_source_char, arg_destinarion_row, arg_destination_col)
 {
 	var destTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(arg_destinarion_row, arg_destination_col);
 
+
 	if(helper_object_not_exists(destTile.__character)) {
 		performMoveAction(
 			arg_source_char, 
@@ -32,9 +33,15 @@ function performEvent(arg_source_char, arg_destinarion_row, arg_destination_col)
 
 }
 
+/// @function performMoveAction(source_char, destination_row, destination_col)
+/// @description Wykonuje akcję ruchu postaci na wskazane pole mapy.
+/// @param {Id.Instance} arg_source_char - Instancja postaci wykonującej ruch.
+/// @param {Real} arg_destinarion_row - Docelowy wiersz na mapie.
+/// @param {Real} arg_destination_col - Docelowa kolumna na mapie.
+/// @returns {Void}
 function performMoveAction(arg_source_char, arg_destinarion_row, arg_destination_col) {
 	global.COMBAT_GLOBALS.ACTION.PROCESSING = true;
-	var test = arg_source_char.get_ap_cost_func(global.ACTION_TYPE.STEP);
+	var test = arg_source_char.get_ap_cost_func(ACTION_TYPE.STEP);
 	LOG_INFO_MESSAGE(test());
 	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.move_to(
 		arg_destinarion_row,

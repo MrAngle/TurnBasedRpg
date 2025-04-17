@@ -65,7 +65,7 @@ function autoActionResolveIntent(character) {
 	var dir = get_direction_towards_position(row, col, target_row, target_col);
 
 	if (dir != noone) {
-		return get_intent_from_direction(dir);
+		return global.ENUM_MAPPERS.directionIdToActionIntentId(dir);
 	}
 
 	return ActionIntentId.STAND;

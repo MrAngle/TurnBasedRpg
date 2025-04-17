@@ -1,3 +1,7 @@
+
+
+
+
 function MyCombatMapHolder(_init_rows, _init_cols) {
     var map_instance = {
         __rows: _init_rows, // number
@@ -70,7 +74,6 @@ function __my_map_holder_init(_obj) {
 	for (var row = 0; row < _obj.__rows; row++) {
         _obj.__map_holder[row] = array_create(self.__cols);
     }
-	
 	
 	for (var row = 0; row < _obj.__rows; row++) {
 	    for (var col = 0; col < _obj.__cols; col++) {

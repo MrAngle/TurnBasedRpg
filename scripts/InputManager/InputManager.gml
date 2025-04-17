@@ -1,20 +1,3 @@
-enum CommandEventId {
-    AUTO_ACTION,       // np. spacja – automatycznie atakuj lub podejdź do wroga
-
-    MOVE_LEFT,
-    MOVE_RIGHT,
-    MOVE_UP_LEFT,
-    MOVE_UP_RIGHT,
-    MOVE_DOWN_LEFT,
-    MOVE_DOWN_RIGHT,
-
-    // Przyszłościowo – dla menu, dialogów, itp.
-    CONFIRM,
-    CANCEL,
-    INTERACT,
-	
-	STAND
-}
 
 
 global.INPUT_CONFIG = {
