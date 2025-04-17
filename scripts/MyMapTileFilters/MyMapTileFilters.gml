@@ -1,6 +1,15 @@
 // ALL FILTERS SHOULD HAVE STRUCTURE:
 // FUNCTION(MyMapTile) - return true or false (when true it mean that pass filter)
 
+/// @constructor
+/// @struct
+/// @property {function(Struct.MyMapTile): boolean} _filterFunc
+/// @returns {Struct.MapTileFilter}
+function MapTileFilter(_filterFunc) constructor {
+    filterFunc = _filterFunc;
+}
+
+
 // SUPPORTED FILTERS
 function mapTile_filter_element_is_in_array(_arrayToCheck) {
 	//return helper_function_element_is_in_array(_arrayToCheck);
@@ -39,8 +48,9 @@ function mapTile_filter_element_contains_player_character() {
 	return closedFunction;
 }
 
+/// @returns {Struct.MapTileFilter}
 function mapTile_filter_element_contains_turn_entity() {
-	closedFunction = {
+	var closedFunction = {
 		filterFunc: function(_myMapTileObjectToCheck) {
 			return _myMapTileObjectToCheck.has_turn_entity();
 	    }

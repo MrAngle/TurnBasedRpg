@@ -15,8 +15,6 @@ properties_load_layer();
 properties_load_map_element();
 properties_load_after_create_event();
 
-/// @is CombatMapHolder
-var d = MyCombatMapHolder(3, 2);
 __abst_tile_after_create = function() {
 	layer_set_depth(properties_layer_base_depth);
 	
