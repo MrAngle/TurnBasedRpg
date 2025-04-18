@@ -1,7 +1,5 @@
 event_inherited();
-properties_load_character_stats(self);
-properties_load_prepare_character_turn();
-properties_load_character_turn_executor();
+
 
 properties_map_element_obj_type = MapElementObjectTypeEnum.CHARACTER;// Typ domyślny dla kafelków
 my_character_side = CombatCharacterSideEnum.NEUTRAL;

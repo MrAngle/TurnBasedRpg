@@ -1,7 +1,7 @@
 // ALL enums should be created in that way 
 
 
-enum ACTION_TYPE {
+enum ACTION_TYPE_ENUM {
 	ATTACK,
 	STEP,
 	STAND

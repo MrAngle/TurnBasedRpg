@@ -1,11 +1,12 @@
-// // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
-// // https://help.yoyogames.com/hc/en-us/articles/360005277377
+// ActionStruct	Definicja co ma się wydarzyć	Atakuj tile[5, 3]
+// ActionContextStruct	Jakie są warunki dookoła akcji	Kto jest celem, jakie efekty są aktywne
+// ResolvedActionStruct	Kompletna akcja + wykonanie	resolved.apply()
 
 function Action_TEMPLETE() 
 {
 	var ACTION_PROPERTIES = 
 	{
-		ACTION_TYPE_ID: ACTION_TYPE.ATTACK,
+		ACTION_TYPE_ID: ACTION_TYPE_ENUM.ATTACK,
 		INVOKER_CHAR: noone, // character
 		DESTINATION_TILE: noone, // TileClass
 		ACTION_COST: function(SKILL_TYPE_VAR) {}
@@ -22,13 +23,12 @@ function resolve_action_from_intent(intent_id, character) {
 	
 	var testowe = MyCombatMapHolder(0, 0);
 
-	// testowe
-	// testowe.
-
 	/// @is MyCombatMapHolder
 	var ACTION_TYPE_ID = resolve_skill_type(character, tile);
 
-	return build_action_struct(character, tile, ACTION_TYPE_ID);
+	var actionStruct = new ActionStruct()
+
+	return buildActionStruct(character, tile, ACTION_TYPE_ID);
 }
 
 
@@ -52,31 +52,33 @@ function get_target_position_from_intent(intent_id, character) {
 }
 
 /// @function resolve_skill_type
-/// @param {number} character - Liczba wierszy
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
 /// @param {Struct.MyMapTile} tile
-function resolve_skill_type(character, tile) {
-	var target_character = tile.getInteractiveObject();
+/// @returns {Enum.ACTION_TYPE_ENUM}
+function resolve_skill_type(turnEntity, tile) {
+	var target_character = tile.getTurnEntity();
 	if (helper_object_not_exists(target_character)) {
-	    return ACTION_TYPE.STEP;
+	    return ACTION_TYPE_ENUM.STEP;
 	}
 	
-	if(target_character == character) {
-		return ACTION_TYPE.STAND;
+	if(target_character == turnEntity) {
+		return ACTION_TYPE_ENUM.STAND;
 	} else {
-	    return ACTION_TYPE.ATTACK;
+	    return ACTION_TYPE_ENUM.ATTACK;
 	}
+
 }
 
-function build_action_struct(character, tile, param_ACTION_TYPE_ENUM) {
+function buildActionStruct(character, tile, param_ACTION_TYPE_ENUM) {
 	return {
 		ACTION_TYPE_ID: param_ACTION_TYPE_ENUM,
 		INVOKER_CHAR: character,
 		DESTINATION_TILE: tile,
 		ACTION_COST: function() {
 			switch (ACTION_TYPE_ID) {
-			    case ACTION_TYPE.STEP:
+			    case ACTION_TYPE_ENUM.STEP:
 			        return INVOKER_CHAR.stats.STEP.COST.BASE;
-			    case ACTION_TYPE.ATTACK:
+			    case ACTION_TYPE_ENUM.ATTACK:
 			        return 3;
 			}
 			return 0;
@@ -85,19 +87,39 @@ function build_action_struct(character, tile, param_ACTION_TYPE_ENUM) {
 }
 
 
-function ActionStruct(_type, _invoker, _target_tile, _from_intent) {
-	return {
-		id: generate_unique_action_id(), // unikalny identyfikator (np. do logowania/debugowania)
+/// @function ActionStruct
+/// @desc Tworzy nową strukturę akcji w systemie walki.
+///       Akcja definiuje typ działania (atak, ruch, itd.), 
+// 		  ActionStruct	Definicja co ma się wydarzyć	Atakuj tile[5, 3]
+///       inicjatora, cel oraz dane pomocnicze takie jak głębokość rekurencji.
+/// @constructor
+///
+/// @param {Enum.ACTION_TYPE_ENUM} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
+/// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
+/// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
+///
+/// @returns {Struct.ActionStruct}
+function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
+	// Priv
+	__id = helperGenerateUniqueId();
+	__type = _type; 		// enum ACTION_TYPE
+	__invoker = _invoker;
+	__target_tile = _target_tile;
+	__from_intent = _from_intent;
+	__parent_action = noone;
+	__origin_action = noone;
+	__recursion_depth = 0;
 
-		type: _type,                    // enum ACTION_TYPE
-		invoker: _invoker,             // obiekt postaci
-		target_tile: _target_tile,     // tile do którego celujemy (może mieć character)
-		from_intent: _from_intent,     // np. MOVE_LEFT itp.
-
-		parent_action: noone,          // referencja do akcji nadrzędnej (jeśli powstała z eventu)
-		origin_action: noone,          // referencja do pierwszej akcji w łańcuchu (dla śledzenia)
-		recursion_depth: 0,            // przydatne do zabezpieczenia przed pętlami
-	};
+	// Getters
+	getId = function() { return __id; };
+	getType = function() { return __type; };
+	getInvoker = function() { return __invoker; };
+	getTargetTile = function() { return __target_tile; };
+	getFromIntent = function() { return __from_intent; };
+	getParentAction = function() { return __parent_action; };
+	getOriginAction = function() { return __origin_action; };
+	getRecursionDepth = function() { return __recursion_depth; };
 }
 
 function ActionContextStruct(_invoker, _target, _tile, _mode) {

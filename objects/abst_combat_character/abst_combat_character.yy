@@ -12,8 +12,8 @@
     "path":"folders/Hex/Combat/CombatCharacter.yy",
   },
   "parentObjectId":{
-    "name":"abst_tile",
-    "path":"objects/abst_tile/abst_tile.yy",
+    "name":"AbstTurnEntity",
+    "path":"objects/AbstTurnEntity/AbstTurnEntity.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

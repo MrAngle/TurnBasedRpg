@@ -69,13 +69,13 @@ function waitingForUserInput() {
 	}
 }
 
-function getActionToPerform(arg_turnEntity) {
-	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
-		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
-	} else {
-		return ActionTurnStateEnum.PERFORM_ACTION
-	}
-}
+// function getActionToPerform(arg_turnEntity) {
+// 	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
+// 		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
+// 	} else {
+// 		return ActionTurnStateEnum.PERFORM_ACTION
+// 	}
+// }
 
 function getNextStateBasedOnSide(arg_turnEntity) {
 	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
@@ -126,14 +126,14 @@ function processCurrentAction(arg_action) {
 
 		// Wykonaj akcję na podstawie typu
 		switch (action.ACTION_TYPE_ID) {
-			case ACTION_TYPE.STEP:
+			case ACTION_TYPE_ENUM.STEP:
 				performEvent(character, tile.getRow(), tile.getCol());
 				break;
-			case ACTION_TYPE.ATTACK:
+			case ACTION_TYPE_ENUM.ATTACK:
 				performEvent(character, tile.getRow(), tile.getCol());
 				break;
 
-			case ACTION_TYPE.STAND:
+			case ACTION_TYPE_ENUM.STAND:
 				// np. nie rób nic, albo zakończ turę bez ruchu
 				break;
 		}

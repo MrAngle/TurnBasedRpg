@@ -41,7 +41,7 @@ function performEvent(arg_source_char, arg_destinarion_row, arg_destination_col)
 /// @returns {Void}
 function performMoveAction(arg_source_char, arg_destinarion_row, arg_destination_col) {
 	global.COMBAT_GLOBALS.ACTION.PROCESSING = true;
-	var test = arg_source_char.get_ap_cost_func(ACTION_TYPE.STEP);
+	var test = arg_source_char.get_ap_cost_func(ACTION_TYPE_ENUM.STEP);
 	LOG_INFO_MESSAGE(test());
 	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.move_to(
 		arg_destinarion_row,
