@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Action",
+  "%Name":"ActionExecutorUnit",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Action",
+  "name":"ActionExecutorUnit",
   "parent":{
     "name":"ActionStructs",
     "path":"folders/Hex/Combat/CombatAction/ActionStructs.yy",

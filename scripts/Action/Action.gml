@@ -2,15 +2,41 @@
 // ActionContextStruct	Jakie są warunki dookoła akcji	Kto jest celem, jakie efekty są aktywne
 // ResolvedActionStruct	Kompletna akcja + wykonanie	resolved.apply()
 
-function Action_TEMPLETE() 
-{
-	var ACTION_PROPERTIES = 
-	{
-		ACTION_TYPE_ID: ACTION_TYPE_ENUM.ATTACK,
-		INVOKER_CHAR: noone, // character
-		DESTINATION_TILE: noone, // TileClass
-		ACTION_COST: function(SKILL_TYPE_VAR) {}
-	}
+/// @function ActionStruct
+/// @desc Tworzy nową strukturę akcji w systemie walki.
+///       Akcja definiuje typ działania (atak, ruch, itd.), 
+// 		  ActionStruct	Definicja co ma się wydarzyć	Atakuj tile[5, 3]
+///       inicjatora, cel oraz dane pomocnicze takie jak głębokość rekurencji.
+/// @constructor
+///
+/// @param {Enum.ACTION_TYPE_ENUM} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
+/// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
+/// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
+///
+/// @returns {Struct.ActionStruct}
+function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
+	// Priv
+	__id = helperGenerateUniqueId();
+	__type = _type; 		// enum ACTION_TYPE
+	__invokerTuEnObj = _invoker;
+	__target_tile = _target_tile;
+	__from_intent = _from_intent;
+	__parent_action = noone;
+	__origin_action = noone;
+	__recursion_depth = 0;
+
+	// Getters
+	getId = function() { return __id; };
+	getType = function() { return __type; };
+	getInvokerTuEnObj = function() { return __invokerTuEnObj; };
+	getInvokerTuEnStruct = function() { return getTurnEntityAttributes(__invokerTuEnObj); };
+	getTargetTile = function() { return __target_tile; };
+	getTargetTuEn = function() { return __target_tile.getTurnEntityObj(); };
+	getFromIntent = function() { return __from_intent; };
+	getParentAction = function() { return __parent_action; };
+	getOriginAction = function() { return __origin_action; };
+	getRecursionDepth = function() { return __recursion_depth; };
 }
 
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
@@ -21,15 +47,10 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 	var row = pos[0];
 	var col = pos[1];
 
-	var targetTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(row, col)
+	var targetTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(row, col);
 
 	var ACTION_TYPE_ID = resolve_skill_type(turnEntity, targetTile);
-
-
-	var actionStruct = new ActionStruct(ACTION_TYPE_ID, turnEntity, targetTile, intent_id)
-
-	// return buildActionStruct(turnEntity, targetTile, ACTION_TYPE_ID);
-	return actionStruct;
+	return new ActionStruct(ACTION_TYPE_ID, turnEntity, targetTile, intent_id)
 }
 
 
@@ -70,75 +91,6 @@ function resolve_skill_type(turnEntity, tile) {
 
 }
 
-/// @function ActionStruct
-/// @desc Tworzy nową strukturę akcji w systemie walki.
-///       Akcja definiuje typ działania (atak, ruch, itd.), 
-// 		  ActionStruct	Definicja co ma się wydarzyć	Atakuj tile[5, 3]
-///       inicjatora, cel oraz dane pomocnicze takie jak głębokość rekurencji.
-/// @constructor
-///
-/// @param {Enum.ACTION_TYPE_ENUM} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
-/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
-/// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
-/// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
-///
-/// @returns {Struct.ActionStruct}
-function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
-	// Priv
-	__id = helperGenerateUniqueId();
-	__type = _type; 		// enum ACTION_TYPE
-	__invokerTuEnObj = _invoker;
-	__target_tile = _target_tile;
-	__from_intent = _from_intent;
-	__parent_action = noone;
-	__origin_action = noone;
-	__recursion_depth = 0;
 
-	// Getters
-	getId = function() { return __id; };
-	getType = function() { return __type; };
-	getInvokerTuEnObj = function() { return __invokerTuEnObj; };
-	getInvokerTuEnStruct = function() { return getTurnEntityAttributes(__invokerTuEnObj); };
-	getTargetTile = function() { return __target_tile; };
-	getFromIntent = function() { return __from_intent; };
-	getParentAction = function() { return __parent_action; };
-	getOriginAction = function() { return __origin_action; };
-	getRecursionDepth = function() { return __recursion_depth; };
-}
 
-function ActionContextStruct(_invoker, _target, _tile, _mode) {
-	return {
-		invoker: _invoker,                       // zazwyczaj to samo co action.invoker
-		target: _target,                         // postać stojąca na tile (jeśli jest)
-		tile: _tile,                             // referencja do kafelka
-		evaluation_mode: _mode,                  // enum: SIMULATION / PREDICTION / REAL_EXECUTION
 
-		effects: [],                             // wszystkie aktywne efekty invokera
-		target_effects: [],                      // aktywne efekty celu (jeśli istnieje)
-
-		// przyszłościowo (opcjonalnie)
-		source_intent: undefined,                // np. do logów / AI
-		metadata: {},                            // miejsce na dodatkowe dane
-	};
-}
-
-function ResolvedActionStruct(_action_struct, _context_struct) {
-	return {
-		action_struct: _action_struct,
-		context_struct: _context_struct,
-
-		calculate_cost: function() {
-			return calculate_action_cost(self); // delegacja do logiki kosztów
-		},
-
-		// przydatne w predykcji np. w UI
-		predict_result: function() {
-			return predict_action_result(self); // np. oblicz ile dmg zada
-		},
-
-		// wykonanie
-		apply: function() {
-			return execute_action(self); // egzekucja efektu akcji
-		}
-	};
-}

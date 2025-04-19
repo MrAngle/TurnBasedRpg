@@ -1,3 +1,8 @@
+enum ACTION_MODE_ENUM {
+    APPLY,
+    PREDICT
+}
+
 // ALL enums should be created in that way 
 enum FACTION_ENUM {
 	PLAYER,

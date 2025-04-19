@@ -14,6 +14,8 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 
 	__rows = _init_rows; // number
 	__cols = _init_cols; // number
+
+	/// @type {array<array<Struct.MyMapTile>>}
 	__map_holder = array_create(_init_rows); // Array of arrays of MyMapTile class
 	
 	// constructor
@@ -21,7 +23,7 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 		__my_map_holder_init(self);
 	}
 
-	get_tile= function(_row, _col) { // MyMapTile
+	get_tile = function(_row, _col) { // MyMapTile
 		return self.__map_holder[_row][_col];
 	}
 

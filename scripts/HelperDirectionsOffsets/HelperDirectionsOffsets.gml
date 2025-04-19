@@ -10,28 +10,6 @@ enum DirectionId {
 	DOWN_RIGHT
 }
 
-//global.DIRECTION_OFFSETS = {
-//    [DirectionId.LEFT]: function(row, col) {
-//        return [0, -1];
-//    },
-//    [DirectionId.RIGHT]: function(row, col) {
-//        return [0, 1];
-//    },
-//    [DirectionId.UP_LEFT]: function(row, col) {
-//        return [-1, row % 2 == 0 ? -1 : 0];
-//    },
-//    [DirectionId.UP_RIGHT]: function(row, col) {
-//        return [-1, row % 2 == 0 ? 0 : 1];
-//    },
-//    [DirectionId.DOWN_LEFT]: function(row, col) {
-//        return [1, row % 2 == 0 ? -1 : 0];
-//    },
-//    [DirectionId.DOWN_RIGHT]: function(row, col) {
-//        return [1, row % 2 == 0 ? 0 : 1];
-//    }
-//};
-
-
 function helper_calculate_row_and_col_for_direction(arg_DirectionId, row, col) {
 	var offset = helper_get_direction_offset(arg_DirectionId, row);
 	return [row + offset[0], col + offset[1]];
