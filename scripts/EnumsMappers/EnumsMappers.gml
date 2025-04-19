@@ -54,6 +54,7 @@ function get_intent_from_direction(arg_Direction) {
 	}
 }
 
+/// @returns {Enum.ACTION_INTENT_ENUM}
 function map_command_to_intent(arg_CommandEventId) {
 	var actionIntentId = variable_struct_get(global.COMMAND_TO_INTENT_MAP, arg_CommandEventId);
 	if (helper_is_not_definied(actionIntentId)) {

@@ -1,4 +1,4 @@
-enum ActionTurnStateEnum {
+enum ACTION_TURN_STATE_ENUM {
 	CALCULATE_NEXT_TURN_ENTITY,
 	
 	WAITING_FOR_USER_INPUT, // -> PERFORM ACTION
@@ -8,30 +8,30 @@ enum ActionTurnStateEnum {
 }
 
 function onStepTurnProcessor() {
-	switch (global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE) {
-	    case ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY:
+	switch (global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM) {
+	    case ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY = getNextTurnEntity();
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
-				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY)
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ = getNextTurnEntity();
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = 
+				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ)
 	        break;
 
-		case ActionTurnStateEnum.PROCESS_AI_INTENT:
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
-				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY);
+		case ACTION_TURN_STATE_ENUM.PROCESS_AI_INTENT:
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ENUM = 
+				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ);
 		
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION;
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PREPARE_ACTION_INTENT_TO_ACTION;
 			break;
 
-		case ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION:
+		case ACTION_TURN_STATE_ENUM.PREPARE_ACTION_INTENT_TO_ACTION:
 			processPrepareActionIntentToAction();
 			break;
 
-	    case ActionTurnStateEnum.WAITING_FOR_USER_INPUT:
+	    case ACTION_TURN_STATE_ENUM.WAITING_FOR_USER_INPUT:
 			waitingForUserInput()
 			break;
 		
-	    case ActionTurnStateEnum.PERFORM_ACTION:
+	    case ACTION_TURN_STATE_ENUM.PERFORM_ACTION:
 			processCurrentAction(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT);
 	        break;
 
@@ -42,30 +42,30 @@ function onStepTurnProcessor() {
 }
 
 function processPrepareActionIntentToAction() {
-	var intent_id = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID;
-	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY;
+	var intent_id = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ENUM;
+	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ;
 
 	var action = resolveActionFromIntent(intent_id, character);
 	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT = action;
 
 	if (helper_is_not_definied(action)) {
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY;
 	} else {
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PERFORM_ACTION;
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PERFORM_ACTION;
 	}
 }
 
 function waitingForUserInput() {
 	
 	if(isLastInputAutoAction()) {
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PROCESS_AI_INTENT;
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PROCESS_AI_INTENT;
 		return;
 	}
 	
-	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = 
+	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ENUM = 
 		get_action_intent_from_last_input();
-	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID)) {
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.PREPARE_ACTION_INTENT_TO_ACTION;
+	if(helper_is_definied(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ENUM)) {
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PREPARE_ACTION_INTENT_TO_ACTION;
 	}
 }
 
@@ -84,21 +84,22 @@ function getNextStateBasedOnSideForObj(arg_objTurnEntity) {
 }
 
 /// @param {Struct.TurnEntityStruct} arg_turnEntity 
-/// @returns {Enum.ActionTurnStateEnum}
+/// @returns {Enum.ACTION_TURN_STATE_ENUM}
 function getNextStateBasedOnSide(arg_turnEntity) {
 	if(arg_turnEntity.getFaction() == FACTION_ENUM.PLAYER) {
-		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
+		return ACTION_TURN_STATE_ENUM.WAITING_FOR_USER_INPUT;
 	} else {
 		//global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = ActionIntentId.AUTO_ACTION;
-		return ActionTurnStateEnum.PROCESS_AI_INTENT
+		return ACTION_TURN_STATE_ENUM.PROCESS_AI_INTENT
 	}
 }
 
+/// @returns {Id.Instance.AbstTurnEntity}
 function getNextTurnEntity() {
 	return get_turn_entity_with_least_action_points();
 }
 
-
+/// @returns {Id.Instance.AbstTurnEntity}
 function get_turn_entity_with_least_action_points() {
     var tiles = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([
         //mapTile_filter_element_contains_player_character()
@@ -128,15 +129,16 @@ function get_turn_entity_with_least_action_points() {
     return lowest_turnEntity;
 }
 
+/// @param {Struct.ActionStruct} arg_action 
 function processCurrentAction(arg_action) {
 	var action = arg_action;
 
 	if (helper_is_definied(action)) {
-		var character = action.INVOKER_CHAR;
-		var tile = action.DESTINATION_TILE;
+		var character = action.getInvokerTuEnObj();
+		var tile = action.getTargetTile();
 
 		// Wykonaj akcję na podstawie typu
-		switch (action.ACTION_TYPE_ID) {
+		switch (action.getType()) {
 			case ACTION_TYPE_ENUM.STEP:
 				performEvent(character, tile.getRow(), tile.getCol());
 				break;
@@ -155,6 +157,6 @@ function processCurrentAction(arg_action) {
 		// Wyczyść po przetworzeniu
 		global.INPUT_LAST_TRIGGER = undefined;
 		global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
-		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = ActionTurnStateEnum.CALCULATE_NEXT_TURN_ENTITY;
+		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY;
 	}
 }

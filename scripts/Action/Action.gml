@@ -28,7 +28,8 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 
 	var actionStruct = new ActionStruct(ACTION_TYPE_ID, turnEntity, targetTile, intent_id)
 
-	return buildActionStruct(turnEntity, targetTile, ACTION_TYPE_ID);
+	// return buildActionStruct(turnEntity, targetTile, ACTION_TYPE_ID);
+	return actionStruct;
 }
 
 
@@ -69,22 +70,22 @@ function resolve_skill_type(turnEntity, tile) {
 
 }
 
-function buildActionStruct(character, tile, param_ACTION_TYPE_ENUM) {
-	return {
-		ACTION_TYPE_ID: param_ACTION_TYPE_ENUM,
-		INVOKER_CHAR: character,
-		DESTINATION_TILE: tile,
-		ACTION_COST: function() {
-			switch (ACTION_TYPE_ID) {
-			    case ACTION_TYPE_ENUM.STEP:
-			        return INVOKER_CHAR.stats.STEP.COST.BASE;
-			    case ACTION_TYPE_ENUM.ATTACK:
-			        return 3;
-			}
-			return 0;
-		}
-	};
-}
+// function buildActionStruct(character, tile, param_ACTION_TYPE_ENUM) {
+// 	return {
+// 		ACTION_TYPE_ID: param_ACTION_TYPE_ENUM,
+// 		INVOKER_CHAR: character,
+// 		DESTINATION_TILE: tile,
+// 		ACTION_COST: function() {
+// 			switch (ACTION_TYPE_ID) {
+// 			    case ACTION_TYPE_ENUM.STEP:
+// 			        return INVOKER_CHAR.stats.STEP.COST.BASE;
+// 			    case ACTION_TYPE_ENUM.ATTACK:
+// 			        return 3;
+// 			}
+// 			return 0;
+// 		}
+// 	};
+// }
 
 
 /// @function ActionStruct
@@ -104,7 +105,7 @@ function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
 	// Priv
 	__id = helperGenerateUniqueId();
 	__type = _type; 		// enum ACTION_TYPE
-	__invoker = _invoker;
+	__invokerTuEnObj = _invoker;
 	__target_tile = _target_tile;
 	__from_intent = _from_intent;
 	__parent_action = noone;
@@ -114,7 +115,8 @@ function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
 	// Getters
 	getId = function() { return __id; };
 	getType = function() { return __type; };
-	getInvoker = function() { return __invoker; };
+	getInvokerTuEnObj = function() { return __invokerTuEnObj; };
+	getInvokerTuEnStruct = function() { return getTurnEntityAttributes(__invokerTuEnObj); };
 	getTargetTile = function() { return __target_tile; };
 	getFromIntent = function() { return __from_intent; };
 	getParentAction = function() { return __parent_action; };

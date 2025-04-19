@@ -12,6 +12,7 @@ function testowa() {
     show_debug_message("TRIGGER: ");
 }
 
+/// @returns {Enum.ACTION_INTENT_ENUM}
 function get_action_intent_from_last_input() {
     var event_id = global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER;
 
