@@ -1,0 +1,39 @@
+# ───────────────────────────────
+# Ignore Scribble library files
+# ───────────────────────────────
+
+# License (MIT)
+datafiles/scribble_license.txt
+
+# Font
+fonts/scribble_fallback_font/
+fonts/scribble_fallback_font.yy
+fonts/scribble_fallback_font.png
+
+scripts/*scribble*/
+sprites/scribble_*/
+shaders/*scribble*/
+fonts/*scribble*/
+datafiles/scribble_*
+
+
+
+scripts/draw_text_scribble/
+scripts/draw_text_scribble.yy
+
+scripts/draw_text_scribble_ext/
+scripts/draw_text_scribble_ext.yy
+
+# Utility functions
+scripts/string_height_scribble/
+scripts/string_height_scribble_ext/
+scripts/string_length_scribble.*
+scripts/string_width_scribble.*
+scripts/string_width_scribble_ext/
+
+# Shaders
+shaders/_shd_scribble/
+shaders/_shd_scribble_bake_effect_4dir/
+shaders/_shd_scribble_bake_effect_8dir/
+shaders/_shd_scribble_bake_effect_8dir_2px/
+shaders/_shd_scribble_bake_effect_no_outline/
