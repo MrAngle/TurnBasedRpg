@@ -1,45 +1,49 @@
 
+/// @function MyMapTileInit
+/// @param {Struct.__MyCombatMapHolder} tile
+function MyCombatMapHolderBuilder(_init_rows, _init_cols) {
+	var myMapHolder = new __MyCombatMapHolder(_init_rows, _init_cols)
+
+	myMapHolder.__init_MyCombatMapHolder();
+
+    return myMapHolder;
+}
 
 
+function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 
-function MyCombatMapHolder(_init_rows, _init_cols) {
-    var map_instance = {
-        __rows: _init_rows, // number
-        __cols: _init_cols, // number
-		__map_holder: array_create(_init_rows), // Array of arrays of MyMapTile class
-        
-		// constructor
-		__init_MyCombatMapHolder: function() {
-			__my_map_holder_init(self);
-        },
-
-		get_tile: function(_row, _col) { // MyMapTile
-			return self.__map_holder[_row][_col];
-		},
-		
-		get_tile_centrum_coodinators: function(_row, _col) { // MyMapTile
-			return [self.__map_holder[_row][_col].__x_position, self.__map_holder[_row][_col].__y_position];
-		},
-
-		show_tiles: function() {
-			__my_show_tiles(self);
-		},
-		
-		find_character_in_map: function(_obj_target) {
-			return __find_character_in_map(self.__map_holder, self.__rows, self.__cols, _obj_target);
-		},
-		
-		get_tile_by_character: function(_character) { // _filter_function(element) - return true 
-            return  __get_tile_by_character(self, _character);
-        },
-		
-        get_tiles: function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
-            return  __get_tiles(self, _filtersToCheck);
-        }
-    };
+	__rows = _init_rows; // number
+	__cols = _init_cols; // number
+	__map_holder = array_create(_init_rows); // Array of arrays of MyMapTile class
 	
-	map_instance.__init_MyCombatMapHolder();
-	return map_instance;
+	// constructor
+	__init_MyCombatMapHolder = function() {
+		__my_map_holder_init(self);
+	}
+
+	get_tile= function(_row, _col) { // MyMapTile
+		return self.__map_holder[_row][_col];
+	}
+
+	get_tile_centrum_coodinators = function(_row, _col) { // MyMapTile
+		return [self.__map_holder[_row][_col].__x_position, self.__map_holder[_row][_col].__y_position];
+	}
+
+	show_tiles = function() {
+		__my_show_tiles(self);
+	}
+	
+	find_character_in_map = function(_obj_target) {
+		return __find_character_in_map(self.__map_holder, self.__rows, self.__cols, _obj_target);
+	}
+	
+	get_tile_by_character = function(_character) { // _filter_function(element) - return true 
+		return  __get_tile_by_character(self, _character);
+	}
+	
+	get_tiles = function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
+		return  __get_tiles(self, _filtersToCheck);
+	}
 }
 
 function __get_tiles(_obj, _filtersToCheck = []) {

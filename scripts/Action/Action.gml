@@ -70,24 +70,6 @@ function resolve_skill_type(turnEntity, tile) {
 
 }
 
-// function buildActionStruct(character, tile, param_ACTION_TYPE_ENUM) {
-// 	return {
-// 		ACTION_TYPE_ID: param_ACTION_TYPE_ENUM,
-// 		INVOKER_CHAR: character,
-// 		DESTINATION_TILE: tile,
-// 		ACTION_COST: function() {
-// 			switch (ACTION_TYPE_ID) {
-// 			    case ACTION_TYPE_ENUM.STEP:
-// 			        return INVOKER_CHAR.stats.STEP.COST.BASE;
-// 			    case ACTION_TYPE_ENUM.ATTACK:
-// 			        return 3;
-// 			}
-// 			return 0;
-// 		}
-// 	};
-// }
-
-
 /// @function ActionStruct
 /// @desc Tworzy nową strukturę akcji w systemie walki.
 ///       Akcja definiuje typ działania (atak, ruch, itd.), 

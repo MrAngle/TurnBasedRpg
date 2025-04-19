@@ -20,7 +20,7 @@
 
 
 function combat_map_generator_generate_random_desert_map(rows, cols) {
-	var _map = MyCombatMapHolder(rows, cols);
+	var _map = new MyCombatMapHolderBuilder(rows, cols);
 randomize();
 	// 1. Wygeneruj mapę z samą ziemią
 	for (var row = 0; row < rows; row++) {

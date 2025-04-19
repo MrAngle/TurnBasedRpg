@@ -100,6 +100,7 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 		SELECTED_CHAR: noone, // MenuSelectedCharManager
 	}
 	MAP = {
+		/// @type {Struct.__MyCombatMapHolder}
 		MAP_HOLDER: noone, // MyCombatMapHolder
 		SELECTED_TILE: noone, // STRUCT MyMapTile
 		SELECTED_CHARACTER: noone, // Object abst_combat_character

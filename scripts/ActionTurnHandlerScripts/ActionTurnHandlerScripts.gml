@@ -36,7 +36,7 @@ function onStepTurnProcessor() {
 	        break;
 
 	    default:
-	        LOG_CRITICAL_MESSAGE("⚠️ Nieznany stan tury: " + string(arg_CurrentTurnState));
+	        LOG_CRITICAL_MESSAGE("⚠️ Nieznany stan tury: " + string(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM));
 	        break;
 	}
 }

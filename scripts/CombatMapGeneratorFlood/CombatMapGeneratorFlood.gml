@@ -86,7 +86,7 @@ function get_path_with_cleanup(map, startRow, startCol, endRow, endCol, max_repa
 
 
 function combat_map_generator_generate_connected_desert_map(rows, cols) {
-	var _map = MyCombatMapHolder(rows, cols);
+	var _map = MyCombatMapHolderBuilder(rows, cols);
 randomize();
 	// 1. Wstępne generowanie z przeszkodami
 	for (var row = 0; row < rows; row++) {
