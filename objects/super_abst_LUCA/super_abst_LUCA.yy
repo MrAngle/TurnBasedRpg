@@ -8,8 +8,8 @@
   "name":"super_abst_LUCA",
   "overriddenProperties":[],
   "parent":{
-    "name":"SuperTile",
-    "path":"folders/Hex/Combat/SuperTile.yy",
+    "name":"GAME",
+    "path":"folders/Hex/GAME.yy",
   },
   "parentObjectId":null,
   "persistent":false,

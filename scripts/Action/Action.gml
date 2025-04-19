@@ -13,22 +13,22 @@ function Action_TEMPLETE()
 	}
 }
 
-function resolve_action_from_intent(intent_id, character) {
-	var pos = get_target_position_from_intent(intent_id, character);
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
+/// @param {Enum.ACTION_INTENT_ENUM} intent_id
+/// @returns {Struct.ActionStruct}
+function resolveActionFromIntent(intent_id, turnEntity) {
+	var pos = get_target_position_from_intent(intent_id, turnEntity);
 	var row = pos[0];
 	var col = pos[1];
 
-	var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(row, col)
-    
-	
-	var testowe = MyCombatMapHolder(0, 0);
+	var targetTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(row, col)
 
-	/// @is MyCombatMapHolder
-	var ACTION_TYPE_ID = resolve_skill_type(character, tile);
+	var ACTION_TYPE_ID = resolve_skill_type(turnEntity, targetTile);
 
-	var actionStruct = new ActionStruct()
 
-	return buildActionStruct(character, tile, ACTION_TYPE_ID);
+	var actionStruct = new ActionStruct(ACTION_TYPE_ID, turnEntity, targetTile, intent_id)
+
+	return buildActionStruct(turnEntity, targetTile, ACTION_TYPE_ID);
 }
 
 
@@ -37,7 +37,7 @@ function get_target_position_from_intent(intent_id, character) {
 	var row = character.properties_map_element_row_index;
 	var col = character.properties_map_element_col_index;
 
-	if (intent_id == ActionIntentId.STAND) {
+	if (intent_id == ACTION_INTENT_ENUM.STAND) {
 		return [row, col];
 	}
 
@@ -56,7 +56,7 @@ function get_target_position_from_intent(intent_id, character) {
 /// @param {Struct.MyMapTile} tile
 /// @returns {Enum.ACTION_TYPE_ENUM}
 function resolve_skill_type(turnEntity, tile) {
-	var target_character = tile.getTurnEntity();
+	var target_character = tile.getTurnEntityObj();
 	if (helper_object_not_exists(target_character)) {
 	    return ACTION_TYPE_ENUM.STEP;
 	}

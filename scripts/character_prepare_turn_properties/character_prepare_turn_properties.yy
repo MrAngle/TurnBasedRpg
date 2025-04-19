@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"character_prepare_turn_properties",
   "parent":{
-    "name":"character_scritps",
-    "path":"folders/Hex/Combat/Scripts/character_scritps.yy",
+    "name":"old",
+    "path":"folders/Hex/Combat/Scripts/character_scritps/old.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

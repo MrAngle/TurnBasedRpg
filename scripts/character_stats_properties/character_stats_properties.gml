@@ -55,106 +55,78 @@ global.STATISTICS = {
 
 //}
 
-global.STATISTICS_COMBAT_GLOBALS = {
-	AP_COST: {
-		MOVEMENT: {
-			MIN: 2, // SET MIN/MAX AP COST
-			MAX: 100,
-			DEFAULT_BASE: 10
-		}
-	}
-};
 
-function properties_load_character_stats(_self) 
-{
-	PRIV_CHAR_STAT = {
-		REFERENCE : _self,
-		ACTION_POINTS: 0,
-	    STEP: {
-			COST: {
-				BASE_MIN: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.MIN,
-				BASE_MAX: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.MAX,
-				BASE: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.DEFAULT_BASE,
-				CALCULATE_CURRENT: function() {},
-				EFFECTS: []
-			}
-	        //CALCULATE_VALUE_FUNC: __CALCULATE_MODIFIERS_MOVEMENT_FUNCTION(self)
-	    },
-	    PHYSICAL_ATTACK: {
-	        BASE: 3,
-	        STRENGTH_SCALING: 1
-	    },
-	    MAGIC_ATTACK: {
-	        BASE: 1,
-	        INT_SCALING: 1
-	    },
-		HP: {
-	        BASE: 10,
-			CURRENT_HP: 10,
-			MAX_HP: 10
-			//DRAW_HP: drawHp
-	    }
-	};
+
+
+
+// function properties_load_character_stats(_self) 
+// {
+	// PRIV_CHAR_STAT = {
+	// 	REFERENCE : _self,
+	// 	ACTION_POINTS: 0,
+	//     STEP: {
+	// 		COST: {
+	// 			BASE_MIN: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.MIN,
+	// 			BASE_MAX: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.MAX,
+	// 			BASE: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.DEFAULT_BASE,
+	// 			CALCULATE_CURRENT: function() {},
+	// 			EFFECTS: []
+	// 		}
+	//         //CALCULATE_VALUE_FUNC: __CALCULATE_MODIFIERS_MOVEMENT_FUNCTION(self)
+	//     },
+	//     PHYSICAL_ATTACK: {
+	//         BASE: 3,
+	//         STRENGTH_SCALING: 1
+	//     },
+	//     MAGIC_ATTACK: {
+	//         BASE: 1,
+	//         INT_SCALING: 1
+	//     },
+	// 	HP: {
+	//         BASE: 10,
+	// 		CURRENT_HP: 10,
+	// 		MAX_HP: 10
+	// 		//DRAW_HP: drawHp
+	//     }
+	// };
 	
-	__STATS = privGetStats(__SELF());
+	// __STATS = privGetStats(__SELF());
 
-	receiveDamage = function(arg_attack_value) {
-		__STATS().HP.CURRENT_HP = __STATS().HP.CURRENT_HP - arg_attack_value;
-		if(PRIV_CHAR_STAT.HP.CURRENT_HP < 1) {
-			instance_destroy();
-		}
-	}
+	// receiveDamage = function(arg_attack_value) {
+	// 	__STATS().HP.CURRENT_HP = __STATS().HP.CURRENT_HP - arg_attack_value;
+	// 	if(PRIV_CHAR_STAT.HP.CURRENT_HP < 1) {
+	// 		instance_destroy();
+	// 	}
+	// }
 	
-	getAttackValue = function(arg_attacked_by_char) {
-		return __STATS().PHYSICAL_ATTACK.BASE;
-	}
+	// getAttackValue = function(arg_attacked_by_char) {
+	// 	return __STATS().PHYSICAL_ATTACK.BASE;
+	// }
 	
-	getActionPoints = function() {
-		return __STATS().ACTION_POINTS;
-	}
+	// getActionPoints = function() {
+	// 	return __STATS().ACTION_POINTS;
+	// }
 	
-	addActionPoints = function(argNumActionPointsToAdd) {
-		__STATS().ACTION_POINTS = __STATS().ACTION_POINTS + argNumActionPointsToAdd;
-	}
+	// addActionPoints = function(argNumActionPointsToAdd) {
+	// 	__STATS().ACTION_POINTS = __STATS().ACTION_POINTS + argNumActionPointsToAdd;
+	// }
 
 
-	if(_self.draw_container != undefined) {
-		var arLenght = array_length(_self.draw_container);
-		_self.draw_container[arLenght] = drawHp_returnFunc(_self)
-	}
+	// if(_self.draw_container != undefined) {
+	// 	var arLenght = array_length(_self.draw_container);
+	// 	_self.draw_container[arLenght] = drawHp_returnFunc(_self)
+	// }
 	
-	character_action_properties(__STATS().REFERENCE)
-}
+	// character_action_properties(__STATS().REFERENCE)
+// }
 
-function privGetStats(_self) {
-	var closedFunction = {
-		param_self: _self,
-		toReturn: function() {
-			return param_self.PRIV_CHAR_STAT;
-		}
-	}
-	return closedFunction.toReturn;
-}
+// function privGetStats(_self) {
+// 	var closedFunction = {
+// 		param_self: _self,
+// 		toReturn: function() {
+// 			return param_self.PRIV_CHAR_STAT;
+// 		}
+// 	}
+// 	return closedFunction.toReturn;
+// }
 
-function drawHp_returnFunc(_self) {
-	var closedFunction = {
-		param_self: _self,
-		toReturn: function() {
-			// Pozycja paska (nad głową)
-			var bar_width = 60;
-			var bar_height = 10;
-			var bar_x = param_self.x - bar_width/2;
-			var bar_y = param_self.y - param_self.sprite_height - 10; // nad głową
-
-			// Tło paska (szare)
-			draw_set_color(c_red);
-			draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, false);
-
-			// Pasek HP (zielony proporcjonalnie do zdrowia)
-			var hp_ratio = param_self.PRIV_CHAR_STAT.HP.CURRENT_HP / param_self.PRIV_CHAR_STAT.HP.MAX_HP;
-			draw_set_color(c_lime);
-			draw_rectangle(bar_x, bar_y, bar_x + (bar_width * hp_ratio), bar_y + bar_height, false);
-		}
-	}
-	return closedFunction.toReturn;
-}

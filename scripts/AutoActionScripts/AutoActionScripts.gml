@@ -56,7 +56,7 @@ function autoActionResolveIntent(character) {
 
 	var tile = get_target_tile_to_nearest_enemy(character, row, col);
 	if (is_undefined(tile)) {
-		return ActionIntentId.STAND;
+		return ACTION_INTENT_ENUM.STAND;
 	}
 
 	var target_row = tile[0];
@@ -68,7 +68,7 @@ function autoActionResolveIntent(character) {
 		return global.ENUM_MAPPERS.directionIdToActionIntentId(dir);
 	}
 
-	return ActionIntentId.STAND;
+	return ACTION_INTENT_ENUM.STAND;
 }
 
 

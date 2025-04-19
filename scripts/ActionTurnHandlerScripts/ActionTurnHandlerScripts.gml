@@ -13,7 +13,7 @@ function onStepTurnProcessor() {
 	        // Logika wyboru następnej jednostki do tury
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY = getNextTurnEntity();
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE = 
-				getNextStateBasedOnSide(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY)
+				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY)
 	        break;
 
 		case ActionTurnStateEnum.PROCESS_AI_INTENT:
@@ -45,7 +45,7 @@ function processPrepareActionIntentToAction() {
 	var intent_id = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID;
 	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY;
 
-	var action = resolve_action_from_intent(intent_id, character);
+	var action = resolveActionFromIntent(intent_id, character);
 	global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_STRUCT = action;
 
 	if (helper_is_not_definied(action)) {
@@ -77,8 +77,16 @@ function waitingForUserInput() {
 // 	}
 // }
 
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} arg_objTurnEntity
+
+function getNextStateBasedOnSideForObj(arg_objTurnEntity) {
+	return getNextStateBasedOnSide(getTurnEntityAttributes(arg_objTurnEntity));
+}
+
+/// @param {Struct.TurnEntityStruct} arg_turnEntity 
+/// @returns {Enum.ActionTurnStateEnum}
 function getNextStateBasedOnSide(arg_turnEntity) {
-	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
+	if(arg_turnEntity.getFaction() == FACTION_ENUM.PLAYER) {
 		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
 	} else {
 		//global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = ActionIntentId.AUTO_ACTION;
@@ -101,16 +109,19 @@ function get_turn_entity_with_least_action_points() {
     var lowest_ap = 99999999; // duża liczba na start
 
     for (var i = 0; i < array_length(tiles); i++) {
+		/// @type {Struct.MyMapTile}
         var tile = tiles[i];
 
         if (!tile.has_turn_entity()) continue;
 
-        var turnEntity = tile.get_turn_entity();
+		var turnEntityObj = tile.getTurnEntityObj();
+        var turnEntity = getTurnEntityAttributes(turnEntityObj);
+
         var ap = turnEntity.getActionPoints();
 
         if (ap < lowest_ap) {
             lowest_ap = ap;
-            lowest_turnEntity = turnEntity;
+            lowest_turnEntity = turnEntityObj;
         }
     }
 
@@ -139,7 +150,7 @@ function processCurrentAction(arg_action) {
 		}
 
 		// Dodaj punkty akcji (tymczasowo, później koszt zależny od typu)
-		character.addActionPoints(4); // albo: action.ACTION_COST()
+		getTurnEntityAttributes(character).addActionPoints(4); // albo: action.ACTION_COST()
 
 		// Wyczyść po przetworzeniu
 		global.INPUT_LAST_TRIGGER = undefined;

@@ -7,34 +7,22 @@
 //}
 
 
-function character_action_properties(_self) 
-{
-	PRIV_CHAR_STAT.STEP.COST.CALCULATE_CURRENT = function() {
-		return PRIV_CHAR_STAT.STEP.COST.BASE;
-	}
+// function character_action_properties(_self) 
+// {
+// 	PRIV_CHAR_STAT.STEP.COST.CALCULATE_CURRENT = function() {
+// 		return PRIV_CHAR_STAT.STEP.COST.BASE;
+// 	}
 	
-	get_ap_cost_func = function(action_type_enum) {
-		var closedFunction = {
-			relatedObj: PRIV_CHAR_STAT.REFERENCE,
-			param_action_type_enum: action_type_enum,
-			toReturn: function() {
-				return priv_impl_get_action_cost(relatedObj, param_action_type_enum);
-			}
-		}
-		return closedFunction.toReturn;
-	}
-}
+// 	get_ap_cost_func = function(action_type_enum) {
+// 		var closedFunction = {
+// 			relatedObj: PRIV_CHAR_STAT.REFERENCE,
+// 			param_action_type_enum: action_type_enum,
+// 			toReturn: function() {
+// 				return priv_impl_get_action_cost(relatedObj, param_action_type_enum);
+// 			}
+// 		}
+// 		return closedFunction.toReturn;
+// 	}
+// }
 
 
-function priv_impl_get_action_cost(self_obj, action_type_enum) {
-    switch (action_type_enum) {
-        case ACTION_TYPE_ENUM.ATTACK:
-            return 5; // koszt ataku
-        case ACTION_TYPE_ENUM.STEP:
-            return self_obj.PRIV_CHAR_STAT.STEP.COST.CALCULATE_CURRENT(); // koszt kroku
-        case ACTION_TYPE_ENUM.STAND:
-            return 0; // stanie nic nie kosztuje
-        default:
-            helper_throw_exception("UNEXPECTED ACTION TYPE: " + string(action_type_enum));
-    }
-}

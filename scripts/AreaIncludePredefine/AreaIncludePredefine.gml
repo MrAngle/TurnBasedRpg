@@ -30,7 +30,7 @@ function ActionAreaFilterBuilder_AllTilesInDistance(arg_area_filter_struct) {
 		valueStatsFunc: variable_struct_get(arg_area_filter_struct, global.AREA_FILTER_NAME_STATS_CALC_FUNC),
 		toReturn: function() {
 			var localSource = sourceFunc();
-			var localValueStatsFunc = valueStatsFunc();
+		var localValueStatsFunc = valueStatsFunc();
 			
 			var tilesInDistance = mapTile_filter_within_distance(global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile_by_character(localSource), localValueStatsFunc)
 			return global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([tilesInDistance]);

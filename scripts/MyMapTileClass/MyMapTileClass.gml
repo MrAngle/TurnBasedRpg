@@ -1,16 +1,4 @@
 
-/// @typedef {object} Struct.MyMapTile
-/// @property {Real} _properties_map_element_row_index
-/// @property {Real} _properties_map_element_col_index
-/// @property {Real} __x_position
-/// @property {Real} __y_position
-/// @property {Asset.GMObject} __terrain
-/// @property {Asset.GMObject} __character
-/// @property {Asset.GMObject} __obstacle
-/// @property {Instance} __shape_selector
-/// @property {function(): Real} getRow
-/// @property {function(Struct.MyMapTile): void} set_tile_auto_type
-
 
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
@@ -45,10 +33,6 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     __obstacle = _obj_character;
     __shape_selector = noone;
 
-	getTurnEntity = function() {
-        return __character;
-    };
-
     getRow = function() {
         return _properties_map_element_row_index;
     };
@@ -65,7 +49,13 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
         return helper_object_exists(__character);
     };
 
-    get_turn_entity = function() {
+    /// @returns {Struct.TurnEntityStruct}
+    getTurnEntityStruct = function() {
+        return getTurnEntityAttributes(__character);
+    };
+
+    /// @returns {Id.Instance}
+    getTurnEntityObj = function() {
         return __character;
     };
 

@@ -8,12 +8,12 @@ global.ENUM_MAPPERS = {
 
 global.ACTION_INTENT_TO_DIRECTION = {};
 
-variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ActionIntentId.MOVE_LEFT, DirectionId.LEFT);
-variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ActionIntentId.MOVE_RIGHT, DirectionId.RIGHT);
-variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ActionIntentId.MOVE_UP_LEFT, DirectionId.UP_LEFT);
-variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ActionIntentId.MOVE_UP_RIGHT, DirectionId.UP_RIGHT);
-variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ActionIntentId.MOVE_DOWN_LEFT, DirectionId.DOWN_LEFT);
-variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ActionIntentId.MOVE_DOWN_RIGHT, DirectionId.DOWN_RIGHT);
+variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ACTION_INTENT_ENUM.MOVE_LEFT, DirectionId.LEFT);
+variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ACTION_INTENT_ENUM.MOVE_RIGHT, DirectionId.RIGHT);
+variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ACTION_INTENT_ENUM.MOVE_UP_LEFT, DirectionId.UP_LEFT);
+variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ACTION_INTENT_ENUM.MOVE_UP_RIGHT, DirectionId.UP_RIGHT);
+variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ACTION_INTENT_ENUM.MOVE_DOWN_LEFT, DirectionId.DOWN_LEFT);
+variable_struct_set(global.ACTION_INTENT_TO_DIRECTION, ACTION_INTENT_ENUM.MOVE_DOWN_RIGHT, DirectionId.DOWN_RIGHT);
 
 function get_direction_from_intent(intent_id) {
 	if (variable_struct_exists(global.ACTION_INTENT_TO_DIRECTION, intent_id)) {
@@ -27,16 +27,16 @@ function get_direction_from_intent(intent_id) {
 global.COMMAND_TO_INTENT_MAP = {};
 
 //variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.AUTO_ACTION,     ActionIntentId.AUTO_ACTION);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_LEFT,       ActionIntentId.MOVE_LEFT);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_RIGHT,      ActionIntentId.MOVE_RIGHT);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_UP_LEFT,    ActionIntentId.MOVE_UP_LEFT);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_UP_RIGHT,   ActionIntentId.MOVE_UP_RIGHT);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_DOWN_LEFT,  ActionIntentId.MOVE_DOWN_LEFT);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_DOWN_RIGHT, ActionIntentId.MOVE_DOWN_RIGHT);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.STAND, ActionIntentId.STAND);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.CONFIRM,         ActionIntentId.CONFIRM);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.CANCEL,          ActionIntentId.CANCEL);
-variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.INTERACT,        ActionIntentId.INTERACT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_LEFT,       ACTION_INTENT_ENUM.MOVE_LEFT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_RIGHT,      ACTION_INTENT_ENUM.MOVE_RIGHT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_UP_LEFT,    ACTION_INTENT_ENUM.MOVE_UP_LEFT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_UP_RIGHT,   ACTION_INTENT_ENUM.MOVE_UP_RIGHT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_DOWN_LEFT,  ACTION_INTENT_ENUM.MOVE_DOWN_LEFT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.MOVE_DOWN_RIGHT, ACTION_INTENT_ENUM.MOVE_DOWN_RIGHT);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.STAND, ACTION_INTENT_ENUM.STAND);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.CONFIRM,         ACTION_INTENT_ENUM.CONFIRM);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.CANCEL,          ACTION_INTENT_ENUM.CANCEL);
+variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.INTERACT,        ACTION_INTENT_ENUM.INTERACT);
 
 /// @function get_intent_from_direction(arg_Direction)
 /// @desc
@@ -44,13 +44,13 @@ variable_struct_set(global.COMMAND_TO_INTENT_MAP, CommandEventId.INTERACT,      
 function get_intent_from_direction(arg_Direction) {
 	// Odwrotność mapy ACTION_INTENT_TO_DIRECTION
 	switch (arg_Direction) {
-		case DirectionId.LEFT:        return ActionIntentId.MOVE_LEFT;
-		case DirectionId.RIGHT:       return ActionIntentId.MOVE_RIGHT;
-		case DirectionId.UP_LEFT:     return ActionIntentId.MOVE_UP_LEFT;
-		case DirectionId.UP_RIGHT:    return ActionIntentId.MOVE_UP_RIGHT;
-		case DirectionId.DOWN_LEFT:   return ActionIntentId.MOVE_DOWN_LEFT;
-		case DirectionId.DOWN_RIGHT:  return ActionIntentId.MOVE_DOWN_RIGHT;
-		default:                      return ActionIntentId.STAND;
+		case DirectionId.LEFT:        return ACTION_INTENT_ENUM.MOVE_LEFT;
+		case DirectionId.RIGHT:       return ACTION_INTENT_ENUM.MOVE_RIGHT;
+		case DirectionId.UP_LEFT:     return ACTION_INTENT_ENUM.MOVE_UP_LEFT;
+		case DirectionId.UP_RIGHT:    return ACTION_INTENT_ENUM.MOVE_UP_RIGHT;
+		case DirectionId.DOWN_LEFT:   return ACTION_INTENT_ENUM.MOVE_DOWN_LEFT;
+		case DirectionId.DOWN_RIGHT:  return ACTION_INTENT_ENUM.MOVE_DOWN_RIGHT;
+		default:                      return ACTION_INTENT_ENUM.STAND;
 	}
 }
 

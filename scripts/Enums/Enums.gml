@@ -1,5 +1,9 @@
 // ALL enums should be created in that way 
-
+enum FACTION_ENUM {
+	PLAYER,
+	ENEMY,
+	NEUTRAL
+}
 
 enum ACTION_TYPE_ENUM {
 	ATTACK,
@@ -8,7 +12,7 @@ enum ACTION_TYPE_ENUM {
 }
 
 
-enum ActionIntentId {
+enum ACTION_INTENT_ENUM {
     //AUTO_ACTION,       // np. spacja – automatycznie atakuj lub podejdź do wroga
 
     MOVE_LEFT,

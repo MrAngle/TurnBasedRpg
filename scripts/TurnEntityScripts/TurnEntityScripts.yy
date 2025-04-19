@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TurnEntityScripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TurnEntityScripts",
+  "parent":{
+    "name":"TurnEntity",
+    "path":"folders/Hex/Combat/TurnEntity.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

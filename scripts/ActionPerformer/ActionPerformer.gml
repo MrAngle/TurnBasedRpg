@@ -41,8 +41,7 @@ function performEvent(arg_source_char, arg_destinarion_row, arg_destination_col)
 /// @returns {Void}
 function performMoveAction(arg_source_char, arg_destinarion_row, arg_destination_col) {
 	global.COMBAT_GLOBALS.ACTION.PROCESSING = true;
-	var test = arg_source_char.get_ap_cost_func(ACTION_TYPE_ENUM.STEP);
-	LOG_INFO_MESSAGE(test());
+
 	global.COMBAT_GLOBALS.MANAGERS.COMBAT_MAP.move_to(
 		arg_destinarion_row,
 		arg_destination_col,
@@ -50,6 +49,6 @@ function performMoveAction(arg_source_char, arg_destinarion_row, arg_destination
 }
 
 function performAttackAction(arg_source_char, arg_dest_char) {
-	arg_dest_char.receiveDamage(arg_source_char.getAttackValue());
+	getTurnEntityAttributes(arg_dest_char).receiveDamage(getTurnEntityAttributes(arg_source_char).getAttackValue());
 	
 }

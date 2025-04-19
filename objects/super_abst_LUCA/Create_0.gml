@@ -1,4 +1,10 @@
 __SELF = privGetSelfFunc(self);
+__PARAMS = {};
+
+/// @returns {Struct.ActionStruct}
+getParams = function() {
+	return __PARAMS;
+}
 
 function privGetSelfFunc(_self) {
 	var closedFunction = {
