@@ -118,7 +118,7 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 	ACTION = {
 		PROCESSING: false,
 		/// @type {Id.Instance.AbstTurnEntity}
-		CURRENT_TURN_ENTITY_OBJ: noone,
+		CURRENT_INVOKER_TURN_ENTITY_OBJ: noone,
 		/// @type {Enum.ACTION_TURN_STATE_ENUM}
 		CURRENT_TURN_STATE_ENUM: ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY,
 		/// @type {Struct.__ActionResolvedStruct}

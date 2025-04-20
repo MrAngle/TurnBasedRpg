@@ -1,20 +1,41 @@
+global.ENUM_LABELS = {}
+
+
 enum ACTION_MODE_ENUM {
     APPLY,
     PREDICT
 }
 
-// ALL enums should be created in that way 
 enum FACTION_ENUM {
 	PLAYER,
 	ENEMY,
 	NEUTRAL
 }
 
+// Connected with ENUM LABELS
 enum ACTION_TYPE_ENUM {
-	ATTACK,
-	STEP,
-	STAND
+	ATTACK = 100,
+	STEP = 101,
+	STAND = 102
 }
+
+function ActionTypeEnumStruct() constructor {
+    ATTACK  = { id: 100, label: "ATTACK" };
+    STEP    =   { id: 101, label: "STEP" };
+    STAND   =  { id: 102, label: "STAND" };
+};
+
+// global.ENUMS.ACTION_TYPE = new ActionTypeEnumStruct();
+
+// global.ENUMS.ACTION_TYPE.
+
+
+
+// global.ENUM_LABELS.ACTION_TYPE = {};
+// variable_struct_set(global.ENUM_LABELS.ACTION_TYPE, ACTION_TYPE_ENUM.ATTACK, "ATTACK");
+// variable_struct_set(global.ENUM_LABELS.ACTION_TYPE, ACTION_TYPE_ENUM.STEP,   "STEP");
+// variable_struct_set(global.ENUM_LABELS.ACTION_TYPE, ACTION_TYPE_ENUM.STAND,  "STAND");
+
 
 
 enum ACTION_INTENT_ENUM {

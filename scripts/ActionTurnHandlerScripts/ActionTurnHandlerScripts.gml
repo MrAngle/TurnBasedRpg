@@ -11,14 +11,14 @@ function onStepTurnProcessor() {
 	switch (global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM) {
 	    case ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
-			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ = getNextTurnEntity();
+			global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ = getNextTurnEntity();
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = 
-				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ)
+				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ)
 	        break;
 
 		case ACTION_TURN_STATE_ENUM.PROCESS_AI_INTENT:
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ENUM = 
-				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ);
+				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ);
 		
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PREPARE_ACTION_RESOLVE;
 			break;
@@ -50,7 +50,7 @@ function onStepTurnProcessor() {
 
 function processPrepareActionIntentToAction() {
 	var intent_id = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ENUM;
-	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ENTITY_OBJ;
+	var character = global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ;
 
 	var action = resolveActionFromIntent(intent_id, character);
 	return action;

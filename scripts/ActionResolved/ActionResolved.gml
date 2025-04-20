@@ -29,6 +29,8 @@ function __ActionResolvedStruct(_context_struct) constructor {
 
 	execute = function() {
 		__actionExecutorUnit.execute();
+		var test = __context_struct.getAction().getInvokerTuEnStruct();
+        var dziala = test.__cost.ATTACK;
 		__getInvokerStruct().addActionPoints(4);
 	}
 
@@ -58,7 +60,7 @@ function __defineActionExecutorUnitStruct(_arStruct) {
 		case ACTION_TYPE_ENUM.ATTACK:
 			return new ActionAttackExecutorUnitStruct(
 				action.getInvokerTuEnObj(), 
-				action.getTargetTuEn());
+				action.getTargetTuEnObj());
 			break;
 	
 		case ACTION_TYPE_ENUM.STEP:

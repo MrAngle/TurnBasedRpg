@@ -34,7 +34,7 @@ function ActionAttackExecutorUnitStruct(arg_source_char, arg_target_char) constr
 
     // IMPL
     execute = function() {
-        getTurnEntityAttributes(__source_char).receiveDamage(getTurnEntityAttributes(__target_char).getAttackValue());
+        getTurnEntityAttributes(__target_char).receiveDamage(getTurnEntityAttributes(__source_char).getAttackValue());
     };
 }
 

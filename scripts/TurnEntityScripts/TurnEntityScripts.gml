@@ -16,9 +16,16 @@ function TurnEntityStruct(_objectReference) constructor {
     /// @type {Struct.TurnEntityStruct}
 	__REFERENCE = self;
     __OBJECT_REFERENCE = _objectReference
+    __FACTION = FACTION_ENUM.NEUTRAL;
+
 	ACTION_POINTS = 0;
 
-    __FACTION = FACTION_ENUM.NEUTRAL;
+	
+    __cost = {};
+	variable_struct_set(__cost, global.ENUMS.ACTION_TYPE.ATTACK.label, new ActionCostStruct(global.ENUMS.ACTION_TYPE.ATTACK))
+	variable_struct_set(__cost, global.ENUMS.ACTION_TYPE.STAND.label, new ActionCostStruct(global.ENUMS.ACTION_TYPE.STAND))
+	variable_struct_set(__cost, global.ENUMS.ACTION_TYPE.STEP.label, new ActionCostStruct(global.ENUMS.ACTION_TYPE.STEP))
+    // __cost[global.ENUMS.ACTION_TYPE.ATTACK.label] = {}
 
 	STEP = {
 		COST: {
@@ -29,6 +36,8 @@ function TurnEntityStruct(_objectReference) constructor {
 			CALCULATE_CURRENT: function(){}
 		}
 	};
+
+
 
 	PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
 	HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };

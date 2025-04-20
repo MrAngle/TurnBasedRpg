@@ -32,7 +32,7 @@ function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
 	getInvokerTuEnObj = function() { return __invokerTuEnObj; };
 	getInvokerTuEnStruct = function() { return getTurnEntityAttributes(__invokerTuEnObj); };
 	getTargetTile = function() { return __target_tile; };
-	getTargetTuEn = function() { return __target_tile.getTurnEntityObj(); };
+	getTargetTuEnObj = function() { return __target_tile.getTurnEntityObj(); };
 	getFromIntent = function() { return __from_intent; };
 	getParentAction = function() { return __parent_action; };
 	getOriginAction = function() { return __origin_action; };

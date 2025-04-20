@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionCostStructure",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionCostStructure",
+  "parent":{
+    "name":"Stats",
+    "path":"folders/Hex/Combat/TurnEntity/Stats.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
