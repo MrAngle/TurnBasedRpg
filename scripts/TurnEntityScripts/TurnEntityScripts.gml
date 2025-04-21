@@ -27,7 +27,14 @@ function TurnEntityStruct(_objectReference) constructor {
 	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STAND.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STAND))
 	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STEP.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STEP))
 
-	
+
+
+	ACTION_POINTS = 0;
+
+	PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
+	HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };
+
+		
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
 	consumeActionPoints = function(_actionContextStruct) {
 		/// @type {Struct.ActionCostStruct}
@@ -35,26 +42,6 @@ function TurnEntityStruct(_objectReference) constructor {
 
 		self.ACTION_POINTS += actionPointsToConsume.calculateActionCost(_actionContextStruct);
 	}
-
-	ACTION_POINTS = 0;
-
-    // __cost[global.ENUMS.ACTION_TYPE.ATTACK.label] = {}
-
-	// STEP = {
-	// 	COST: {
-	// 		BASE_MIN: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.MIN,
-	// 		BASE_MAX: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.MAX,
-	// 		BASE: global.STATISTICS_COMBAT_GLOBALS.AP_COST.MOVEMENT.DEFAULT_BASE,
-	// 		EFFECTS: [],
-	// 		CALCULATE_CURRENT: function(){}
-	// 	}
-	// };
-
-
-
-	PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
-	HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };
-
 
 	receiveDamage = function(dmg) {
 		self.HP.CURRENT_HP -= dmg;
