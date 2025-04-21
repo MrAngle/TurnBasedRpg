@@ -2,6 +2,8 @@
 /// @param {Struct.TurnEntityStatsStruct} _overrides
 /// @returns {Struct.TurnEntityStatsStruct}
 function TurnEntityStatsStruct(_overrides = {}) constructor {
+
+	/// @type {Struct.__ActionCostStructAbst}
     __ACTION_COST_STAT = {};
 	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.ATTACK.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.ATTACK))
 	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STAND.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STAND))

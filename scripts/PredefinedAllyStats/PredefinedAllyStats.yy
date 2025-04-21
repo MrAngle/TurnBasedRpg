@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PredefinedAllyStats",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PredefinedAllyStats",
+  "parent":{
+    "name":"Ally",
+    "path":"folders/Hex/Combat/TurnEntity/PredefinedStats/Characters/Ally.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

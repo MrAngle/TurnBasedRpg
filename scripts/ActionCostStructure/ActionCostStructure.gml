@@ -1,3 +1,15 @@
+/// @returns {Struct.__ActionCostStructAbst}
+function __ActionCostStructAbst() constructor {
+	/// @type {Struct.ActionCostStruct} ATTACK
+	ATTACK = ActionCostStruct() // global.ENUMS.ACTION_TYPE.ATTACK.label
+	/// @type {Struct.ActionCostStruct}
+	STAND = ActionCostStruct()   // global.ENUMS.ACTION_TYPE.STAND.label
+	/// @type {Struct.ActionCostStruct}
+	STEP = ActionCostStruct()		// global.ENUMS.ACTION_TYPE.STEP.label
+	
+}
+
+
 
 /// @function ActionCostStruct
 /// @desc Tworzy strukturę reprezentującą koszt konkretnego typu akcji.

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PredefinedEnemyStats",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PredefinedEnemyStats",
+  "parent":{
+    "name":"Enemy",
+    "path":"folders/Hex/Combat/TurnEntity/PredefinedStats/Characters/Enemy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

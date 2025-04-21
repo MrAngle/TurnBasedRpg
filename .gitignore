@@ -37,3 +37,6 @@ shaders/_shd_scribble_bake_effect_4dir/
 shaders/_shd_scribble_bake_effect_8dir/
 shaders/_shd_scribble_bake_effect_8dir_2px/
 shaders/_shd_scribble_bake_effect_no_outline/
+
+!__scribble_config_defaults
+!__scribble_config_defaults_backup

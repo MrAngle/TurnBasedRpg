@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"AdjustStats",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"AdjustStats",
+  "parent":{
+    "name":"PredefinedStats",
+    "path":"folders/Hex/Combat/TurnEntity/PredefinedStats.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
