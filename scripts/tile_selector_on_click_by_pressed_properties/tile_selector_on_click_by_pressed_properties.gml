@@ -1,7 +1,5 @@
 
-//global.TILE_SELECTOR_EVENT_ON_CLICK = function(_self) { // Remember to pass reference
-//	show_debug_message("tile_selector_on_click_element is not set for object: " + string(_self.id));
-//}
+
 
 //global.TILE_SELECTOR_SELECTED_TILES = 
 

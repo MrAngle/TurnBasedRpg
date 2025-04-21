@@ -1,6 +1,23 @@
 global.ENUM_LABELS = {}
 
 
+/// @function ENUM_STRUCT
+/// @description Creates a structure representing a single enum-like value with both ID and label.
+/// @constructor
+///
+/// @param {Real} _id - Numeric identifier of the enum value (e.g. 100, 101...).
+/// @param {String} _label - String label of the enum value (e.g. "STEP", "ATTACK").
+///
+/// @returns {Struct.ENUM_STRUCT}
+function ENUM_STRUCT(_id, _label) constructor {
+    /// Numeric ID of the enum value
+    id = _id;
+
+    /// Readable label of the enum value
+    label = _label;
+}
+
+
 enum ACTION_MODE_ENUM {
     APPLY,
     PREDICT
@@ -13,16 +30,21 @@ enum FACTION_ENUM {
 }
 
 // Connected with ENUM LABELS
-enum ACTION_TYPE_ENUM {
-	ATTACK = 100,
-	STEP = 101,
-	STAND = 102
-}
+// enum ACTION_TYPE_ENUM {
+// 	ATTACK = 100,
+// 	STEP = 101,
+// 	STAND = 102
+// }
 
 function ActionTypeEnumStruct() constructor {
-    ATTACK  = { id: 100, label: "ATTACK" };
-    STEP    =   { id: 101, label: "STEP" };
-    STAND   =  { id: 102, label: "STAND" };
+    
+    // ATTACK  = { id: 100, label: "ATTACK" };
+    // STEP    =   { id: 101, label: "STEP" };
+    // STAND   =  { id: 102, label: "STAND" };
+
+    ATTACK  = new ENUM_STRUCT(100, "ATTACK");
+    STEP  = new ENUM_STRUCT(101, "STEP");
+    STAND  = new ENUM_STRUCT(102, "STAND");
 };
 
 // global.ENUMS.ACTION_TYPE = new ActionTypeEnumStruct();

@@ -1,14 +1,3 @@
-//global.myGlobalObjName_None = "None";
-//global.myGlobalObjName_Terrain = "Terrain";
-//global.myGlobalObjName_Character = "Character";
-
-//global.myGlobalObjName_Necro = "Necro";
-//global.myGlobalObjName_Desert = "Desert";
-
-
-//global.COMBAT_GLOBALS.SELECTOR.ON_CLICK_EVENT_FUNCTION = function(_self) { // Remember to pass reference
-//	show_debug_message("tile_selector_on_click_element is not set for object: " + string(_self.id));
-//}
 
 //global.COMBAT_GLOBALS.MANAGERS.MENU_SELECTED_CHAR
 // Funkcja inicjalizacji domyślnych wartości

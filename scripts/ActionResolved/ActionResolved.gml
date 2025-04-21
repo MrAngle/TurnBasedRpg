@@ -29,9 +29,12 @@ function __ActionResolvedStruct(_context_struct) constructor {
 
 	execute = function() {
 		__actionExecutorUnit.execute();
-		var test = __context_struct.getAction().getInvokerTuEnStruct();
-        var dziala = test.__cost.ATTACK;
-		__getInvokerStruct().addActionPoints(4);
+		__finalizeAction();
+		
+	}
+
+	__finalizeAction = function() {
+		__getInvokerStruct().consumeActionPoints(__context_struct);
 	}
 
 	// // Oblicz koszt (np. dla UI lub walidacji)
@@ -56,21 +59,21 @@ function __ActionResolvedStruct(_context_struct) constructor {
 function __defineActionExecutorUnitStruct(_arStruct) {
     var action = _arStruct.__getAction();
 	var actionType = action.getType()
-	switch (actionType) {
-		case ACTION_TYPE_ENUM.ATTACK:
+	switch (actionType.id) {
+		case global.ENUMS.ACTION_TYPE.ATTACK.id:
 			return new ActionAttackExecutorUnitStruct(
 				action.getInvokerTuEnObj(), 
 				action.getTargetTuEnObj());
 			break;
 	
-		case ACTION_TYPE_ENUM.STEP:
+		case global.ENUMS.ACTION_TYPE.STEP.id:
 			return new ActionStepExecutorUnitStruct(
 				action.getInvokerTuEnObj(), 
 				action.getTargetTile().getRow(), 
 				action.getTargetTile().getCol())
 			break;
 	
-		case ACTION_TYPE_ENUM.STAND:
+		case global.ENUMS.ACTION_TYPE.STAND.id:
 			return new ActionStandExecutorUnitStruct();
 			break;
 	

@@ -28,4 +28,6 @@ function ActionContextStruct(_action_struct, _evaluation_mode = ACTION_MODE_ENUM
 	setTargetEffects    = function(list) { __target_effects = list; };
 	setMetadata         = function(m) { __metadata = m; };
 	setSourceIntent     = function(i) { __source_intent = i; };
+
+	
 }

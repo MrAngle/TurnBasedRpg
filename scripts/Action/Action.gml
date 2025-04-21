@@ -9,7 +9,7 @@
 ///       inicjatora, cel oraz dane pomocnicze takie jak głębokość rekurencji.
 /// @constructor
 ///
-/// @param {Enum.ACTION_TYPE_ENUM} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
+/// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
 /// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
 /// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
@@ -80,13 +80,16 @@ function get_target_position_from_intent(intent_id, character) {
 function resolve_skill_type(turnEntity, tile) {
 	var target_character = tile.getTurnEntityObj();
 	if (helper_object_not_exists(target_character)) {
-	    return ACTION_TYPE_ENUM.STEP;
+	    // return ACTION_TYPE_ENUM.STEP;
+		return global.ENUMS.ACTION_TYPE.STEP;
 	}
 	
 	if(target_character == turnEntity) {
-		return ACTION_TYPE_ENUM.STAND;
+		// return ACTION_TYPE_ENUM.STAND;
+		return global.ENUMS.ACTION_TYPE.STAND;
 	} else {
-	    return ACTION_TYPE_ENUM.ATTACK;
+	    // return ACTION_TYPE_ENUM.ATTACK;
+		return global.ENUMS.ACTION_TYPE.ATTACK;
 	}
 
 }
