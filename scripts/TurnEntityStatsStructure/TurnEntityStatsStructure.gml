@@ -12,8 +12,8 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
     // === Domyślne statystyki ===
 	__FACTION = FACTION_ENUM.NEUTRAL;
     HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };
-    ACTION_POINTS = 2;
-    PREVIOUS_ACTION_POINTS = 2;
+    __ACTION_POINTS = 2;
+    __PREVIOUS_ACTION_POINTS = 2;
     PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
     CUSTOM = {
         AGILITY: 5,
@@ -21,6 +21,14 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
         INTELLIGENCE: 5,
         LUCK: 1
     };
+
+	getActionPoints = function() {
+		return __ACTION_POINTS;
+	}
+
+	getCostOfPreviousAction = function() {
+		return __ACTION_POINTS - __PREVIOUS_ACTION_POINTS;
+	}
 
 	// === Setters ===
 	setFaction = function(factionEnum) {
@@ -38,7 +46,7 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 	};
 
 	setActionPoints = function(value) {
-		ACTION_POINTS = max(0, value);
+		__ACTION_POINTS = max(0, value);
 	};
 
 	setPhysicalAttack = function(base, scaling) {
@@ -68,8 +76,8 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 	applyActionPoints = function(_actionContextStruct) {
 		var apToApply = __getActionCostToConsume(_actionContextStruct);
 
-		PREVIOUS_ACTION_POINTS = self.ACTION_POINTS;
-		self.ACTION_POINTS += apToApply;
+		__PREVIOUS_ACTION_POINTS = self.__ACTION_POINTS;
+		self.__ACTION_POINTS += apToApply;
 	}
 
 }

@@ -2,9 +2,8 @@
 var vgs = visualGenericStruct;
 
 if (helper_is_not_definied(vgs) || vgs.shouldDestroy()) {
+    vgs.onDestroy()
     instance_destroy();
-    visualGenericStruct.onDestroy()
 } else {
     vgs.onStep();
 }
-

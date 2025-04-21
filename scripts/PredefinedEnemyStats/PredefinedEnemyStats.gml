@@ -10,8 +10,8 @@ function INIT_ZOMBIE_STATS(_turnEntityStruct) {
     actionCost.STEP.__base = 10;
     actionCost.STAND.__base = 20;
 
-    _turnEntityStatsStruct.HP.BASE = 10000;
-    _turnEntityStatsStruct.HP.CURRENT_HP = 10000;
+    _turnEntityStatsStruct.HP.BASE = 500;
+    _turnEntityStatsStruct.HP.CURRENT_HP = 500;
 
     _turnEntityStatsStruct.PHYSICAL_ATTACK.BASE = 5;
 

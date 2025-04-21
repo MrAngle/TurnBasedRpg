@@ -58,7 +58,7 @@ function TurnEntityStruct(_objectReference) constructor {
 		__STATS.HP.CURRENT_HP -= dmg;
         TextReceiveDamage(__OBJECT_REFERENCE, dmg);
 		visualsShakeObject(__OBJECT_REFERENCE);
-		if (__STATS.HP.CURRENT_HP < 1) {
+		if (isDead()) {
             with(self.__OBJECT_REFERENCE) {
                 instance_destroy();
             }
@@ -70,12 +70,16 @@ function TurnEntityStruct(_objectReference) constructor {
 	};
 
 	getActionPoints = function() {
-		return __STATS.ACTION_POINTS;
+		return __STATS.getActionPoints();
 	};
 
-	getActionPreviousPoints = function() {
-		return __STATS.PREVIOUS_ACTION_POINTS;
+	getCostOfPreviousAction = function() {
+		return __STATS.getCostOfPreviousAction();
 	};
+
+	isDead = function() {
+		return __STATS.HP.CURRENT_HP < 1
+	}
 
     getFaction = function() {
 		return __STATS.__FACTION;

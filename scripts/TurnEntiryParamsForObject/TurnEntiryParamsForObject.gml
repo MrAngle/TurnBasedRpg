@@ -1,4 +1,4 @@
-/// @param {Id.Instance.AbstTurnEntity} _objReference
+/// @param {Id.Instance<AbstTurnEntity>} _objReference
 function properties_load_turn_entity(_objTurnEntity) {
 	__TURN_ENTITY_ATTRIBUTES = new TurnEntityStruct(_objTurnEntity);
 

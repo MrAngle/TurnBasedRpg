@@ -1,20 +1,5 @@
-// Its used only to handle on step actions and auto destroy
-function VisualGenericStruct() constructor {
-    onStep = function(){}
-    onDestroy = function(){}
-    onDraw = function() {}
-    shouldDestroy = function(){}
-}
-
 /// @type {Struct.VisualGenericStruct}
 var vgs = visualGenericStruct;
-
-// if(helper_is_not_definied(vgs.onDraw)) {
-//     vgs.onDraw = function(){}
-// }
-// if(helper_is_not_definied(vgs.onDestroy)) {
-//     vgs.onDestroy = function(){}
-// }
 
 var fields = ["onStep", "onDestroy", "onDraw", "shouldDestroy"];
 
