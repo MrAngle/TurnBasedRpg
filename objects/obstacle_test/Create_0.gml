@@ -4,7 +4,7 @@ properties_layer_base_depth = global.LAYERS.obstacles.depth;
 
 self.properties_bg_sprite = bg_desert_terrain_2_ground; // Przypisz sprite tła
 
-sprite_index = choose(ruins_1_obstacle, stone_3_obstacle, stone_2_obstacle, stone_1_obstacle, barrel_1_obstacle);
+sprite_index = choose(ruins_1_obstacle, stone_3_obstacle, stone_2_obstacle, stone_1_obstacle, barrel_1_obstacle, bush_1_obstacle);
 // Losowe odbicie w poziomie
 //image_xscale = choose(1, -1); // 1 = brak odbicia, -1 = odbicie lustrzane
 // Losowe odbicie w pionie

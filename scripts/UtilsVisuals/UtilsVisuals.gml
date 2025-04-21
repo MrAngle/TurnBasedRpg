@@ -4,6 +4,7 @@
 function VisualGenericStruct() constructor {
     onStep = function(){}
     onDestroy = function(){}
+    onDraw = function() {}
     shouldDestroy = function(){}
 }
 

@@ -73,13 +73,17 @@ function TurnEntityStruct(_objectReference) constructor {
 		return __STATS.ACTION_POINTS;
 	};
 
+	getActionPreviousPoints = function() {
+		return __STATS.PREVIOUS_ACTION_POINTS;
+	};
+
     getFaction = function() {
 		return __STATS.__FACTION;
 	};
 
-	addActionPoints = function(val) {
-		__STATS.ACTION_POINTS += val;
-	};
+	// addActionPoints = function(val) {
+	// 	__STATS.ACTION_POINTS += val;
+	// };
 }
 
 

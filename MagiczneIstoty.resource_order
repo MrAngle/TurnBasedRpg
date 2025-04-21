@@ -349,6 +349,7 @@
     {"name":"asaddsa","order":3,"path":"sprites/asaddsa/asaddsa.yy",},
     {"name":"barrel_1_obstacle","order":7,"path":"sprites/barrel_1_obstacle/barrel_1_obstacle.yy",},
     {"name":"bg_desert_terrain_2_ground","order":1,"path":"sprites/bg_desert_terrain_2_ground/bg_desert_terrain_2_ground.yy",},
+    {"name":"bush_1_obstacle","order":8,"path":"sprites/bush_1_obstacle/bush_1_obstacle.yy",},
     {"name":"Card_empty","order":5,"path":"sprites/Card_empty/Card_empty.yy",},
     {"name":"CardForGame","order":1,"path":"sprites/CardForGame/CardForGame.yy",},
     {"name":"CardTemplate","order":2,"path":"sprites/CardTemplate/CardTemplate.yy",},

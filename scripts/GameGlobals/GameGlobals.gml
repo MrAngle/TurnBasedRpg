@@ -75,4 +75,10 @@ global.TYPEOF_REF = "ref";
 
 global.MY_ROOM_SPEED = room_speed;
 global.MY_EMPTY_FUNCTION = function() {};
+// global.EMPTY_FUNCTION_REFERENCE_FUNC = function(){
+// 	var emptyFunc = {
+// 		toReturn:function() {}
+// 	} 
+// 	return emptyFunc.toReturn;
+// }
 global.MY_EMPTY_FUNCTION_WITH_2_PARAMS = function(_obj, _source) {};

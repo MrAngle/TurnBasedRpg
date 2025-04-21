@@ -12,6 +12,7 @@ function onStepTurnProcessor() {
 	    case ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
 			global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ = getNextTurnEntity();
+			global.COMBAT_GLOBALS.ACTION.CURRENT_MIN_ACTION_POINTS = getTurnEntityStruct(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ).getActionPoints();
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = 
 				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ)
 	        break;
@@ -86,16 +87,7 @@ function waitingForUserInput() {
 	}
 }
 
-// function getActionToPerform(arg_turnEntity) {
-// 	if(arg_turnEntity.my_character_side == CombatCharacterSideEnum.PLAYER) {
-// 		return ActionTurnStateEnum.WAITING_FOR_USER_INPUT;
-// 	} else {
-// 		return ActionTurnStateEnum.PERFORM_ACTION
-// 	}
-// }
-
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} arg_objTurnEntity
-
 function getNextStateBasedOnSideForObj(arg_objTurnEntity) {
 	return getNextStateBasedOnSide(getTurnEntityStruct(arg_objTurnEntity));
 }
@@ -145,35 +137,3 @@ function get_turn_entity_with_least_action_points() {
 
     return lowest_turnEntity;
 }
-
-// /// @param {Struct.ActionStruct} arg_action 
-// function processCurrentAction(arg_action) {
-// 	var action = arg_action;
-
-// 	if (helper_is_definied(action)) {
-// 		var character = action.getInvokerTuEnObj();
-// 		var tile = action.getTargetTile();
-
-// 		// Wykonaj akcję na podstawie typu
-// 		switch (action.getType()) {
-// 			case ACTION_TYPE_ENUM.STEP:
-// 				performEvent(character, tile.getRow(), tile.getCol());
-// 				break;
-// 			case ACTION_TYPE_ENUM.ATTACK:
-// 				performEvent(character, tile.getRow(), tile.getCol());
-// 				break;
-
-// 			case ACTION_TYPE_ENUM.STAND:
-// 				// np. nie rób nic, albo zakończ turę bez ruchu
-// 				break;
-// 		}
-
-// 		// Dodaj punkty akcji (tymczasowo, później koszt zależny od typu)
-// 		getTurnEntityAttributes(character).addActionPoints(4); // albo: action.ACTION_COST()
-
-// 		// Wyczyść po przetworzeniu
-// 		global.INPUT_LAST_TRIGGER = undefined;
-// 		global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
-// 		global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY;
-// 	}
-// }

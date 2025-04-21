@@ -1,4 +1,4 @@
-//window_set_fullscreen(true);
+// window_set_fullscreen(true);
 if(!variable_struct_exists(global, "GAME_GLOBALS")) {
 	global.____INIT_GAME_GLOBAL();
 }

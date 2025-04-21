@@ -489,6 +489,7 @@
     {"id":{"name":"bg_desert_terrain_2_ground","path":"sprites/bg_desert_terrain_2_ground/bg_desert_terrain_2_ground.yy",},},
     {"id":{"name":"bg_desert_terrain_3_ground","path":"sprites/bg_desert_terrain_3_ground/bg_desert_terrain_3_ground.yy",},},
     {"id":{"name":"bg_grass_terrain_1_ground","path":"sprites/bg_grass_terrain_1_ground/bg_grass_terrain_1_ground.yy",},},
+    {"id":{"name":"bush_1_obstacle","path":"sprites/bush_1_obstacle/bush_1_obstacle.yy",},},
     {"id":{"name":"Card_empty","path":"sprites/Card_empty/Card_empty.yy",},},
     {"id":{"name":"card_fireball_1","path":"sprites/card_fireball_1/card_fireball_1.yy",},},
     {"id":{"name":"card_lighting_1","path":"sprites/card_lighting_1/card_lighting_1.yy",},},
