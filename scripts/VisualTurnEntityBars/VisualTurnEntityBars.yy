@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"VisualTurnEntityBars",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"VisualTurnEntityBars",
+  "parent":{
+    "name":"Visuals",
+    "path":"folders/Hex/Visuals.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -3,7 +3,7 @@ __PARAMS = {};
 
 /// @returns {Struct.ActionStruct}
 getParams = function() {
-	return __PARAMS;
+	return self;
 }
 
 function privGetSelfFunc(_self) {

@@ -80,10 +80,12 @@ global.___LOAD_CHARACTERS_ACTIONS = function() {
 	var enemyObj = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 	var enemyObj2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 	var enemyObj3 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
+	var enemyObj4 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(enemyObj);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(0, 0).set_tile_auto_type(enemyObj2);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(10, 10).set_tile_auto_type(enemyObj3);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(4, 10).set_tile_auto_type(enemyObj4);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character);
 }
 

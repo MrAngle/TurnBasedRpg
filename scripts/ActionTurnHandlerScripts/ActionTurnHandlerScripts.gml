@@ -97,7 +97,7 @@ function waitingForUserInput() {
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} arg_objTurnEntity
 
 function getNextStateBasedOnSideForObj(arg_objTurnEntity) {
-	return getNextStateBasedOnSide(getTurnEntityAttributes(arg_objTurnEntity));
+	return getNextStateBasedOnSide(getTurnEntityStruct(arg_objTurnEntity));
 }
 
 /// @param {Struct.TurnEntityStruct} arg_turnEntity 
@@ -133,7 +133,7 @@ function get_turn_entity_with_least_action_points() {
         if (!tile.hasTurnEntity()) continue;
 
 		var turnEntityObj = tile.getTurnEntityObj();
-        var turnEntity = getTurnEntityAttributes(turnEntityObj);
+        var turnEntity = getTurnEntityStruct(turnEntityObj);
 
         var ap = turnEntity.getActionPoints();
 

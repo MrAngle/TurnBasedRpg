@@ -52,7 +52,7 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 
     /// @returns {Struct.TurnEntityStruct}
     getTurnEntityStruct = function() {
-        return getTurnEntityAttributes(__character);
+        return getTurnEntityStruct(__character);
     };
 
     // /// @returns {Boolean}

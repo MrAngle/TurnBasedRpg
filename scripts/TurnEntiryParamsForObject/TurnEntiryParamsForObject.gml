@@ -10,26 +10,26 @@ function properties_load_turn_entity(_objTurnEntity) {
 		_objTurnEntity.draw_container[arLenght] = drawHp_returnFunc(_objTurnEntity)
 	}
 
-	if(_objTurnEntity.draw_container != undefined) {
-		var my_text = scribble("Przykładowy tekst");
+	// if(_objTurnEntity.draw_container != undefined) {
+	// 	var my_text = scribble("Przykładowy tekst");
 
 
-		var arLenght = array_length(_objTurnEntity.draw_container);
-		_objTurnEntity.draw_container[arLenght] = function() { 
-			var damage_amount = 50; // Przykładowa wartość obrażeń
-			lifespan = 30; // Czas życia tekstu w klatkach
-			alpha = 1;
-			vertical_speed = -0.5;
-			text = scribble("[FNT_recevieDamage][c_red]" + string(damage_amount));
-			text.scale = 3;
-			typist = scribble_typist().in(3, 5);
-			// draw_set_alpha(alpha);
-			text.draw(x, y);
-			// draw_set_alpha(1); // Przywrócenie domyślnej przezroczystości
-		}
-		// Tworzenie instancji tekstu obrażeń
+	// 	var arLenght = array_length(_objTurnEntity.draw_container);
+	// 	_objTurnEntity.draw_container[arLenght] = function() { 
+	// 		var damage_amount = 50; // Przykładowa wartość obrażeń
+	// 		lifespan = 30; // Czas życia tekstu w klatkach
+	// 		alpha = 1;
+	// 		vertical_speed = -0.5;
+	// 		text = scribble("[FNT_recevieDamage][c_red]" + string(damage_amount));
+	// 		text.scale = 3;
+	// 		typist = scribble_typist().in(3, 5);
+	// 		// draw_set_alpha(alpha);
+	// 		text.draw(x, y);
+	// 		// draw_set_alpha(1); // Przywrócenie domyślnej przezroczystości
+	// 	}
+	// 	// Tworzenie instancji tekstu obrażeń
 
-	}
+	// }
 }
 
 /// @returns {Struct.TurnEntityStruct}
@@ -45,7 +45,7 @@ function __getTurnEntity(_objTurnEntity) {
 
 /// @param {Id.Instance.AbstTurnEntity} _objReference
 /// @returns {Struct.TurnEntityStruct}
-function getTurnEntityAttributes(_objReference) {
+function getTurnEntityStruct(_objReference) {
 	/// @type {} // any object - add validation in feature
 	var ref = _objReference
 	return ref.getTurnEntity();

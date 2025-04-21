@@ -49,6 +49,6 @@ function performMoveAction(arg_source_char, arg_destinarion_row, arg_destination
 }
 
 function performAttackAction(arg_source_char, arg_dest_char) {
-	getTurnEntityAttributes(arg_dest_char).receiveDamage(getTurnEntityAttributes(arg_source_char).getAttackValue());
+	getTurnEntityStruct(arg_dest_char).receiveDamage(getTurnEntityStruct(arg_source_char).getAttackValue());
 	
 }

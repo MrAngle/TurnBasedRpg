@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"UtilsVisuals",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"UtilsVisuals",
+  "parent":{
+    "name":"Visuals",
+    "path":"folders/Hex/Visuals.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

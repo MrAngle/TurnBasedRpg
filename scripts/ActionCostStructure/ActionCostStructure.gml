@@ -1,3 +1,4 @@
+/// PSEUDO INTERFACE
 /// @returns {Struct.__ActionCostStructAbst}
 function __ActionCostStructAbst() constructor {
 	/// @type {Struct.ActionCostStruct} ATTACK
@@ -8,7 +9,6 @@ function __ActionCostStructAbst() constructor {
 	STEP = ActionCostStruct()		// global.ENUMS.ACTION_TYPE.STEP.label
 	
 }
-
 
 
 /// @function ActionCostStruct

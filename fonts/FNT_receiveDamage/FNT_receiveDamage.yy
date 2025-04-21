@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"FNT_recevieDamage",
+  "%Name":"FNT_receiveDamage",
   "AntiAlias":1,
   "applyKerning":0,
   "ascender":49,
@@ -232,7 +232,7 @@
   "last":0,
   "lineHeight":61,
   "maintainGms1Font":false,
-  "name":"FNT_recevieDamage",
+  "name":"FNT_receiveDamage",
   "parent":{
     "name":"Combat",
     "path":"folders/Hex/Texts/FontHex/Combat.yy",

@@ -1,0 +1,1 @@
+/// @type {Struct.VisualGenericStruct}

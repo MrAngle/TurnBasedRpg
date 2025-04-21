@@ -56,6 +56,8 @@ function TurnEntityStruct(_objectReference) constructor {
 
 	receiveDamage = function(dmg) {
 		__STATS.HP.CURRENT_HP -= dmg;
+        TextReceiveDamage(__OBJECT_REFERENCE, dmg);
+		visualsShakeObject(__OBJECT_REFERENCE);
 		if (__STATS.HP.CURRENT_HP < 1) {
             with(self.__OBJECT_REFERENCE) {
                 instance_destroy();

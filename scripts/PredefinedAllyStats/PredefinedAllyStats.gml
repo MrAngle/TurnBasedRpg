@@ -9,8 +9,8 @@ function INIT_NECRO_STATS(_turnEntityStruct) {
     actionCost.STEP.__base = 3;
     actionCost.STAND.__base = 10;
 
-    _turnEntityStatsStruct.HP.BASE = 50;
-    _turnEntityStatsStruct.HP.CURRENT_HP = 50;
+    _turnEntityStatsStruct.HP.BASE = 500;
+    _turnEntityStatsStruct.HP.CURRENT_HP = 500;
 
-    _turnEntityStatsStruct.PHYSICAL_ATTACK.BASE = 5;
+    _turnEntityStatsStruct.PHYSICAL_ATTACK.BASE = 101;
 }

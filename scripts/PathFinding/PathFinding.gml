@@ -160,6 +160,6 @@ function isEnemy(source_Char, currentRow, currentCol) {
 		.MAP_HOLDER.get_tile(currentRow, currentCol);
 
 	return destTile.hasTurnEntity() && 
-		destTile.getTurnEntityStruct().getFaction() != getTurnEntityAttributes(source_Char).getFaction()
+		destTile.getTurnEntityStruct().getFaction() != getTurnEntityStruct(source_Char).getFaction()
 			// destTile.__character.my_character_side != source_Char.my_character_side
 }

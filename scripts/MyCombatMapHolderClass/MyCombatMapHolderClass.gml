@@ -38,6 +38,10 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 	find_character_in_map = function(_obj_target) {
 		return __find_character_in_map(self.__map_holder, self.__rows, self.__cols, _obj_target);
 	}
+
+	getTileByTurnEntityObj = function(_character) { // _filter_function(element) - return true 
+		return  get_tile(_character.properties_map_element_row_index, _character.properties_map_element_col_index);
+	}
 	
 	get_tile_by_character = function(_character) { // _filter_function(element) - return true 
 		return  __get_tile_by_character(self, _character);
