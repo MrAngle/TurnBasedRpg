@@ -2,9 +2,9 @@ event_inherited();
 
 
 properties_map_element_obj_type = MapElementObjectTypeEnum.CHARACTER;// Typ domyślny dla kafelków
-my_character_side = CombatCharacterSideEnum.NEUTRAL;
+//my_character_side = CombatCharacterSideEnum.NEUTRAL;
 
-__TURN_ENTITY_ATTRIBUTES.__FACTION = CombatCharacterSideEnum.NEUTRAL;
+__TURN_ENTITY_ATTRIBUTES.setFaction(FACTION_ENUM.NEUTRAL)
 
 // logic params
 //my_turn_finished = true;

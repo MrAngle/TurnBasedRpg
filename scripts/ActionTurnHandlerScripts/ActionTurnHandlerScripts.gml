@@ -130,7 +130,7 @@ function get_turn_entity_with_least_action_points() {
 		/// @type {Struct.MyMapTile}
         var tile = tiles[i];
 
-        if (!tile.has_turn_entity()) continue;
+        if (!tile.hasTurnEntity()) continue;
 
 		var turnEntityObj = tile.getTurnEntityObj();
         var turnEntity = getTurnEntityAttributes(turnEntityObj);

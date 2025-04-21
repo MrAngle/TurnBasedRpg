@@ -13,14 +13,14 @@ function MapTileFilter(_filterFunc) constructor {
 // SUPPORTED FILTERS
 function mapTile_filter_element_is_in_array(_arrayToCheck) {
 	//return helper_function_element_is_in_array(_arrayToCheck);
-	closedFunction = {
+	var closedFunction = {
 		filterFunc: helper_function_element_is_in_array(_arrayToCheck)
 	}
 	return closedFunction;
 }
 
 function mapTile_filter_element_is_not_in_array(_arrayToCheck) {
-	closedFunction = {
+	var closedFunction = {
 		filterFunc: helper_function_element_is_not_in_array(_arrayToCheck)
 	}
 	return closedFunction;
@@ -28,7 +28,7 @@ function mapTile_filter_element_is_not_in_array(_arrayToCheck) {
 }
 
 function mapTile_filter_element_contains_character() {
-	closedFunction = {
+	var closedFunction = {
 		filterFunc: function(_myMapTileObjectToCheck) {
 			return !helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character);
 	    }
@@ -38,10 +38,11 @@ function mapTile_filter_element_contains_character() {
 
 
 function mapTile_filter_element_contains_player_character() {
-	closedFunction = {
+	var closedFunction = {
+		/// @param {Struct.MyMapTile} _myMapTileObjectToCheck
 		filterFunc: function(_myMapTileObjectToCheck) {
-			if(!helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
-				return _myMapTileObjectToCheck.__character.my_character_side == CombatCharacterSideEnum.PLAYER
+			if(_myMapTileObjectToCheck.hasTurnEntity()) {
+				return _myMapTileObjectToCheck.getTurnEntityStruct().getFaction() == FACTION_ENUM.PLAYER
 			}
 	    }
 	}
@@ -51,31 +52,32 @@ function mapTile_filter_element_contains_player_character() {
 /// @returns {Struct.MapTileFilter}
 function mapTile_filter_element_contains_turn_entity() {
 	var closedFunction = {
+		/// @param {Struct.MyMapTile} _myMapTileObjectToCheck
 		filterFunc: function(_myMapTileObjectToCheck) {
-			return _myMapTileObjectToCheck.has_turn_entity();
+			return _myMapTileObjectToCheck.hasTurnEntity();
 	    }
 	}
 	return closedFunction;
 }
 
 
-function mapTile_filter_element_contains_character_and_can_perform_action() {
-	closedFunction = {
-		filterFunc: function(_myMapTileObjectToCheck) {
-			if(helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
-				return false;
-			}
+// function mapTile_filter_element_contains_character_and_can_perform_action() {
+// 	var closedFunction = {
+// 		filterFunc: function(_myMapTileObjectToCheck) {
+// 			if(helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
+// 				return false;
+// 			}
 			
-			//return !_myMapTileObjectToCheck.__character.prepare_turn_is_prepared_for_turn();
-			//return _myMapTileObjectToCheck.__character.__properties_action_can_perform;
-			//return _myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn;
-	    }
-	}
-	return closedFunction;
-}
+// 			//return !_myMapTileObjectToCheck.__character.prepare_turn_is_prepared_for_turn();
+// 			//return _myMapTileObjectToCheck.__character.__properties_action_can_perform;
+// 			//return _myMapTileObjectToCheck.__character.__properties_action_is_prepared_for_turn;
+// 	    }
+// 	}
+// 	return closedFunction;
+// }
 
 function mapTile_filter_element_contains_character_and_is_NOT_prepared_for_turn() {
-	closedFunction = {
+	var closedFunction = {
 		filterFunc: function(_myMapTileObjectToCheck) {
 			if(helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character)) {
 				return false;
@@ -89,7 +91,7 @@ function mapTile_filter_element_contains_character_and_is_NOT_prepared_for_turn(
 }
 
 function mapTile_filter_element_NOT_contains_character() {
-	closedFunction = {
+	var closedFunction = {
 		filterFunc: function(_myMapTileObjectToCheck) {
 			return helper_object_is_undefined_or_empty(_myMapTileObjectToCheck.__character);
 	    }
@@ -98,7 +100,7 @@ function mapTile_filter_element_NOT_contains_character() {
 }
 
 function mapTile_filter_within_distance(_myMapTileSource, _distance) {
-    closedFunction = {
+    var closedFunction = {
         __source_row: _myMapTileSource._properties_map_element_row_index,
         __source_col: _myMapTileSource._properties_map_element_col_index,
         __distance: _distance,

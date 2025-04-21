@@ -15,37 +15,48 @@ function TurnEntityStruct(_objectReference) constructor {
 
 	__ID = helperGenerateUniqueId();
 
+	__STATS = new TurnEntityStatsStruct();
+
     /// @type {Struct.TurnEntityStruct}
 	// __REFERENCE = self;
     __OBJECT_REFERENCE = _objectReference
-    __FACTION = FACTION_ENUM.NEUTRAL;
+    // __FACTION = FACTION_ENUM.NEUTRAL;
 
-	__EFFECTS = {}
+	// __EFFECTS = {}
 	
-    __ACTION_COST_STAT = {};
-	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.ATTACK.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.ATTACK))
-	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STAND.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STAND))
-	variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STEP.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STEP))
+    // __ACTION_COST_STAT = {};
+	// variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.ATTACK.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.ATTACK))
+	// variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STAND.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STAND))
+	// variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STEP.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STEP))
 
+	// ACTION_POINTS = 0;
 
+	// PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
+	// HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };
+	
 
-	ACTION_POINTS = 0;
+	/// SETTERS
+	/// @param {Enum.FACTION_ENUM}
+	setFaction = function(_fraction) {
+		__STATS.setFaction(_fraction);
+	}
 
-	PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
-	HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };
+	/// @return {Enum.FACTION_ENUM}
+	getFaction = function() {
+		return __STATS.__FACTION
+	}
 
 		
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
 	consumeActionPoints = function(_actionContextStruct) {
-		/// @type {Struct.ActionCostStruct}
-		var actionPointsToConsume = variable_struct_get(__ACTION_COST_STAT, _actionContextStruct.getAction().getType().label);
 
-		self.ACTION_POINTS += actionPointsToConsume.calculateActionCost(_actionContextStruct);
+		var actionsToConsume = __STATS.applyActionPoints(_actionContextStruct);
+		// self.ACTION_POINTS += actionsToConsume;
 	}
 
 	receiveDamage = function(dmg) {
-		self.HP.CURRENT_HP -= dmg;
-		if (self.HP.CURRENT_HP < 1) {
+		__STATS.HP.CURRENT_HP -= dmg;
+		if (__STATS.HP.CURRENT_HP < 1) {
             with(self.__OBJECT_REFERENCE) {
                 instance_destroy();
             }
@@ -53,19 +64,19 @@ function TurnEntityStruct(_objectReference) constructor {
 	};
 
 	getAttackValue = function() {
-		return self.PHYSICAL_ATTACK.BASE;
+		return __STATS.PHYSICAL_ATTACK.BASE;
 	};
 
 	getActionPoints = function() {
-		return self.ACTION_POINTS;
+		return __STATS.ACTION_POINTS;
 	};
 
     getFaction = function() {
-		return self.__FACTION;
+		return __STATS.__FACTION;
 	};
 
 	addActionPoints = function(val) {
-		self.ACTION_POINTS += val;
+		__STATS.ACTION_POINTS += val;
 	};
 }
 

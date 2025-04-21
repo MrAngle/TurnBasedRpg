@@ -1,5 +1,6 @@
 function MyCombatMapManager(_combat_map_holder) {
     var combat_map_manager_instance = {
+        /// @param {Struct.__MyCombatMapHolder} __combat_map_holder
         __combat_map_holder: _combat_map_holder, // MyCombatMapHolder
 
 		// constructor
@@ -20,6 +21,7 @@ function MyCombatMapManager(_combat_map_holder) {
 	return combat_map_manager_instance;
 }
 
+/// @param {Struct.MyCombatMapManager} _obj
 function __get_all_characters_on_map(_obj) {
     // Tworzenie list dla każdej grupy postaci
     var players = [];
@@ -38,7 +40,7 @@ function __get_all_characters_on_map(_obj) {
                 var character = tile.__character;
                 
                 // Przypisanie postaci do odpowiedniej listy
-                switch (character.my_character_side) {
+                switch (character.getFaction()) {
                     case CombatCharacterSideEnum.PLAYER:
                         array_push(players, character);
                         break;

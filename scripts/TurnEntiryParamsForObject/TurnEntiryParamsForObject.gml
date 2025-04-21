@@ -48,7 +48,7 @@ function drawHp_returnFunc(_self) {
 			draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, false);
 
 			// Pasek HP (zielony proporcjonalnie do zdrowia)
-			var hp_ratio = turnEntityStruct.HP.CURRENT_HP / turnEntityStruct.HP.MAX_HP;
+			var hp_ratio = turnEntityStruct.__STATS.HP.CURRENT_HP / turnEntityStruct.__STATS.HP.MAX_HP;
 			draw_set_color(c_lime);
 			draw_rectangle(bar_x, bar_y, bar_x + (bar_width * hp_ratio), bar_y + bar_height, false);
 		}

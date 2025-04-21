@@ -45,7 +45,8 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
         return helper_object_exists(__character);
     };
 
-    has_turn_entity = function() {
+    /// @returns {Bool}
+    hasTurnEntity = function() {
         return helper_object_exists(__character);
     };
 
@@ -53,6 +54,11 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     getTurnEntityStruct = function() {
         return getTurnEntityAttributes(__character);
     };
+
+    // /// @returns {Boolean}
+    // hasTurnEntityElement = function() {
+    //     return helper_object_exists(__character);
+    // };
 
     /// @returns {Id.Instance}
     getTurnEntityObj = function() {

@@ -154,11 +154,12 @@ function isWalkable(arg_row, arg_col) {
 	return destTile.is_walkable();
 }
 
-
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>}
 function isEnemy(source_Char, currentRow, currentCol) {
 	var destTile = global.COMBAT_GLOBALS.MAP
 		.MAP_HOLDER.get_tile(currentRow, currentCol);
 
-	return helper_object_exists(destTile.__character) && 
-			destTile.__character.my_character_side != source_Char.my_character_side
+	return destTile.hasTurnEntity() && 
+		destTile.getTurnEntityStruct().getFaction() != getTurnEntityAttributes(source_Char).getFaction()
+			// destTile.__character.my_character_side != source_Char.my_character_side
 }

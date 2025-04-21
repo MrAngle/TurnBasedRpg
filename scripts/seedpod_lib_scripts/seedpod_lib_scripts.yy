@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"seedpod_lib_scripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"seedpod_lib_scripts",
+  "parent":{
+    "name":"SEEDPOD",
+    "path":"folders/LIB/SEEDPOD.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
