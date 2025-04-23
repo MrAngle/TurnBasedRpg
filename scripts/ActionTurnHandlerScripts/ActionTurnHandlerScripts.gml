@@ -12,9 +12,12 @@ function onStepTurnProcessor() {
 	    case ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
 			global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ = getNextTurnEntity();
-			global.COMBAT_GLOBALS.ACTION.CURRENT_MIN_ACTION_POINTS = getTurnEntityStruct(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ).getActionPoints();
+			global.COMBAT_GLOBALS.ACTION.CURRENT_MIN_ACTION_POINTS = 
+				getTurnEntityStruct(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ).getActionPoints();
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = 
 				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ)
+
+			onStepTurnProcessor();
 	        break;
 
 		case ACTION_TURN_STATE_ENUM.PROCESS_AI_INTENT:
@@ -22,6 +25,7 @@ function onStepTurnProcessor() {
 				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ);
 		
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PREPARE_ACTION_RESOLVE;
+			onStepTurnProcessor();
 			break;
 
 		case ACTION_TURN_STATE_ENUM.WAITING_FOR_USER_INPUT:
@@ -32,6 +36,7 @@ function onStepTurnProcessor() {
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_RESOLVED_STRUCT = 
 				processPrepareActionResolvedStruct();
 			processNextStepAfterActionResolvedPreparation()
+			onStepTurnProcessor();
 			break;
 		
 	    case ACTION_TURN_STATE_ENUM.PERFORM_ACTION:

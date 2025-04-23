@@ -116,6 +116,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"ENEMY_modificatorStackNumber","order":2,"path":"fonts/ENEMY_modificatorStackNumber/ENEMY_modificatorStackNumber.yy",},
+    {"name":"FNT_actionPointsBar","order":1,"path":"fonts/FNT_actionPointsBar/FNT_actionPointsBar.yy",},
     {"name":"fnt_button","order":1,"path":"fonts/fnt_button/fnt_button.yy",},
     {"name":"fnt_cardDescription_big","order":4,"path":"fonts/fnt_cardDescription_big/fnt_cardDescription_big.yy",},
     {"name":"fnt_cardDescription","order":3,"path":"fonts/fnt_cardDescription/fnt_cardDescription.yy",},

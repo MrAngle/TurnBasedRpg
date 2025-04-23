@@ -2,6 +2,7 @@
 /// CONTRACT FOR GENERIC VISUALS
 /// @returns {Struct.VisualGenericStruct}
 function VisualGenericStruct() constructor {
+    onCreate = function(){}
     onStep = function(){}
     onDestroy = function(){}
     onDraw = function() {}
@@ -70,4 +71,35 @@ function visualsShakeObject(
         }
     }
     createVisualGenericObjForObj(objToShake, closedOnStep);
+}
+
+/// @function draw_scribble_with_background(txt, pos_x, pos_y, bg_color, margin, alpha)
+/// @description Rysuje tekst Scribble z dopasowanym tłem.
+/// @param txt       Obiekt Scribble (np. scribble("tekst"))
+/// @param pos_x     Pozycja X (środek tekstu)
+/// @param pos_y     Pozycja Y (środek tekstu)
+/// @param bg_color  Kolor tła (np. c_black)
+/// @param margin    Margines wokół tekstu (np. 4)
+/// @param alpha     Przezroczystość tła (0.0 - 1.0)
+
+function draw_scribble_with_background(txt, pos_x, pos_y, bg_color) {
+    var margin = 2;
+
+    // Obliczenie wymiarów tekstu z uwzględnieniem skali
+    var text_width = txt.get_width();
+    var text_height = 40;
+
+    // Obliczenie pozycji prostokąta tła
+    var x1 = pos_x - margin ;
+    var y1 = pos_y - margin + 20;
+    var x2 = pos_x + text_width + margin;
+    var y2 = pos_y + text_height + 20 + margin;
+
+    // Rysowanie prostokąta tła
+    draw_set_color(bg_color);
+    draw_rectangle(x1, y1, x2, y2, false);
+    draw_set_alpha(1); // Przywrócenie pełnej nieprzezroczystości
+
+    // Rysowanie tekstu
+    txt.draw(pos_x, pos_y);
 }

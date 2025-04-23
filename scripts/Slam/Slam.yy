@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Slam",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Slam",
+  "parent":{
+    "name":"PredefinedCombatEventEffect",
+    "path":"folders/Hex/Combat/CombatEffect/PredefinedCombatEventEffect.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

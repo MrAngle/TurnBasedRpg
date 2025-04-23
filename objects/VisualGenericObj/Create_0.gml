@@ -1,7 +1,7 @@
 /// @type {Struct.VisualGenericStruct}
 var vgs = visualGenericStruct;
 
-var fields = ["onStep", "onDestroy", "onDraw", "shouldDestroy"];
+var fields = ["onCreate", "onStep", "onDestroy", "onDraw", "shouldDestroy"];
 
 for (var i = 0; i < array_length(fields); i++) {
     var field = fields[i];
@@ -9,3 +9,5 @@ for (var i = 0; i < array_length(fields); i++) {
         variable_struct_set(vgs, field, global.MY_EMPTY_FUNCTION);
     }
 }
+
+vgs.onCreate();

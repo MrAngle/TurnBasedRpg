@@ -20,20 +20,6 @@ function TurnEntityStruct(_objectReference) constructor {
     /// @type {Struct.TurnEntityStruct}
 	// __REFERENCE = self;
     __OBJECT_REFERENCE = _objectReference
-    // __FACTION = FACTION_ENUM.NEUTRAL;
-
-	// __EFFECTS = {}
-	
-    // __ACTION_COST_STAT = {};
-	// variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.ATTACK.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.ATTACK))
-	// variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STAND.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STAND))
-	// variable_struct_set(__ACTION_COST_STAT, global.ENUMS.ACTION_TYPE.STEP.label, new ActionCostStruct(self, global.ENUMS.ACTION_TYPE.STEP))
-
-	// ACTION_POINTS = 0;
-
-	// PHYSICAL_ATTACK = { BASE: 3, STRENGTH_SCALING: 1 };
-	// HP = { BASE: 10, CURRENT_HP: 10, MAX_HP: 10 };
-	
 
 	/// SETTERS
 	/// @param {Enum.FACTION_ENUM}
@@ -46,12 +32,11 @@ function TurnEntityStruct(_objectReference) constructor {
 		return __STATS.__FACTION
 	}
 
+	////////////////////////////////////////////////// LOGIC
 		
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
 	consumeActionPoints = function(_actionContextStruct) {
-
 		var actionsToConsume = __STATS.applyActionPoints(_actionContextStruct);
-		// self.ACTION_POINTS += actionsToConsume;
 	}
 
 	receiveDamage = function(dmg) {
@@ -84,22 +69,4 @@ function TurnEntityStruct(_objectReference) constructor {
     getFaction = function() {
 		return __STATS.__FACTION;
 	};
-
-	// addActionPoints = function(val) {
-	// 	__STATS.ACTION_POINTS += val;
-	// };
 }
-
-
-// function priv_impl_get_action_cost(self_obj, action_type_enum) {
-//     switch (action_type_enum) {
-//         case ACTION_TYPE_ENUM.ATTACK:
-//             return 5; // koszt ataku
-//         case ACTION_TYPE_ENUM.STEP:
-//             return self_obj.PRIV_CHAR_STAT.STEP.COST.CALCULATE_CURRENT(); // koszt kroku
-//         case ACTION_TYPE_ENUM.STAND:
-//             return 0; // stanie nic nie kosztuje
-//         default:
-//             helper_throw_exception("UNEXPECTED ACTION TYPE: " + string(action_type_enum));
-//     }
-// }

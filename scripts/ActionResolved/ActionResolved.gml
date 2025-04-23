@@ -36,22 +36,6 @@ function __ActionResolvedStruct(_context_struct) constructor {
 	__finalizeAction = function() {
 		__getInvokerStruct().consumeActionPoints(__context_struct);
 	}
-
-	// // Oblicz koszt (np. dla UI lub walidacji)
-	// calculateCost = function() {
-	// 	return calculate_action_cost(self);
-	// };
-
-	// // Oblicz efekt przed wykonaniem (np. do podświetleń)
-	// predictResult = function() {
-	// 	return predict_action_result(self);
-	// };
-
-	// // Wykonanie efektu (modyfikuje stan gry)
-	// apply = function() {
-	// 	return execute_action(self);
-	// };
-
 }
 
 /// @param {Struct.__ActionResolvedStruct} _arStruct
