@@ -6,7 +6,7 @@
   "name":"Slam",
   "parent":{
     "name":"PredefinedCombatEventEffect",
-    "path":"folders/Hex/Combat/CombatEffect/PredefinedCombatEventEffect.yy",
+    "path":"folders/Hex/Combat/CombatEventEffect/PredefinedCombatEventEffect.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"EventFamiliMap",
+  "%Name":"CombatEventEffect",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"EventFamiliMap",
+  "name":"CombatEventEffect",
   "parent":{
     "name":"CombatEventEffect",
     "path":"folders/Hex/Combat/CombatEventEffect.yy",

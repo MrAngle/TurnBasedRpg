@@ -16,18 +16,17 @@ function ActionContextStruct(_action_struct, _evaluation_mode = ACTION_MODE_ENUM
 	__source_intent = noone;
 
 	// Getters
-    getAction           = function() { return __action_struct };
-	getEvaluationMode   = function() { return __evaluation_mode; };
-	getEffects          = function() { return __effects; };
-	getTargetEffects    = function() { return __target_effects; };
-	getMetadata         = function() { return __metadata; };
-	getSourceIntent     = function() { return __source_intent; };
+    getAction           		= function() { return __action_struct };
+    getActionInvokerStruct    	= function() { return getAction().getInvokerTuEnStruct() };
+	getEvaluationMode   		= function() { return __evaluation_mode; };
+	getEffects          		= function() { return __effects; };
+	getTargetEffects    		= function() { return __target_effects; };
+	getMetadata         		= function() { return __metadata; };
+	getSourceIntent     		= function() { return __source_intent; };
 
 	// Setters
-	setEffects          = function(list) { __effects = list; };
-	setTargetEffects    = function(list) { __target_effects = list; };
-	setMetadata         = function(m) { __metadata = m; };
-	setSourceIntent     = function(i) { __source_intent = i; };
-
-	
+	setEffects          		= function(list) { __effects = list; };
+	setTargetEffects    		= function(list) { __target_effects = list; };
+	setMetadata         		= function(m) { __metadata = m; };
+	setSourceIntent     		= function(i) { __source_intent = i; };
 }

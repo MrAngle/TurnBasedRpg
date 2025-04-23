@@ -2,11 +2,12 @@
 
 function COMBAT_EVENT_EFFECT_SLAM() {
     var rearAssaultEffect = new CombatEventEffect(
-        [global.EventSubtypes.ON_ATTACK],
+        [global.EVENT_SUBTYPES_ENUM.ON_ATTACK],
     
         // shouldTrigger: tylko jeśli to appliesTo wykonuje atak
-        function(context) {
-            return context.source == appliesTo;
+        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        function(_actionContextStruct) {
+            return _actionContextStruct.getActionInvokerStruct().isSameTurnEntity(appliesTo)
         },
     
         // onTrigger: wykonaj dodatkowy atak z tej samej pozycji

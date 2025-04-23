@@ -17,8 +17,7 @@ function TurnEntityStruct(_objectReference) constructor {
 
 	__STATS = new TurnEntityStatsStruct();
 
-    /// @type {Struct.TurnEntityStruct}
-	// __REFERENCE = self;
+	/// @type {Id.Instance.AbstTurnEntity}
     __OBJECT_REFERENCE = _objectReference
 
 	/// SETTERS
@@ -32,7 +31,25 @@ function TurnEntityStruct(_objectReference) constructor {
 		return __STATS.__FACTION
 	}
 
+	getId = function() {
+		return __ID;
+	}
 	////////////////////////////////////////////////// LOGIC
+
+	/// @param {Id.Instance.AbstTurnEntity}
+	/// @returns {Bool}
+	isSameTurnEntity = function(_turnEntityObj) {
+		if(helper_object_not_exists(_turnEntityObj)) {
+			return false
+		}
+		var te = getTurnEntityStruct(_turnEntityObj);
+
+		if(helper_is_not_definied(te)) {
+			return false;
+		}
+
+		return __ID == te.getId();
+	}
 		
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
 	consumeActionPoints = function(_actionContextStruct) {
