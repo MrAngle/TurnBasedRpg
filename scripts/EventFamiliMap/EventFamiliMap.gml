@@ -1,45 +1,30 @@
 
 
-global.EVENT_SUBTYPES_ENUM = new __EventSubtypesEnumStruct();
-/// @returns {Struct.__EventSubtypesEnumStruct}
-function __EventSubtypesEnumStruct() constructor {
+global.EVENT_TYPES_ENUM = new __EventTypesEnum();
+/// @returns {Struct.__EventTypesEnum}
+function __EventTypesEnum() constructor {
     ON_STEP         = new ENUM_STRUCT(100, "ON_STEP");
     ON_ENEMY_STEP   = new ENUM_STRUCT(101, "ON_ENEMY_STEP");
     ON_TELEPORT     = new ENUM_STRUCT(102, "ON_TELEPORT");
 
-
     ON_ATTACK       = new ENUM_STRUCT(200, "ON_ATTACK");
     ON_HEAL         = new ENUM_STRUCT(201, "ON_HEAL");
+
+    ON_STAND         = new ENUM_STRUCT(300, "ON_STAND");
 }
 
+///// @returns {Array<ENUM_STRUCT>}
+// function getSubtypesFor_Move() {
+//     return [
+//         global.EVENT_SUBTYPES_ENUM.ON_STEP,
+//         global.EVENT_SUBTYPES_ENUM.ON_ENEMY_STEP,
+//         global.EVENT_SUBTYPES_ENUM.ON_TELEPORT
+//     ];
+// }
 
-global.EVENT_FAMILIES = new __EventFamiliesEnumStruct();
-/// @returns {Struct.__EventFamiliesEnumStruct}
-function __EventFamiliesEnumStruct() constructor {
-    ON_MOVE                 = new ENUM_STRUCT(1, "ON_MOVE");
-    ON_INTERACT_WITH_OBJECT = new ENUM_STRUCT(2, "ON_INTERACT_WITH_OBJECT");
-}
-
-global.EVENT_GROUPS_ENUMS = new __CombatEventGroups();
-/// @returns {Struct.__CombatEventGroups}
-function __CombatEventGroups() constructor {
-    ON_MOVE = {
-        TYPE: global.EVENT_FAMILIES.ON_MOVE,
-        SUBTYPES: [
-            global.EVENT_SUBTYPES_ENUM.ON_STEP,
-            global.EVENT_SUBTYPES_ENUM.ON_ENEMY_STEP,
-            global.EVENT_SUBTYPES_ENUM.ON_TELEPORT
-        ]
-    };
-
-    ON_INTERACT_WITH_OBJECT = {
-        TYPE: global.EVENT_FAMILIES.ON_INTERACT_WITH_OBJECT,
-        SUBTYPES: [
-            global.EVENT_SUBTYPES_ENUM.ON_ATTACK,
-            global.EVENT_SUBTYPES_ENUM.ON_HEAL
-        ]
-    };
-}
-
-// ON_MOVE                 = new ENUM_STRUCT(1, "onMove");
-// ON_INTERACT_WITH_OBJECT = new ENUM_STRUCT(2, "onInteractWithObject");
+// function getSubtypesFor_Interact() {
+//     return [
+//         global.EVENT_SUBTYPES_ENUM.ON_ATTACK,
+//         global.EVENT_SUBTYPES_ENUM.ON_HEAL
+//     ];
+// }

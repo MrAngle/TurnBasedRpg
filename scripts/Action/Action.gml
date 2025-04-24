@@ -13,12 +13,14 @@
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
 /// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
 /// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
+/// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
 ///
 /// @returns {Struct.ActionStruct}
-function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
+function ActionStruct(_type, _invoker, _target_tile, _from_intent, _eventTypesOnTriggerEnums) constructor {
 	// Priv
 	__id = helperGenerateUniqueId();
 	__type = _type; 		// enum ACTION_TYPE
+	__eventTypesOnTriggerEnums = _eventTypesOnTriggerEnums;
 	__invokerTuEnObj = _invoker;
 	__target_tile = _target_tile;
 	__from_intent = _from_intent;
@@ -37,6 +39,7 @@ function ActionStruct(_type, _invoker, _target_tile, _from_intent) constructor {
 	getParentAction = function() { return __parent_action; };
 	getOriginAction = function() { return __origin_action; };
 	getRecursionDepth = function() { return __recursion_depth; };
+	getEventTypesToTrigger = function() { return __eventTypesOnTriggerEnums; };
 }
 
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
@@ -49,8 +52,9 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 
 	var targetTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(row, col);
 
-	var ACTION_TYPE_ID = resolve_skill_type(turnEntity, targetTile);
-	return new ActionStruct(ACTION_TYPE_ID, turnEntity, targetTile, intent_id)
+	var ACTION_TYPE_ENUM = resolve_skill_type(turnEntity, targetTile);
+	var eventTypesOnTrigger = global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(ACTION_TYPE_ENUM);
+	return new ActionStruct(ACTION_TYPE_ENUM, turnEntity, targetTile, intent_id, eventTypesOnTrigger)
 }
 
 
@@ -76,7 +80,7 @@ function get_target_position_from_intent(intent_id, character) {
 /// @function resolve_skill_type
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
 /// @param {Struct.MyMapTile} tile
-/// @returns {Enum.ACTION_TYPE_ENUM}
+/// @returns {Struct.__ACTION_TYPE_ENUM}
 function resolve_skill_type(turnEntity, tile) {
 	var target_character = tile.getTurnEntityObj();
 	if (helper_object_not_exists(target_character)) {

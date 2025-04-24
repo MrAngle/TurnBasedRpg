@@ -20,7 +20,8 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 		COMBAT_MAP: noone, // MyCombatMapManager  // global.myCombatMapManager
 		COMBAT_TURN: noone, // CombatTurnManager
 		SELECTOR: noone, // SelectorManager
-		ACTION_SELECTOR: noone // ActionSelectorManager
+		ACTION_SELECTOR: noone, // ActionSelectorManager
+		COMBAT_EVENT_SERVICE: new CombatEventService()
 	}
 	MENU = {
 		TOOLTIP: noone, // MenuToolTipManager
@@ -43,6 +44,9 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 	STORE = {
 		COMBAT_CHARACTERS_HOLDER: noone // CombatCharactersHolderClass
 	}
+	MAPPERS = {
+		ACTION_TO_EVENT_TYPE: new ActionTypeToEventSubtypesEnumMapper()
+	}
 	ACTION = {
 		PROCESSING: false,
 		/// @type {Id.Instance.AbstTurnEntity}
@@ -54,7 +58,7 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 		/// @type {Enum.ACTION_INTENT_ENUM}
 		CURRENT_TURN_ACTION_INTENT_ENUM: noone, //
 		/// @type {number}
-		CURRENT_MIN_ACTION_POINTS: 0 // 
+		CURRENT_MIN_ACTION_POINTS: 0, // 
 	}
 	EVENT = {
 		CLICK : {
@@ -92,6 +96,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 		ACTION_PREPARATION: {},
 		SELECTOR: {},
 	    STORE: {},
+	    MAPPERS: {},
 	    ACTION: {},
 	    EVENT: {},
 	    COMBAT_PROPERTIES: {},
@@ -107,6 +112,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 			self.__RESET_GROUP(self.ACTION_PREPARATION, self.__GLOBAL_DEFAULTS.ACTION_PREPARATION);
 	        self.__RESET_GROUP(self.SELECTOR, self.__GLOBAL_DEFAULTS.SELECTOR);
 	        self.__RESET_GROUP(self.STORE, self.__GLOBAL_DEFAULTS.STORE);
+	        self.__RESET_GROUP(self.MAPPERS, self.__GLOBAL_DEFAULTS.MAPPERS);
 	        self.__RESET_GROUP(self.ACTION, self.__GLOBAL_DEFAULTS.ACTION);
 	        self.__RESET_GROUP(self.EVENT, self.__GLOBAL_DEFAULTS.EVENT);
 	        self.__RESET_GROUP(self.COMBAT_PROPERTIES, self.__GLOBAL_DEFAULTS.COMBAT_PROPERTIES);

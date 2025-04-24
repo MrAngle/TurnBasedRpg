@@ -46,7 +46,40 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 	get_tile_by_character = function(_character) { // _filter_function(element) - return true 
 		return  __get_tile_by_character(self, _character);
 	}
+
+	/// @returns {Array<Id.Instance.AbstTurnEntity>}
+	getAllTurnEntityObjs = function() {
+		var tiles = self.get_tiles([
+			mapTile_filter_element_contains_turn_entity()
+		]);
+
+		var turnEntities = [];
+		for (var i = 0; i < array_length(tiles); i++) {
+			var tile = tiles[i];
+			var entity = tile.getTurnEntityObj();
+			array_push(turnEntities, entity);
+		}
 	
+		return turnEntities;
+	}
+
+	/// @return {Array<Struct.TurnEntityStruct>}
+	getAllTurnEntityStructs = function() {
+		var tiles = self.get_tiles([
+			mapTile_filter_element_contains_turn_entity()
+		]);
+
+		var turnEntities = [];
+		for (var i = 0; i < array_length(tiles); i++) {
+			var tile = tiles[i];
+			var entity = tile.getTurnEntityStruct();
+			array_push(turnEntities, entity);
+		}
+	
+		return turnEntities;
+	}
+	
+	/// @return {Array<Struct.MyMapTile>}
 	get_tiles = function(_filtersToCheck = [] /* MyMapTileFilters */) { // _filter_function(element) - return true 
 		return  __get_tiles(self, _filtersToCheck);
 	}

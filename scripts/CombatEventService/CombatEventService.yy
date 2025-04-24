@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"CombatEventService",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"CombatEventService",
+  "parent":{
+    "name":"service",
+    "path":"folders/Hex/Combat/CombatEventEffect/service.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

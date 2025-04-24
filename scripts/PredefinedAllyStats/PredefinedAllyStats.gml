@@ -13,4 +13,6 @@ function INIT_NECRO_STATS(_turnEntityStruct) {
     _turnEntityStatsStruct.HP.CURRENT_HP = 100;
 
     _turnEntityStatsStruct.PHYSICAL_ATTACK.BASE = 101;
+
+    array_push(_turnEntityStruct.__EVENT_EFFECTS, COMBAT_EVENT_EFFECT_SLAM(_turnEntityStruct.__OBJECT_REFERENCE));
 }

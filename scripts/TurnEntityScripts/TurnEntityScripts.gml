@@ -18,7 +18,10 @@ function TurnEntityStruct(_objectReference) constructor {
 	__STATS = new TurnEntityStatsStruct();
 
 	/// @type {Id.Instance.AbstTurnEntity}
-    __OBJECT_REFERENCE = _objectReference
+    __OBJECT_REFERENCE = _objectReference;
+
+	/// @type {Array<Struct.CombatEventEffect>}
+	__EVENT_EFFECTS = [];
 
 	/// SETTERS
 	/// @param {Enum.FACTION_ENUM}
@@ -34,21 +37,36 @@ function TurnEntityStruct(_objectReference) constructor {
 	getId = function() {
 		return __ID;
 	}
+
+	/// @returns {Array<Struct.CombatEventEffect>}
+	getAllEventEffects = function() {
+		return __EVENT_EFFECTS;
+	}
 	////////////////////////////////////////////////// LOGIC
 
-	/// @param {Id.Instance.AbstTurnEntity}
+	/// @param {Id.Instance.AbstTurnEntity} _turnEntityObj
 	/// @returns {Bool}
-	isSameTurnEntity = function(_turnEntityObj) {
-		if(helper_object_not_exists(_turnEntityObj)) {
+	isSameTurnEntityObj = function(_turnEntityObj) {
+		if(helper_struct_is_undefined_or_empty(_turnEntityObj)) {
 			return false
 		}
 		var te = getTurnEntityStruct(_turnEntityObj);
 
-		if(helper_is_not_definied(te)) {
+		if(helper_struct_is_undefined_or_empty(te)) {
 			return false;
 		}
 
 		return __ID == te.getId();
+	}
+
+	/// @param {Struct.TurnEntityStruct} _turnEntityStruct
+	/// @returns {Bool}
+	isSameTurnEntityStruct = function(_turnEntityStruct) {
+		if(helper_struct_is_undefined_or_empty(_turnEntityStruct)) {
+			return false
+		}
+
+		return __ID == _turnEntityStruct.getId();
 	}
 		
 	/// @param {Struct.ActionContextStruct} _actionContextStruct

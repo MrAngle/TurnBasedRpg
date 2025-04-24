@@ -37,7 +37,7 @@ global.____INIT_GAME_GLOBAL = function() {
     global.GAME_GLOBALS = __GAME_GLOBALS_STRUCT(GLOBAL_DEFAULTS);
 	
 	global.ENUMS = {};
-	global.ENUMS.ACTION_TYPE = new ActionTypeEnumStruct();
+	global.ENUMS.ACTION_TYPE = new __ACTION_TYPE_ENUM();
 	// CUSTOM CONFIG
 	//global.GAME_GLOBALS.TEST.ACTIVE = true;
 	//

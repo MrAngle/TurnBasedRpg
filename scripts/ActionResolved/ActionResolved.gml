@@ -29,8 +29,9 @@ function __ActionResolvedStruct(_context_struct) constructor {
 
 	execute = function() {
 		__actionExecutorUnit.execute();
+
+		global.COMBAT_GLOBALS.MANAGERS.COMBAT_EVENT_SERVICE.emitOnTriggerEvents(__getContext())
 		__finalizeAction();
-		
 	}
 
 	__finalizeAction = function() {
