@@ -23,6 +23,8 @@ function ActionContextStruct(_action_struct, _evaluation_mode = ACTION_MODE_ENUM
 	/// @returns {Array<Struct.__EventTypesEnum>}
 	getEventsTypeEnumsToTrigger = function() { return getAction().getEventTypesToTrigger() };
 
+	hasTargetTurnEntity 		= function() { return getAction().getInvokerTuEnObj() };
+
 	getEvaluationMode   		= function() { return __evaluation_mode; };
 
 	getEffects          		= function() { return __effects; };

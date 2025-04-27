@@ -5,51 +5,6 @@ function AutoActionScripts()
 
 }
 
-
-//function autoActionResolveIntent(character) {
-//	var row = character.properties_map_element_row_index;
-//	var col = character.properties_map_element_col_index;
-
-//	var tile = get_target_tile_to_nearest_enemy(character, row, col);
-//	if (is_undefined(tile)) {
-//		return ActionIntentId.STAND; // fallback jeśli nie znaleziono celu
-//	}
-
-//	var target_row = tile[0];
-//	var target_col = tile[1];
-
-//	var row_diff = target_row - row;
-//	var col_diff = target_col - col;
-
-//	// Na podstawie różnicy wybieramy intencję ruchu (hex-grid)
-//	if (row_diff == 0 && col_diff < 0) return ActionIntentId.MOVE_LEFT;
-//	if (row_diff == 0 && col_diff > 0) return ActionIntentId.MOVE_RIGHT;
-
-//	if (row_diff < 0) {
-//		if (row % 2 == 0) {
-//			if (col_diff == 0) return ActionIntentId.MOVE_UP_RIGHT;
-//			if (col_diff == -1) return ActionIntentId.MOVE_UP_LEFT;
-//		} else {
-//			if (col_diff == 1) return ActionIntentId.MOVE_UP_RIGHT;
-//			if (col_diff == 0) return ActionIntentId.MOVE_UP_LEFT;
-//		}
-//	}
-
-//	if (row_diff > 0) {
-//		if (row % 2 == 0) {
-//			if (col_diff == 0) return ActionIntentId.MOVE_DOWN_RIGHT;
-//			if (col_diff == -1) return ActionIntentId.MOVE_DOWN_LEFT;
-//		} else {
-//			if (col_diff == 1) return ActionIntentId.MOVE_DOWN_RIGHT;
-//			if (col_diff == 0) return ActionIntentId.MOVE_DOWN_LEFT;
-//		}
-//	}
-
-//	// Fallback
-//	return ActionIntentId.STAND;
-//}
-
-
 function autoActionResolveIntent(character) {
 	var row = character.properties_map_element_row_index;
 	var col = character.properties_map_element_col_index;

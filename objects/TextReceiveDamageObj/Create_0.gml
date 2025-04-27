@@ -10,8 +10,12 @@ var offset_range_y = target.sprite_height * 0.1; // 10% wysokości sprite'a
 x += random_range(-offset_range_x, offset_range_x);
 y += random_range(-offset_range_y, offset_range_y);
 
-// Tworzenie obiektu Scribble z tekstem obrażeń
-text = scribble("[FNT_receiveDamage][c_red]" + string(damage_amount));
+text = undefined;
+if(damage_amount < 0) {
+    text = scribble("[FNT_receiveDamage][c_red]" + string(damage_amount));
+} else {
+    text = scribble("[FNT_receiveDamage][c_green] +" + string(damage_amount));
+}
 text.scale = 3;
 
 // Efekt "maszyny do pisania"

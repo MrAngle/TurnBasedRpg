@@ -26,3 +26,30 @@ function helper_get_direction_offset(arg_DirectionId, row) {
 		default:                      return [0, 0]; // fallback
 	}
 }
+
+/// @param {Id.Instance.abst_tile} sourceObj
+/// @param {Struct.MyMapTile} targetTile
+/// @returns {Struct.MyMapTile}
+function getTileBehindTargetTile(sourceObj, targetTile) {
+    // Pozycje
+    var invokerRow = sourceObj. properties_map_element_row_index;
+    var invokerCol = sourceObj.properties_map_element_col_index;
+    
+    var targetRow = targetObj.row;
+    var targetCol = targetObj.col;
+    
+    // 1. Ustalamy kierunek od targeta do invokera
+    var directionToInvoker = helper_get_direction_from_target_to_invoker(targetRow, targetCol, invokerRow, invokerCol);
+    
+    if (directionToInvoker == undefined) {
+        return undefined; // brak bezpośredniego sąsiedztwa
+    }
+    
+    // 2. Bierzemy przeciwny kierunek
+    var oppositeDirection = helper_get_opposite_direction(directionToInvoker);
+    
+    // 3. Obliczamy nowy kafel w przeciwnym kierunku
+    var behindPos = helper_calculate_row_and_col_for_direction(oppositeDirection, targetRow, targetCol);
+    
+    return behindPos; // [row, col]
+}

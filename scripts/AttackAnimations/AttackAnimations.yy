@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"AttackAnimations",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"AttackAnimations",
+  "parent":{
+    "name":"AttackAnimations",
+    "path":"folders/Hex/Visuals/AttackAnimations.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

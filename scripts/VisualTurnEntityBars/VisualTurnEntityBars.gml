@@ -12,7 +12,7 @@ function visualPrintActionBar(_turnEntityObj) {
         turnEntityStruct: _turnEntityStruct,
         bar_center_x:undefined,
         bar_center_y: undefined,
-        onCreate: function() {
+        onCreate: function(_self) {
 			var bar_width = 90;
 			var bar_height = 10;
 			var bar_x = turnEntityObj.x - bar_width / 2;

@@ -10,4 +10,4 @@ for (var i = 0; i < array_length(fields); i++) {
     }
 }
 
-vgs.onCreate();
+vgs.onCreate(self);

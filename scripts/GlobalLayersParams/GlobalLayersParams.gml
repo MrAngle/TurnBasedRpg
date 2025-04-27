@@ -7,12 +7,13 @@ function init_layers() {
     var GUI_CARD_SELECTOR_DEPTH = 50;
     var GUI_GAME_MENU_DEPTH = GUI_CARD_SELECTOR_DEPTH + 50;
     var GUI_MENU_DEPTH = GUI_GAME_MENU_DEPTH + 50;
-    var EFFECTS = GUI_MENU_DEPTH + 50;
-	var SELECTORS_DEPTH = EFFECTS + 50;
+    var GUI_EFFECTS_DEPTH = GUI_MENU_DEPTH + 50;
+	var SELECTORS_DEPTH = GUI_EFFECTS_DEPTH + 50;
     var ATTACKS_DEPTH = SELECTORS_DEPTH + 50;
     var CHARACTERS_DEPTH = ATTACKS_DEPTH + 1000;
-    var OBSTACLES_DEPTH = CHARACTERS_DEPTH + 1000;
-    var DECORATION_DEPTH = CHARACTERS_DEPTH + 1000;
+    var VISUAL_EFFECTS_DEPTH = CHARACTERS_DEPTH + 1000;
+    var OBSTACLES_DEPTH = VISUAL_EFFECTS_DEPTH + 1000;
+    var DECORATION_DEPTH = OBSTACLES_DEPTH + 1000;
     var GROUND_DEPTH = DECORATION_DEPTH + 1000;
     var MANAGERS_DEPTH = GROUND_DEPTH + 1000;
     var BACKGROUND_DEPTH = MANAGERS_DEPTH + 1000;
@@ -34,8 +35,8 @@ function init_layers() {
             id: layer_create(GUI_MENU_DEPTH),
             depth: GUI_MENU_DEPTH
         },
-        effects: {
-            id: layer_create(EFFECTS),
+        gui_effects: {
+            id: layer_create(GUI_EFFECTS_DEPTH),
             depth: GUI_MENU_DEPTH
         },
 		selectors: {
@@ -49,6 +50,10 @@ function init_layers() {
         characters: {
             id: layer_create(CHARACTERS_DEPTH),
             depth: CHARACTERS_DEPTH
+        },
+        visual_effects: {
+            id: layer_create(VISUAL_EFFECTS_DEPTH),
+            depth: VISUAL_EFFECTS_DEPTH
         },
 		obstacles: {
 			id: layer_create(OBSTACLES_DEPTH),

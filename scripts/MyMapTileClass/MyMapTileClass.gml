@@ -33,6 +33,14 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     __obstacle = _obj_character;
     __shape_selector = noone;
 
+    getXPosition = function() {
+        return __x_position;
+    };
+
+    getYPosition = function() {
+        return __y_position;
+    };
+
     getRow = function() {
         return _properties_map_element_row_index;
     };

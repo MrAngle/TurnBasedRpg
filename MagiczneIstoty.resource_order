@@ -67,6 +67,8 @@
     {"name":"Texts","order":24,"path":"folders/Hex/Texts.yy",},
     {"name":"Combat","order":1,"path":"folders/Hex/Texts/FontHex/Combat.yy",},
     {"name":"Visuals","order":25,"path":"folders/Hex/Visuals.yy",},
+    {"name":"AttackAnimations","order":2,"path":"folders/Hex/Visuals/AttackAnimations.yy",},
+    {"name":"Sprites","order":1,"path":"folders/Hex/Visuals/AttackAnimations/Sprites.yy",},
     {"name":"Objects","order":1,"path":"folders/Objects.yy",},
     {"name":"Camera","order":15,"path":"folders/Objects/Game/Camera.yy",},
     {"name":"Player","order":7,"path":"folders/Objects/Game/Player.yy",},

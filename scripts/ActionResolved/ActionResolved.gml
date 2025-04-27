@@ -48,7 +48,7 @@ function __defineActionExecutorUnitStruct(_arStruct) {
 		case global.ENUMS.ACTION_TYPE.ATTACK.id:
 			return new ActionAttackExecutorUnitStruct(
 				action.getInvokerTuEnObj(), 
-				action.getTargetTuEnObj());
+				action.getTargetTile());
 			break;
 	
 		case global.ENUMS.ACTION_TYPE.STEP.id:

@@ -8,7 +8,18 @@ global.LOG_LEVEL = {
 };
 
 global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION = {
+	/// @param {String} log_level
     ON: function(msg, log_level) { show_debug_message("[" + log_level +"]" + msg); },
+
+	/// @param {String} log_level
+    ON_FAIL_ON_CRIT: function(msg, log_level) { 
+		show_debug_message("[" + log_level +"]" + msg);
+		if(log_level == global.LOG_LEVEL.CRITICAL) {
+			helper_throw_exception_not_ignore(msg);
+		}
+	},
+
+	/// @param {String} log_level
     OFF:     function(msg, log_level) {}, // for production should be OFF to not impact on performance
 };
 
@@ -30,7 +41,7 @@ global.____INIT_GAME_GLOBAL = function() {
 		},
 		DEVELOPER_SETTINGS: {
 			IGNORE_EXCEPTIONS: false,
-			LOG_FUNCTION: global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION.ON
+			LOG_FUNCTION: global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION.ON_FAIL_ON_CRIT
 		}
     };
     

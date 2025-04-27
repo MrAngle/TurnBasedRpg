@@ -1,33 +1,8 @@
+/// @param {Function<Struct.ActionContextStruct, Boolean>} __function
+/// @returns {Struct.CombatEventEffectFunction}
 function CombatEventEffectFunction(__function) constructor {
     toReturn = __function
 }
-
-//     shouldTrigger = function() {
-//         return function(_actionContextStruct) {
-//             return _actionContextStruct
-//                 .getActionInvokerStruct()
-//                 .isSameTurnEntityStruct(__effect.__getAppliesToTurnEntityStruct());
-//         };
-//     };
-
-//     getCounterAttackTrigger = function() {
-//         return function(_actionContextStruct) {
-//             var newAction = new ActionStruct(
-//                 global.ActionTypes.ATTACK,
-//                 __effect.__getAppliesToTurnEntityStruct(),
-//                 _actionContextStruct.getAction().getTargetTile(),
-//                 _actionContextStruct.getAction().getFromIntent(),
-//                 [global.EVENT_TYPES_ENUM.ON_STAND]
-//             );
-
-//             var newContext = new ActionContextStruct(newAction);
-//             var resolved = new __ActionResolvedStruct(newContext);
-//             resolved.__INIT();
-//             resolved.execute();
-//         };
-//     };
-// }
-
 
 /// @function CombatEventEffect
 /// @desc Defines a reactive event-based combat effect (e.g. counterattacks, traps, passive reactions).
@@ -44,12 +19,10 @@ function CombatEventEffectFunction(__function) constructor {
 ///
 /// @returns {Struct.CombatEventEffect}
 function CombatEventEffect(_eventSubtypesEnums, _shouldTriggerFunc, _onTriggerFunc, _appliesToTurnEntityObj, _eventEffectName) constructor {
-    // _shouldTriggerFunc._combatEventEffect = self;
-    
+
     __eventSubtypesEnums            = _eventSubtypesEnums;
     __shouldTriggerFunc             = _shouldTriggerFunc.toReturn(self).toReturn;
-    __onTriggerFunc                 = _onTriggerFunc.toReturn(self).toReturn;;
-    // __onTriggerFunc                 = _onTriggerFunc;
+    __onTriggerFunc                 = _onTriggerFunc.toReturn(self).toReturn;
     __appliesToTurnEntityObj        = _appliesToTurnEntityObj;
     __meta                          = {
         __id: helperGenerateUniqueId(),

@@ -2,7 +2,7 @@
 /// CONTRACT FOR GENERIC VISUALS
 /// @returns {Struct.VisualGenericStruct}
 function VisualGenericStruct() constructor {
-    onCreate = function(){}
+    onCreate = function(_self){}
     onStep = function(){}
     onDestroy = function(){}
     onDraw = function() {}
@@ -11,18 +11,29 @@ function VisualGenericStruct() constructor {
 
 /// @param {Struct.VisualGenericStruct} _visualGenericStruct
 function createVisualGenericObjForObj(_positionReference, _visualGenericStruct) {
-    createVisualGenericObj(
+    createVisualGenericWithPosition(
         _positionReference.x - _positionReference.sprite_width * 0.5, 
         _positionReference.y - _positionReference.sprite_height,
         _visualGenericStruct);
 }
 
 /// @param {Struct.VisualGenericStruct} _visualGenericStruct
-function createVisualGenericObj(_x_pos, _y_pos, _visualGenericStruct) {
+function createVisualGenericWithPosition(_x_pos, _y_pos, _visualGenericStruct) {
     instance_create_layer(
         _x_pos, 
         _y_pos,  
-        global.LAYERS.effects.id, 
+        global.LAYERS.gui_effects.id, 
+        VisualGenericObj, 
+        { visualGenericStruct: _visualGenericStruct }
+    );
+}
+
+/// @param {Struct.VisualGenericStruct} _visualGenericStruct
+function createVisualGeneric(_visualGenericStruct, layerId = global.LAYERS.gui_effects.id) {
+    instance_create_layer(
+        0, 
+        0,  
+        layerId, 
         VisualGenericObj, 
         { visualGenericStruct: _visualGenericStruct }
     );

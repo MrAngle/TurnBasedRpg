@@ -10,6 +10,5 @@ function helper_throw_exception(arg_message) {
 }
 
 function helper_throw_exception_not_ignore(arg_message) {
-	LOG_CRITICAL_MESSAGE(arg_message)
 	show_error("THROW EXCEPTION: " + string(arg_message), true);
 }

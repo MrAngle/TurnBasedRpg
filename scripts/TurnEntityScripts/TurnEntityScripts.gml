@@ -74,16 +74,20 @@ function TurnEntityStruct(_objectReference) constructor {
 		var actionsToConsume = __STATS.applyActionPoints(_actionContextStruct);
 	}
 
-	receiveDamage = function(dmg) {
-		__STATS.HP.CURRENT_HP -= dmg;
+	applyHpChange = function(dmg) {
         TextReceiveDamage(__OBJECT_REFERENCE, dmg);
 		visualsShakeObject(__OBJECT_REFERENCE);
+		__STATS.HP.CURRENT_HP += dmg;
 		if (isDead()) {
             with(self.__OBJECT_REFERENCE) {
                 instance_destroy();
             }
 		}
 	};
+
+	getAttackDamage = function() {
+		return -1 * getAttackValue();
+	}
 
 	getAttackValue = function() {
 		return __STATS.PHYSICAL_ATTACK.BASE;

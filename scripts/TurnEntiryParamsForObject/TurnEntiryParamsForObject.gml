@@ -29,7 +29,15 @@ function __getTurnEntity(_objTurnEntity) {
 function getTurnEntityStruct(_objReference) {
 	/// @type {} // any object - add validation in feature
 	var ref = _objReference
-	return ref.getTurnEntity();
+
+	if (helper_obj_is_turn_entity(ref)) {
+        return ref.getTurnEntity();
+    } else if (is_instanceof(ref, TurnEntityStruct)) {
+		LOG_CRITICAL_MESSAGE("Use getTurnEntityStruct for struct instead of Instance")
+		return ref;
+	}
+
+	return undefined;
 }
 
 function drawHp_returnFunc(_self) {
