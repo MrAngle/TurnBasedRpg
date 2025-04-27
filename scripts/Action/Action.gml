@@ -16,7 +16,7 @@
 /// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
 ///
 /// @returns {Struct.ActionStruct}
-function ActionStruct(_type, _invoker, _target_tile, _from_intent, _eventTypesOnTriggerEnums) constructor {
+function ActionStruct(_type, _invoker, _target_tile, _from_intent, _eventTypesOnTriggerEnums, _parentAction = noone) constructor {
 	// Priv
 	__id = helperGenerateUniqueId();
 	__type = _type; 		// enum ACTION_TYPE
@@ -24,7 +24,7 @@ function ActionStruct(_type, _invoker, _target_tile, _from_intent, _eventTypesOn
 	__invokerTuEnObj = _invoker;
 	__target_tile = _target_tile;
 	__from_intent = _from_intent;
-	__parent_action = noone;
+	__parent_action = _parentAction;
 	__origin_action = noone;
 	__recursion_depth = 0;
 

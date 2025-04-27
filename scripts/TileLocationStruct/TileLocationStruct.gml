@@ -30,7 +30,7 @@ function TileLocationStruct(_relatedElement, _row_index = 0, _col_index = 0, _x_
     };
 
     /// @param {Struct.MyMapTile|Id.Instance.abst_tile} _myMapTile
-    function setRowCol(_myMapTile) {
+    function setTilePosition(_myMapTile) {
         if(helper_is_not_definied(_myMapTile)) {
             return;
         }
@@ -89,7 +89,6 @@ function TileLocationStruct(_relatedElement, _row_index = 0, _col_index = 0, _x_
 /// @param {Struct.MyMapTile|Id.Instance.abst_tile} _elementReference
 /// @returns {Struct.TileLocationStruct}
 function getTileLocationFromObjOrStruct(_elementReference) {
-	/// @type {} // any object - add validation in feature
 	var ref = _elementReference
 
     if(is_struct(_elementReference)) {

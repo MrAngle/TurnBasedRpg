@@ -129,6 +129,8 @@ function __my_set_tile(_obj, _obj_tile, MapElementObjectTypeEnum) {
 	}
 }
 
+/// @param {Struct.MyMapTile} _obj
+/// @param {Struct.MyMapTile|Id.Instance.abst_tile} _obj_tile
 function __my_set_tile_coordinates(_obj, _obj_tile) {
     /// @type {Struct.TileLocationStruct} tileLocationStruct
     var tileLocationStruct = getTileLocationFromObjOrStruct(_obj_tile);
@@ -137,7 +139,7 @@ function __my_set_tile_coordinates(_obj, _obj_tile) {
     // _obj_tile.properties_map_element_col_index = _obj._properties_map_element_col_index;
 
     if(tileLocationStruct != undefined) { // todo should work for any
-        tileLocationStruct.setRowCol(_obj);
+        tileLocationStruct.setTilePosition(_obj);
     } else {
         LOG_CRITICAL_MESSAGE("Not defined LocationStruct for " + string(_obj_tile))
         	//  _obj_tile.map_element_set_x_y(_obj.__x_position, _obj.__y_position);

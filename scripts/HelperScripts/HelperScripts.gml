@@ -80,7 +80,8 @@ function helper_function_is_undefined_or_noone(functionToCheck) {
 }
 
 function helper_object_is_undefined_or_empty(objectToCheck) {
-	return objectToCheck == undefined || objectToCheck == noone || !instance_exists(objectToCheck);
+    var notExists = !instance_exists(objectToCheck);
+	return objectToCheck == undefined || objectToCheck == noone || notExists;
 }
 
 function helper_object_not_exists(objectToCheck) {

@@ -38,6 +38,10 @@ function TurnEntityStruct(_objectReference) constructor {
 		return __ID;
 	}
 
+	getTileLocationStruct = function() {
+		return __ID;
+	}
+
 	/// @returns {Array<Struct.CombatEventEffect>}
 	getAllEventEffects = function() {
 		return __EVENT_EFFECTS;

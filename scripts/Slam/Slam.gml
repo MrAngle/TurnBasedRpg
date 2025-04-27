@@ -26,12 +26,14 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
                 __combatEventEffect: _combatEventEffect,
                 /// @param {Struct.ActionContextStruct} _actionContextStruct
                 toReturn: function(_actionContextStruct) {
+                    var targetTile = getTileBehind(_actionContextStruct.getAction().getInvokerTuEnStruct().getTileLocationStruct(), 
+                                _actionContextStruct.getAction().getTargetTile().getTileLocationStruct()) ;
                     // nowa akcja – atak na ten sam cel co oryginalny atak
                     var newAction = new ActionStruct(
-                        global.ENUMS.ACTION_TYPE.ATTACK,        // typ akcji
-                        _actionContextStruct.getAction().getInvokerTuEnObj(),                         // ten sam atakujący
-                        _actionContextStruct.getAction().getTargetTile(),                // ten sam cel
-                        _actionContextStruct.getAction().getFromIntent(),                // ta sama intencja
+                        global.ENUMS.ACTION_TYPE.ATTACK,
+                        _actionContextStruct.getAction().getInvokerTuEnObj(),
+                        targetTile,
+                        _actionContextStruct.getAction().getFromIntent(),
                         [global.EVENT_TYPES_ENUM.ON_STAND]
                     );
             

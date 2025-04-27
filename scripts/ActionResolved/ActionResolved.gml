@@ -35,7 +35,13 @@ function __ActionResolvedStruct(_context_struct) constructor {
 	}
 
 	__finalizeAction = function() {
-		__getInvokerStruct().consumeActionPoints(__context_struct);
+        var _invoker =  __getInvokerStruct();
+		if(helper_is_definied(_invoker)) {
+			_invoker.consumeActionPoints(__context_struct);
+		} else {
+			LOG_INFO_MESSAGE("try to finalize action but invoker is not exists: " + string(_invoker))
+		}
+		
 	}
 }
 
