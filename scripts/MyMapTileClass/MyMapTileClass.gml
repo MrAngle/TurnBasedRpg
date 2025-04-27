@@ -24,10 +24,10 @@ function MyMapTileBuilder(properties_map_element_row_index, properties_map_eleme
 /// @constructor
 /// @returns {Struct.MyMapTile}
 function MyMapTile(properties_map_element_row_index, properties_map_element_col_index, _x_position, _y_position, _obj_terrain, _obj_character) constructor {
-    _properties_map_element_row_index = properties_map_element_row_index;
-    _properties_map_element_col_index = properties_map_element_col_index;
-    __x_position = _x_position;
-    __y_position = _y_position;
+    // _properties_map_element_row_index = properties_map_element_row_index;
+    // _properties_map_element_col_index = properties_map_element_col_index;
+    // __x_position = _x_position;
+    // __y_position = _y_position;
     __terrain = _obj_terrain;
     __character = _obj_character;
     __obstacle = _obj_character;
@@ -35,8 +35,8 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 
     __tileLocationStruct = new TileLocationStruct(
         self,
-        _properties_map_element_row_index, 
-        _properties_map_element_col_index, 
+        properties_map_element_row_index, 
+        properties_map_element_col_index, 
         _x_position, 
         _y_position)
 
@@ -45,19 +45,19 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     };
 
     getRow = function() {
-        return _properties_map_element_row_index;
+        return __tileLocationStruct.getRow();
     };
 
     getCol = function() {
-        return _properties_map_element_col_index;
+        return __tileLocationStruct.getCol();
     };
 
     getXPosition = function() {
-        return __x_position;
+        return __tileLocationStruct.getXPosition()// __x_position;
     };
 
     getYPosition = function() {
-        return __y_position;
+        return __tileLocationStruct.getYPosition()// __y_position;
     };
 
     has_character = function() {
@@ -101,7 +101,7 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     };
 
     __create_hex_selector = function() {
-        __shape_selector = instance_create_layer(__x_position, __y_position, global.LAYERS.selectors.id, HexMapElementGridCoverSelector);
+        __shape_selector = instance_create_layer(getXPosition(), getYPosition(), global.LAYERS.selectors.id, HexMapElementGridCoverSelector);
         __my_set_tile_coordinates(self, __shape_selector);
         global.COMBAT_GLOBALS.METRICS.SELECTORS_COUNT += 1;
     };
@@ -140,10 +140,10 @@ function __my_set_tile_coordinates(_obj, _obj_tile) {
         tileLocationStruct.setRowCol(_obj);
     } else {
         LOG_CRITICAL_MESSAGE("Not defined LocationStruct for " + string(_obj_tile))
-        	 _obj_tile.map_element_set_x_y(_obj.__x_position, _obj.__y_position);
+        	//  _obj_tile.map_element_set_x_y(_obj.__x_position, _obj.__y_position);
 
-	 _obj_tile.properties_map_element_row_index = _obj._properties_map_element_row_index;
-	 _obj_tile.properties_map_element_col_index = _obj._properties_map_element_col_index;
+	//  _obj_tile.properties_map_element_row_index = _obj._properties_map_element_row_index;
+	//  _obj_tile.properties_map_element_col_index = _obj._properties_map_element_col_index;
     }
     
 
