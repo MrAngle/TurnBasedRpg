@@ -28,7 +28,7 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 	}
 
 	get_tile_centrum_coodinators = function(_row, _col) { // MyMapTile
-		return [self.__map_holder[_row][_col].__x_position, self.__map_holder[_row][_col].__y_position];
+		return [self.__map_holder[_row][_col].getXPosition(), self.__map_holder[_row][_col].getYPosition()];
 	}
 
 	show_tiles = function() {
@@ -40,7 +40,7 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 	}
 
 	getTileByTurnEntityObj = function(_character) { // _filter_function(element) - return true 
-		return  get_tile(_character.properties_map_element_row_index, _character.properties_map_element_col_index);
+		return  get_tile(_character.getRow(), _character.getCol());
 	}
 	
 	get_tile_by_character = function(_character) { // _filter_function(element) - return true 

@@ -30,8 +30,8 @@ HexFieldSelectorDecoration_run_after_constructor = function() {
 	
 	layer_set_default_depth(global.LAYERS.selectors.depth + self.selectorTypeEnum);
 	
-	self.x = myMapTileToDecorate.__x_position;
-	self.y = myMapTileToDecorate.__y_position;
+	self.x = myMapTileToDecorate.getXPosition();
+	self.y = myMapTileToDecorate.getYPosition();
 }
 //============================================================
 

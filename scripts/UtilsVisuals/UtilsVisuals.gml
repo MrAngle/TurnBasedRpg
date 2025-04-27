@@ -56,8 +56,8 @@ function visualsShakeObject(
         intensity: intensity,
         duration: duration,
         timer: duration,
-        original_x: _tile.__x_position,
-        original_y: _tile.__y_position,
+        original_x: _tile.getXPosition(),
+        original_y: _tile.getYPosition(),
         onStep: function() {
             timer -= 1;
             target.x = original_x + random_range(-intensity, intensity);

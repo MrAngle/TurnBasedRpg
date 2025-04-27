@@ -1,7 +1,7 @@
 function draw_index(_obj_abst_tile) {
 	// Wyświetl numer kolumny i wiersza
 	// Wyświetl numer kolumny i wiersza na środku heksagonu
-	var text = string(_obj_abst_tile.properties_map_element_row_index) + "," + string(_obj_abst_tile.properties_map_element_col_index);
+	var text = string(_obj_abst_tile.getRow()) + "," + string(_obj_abst_tile.getCol());
 
 	// Oblicz pozycję tekstu na środku heksagonu
 	var text_x = _obj_abst_tile.x - (string_width(text) * 0.5); // Centrowanie w poziomie

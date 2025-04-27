@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TileLocationStruct",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TileLocationStruct",
+  "parent":{
+    "name":"SuperTile",
+    "path":"folders/Hex/Combat/SuperTile.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

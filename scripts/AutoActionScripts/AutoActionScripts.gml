@@ -6,8 +6,8 @@ function AutoActionScripts()
 }
 
 function autoActionResolveIntent(character) {
-	var row = character.properties_map_element_row_index;
-	var col = character.properties_map_element_col_index;
+	var row = character.getRow();
+	var col = character.getCol()
 
 	var tile = get_target_tile_to_nearest_enemy(character, row, col);
 	if (is_undefined(tile)) {

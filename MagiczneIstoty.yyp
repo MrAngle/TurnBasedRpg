@@ -454,6 +454,7 @@
     {"id":{"name":"tile_selector_on_click_by_pressed_properties","path":"scripts/tile_selector_on_click_by_pressed_properties/tile_selector_on_click_by_pressed_properties.yy",},},
     {"id":{"name":"TileDrawScripts","path":"scripts/TileDrawScripts/TileDrawScripts.yy",},},
     {"id":{"name":"TileFilterFunctionClass","path":"scripts/TileFilterFunctionClass/TileFilterFunctionClass.yy",},},
+    {"id":{"name":"TileLocationStruct","path":"scripts/TileLocationStruct/TileLocationStruct.yy",},},
     {"id":{"name":"turn_manager_properties","path":"scripts/turn_manager_properties/turn_manager_properties.yy",},},
     {"id":{"name":"TurnEntiryParamsForObject","path":"scripts/TurnEntiryParamsForObject/TurnEntiryParamsForObject.yy",},},
     {"id":{"name":"TurnEntityScripts","path":"scripts/TurnEntityScripts/TurnEntityScripts.yy",},},

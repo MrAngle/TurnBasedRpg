@@ -126,7 +126,7 @@ function MySelectorActionClass(arg_ActionSelectorProperties, _MySelectorActionCl
 		},
 		
 		__process_move: function(_self) {
-			var _MyMapTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_self.properties_map_element_row_index, _self.properties_map_element_col_index);
+			var _MyMapTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_self.getRow(), _self.getCol());
 
 			if(
 				!helper_struct_is_undefined_or_empty(__selector_possible_tiles_to_choose_SelectorTilesHolderClass) &&

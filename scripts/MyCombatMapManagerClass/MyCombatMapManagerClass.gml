@@ -60,7 +60,7 @@ function __get_all_characters_on_map(_obj) {
 };
 
 function __my_move_to(_obj,_targetproperties_map_element_row_index, _targetproperties_map_element_col_index, _target_obj) {
-	var currentPositionMyMapTile = __combat_map_holder.get_tile(_target_obj.properties_map_element_row_index, _target_obj.properties_map_element_col_index);
+	var currentPositionMyMapTile = __combat_map_holder.get_tile(_target_obj.getRow(), _target_obj.getCol());
 	var destinationMyMapTile = __combat_map_holder.get_tile(_targetproperties_map_element_row_index, _targetproperties_map_element_col_index);
 	
 	currentPositionMyMapTile.set_tile(noone, MapElementObjectTypeEnum.CHARACTER);

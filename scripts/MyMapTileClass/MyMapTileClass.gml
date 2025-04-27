@@ -33,12 +33,15 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     __obstacle = _obj_character;
     __shape_selector = noone;
 
-    getXPosition = function() {
-        return __x_position;
-    };
+    __tileLocationStruct = new TileLocationStruct(
+        self,
+        _properties_map_element_row_index, 
+        _properties_map_element_col_index, 
+        _x_position, 
+        _y_position)
 
-    getYPosition = function() {
-        return __y_position;
+    getTileLocationStruct = function() {
+        return __tileLocationStruct;
     };
 
     getRow = function() {
@@ -47,6 +50,14 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
 
     getCol = function() {
         return _properties_map_element_col_index;
+    };
+
+    getXPosition = function() {
+        return __x_position;
+    };
+
+    getYPosition = function() {
+        return __y_position;
     };
 
     has_character = function() {
@@ -62,11 +73,6 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     getTurnEntityStruct = function() {
         return getTurnEntityStruct(__character);
     };
-
-    // /// @returns {Boolean}
-    // hasTurnEntityElement = function() {
-    //     return helper_object_exists(__character);
-    // };
 
     /// @returns {Id.Instance}
     getTurnEntityObj = function() {
@@ -124,8 +130,22 @@ function __my_set_tile(_obj, _obj_tile, MapElementObjectTypeEnum) {
 }
 
 function __my_set_tile_coordinates(_obj, _obj_tile) {
-	_obj_tile.map_element_set_x_y(_obj.__x_position, _obj.__y_position);
+    /// @type {Struct.TileLocationStruct} tileLocationStruct
+    var tileLocationStruct = getTileLocationFromObjOrStruct(_obj_tile);
 
-	_obj_tile.properties_map_element_row_index = _obj._properties_map_element_row_index;
-	_obj_tile.properties_map_element_col_index =  _obj._properties_map_element_col_index;
+    // _obj_tile.properties_map_element_row_index = _obj._properties_map_element_row_index;
+    // _obj_tile.properties_map_element_col_index = _obj._properties_map_element_col_index;
+
+    if(tileLocationStruct != undefined) { // todo should work for any
+        tileLocationStruct.setRowCol(_obj);
+    } else {
+        LOG_CRITICAL_MESSAGE("Not defined LocationStruct for " + string(_obj_tile))
+        	 _obj_tile.map_element_set_x_y(_obj.__x_position, _obj.__y_position);
+
+	 _obj_tile.properties_map_element_row_index = _obj._properties_map_element_row_index;
+	 _obj_tile.properties_map_element_col_index = _obj._properties_map_element_col_index;
+    }
+    
+
+
 }

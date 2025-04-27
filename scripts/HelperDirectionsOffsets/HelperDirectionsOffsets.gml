@@ -32,8 +32,8 @@ function helper_get_direction_offset(arg_DirectionId, row) {
 /// @returns {Struct.MyMapTile}
 function getTileBehindTargetTile(sourceObj, targetTile) {
     // Pozycje
-    var invokerRow = sourceObj. properties_map_element_row_index;
-    var invokerCol = sourceObj.properties_map_element_col_index;
+    var invokerRow = sourceObj.getRow();
+    var invokerCol = sourceObj.getCol();
     
     var targetRow = targetObj.row;
     var targetCol = targetObj.col;

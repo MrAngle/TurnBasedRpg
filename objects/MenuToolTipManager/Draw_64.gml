@@ -22,10 +22,10 @@ function show_tooltip() {
 
     // Wyświetlanie danych o kafelku
     var info = "Tile Info:\n";
-    info += "Row: " + string(myToolTipTile._properties_map_element_row_index) + "\n";
-    info += "Col: " + string(myToolTipTile._properties_map_element_col_index) + "\n";
-    info += "x: " + string(myToolTipTile.__x_position) + "\n";
-    info += "y " + string(myToolTipTile.__y_position) + "\n";
+    info += "Row: " + string(myToolTipTile.getRow()) + "\n";
+    info += "Col: " + string(myToolTipTile.getCol()) + "\n";
+    info += "x: " + string(myToolTipTile.getXPosition()) + "\n";
+    info += "y " + string(myToolTipTile.getYPosition()) + "\n";
     //info += "Terrain: " + (is_undefined(myToolTipTile.__terrain) ? "None" : myToolTipTile.__terrain.my_obj_name) + "\n";
     //info += "BG: " + (is_undefined(myToolTipTile.__terrain.properties_bg_instance) ? "None" : "With bg") + "\n";
 	

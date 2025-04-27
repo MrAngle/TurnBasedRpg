@@ -60,8 +60,8 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 
 
 function get_target_position_from_intent(intent_id, character) {
-	var row = character.properties_map_element_row_index;
-	var col = character.properties_map_element_col_index;
+	var row = character.getRow();
+	var col = character.getCol();
 
 	if (intent_id == ACTION_INTENT_ENUM.STAND) {
 		return [row, col];

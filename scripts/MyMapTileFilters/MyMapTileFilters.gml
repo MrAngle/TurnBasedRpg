@@ -99,10 +99,11 @@ function mapTile_filter_element_NOT_contains_character() {
 	return closedFunction;
 }
 
+/// @param {Struct.MyMapTile} _myMapTileSource
 function mapTile_filter_within_distance(_myMapTileSource, _distance) {
     var closedFunction = {
-        __source_row: _myMapTileSource._properties_map_element_row_index,
-        __source_col: _myMapTileSource._properties_map_element_col_index,
+        __source_row: _myMapTileSource.getRow(),
+        __source_col: _myMapTileSource.getCol(),
         __distance: _distance,
         filterFunc: function(_myMapTileObjectToCheck) {
             // Przekształcenie współrzędnych źródła na axial
@@ -112,8 +113,8 @@ function mapTile_filter_within_distance(_myMapTileSource, _distance) {
 
             // Przekształcenie współrzędnych sprawdzanego kafelka na axial
             var check_axial = offset_to_axial(
-                _myMapTileObjectToCheck._properties_map_element_row_index,
-                _myMapTileObjectToCheck._properties_map_element_col_index
+                _myMapTileObjectToCheck.getRow(),
+                _myMapTileObjectToCheck.getCol()
             );
             var check_q = check_axial[0];
             var check_r = check_axial[1];

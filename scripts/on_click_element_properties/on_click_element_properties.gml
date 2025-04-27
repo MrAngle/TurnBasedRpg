@@ -18,7 +18,7 @@ function properties_load_on_click_element()
 	
 	__on_click_element = function() {
 		if(properties_is_map_element != noone && properties_is_map_element == true) {
-			select_map_tile(properties_map_element_row_index, properties_map_element_col_index);
+			select_map_tile(getRow(), getCol());
 		}
 		
 		on_click_change_selected_status();

@@ -103,7 +103,7 @@ var hex_directions_odd = [
 		var fromRow = currentNode[2];
 		var fromCol = currentNode[3];
 		
-		if (global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(currentRow, currentCol).has_character() &&
+		if (global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(currentRow, currentCol).hasTurnEntity() &&
 			isEnemy(source_Char, currentRow, currentCol)) {
 				
 			while (fromRow != startRow || fromCol != startCol) {

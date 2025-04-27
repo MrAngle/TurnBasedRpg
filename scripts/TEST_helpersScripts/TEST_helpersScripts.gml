@@ -32,8 +32,8 @@ function helper_simulate_click_at_index(_x_index, _y_index) {
     // Pobranie obiektu w danym punkcie
 	
 	var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_x_index, _y_index);
-	var _x = tile.__x_position;
-	var _y = tile.__y_position;
+	var _x = tile.getXPosition();
+	var _y = tile.getYPosition();
 	
     var clickable_object = instance_position(_x, _y, all);
 
