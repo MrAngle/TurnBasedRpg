@@ -5,6 +5,7 @@ if (
 		typeof(global.COMBAT_GLOBALS.MAP.HOVERED_TILE) == global.TYPEOF_STRUCT
 		) {
 	if(my_menu_expanded) {
+		/// @type {Struct.MyMapTile}
 		myToolTipTile = global.COMBAT_GLOBALS.MAP.HOVERED_TILE;
 		show_tooltip();
 	} else {
@@ -26,13 +27,25 @@ function show_tooltip() {
     info += "Col: " + string(myToolTipTile.getCol()) + "\n";
     info += "x: " + string(myToolTipTile.getXPosition()) + "\n";
     info += "y " + string(myToolTipTile.getYPosition()) + "\n";
-    //info += "Terrain: " + (is_undefined(myToolTipTile.__terrain) ? "None" : myToolTipTile.__terrain.my_obj_name) + "\n";
-    //info += "BG: " + (is_undefined(myToolTipTile.__terrain.properties_bg_instance) ? "None" : "With bg") + "\n";
+    // info += "Terrain: " + (is_undefined(myToolTipTile.getTerrain()) ? "None" : myToolTipTile.getTerrain().my_obj_name) + "\n";
+    // info += "BG: " + (is_undefined(myToolTipTile.getTerrain().properties_bg_instance) ? "None" : "With bg") + "\n";
+
+	if(helper_is_definied(myToolTipTile.getTerrain())) {
+		info += "Terrain: " + (is_undefined(myToolTipTile.getTerrain()) ? "None" : myToolTipTile.getTerrain().my_obj_name) + "\n";
+		info += "BG: " + (is_undefined(myToolTipTile.getTerrain().properties_bg_instance) ? "None" : "With bg") + "\n";
+	}
+
+	if(helper_is_definied(myToolTipTile.getObstacle())) {
+		var obs = myToolTipTile.getObstacle();
+		info += "Obstacle: " + obs.my_obj_name + "\n";
+	}
 	
 	if(myToolTipTile.has_character()) {
-		var tooltipChar = myToolTipTile.__character;
+		var tooltipChar = myToolTipTile.getTurnEntityObj();
+		var tooltipCharStruct = myToolTipTile.getTurnEntityStruct();
 		info += "Character: " + tooltipChar.my_obj_name + "\n";
-		// info += "Character HP: " + string(tooltipChar.PRIV_CHAR_STAT.HP.CURRENT_HP) + "\n";
+		info += "Character HP: " + string(tooltipCharStruct.getCurrentHp()) + "\n";
+		info += "Character AP: " + string(tooltipCharStruct.getActionPoints()) + "\n";
 	} else {
 		info += "Character: None\n";
 	}

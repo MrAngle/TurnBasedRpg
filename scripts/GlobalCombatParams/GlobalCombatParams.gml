@@ -56,9 +56,15 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 		/// @type {Struct.__ActionResolvedStruct}
 		CURRENT_TURN_ACTION_RESOLVED_STRUCT: noone, //
 		/// @type {Enum.ACTION_INTENT_ENUM}
-		CURRENT_TURN_ACTION_INTENT_ENUM: noone, //
-		/// @type {number}
-		CURRENT_MIN_ACTION_POINTS: 0, // 
+		CURRENT_TURN_ACTION_INTENT_ENUM: noone //
+		// /// @type {number}
+		// CURRENT_MIN_ACTION_POINTS: 0, // 
+	}
+	GAME_TURN = {
+		TURN_INDEX: 1,
+		CURRENT_TURN_AP_THRESHOLD: 20,
+		LAST_TURN_AP_BOUNDARY: 0,
+		CURRENT_MIN_ACTION_POINTS: 0
 	}
 	EVENT = {
 		CLICK : {
@@ -98,6 +104,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	    STORE: {},
 	    MAPPERS: {},
 	    ACTION: {},
+	    GAME_TURN: {},
 	    EVENT: {},
 	    COMBAT_PROPERTIES: {},
 		ALARM: {},
@@ -114,6 +121,7 @@ function __GLOBALS_STRUCT(arg_GLOBAL_DEFAULTS) {
 	        self.__RESET_GROUP(self.STORE, self.__GLOBAL_DEFAULTS.STORE);
 	        self.__RESET_GROUP(self.MAPPERS, self.__GLOBAL_DEFAULTS.MAPPERS);
 	        self.__RESET_GROUP(self.ACTION, self.__GLOBAL_DEFAULTS.ACTION);
+	        self.__RESET_GROUP(self.GAME_TURN, self.__GLOBAL_DEFAULTS.GAME_TURN);
 	        self.__RESET_GROUP(self.EVENT, self.__GLOBAL_DEFAULTS.EVENT);
 	        self.__RESET_GROUP(self.COMBAT_PROPERTIES, self.__GLOBAL_DEFAULTS.COMBAT_PROPERTIES);
 	        self.__RESET_GROUP(self.ALARM, self.__GLOBAL_DEFAULTS.ALARM);

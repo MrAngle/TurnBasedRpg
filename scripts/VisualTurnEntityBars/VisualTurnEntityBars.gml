@@ -37,7 +37,7 @@ function visualPrintActionBar(_turnEntityObj) {
 			var bar_y = turnEntityObj.y + turnEntityObj.sprite_height * 0.5; // pod postacia
 
             var previousAP = turnEntityStruct.getCostOfPreviousAction();
-            var diffActionPoints = turnEntityStruct.getActionPoints() - global.COMBAT_GLOBALS.ACTION.CURRENT_MIN_ACTION_POINTS;
+            var diffActionPoints = turnEntityStruct.getActionPoints() - global.COMBAT_GLOBALS.GAME_TURN.CURRENT_MIN_ACTION_POINTS;
 
             var ratio = 1 - (diffActionPoints / previousAP) ; // odwrócenie: im mniejszy diff, tym bliżej 1
             var ap_percent = clamp(ratio * 100, 0, 100);

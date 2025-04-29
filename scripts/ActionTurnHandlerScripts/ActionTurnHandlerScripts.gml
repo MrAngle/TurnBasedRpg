@@ -12,8 +12,11 @@ function onStepTurnProcessor() {
 	    case ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
 			global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ = getNextTurnEntity();
-			global.COMBAT_GLOBALS.ACTION.CURRENT_MIN_ACTION_POINTS = 
+			var minApValue = 
 				getTurnEntityStruct(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ).getActionPoints();
+
+			tryProcessGameTurn(minApValue);
+			
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = 
 				getNextStateBasedOnSideForObj(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ)
 

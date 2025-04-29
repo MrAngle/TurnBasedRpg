@@ -63,3 +63,12 @@ function ActionStandExecutorUnitStruct() constructor {
         // do nothing
     };
 }
+
+
+/// @returns {Struct.ActionExecutorUnitStruct}
+function ActionGameTurnExecutorUnitStruct() constructor {
+    // IMPL
+    execute = function() {
+        // do nothing
+    };
+}

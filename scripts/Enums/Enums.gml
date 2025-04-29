@@ -33,6 +33,8 @@ function __ACTION_TYPE_ENUM() constructor {
     ATTACK  = new ENUM_STRUCT(100, "ATTACK");
     STEP  = new ENUM_STRUCT(101, "STEP");
     STAND  = new ENUM_STRUCT(102, "STAND");
+
+    ON_GAME_TURN  = new ENUM_STRUCT(103, "ON_GAME_TURN");
 };
 
 enum ACTION_INTENT_ENUM {

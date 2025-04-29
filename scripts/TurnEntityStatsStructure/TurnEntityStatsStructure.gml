@@ -30,6 +30,10 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 		return __ACTION_POINTS - __PREVIOUS_ACTION_POINTS;
 	}
 
+	getCurrentHp = function() {
+		return HP.CURRENT_HP;
+	}
+
 	// === Setters ===
 	setFaction = function(factionEnum) {
 		__FACTION = factionEnum;
@@ -78,6 +82,12 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 
 		__PREVIOUS_ACTION_POINTS = self.__ACTION_POINTS;
 		self.__ACTION_POINTS += apToApply;
+	}
+
+	/// @param {Real} ap_to_subtract - Wartość AP, którą odejmujemy z każdej jednostki.
+	prepareActionPointsForNextTurn = function(ap_to_subtract) {
+		__ACTION_POINTS -= ap_to_subtract;
+		__PREVIOUS_ACTION_POINTS -= ap_to_subtract;
 	}
 
 }

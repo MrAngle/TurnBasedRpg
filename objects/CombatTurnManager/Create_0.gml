@@ -17,9 +17,6 @@ __set_character_to_prepare_actions = function(arg_character) {
 	//global.COMBAT_GLOBALS.MANAGERS.ACTION_SELECTOR.properties_character_to_prepare_actions = properties_character_to_prepare_actions;
 }
 
-
-
-
 enum TURN_PHASE_ENUM {
 	INIT_PREPARE_TURN,
 	PREPARE_TURN,

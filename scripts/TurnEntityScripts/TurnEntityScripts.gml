@@ -1,7 +1,7 @@
 global.STATISTICS_COMBAT_GLOBALS = {
 	AP_COST: {
 		MOVEMENT: {
-			MIN: 2, // SET MIN/MAX AP COST
+			MIN: 2,
 			MAX: 100,
 			DEFAULT_BASE: 10
 		}
@@ -39,7 +39,11 @@ function TurnEntityStruct(_objectReference) constructor {
 	}
 
 	getTileLocationStruct = function() {
-		return __ID;
+		return getTileLocationFromObjOrStruct(__OBJECT_REFERENCE);
+	}
+
+	getCurrentHp = function() {
+		return __STATS.getCurrentHp()
 	}
 
 	/// @returns {Array<Struct.CombatEventEffect>}
@@ -76,6 +80,11 @@ function TurnEntityStruct(_objectReference) constructor {
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
 	consumeActionPoints = function(_actionContextStruct) {
 		var actionsToConsume = __STATS.applyActionPoints(_actionContextStruct);
+	}
+
+	/// @param {Real} ap_to_subtract - Wartość AP, którą odejmujemy z każdej jednostki.
+	prepareActionPointsForNextTurn = function(ap_to_subtract) {
+		__STATS.prepareActionPointsForNextTurn(ap_to_subtract);
 	}
 
 	applyHpChange = function(dmg) {

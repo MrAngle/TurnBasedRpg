@@ -52,6 +52,14 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
         return __tileLocationStruct.getCol();
     };
 
+    getTerrain = function() {
+        return __terrain;
+    };
+
+    getObstacle = function() {
+        return __obstacle;
+    };
+
     getXPosition = function() {
         return __tileLocationStruct.getXPosition()// __x_position;
     };

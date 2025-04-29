@@ -67,6 +67,10 @@ function __defineActionExecutorUnitStruct(_arStruct) {
 		case global.ENUMS.ACTION_TYPE.STAND.id:
 			return new ActionStandExecutorUnitStruct();
 			break;
+
+		case global.ENUMS.ACTION_TYPE.ON_GAME_TURN.id:
+			return new ActionGameTurnExecutorUnitStruct();
+			break;
 	
 		default:
 			LOG_CRITICAL_MESSAGE("⚠️ Nieznany typ akcji: " + string(actionType));

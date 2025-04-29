@@ -11,6 +11,7 @@ function __EventTypesEnum() constructor {
     ON_HEAL         = new ENUM_STRUCT(201, "ON_HEAL");
 
     ON_STAND         = new ENUM_STRUCT(300, "ON_STAND");
+    ON_GAME_TURN     = new ENUM_STRUCT(400, "ON_GAME_TURN");
 }
 
 ///// @returns {Array<ENUM_STRUCT>}

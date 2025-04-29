@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionGameTurnService",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionGameTurnService",
+  "parent":{
+    "name":"CombatActionGameTurn",
+    "path":"folders/Hex/Combat/CombatActionGameTurn.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
