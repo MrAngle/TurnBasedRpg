@@ -2,7 +2,7 @@
 /// @desc Tworzy kontekst akcji – środowisko do kalkulacji / efektów.
 ///       Bazuje na strukturze akcji lub jest tworzony niezależnie (np. dla predykcji).
 ///
-/// @param {Struct.ActionStruct} _action_struct - Referencja do akcji.
+/// @param {Struct.__ActionStruct} _action_struct - Referencja do akcji.
 /// @param {Enum.ACTION_MODE_ENUM} _evaluation_mode - Tryb ewaluacji (SIMULATION, PREDICTION, EXECUTION).
 ///
 /// @returns {Struct.ActionContextStruct}

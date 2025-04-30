@@ -1,40 +1,59 @@
-/// @function ActionStruct_DefaultArgs
-/// @desc Returns default values for the ActionStruct constructor.
-/// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
-/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
-/// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
-/// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
-/// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
-/// @returns {Struct.ActionStruct_ParamFactory}
-function ActionStruct_ParamFactory(
-		_type, 
-		_invoker_obj, 
-		_target_tile, 
-		_from_intent, 
-		_eventTypesOnTriggerEnums) constructor {
+/// @param {Struct.ENUM_STRUCT} _actionTypeEnum - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
+/// @returns {Struct.ActionStructBuilder}
+function ActionStructBuilder(_actionTypeEnum) constructor {
 
-	__type = _type;
-	__invoker_obj = _invoker_obj;
-	__targetTile = _target_tile;
-	__fromIntent = _from_intent;
-	__eventTypesOnTrigger = _eventTypesOnTriggerEnums;
-	__parentAction = noone
+	/// @type {Struct.ENUM_STRUCT} Represents the type of action (e.g., global.ENUMS.ACTION_TYPE.ATTACK).
+	__actionTypeEnum = _actionTypeEnum;
+	/// @type {Id.Instance<Id.Instance.AbstTurnEntity>} The entity performing the action.
+	__invokerTurnEntityObj = noone;
+	/// @type {Struct.MyMapTile} The tile targeted by the action.
+	__targetMapTile = noone;
+	/// @type {ActionIntentId} The intent from which this action originated.
+	__actionIntentId = false;
+	/// @type {Array<Struct.__EventTypesEnum>} Event types triggered by the action.
+	__eventTypesEnumArray = undefined;
+	/// @type {Struct.__ActionStruct} The parent action, if any.
+	__parentActionStruct = noone;
 
-	// Getters
-	getType = function() { return __type; };
-	getInvokerObj = function() { return __invoker_obj; };
-	getTargetTile = function() { return __targetTile; };
-	getFromIntent = function() { return __fromIntent; };
-	getEventTypesOnTrigger = function() { return __eventTypesOnTrigger; };
-	getParentAction = function() { return __parentAction; };
+	withInvokerTurnEntityObj = function(_invoker) {
+		__invokerTurnEntityObj = _invoker;
+		return self;
+	};
 
-	// Setters
-	setType = function(_newType) { __type = _newType; };
-	setInvokerObj = function(_newInvoker) { __invoker_obj = _newInvoker; };
-	setTargetTile = function(_newTargetTile) { __targetTile = _newTargetTile; };
-	setFromIntent = function(_newFromIntent) { __fromIntent = _newFromIntent; };
-	setEventTypesOnTrigger = function(_newEventTypes) { __eventTypesOnTrigger = _newEventTypes; };
-	setParentAction = function(_newParentAction) { __parentAction = _newParentAction; };
+	withTargetMapTile = function(_tile) {
+		__targetMapTile = _tile;
+		return self;
+	};
+
+	withActionIntentId = function(_intentId) {
+		__actionIntentId = _intentId;
+		return self;
+	};
+
+	withEventTypesEnumArray = function(_types) {
+		__eventTypesEnumArray = _types;
+		return self;
+	};
+
+	withParentActionStruct = function(_parent) {
+		__parentActionStruct = _parent;
+		return self;
+	};
+
+    build = function() {
+        var effectiveEventTypes = helper_is_definied(__eventTypesEnumArray)
+            ? __eventTypesEnumArray
+            : global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(__actionTypeEnum);
+
+        return new __ActionStruct(
+            __actionTypeEnum,
+			__invokerTurnEntityObj,
+			__targetMapTile,
+			__actionIntentId,
+			effectiveEventTypes,
+			__parentActionStruct
+        );
+    };
 }
 
 // ActionStruct	Definicja co ma się wydarzyć	Atakuj tile[5, 3]
@@ -48,24 +67,37 @@ function ActionStruct_ParamFactory(
 ///       inicjatora, cel oraz dane pomocnicze takie jak głębokość rekurencji.
 /// @constructor
 ///
-// /// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
-// /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
-// /// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
-// /// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
-// /// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
-/// @param {Struct.ActionStruct_ParamFactory} _ActionStruct_ParamFactory - Obiekt zawierający domyślne wartości dla struktury akcji.
+/// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
+/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
+/// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
+/// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
+/// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
 ///
-/// @returns {Struct.ActionStruct}
-function ActionStruct(_ActionStruct_ParamFactory) constructor {
+/// @returns {Struct.__ActionStruct}
+function __ActionStruct(	_type, 
+						_invoker_obj, 
+						_target_tile, 
+						_from_intent, 
+						_eventTypesOnTriggerEnums,
+						_origin_action) constructor {
 	// Priv
 	__id = helperGenerateUniqueId();
-	__type = _ActionStruct_ParamFactory.getType();
-	__invokerTuEnObj = _ActionStruct_ParamFactory.getInvokerObj();
-	__target_tile = _ActionStruct_ParamFactory.getTargetTile();
-	__from_intent = _ActionStruct_ParamFactory.getFromIntent();
-	__parent_action = _ActionStruct_ParamFactory.getParentAction();
-	__eventTypesOnTriggerEnums = _ActionStruct_ParamFactory.getEventTypesOnTrigger();
-	__origin_action = noone;
+
+	__type = _type;
+	__invokerTuEnObj = _invoker_obj;
+	__target_tile = _target_tile;
+	__from_intent = _from_intent;
+	__eventTypesOnTriggerEnums = _eventTypesOnTriggerEnums;
+	__origin_action = _origin_action;
+	__parent_action = noone;
+
+	// __type = _ActionStruct_ParamFactory.getType();
+	// __invokerTuEnObj = _ActionStruct_ParamFactory.getInvokerObj();
+	// __target_tile = _ActionStruct_ParamFactory.getTargetTile();
+	// __from_intent = _ActionStruct_ParamFactory.getFromIntent();
+	// __parent_action = _ActionStruct_ParamFactory.getParentAction();
+	// __eventTypesOnTriggerEnums = _ActionStruct_ParamFactory.getEventTypesOnTrigger();
+
 	__recursion_depth = 0;
 
 	// Getters
@@ -84,7 +116,7 @@ function ActionStruct(_ActionStruct_ParamFactory) constructor {
 
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
 /// @param {Enum.ACTION_INTENT_ENUM} intent_id
-/// @returns {Struct.ActionStruct}
+/// @returns {Struct.__ActionStruct}
 function resolveActionFromIntent(intent_id, turnEntity) {
 	var pos = get_target_position_from_intent(intent_id, turnEntity);
 	var row = pos[0];
@@ -93,16 +125,21 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 	var targetTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(row, col);
 
 	var ACTION_TYPE_ENUM = resolve_skill_type(turnEntity, targetTile);
-	var eventTypesOnTrigger = global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(ACTION_TYPE_ENUM);
 
-	var asParams = new ActionStruct_ParamFactory(
-		ACTION_TYPE_ENUM, 
-		turnEntity, 
-		targetTile, 
-		intent_id, 
-		eventTypesOnTrigger
-	)
-	return new ActionStruct(asParams)
+	// var asParams = new ActionStruct_ParamFactory(
+	// 	ACTION_TYPE_ENUM, 
+	// 	turnEntity, 
+	// 	targetTile, 
+	// 	intent_id, 
+	// 	eventTypesOnTrigger
+	// )
+	return new ActionStructBuilder(ACTION_TYPE_ENUM)
+		.withInvokerTurnEntityObj(turnEntity)
+		.withTargetMapTile(targetTile)
+		.withActionIntentId(intent_id)
+		.withEventTypesEnumArray(global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(ACTION_TYPE_ENUM))
+		.build()
+	// return new ActionStruct(asParams)
 }
 
 

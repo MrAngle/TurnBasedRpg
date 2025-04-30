@@ -1,7 +1,7 @@
 __SELF = privGetSelfFunc(self);
 __PARAMS = {};
 
-/// @returns {Struct.ActionStruct}
+/// @returns {Struct.__ActionStruct}
 getParams = function() {
 	return self;
 }

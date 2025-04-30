@@ -1,6 +1,7 @@
 function ActionTypeToEventSubtypesEnumMapper() constructor {
     
-    /// @param {Enum.__ACTION_TYPE_ENUM}
+    /// @param {Enum.__ACTION_TYPE_ENUM} actionTypeEnum
+    /// @returns {Array<Struct.ENUM_STRUCT>}
     mapToEventTypeEnum = function(actionTypeEnum) {
         switch (actionTypeEnum.id) {
             case global.ENUMS.ACTION_TYPE.ATTACK.id:
