@@ -1,5 +1,6 @@
 enum ACTION_TURN_STATE_ENUM {
 	CALCULATE_NEXT_TURN_ENTITY,
+	FORCE_WAIT_TURN_PHASE,
 	
 	WAITING_FOR_USER_INPUT, // -> PERFORM ACTION
 	PROCESS_AI_INTENT,
@@ -9,6 +10,10 @@ enum ACTION_TURN_STATE_ENUM {
 
 function onStepTurnProcessor() {
 	switch (global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM) {
+		case ACTION_TURN_STATE_ENUM.FORCE_WAIT_TURN_PHASE:
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY;
+			break;
+
 	    case ACTION_TURN_STATE_ENUM.CALCULATE_NEXT_TURN_ENTITY:
 	        // Logika wyboru następnej jednostki do tury
 			global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ = getNextTurnEntity();
@@ -97,12 +102,21 @@ function waitingForUserInput() {
 
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} arg_objTurnEntity
 function getNextStateBasedOnSideForObj(arg_objTurnEntity) {
+	if(helper_object_not_exists(arg_objTurnEntity)) {
+		LOG_ERROR_MESSAGE("⚠️ Nie można ustalić stanu tury dla jednostki (Obj): " + string(arg_objTurnEntity));
+		return ACTION_TURN_STATE_ENUM.FORCE_WAIT_TURN_PHASE;
+	}
 	return getNextStateBasedOnSide(getTurnEntityStruct(arg_objTurnEntity));
 }
 
 /// @param {Struct.TurnEntityStruct} arg_turnEntity 
 /// @returns {Enum.ACTION_TURN_STATE_ENUM}
 function getNextStateBasedOnSide(arg_turnEntity) {
+	if(helper_is_not_definied(arg_turnEntity)) {
+		LOG_ERROR_MESSAGE("⚠️ Nie można ustalić stanu tury dla jednostki (Struct): " + string(arg_turnEntity));
+		return ACTION_TURN_STATE_ENUM.FORCE_WAIT_TURN_PHASE;
+	}
+
 	if(arg_turnEntity.getFaction() == FACTION_ENUM.PLAYER) {
 		return ACTION_TURN_STATE_ENUM.WAITING_FOR_USER_INPUT;
 	} else {

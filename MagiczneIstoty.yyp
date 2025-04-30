@@ -296,6 +296,7 @@
     {"id":{"name":"ActionContext","path":"scripts/ActionContext/ActionContext.yy",},},
     {"id":{"name":"ActionCostStructure","path":"scripts/ActionCostStructure/ActionCostStructure.yy",},},
     {"id":{"name":"ActionExecutorUnit","path":"scripts/ActionExecutorUnit/ActionExecutorUnit.yy",},},
+    {"id":{"name":"ActionExecutorUnitWrapper","path":"scripts/ActionExecutorUnitWrapper/ActionExecutorUnitWrapper.yy",},},
     {"id":{"name":"ActionGameTurnService","path":"scripts/ActionGameTurnService/ActionGameTurnService.yy",},},
     {"id":{"name":"ActionIntent","path":"scripts/ActionIntent/ActionIntent.yy",},},
     {"id":{"name":"ActionPredefined","path":"scripts/ActionPredefined/ActionPredefined.yy",},},

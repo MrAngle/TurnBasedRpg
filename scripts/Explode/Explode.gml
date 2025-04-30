@@ -38,7 +38,7 @@ function COMBAT_EVENT_EFFECT_EXPLODE(_ownerTurnEntityObj) {
 
                     var actionStruct = new ActionStructBuilder(global.ENUMS.ACTION_TYPE.ATTACK)
                         .withInvokerTurnEntityObj(__combatEventEffect.__getAppliesToTurnEntityObj())
-                        .withTargetMapTile(targetTile)
+                        .withTargetMapTile(targetTile, new ActionTargetResolver_OriginTileAsTarget())
                         .withActionIntentId(_actionContextStruct.getAction().getFromIntent())
                         .withEventTypesEnumArray(global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(global.ENUMS.ACTION_TYPE.ATTACK))
                         .build()

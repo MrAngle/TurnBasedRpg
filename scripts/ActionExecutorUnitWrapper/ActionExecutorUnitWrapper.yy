@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionExecutorUnitWrapper",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionExecutorUnitWrapper",
+  "parent":{
+    "name":"ActionStructs",
+    "path":"folders/Hex/Combat/CombatAction/ActionStructs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

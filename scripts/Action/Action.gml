@@ -7,7 +7,9 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 	/// @type {Id.Instance<Id.Instance.AbstTurnEntity>} The entity performing the action.
 	__invokerTurnEntityObj = noone;
 	/// @type {Struct.MyMapTile} The tile targeted by the action.
-	__targetMapTile = noone;
+	__originMapTile = noone;
+	/// @type {Struct.ActionTargetResolverInterface} The intent from which this action originated.
+	__actionTargetResolverStruct = noone;
 	/// @type {ActionIntentId} The intent from which this action originated.
 	__actionIntentId = false;
 	/// @type {Array<Struct.__EventTypesEnum>} Event types triggered by the action.
@@ -20,8 +22,16 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 		return self;
 	};
 
-	withTargetMapTile = function(_tile) {
-		__targetMapTile = _tile;
+	/// @param {Struct.MyMapTile} _originMapTile
+	/// @param {Struct.ActionTargetResolverInterface} _actionTargetResolverStruct
+	withTargetMapTile = function(_originMapTile, _actionTargetResolverStruct) {
+		if(helper_is_definied(_originMapTile) && helper_is_not_definied(_actionTargetResolverStruct)) {
+			LOG_CRITICAL_MESSAGE(
+				"[ActionStructBuilder] withTargetMapTile: _originMapTile is defined but _actionTargetResolverStruct is not. This is unexpected. TILE STRUCT:" + string(_originMapTile));
+		}
+
+		__originMapTile = _originMapTile;
+		__actionTargetResolverStruct = _actionTargetResolverStruct;
 		return self;
 	};
 
@@ -45,13 +55,18 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
             ? __eventTypesEnumArray
             : global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(__actionTypeEnum);
 
+		var actionTargetResolverStruct = helper_is_definied(__actionTargetResolverStruct)
+			? __actionTargetResolverStruct
+			: new ActionTargetResolver_None();
+
         return new __ActionStruct(
             __actionTypeEnum,
 			__invokerTurnEntityObj,
-			__targetMapTile,
+			__originMapTile,
 			__actionIntentId,
 			effectiveEventTypes,
-			__parentActionStruct
+			__parentActionStruct,
+			actionTargetResolverStruct
         );
     };
 }
@@ -69,26 +84,38 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 ///
 /// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
-/// @param {Struct.MyMapTile} _target_tile - Kafelek, na który akcja jest skierowana.
+/// @param {Struct.MyMapTile} _originTargetTile - Kafelek, na który akcja jest skierowana.
 /// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
 /// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
+/// @param {Struct.__ActionStruct} _origin_action - Akcja, z której wynikła ta akcja.
+/// @param {Struct.ActionTargetResolverInterface} _actionTargetResolverStruct - Interfejs do rozwiązywania celów akcji.
 ///
 /// @returns {Struct.__ActionStruct}
 function __ActionStruct(	_type, 
 						_invoker_obj, 
-						_target_tile, 
+						_originTargetTile, 
 						_from_intent, 
 						_eventTypesOnTriggerEnums,
-						_origin_action) constructor {
+						_origin_action,
+						_actionTargetResolverStruct) constructor {
 	// Priv
 	__id = helperGenerateUniqueId();
 
+	/// @type {Struct.ENUM_STRUCT} Represents the type of action (e.g., global.ENUMS.ACTION_TYPE.ATTACK).
 	__type = _type;
+	/// @type {Id.Instance<Id.Instance.AbstTurnEntity>} The entity performing the action.
 	__invokerTuEnObj = _invoker_obj;
-	__target_tile = _target_tile;
+	/// @type {Struct.MyMapTile} The tile targeted by the action.
+	__originTargetTile = _originTargetTile;
+	/// @type {Struct.ActionTargetResolverInterface} Interface for resolving action targets.
+	__actionTargetResolverStruct = _actionTargetResolverStruct;
+	/// @type {ActionIntentId} The intent from which this action originated.
 	__from_intent = _from_intent;
+	/// @type {Array<Struct.__EventTypesEnum>} Event types triggered by the action.
 	__eventTypesOnTriggerEnums = _eventTypesOnTriggerEnums;
+	/// @type {Struct.__ActionStruct} The parent action, if any.
 	__origin_action = _origin_action;
+	/// @type {Struct.__ActionStruct} The parent action, if any.
 	__parent_action = noone;
 
 	// __type = _ActionStruct_ParamFactory.getType();
@@ -105,13 +132,24 @@ function __ActionStruct(	_type,
 	getType = function() { return __type; };
 	getInvokerTuEnObj = function() { return __invokerTuEnObj; };
 	getInvokerTuEnStruct = function() { return getTurnEntityStruct(__invokerTuEnObj); };
-	getTargetTile = function() { return __target_tile; };
-	getTargetTuEnObj = function() { return __target_tile.getTurnEntityObj(); };
+	getOriginTargetTile = function() { return __originTargetTile; };
+	getOriginTargetTuEnObj = function() { return __originTargetTile.getTurnEntityObj(); };
+	getOriginTargetTuEnStruct = function() { return getTurnEntityStruct(getOriginTargetTuEnObj()); };
 	getFromIntent = function() { return __from_intent; };
 	getParentAction = function() { return __parent_action; };
 	getOriginAction = function() { return __origin_action; };
 	getRecursionDepth = function() { return __recursion_depth; };
 	getEventTypesToTrigger = function() { return __eventTypesOnTriggerEnums; };
+
+	// LOGIC
+
+	calculateGetTargetTiles = function() {
+		if (helper_is_not_definied(__actionTargetResolverStruct)) {
+			LOG_CRITICAL_MESSAGE("[ActionStruct] processTargetTiles: __actionTargetResolverStruct is not defined. Returning empty array.");
+			return [];
+		}
+		return __actionTargetResolverStruct.getTargetTiles(self);
+	};
 }
 
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} turnEntity
@@ -126,20 +164,12 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 
 	var ACTION_TYPE_ENUM = resolve_skill_type(turnEntity, targetTile);
 
-	// var asParams = new ActionStruct_ParamFactory(
-	// 	ACTION_TYPE_ENUM, 
-	// 	turnEntity, 
-	// 	targetTile, 
-	// 	intent_id, 
-	// 	eventTypesOnTrigger
-	// )
 	return new ActionStructBuilder(ACTION_TYPE_ENUM)
 		.withInvokerTurnEntityObj(turnEntity)
-		.withTargetMapTile(targetTile)
+		.withTargetMapTile(targetTile, new ActionTargetResolver_OriginTileAsTarget())
 		.withActionIntentId(intent_id)
 		.withEventTypesEnumArray(global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(ACTION_TYPE_ENUM))
-		.build()
-	// return new ActionStruct(asParams)
+		.build();
 }
 
 

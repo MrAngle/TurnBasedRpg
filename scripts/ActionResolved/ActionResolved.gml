@@ -16,10 +16,13 @@ function __ActionResolvedStruct(_context_struct) constructor {
 	__context_struct = _context_struct;
     /// @type {Struct.ActionExecutorUnitStruct}
     __actionExecutorUnit = noone; //Set by INIT
+	/// @type {Struct.ActionAttackExecutorUnitWrapper}
+	__actionExecutorUnitWrapper = noone; //Set by INIT
 
     /// INIT
     __INIT = function() {
-        __actionExecutorUnit = __defineActionExecutorUnitStruct(self);
+		__actionExecutorUnitWrapper = new ActionAttackExecutorUnitWrapper(self);
+        // __actionExecutorUnit = __defineActionExecutorUnitStruct(self);
     }
 
     // GETTERS
@@ -28,7 +31,8 @@ function __ActionResolvedStruct(_context_struct) constructor {
     __getInvokerStruct = function() { return __getAction().getInvokerTuEnStruct() }
 
 	execute = function() {
-		__actionExecutorUnit.execute();
+		__actionExecutorUnitWrapper.execute();
+		// __actionExecutorUnit.execute();
 
 		global.COMBAT_GLOBALS.MANAGERS.COMBAT_EVENT_SERVICE.emitOnTriggerEvents(__getContext())
 		__finalizeAction();
@@ -54,14 +58,14 @@ function __defineActionExecutorUnitStruct(_arStruct) {
 		case global.ENUMS.ACTION_TYPE.ATTACK.id:
 			return new ActionAttackExecutorUnitStruct(
 				action.getInvokerTuEnObj(), 
-				action.getTargetTile());
+				action.getOriginTargetTile());
 			break;
 	
 		case global.ENUMS.ACTION_TYPE.STEP.id:
 			return new ActionStepExecutorUnitStruct(
 				action.getInvokerTuEnObj(), 
-				action.getTargetTile().getRow(), 
-				action.getTargetTile().getCol())
+				action.getOriginTargetTile().getRow(), 
+				action.getOriginTargetTile().getCol())
 			break;
 	
 		case global.ENUMS.ACTION_TYPE.STAND.id:
