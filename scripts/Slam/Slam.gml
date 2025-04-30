@@ -29,13 +29,14 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
                     var targetTile = getTileBehind(_actionContextStruct.getAction().getInvokerTuEnStruct().getTileLocationStruct(), 
                                 _actionContextStruct.getAction().getTargetTile().getTileLocationStruct()) ;
                     // nowa akcja – atak na ten sam cel co oryginalny atak
-                    var newAction = new ActionStruct(
+                    var asParams = new ActionStruct_ParamFactory(
                         global.ENUMS.ACTION_TYPE.ATTACK,
                         _actionContextStruct.getAction().getInvokerTuEnObj(),
                         targetTile,
                         _actionContextStruct.getAction().getFromIntent(),
                         [global.EVENT_TYPES_ENUM.ON_STAND]
                     );
+                    var newAction = new ActionStruct(asParams);
             
                     var newContext = new ActionContextStruct(newAction);
                     var resolved = ActionResolvedStructBuilder(newContext);

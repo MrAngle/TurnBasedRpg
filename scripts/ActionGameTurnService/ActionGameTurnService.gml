@@ -17,11 +17,19 @@ function tryProcessGameTurn(unitApValue) {
             var unit = turnEntities[i];
             unit.prepareActionPointsForNextTurn(gameTurn.CURRENT_TURN_AP_THRESHOLD);
         }
+        
         global.COMBAT_GLOBALS.GAME_TURN.CURRENT_MIN_ACTION_POINTS = getTurnEntityStruct(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ).getActionPoints();
 
         // 4. Trigger the ON_GAME_TURN action
         var eventTypeToTrigger = global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(global.ENUMS.ACTION_TYPE.ON_GAME_TURN);
-        var action = new ActionStruct(global.ENUMS.ACTION_TYPE.ON_GAME_TURN, noone, noone, noone, eventTypeToTrigger);
+        var actionParams = new ActionStruct_ParamFactory(
+            global.ENUMS.ACTION_TYPE.ON_GAME_TURN,
+            noone,
+            noone,
+            noone,
+            eventTypeToTrigger
+        );
+        var action = new ActionStruct(actionParams);
         var context = new ActionContextStruct(action);
         var resolvedAction = ActionResolvedStructBuilder(context);
 

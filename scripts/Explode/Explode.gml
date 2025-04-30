@@ -37,14 +37,16 @@ function COMBAT_EVENT_EFFECT_EXPLODE(_ownerTurnEntityObj) {
                     var targetTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(targetTilePosition[0], targetTilePosition[1]);
 
                     // nowa akcja – atak na ten sam cel co oryginalny atak
-                    var newAction = new ActionStruct(
+
+                    var asParams = new ActionStruct_ParamFactory(
                         global.ENUMS.ACTION_TYPE.ATTACK,
                         __combatEventEffect.__getAppliesToTurnEntityObj(),
                         targetTile,
                         undefined,
                         [global.EVENT_TYPES_ENUM.ON_STAND]
                     );
-            
+                    var newAction = new ActionStruct(asParams);
+        
                     var newContext = new ActionContextStruct(newAction);
                     var resolved = ActionResolvedStructBuilder(newContext);
 

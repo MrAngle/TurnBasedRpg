@@ -49,6 +49,7 @@ global.____INIT_GAME_GLOBAL = function() {
 	
 	global.ENUMS = {};
 	global.ENUMS.ACTION_TYPE = new __ACTION_TYPE_ENUM();
+	global.ENUMS.ACTION_TARGET_RESOLVER_TYPE = new __ACTION_TARGET_RESOLVER_TYPE_ENUM();
 	// CUSTOM CONFIG
 	//global.GAME_GLOBALS.TEST.ACTIVE = true;
 	//

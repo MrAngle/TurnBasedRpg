@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionTargetResolver_Predefined",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionTargetResolver_Predefined",
+  "parent":{
+    "name":"ActionStructs",
+    "path":"folders/Hex/Combat/CombatAction/ActionStructs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

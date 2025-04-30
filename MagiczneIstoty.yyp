@@ -306,6 +306,8 @@
     {"id":{"name":"ActionSelectorClass","path":"scripts/ActionSelectorClass/ActionSelectorClass.yy",},},
     {"id":{"name":"ActionSelectorSelectCharacter","path":"scripts/ActionSelectorSelectCharacter/ActionSelectorSelectCharacter.yy",},},
     {"id":{"name":"ActionSelectorWithoutCharInRadius","path":"scripts/ActionSelectorWithoutCharInRadius/ActionSelectorWithoutCharInRadius.yy",},},
+    {"id":{"name":"ActionTargetResolver_Predefined","path":"scripts/ActionTargetResolver_Predefined/ActionTargetResolver_Predefined.yy",},},
+    {"id":{"name":"ActionTargetResolver","path":"scripts/ActionTargetResolver/ActionTargetResolver.yy",},},
     {"id":{"name":"ActionToEventSubtypesMapper","path":"scripts/ActionToEventSubtypesMapper/ActionToEventSubtypesMapper.yy",},},
     {"id":{"name":"ActionTurnHandlerScripts","path":"scripts/ActionTurnHandlerScripts/ActionTurnHandlerScripts.yy",},},
     {"id":{"name":"AdjustStats","path":"scripts/AdjustStats/AdjustStats.yy",},},
