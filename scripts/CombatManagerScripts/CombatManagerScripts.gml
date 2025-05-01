@@ -77,16 +77,20 @@ global.___INIT_MANAGER = function() {
 
 global.___LOAD_CHARACTERS_ACTIONS = function() {
 	var character = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
+	var character2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjNecro1);
 	var enemyObj = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 	var enemyObj2 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 	var enemyObj3 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
 	var enemyObj4 = instance_create_layer(0, 0, global.LAYERS.characters.id, ObjEnemy);
+	var spawner = instance_create_layer(0, 0, global.LAYERS.characters.id, Spawner);
 
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(5, 5).set_tile_auto_type(enemyObj);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(0, 0).set_tile_auto_type(enemyObj2);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(10, 10).set_tile_auto_type(enemyObj3);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(4, 10).set_tile_auto_type(enemyObj4);
 	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(3, 10).set_tile_auto_type(character);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(2, 10).set_tile_auto_type(character2);
+	global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(10, 1).set_tile_auto_type(spawner);
 }
 
 global.___AFTER_CREATE_MANAGER = function() {

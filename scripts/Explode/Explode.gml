@@ -29,6 +29,11 @@ function COMBAT_EVENT_EFFECT_EXPLODE(_ownerTurnEntityObj) {
                     var owner = __combatEventEffect.__getAppliesToTurnEntityStruct()
                     var ownerObj = __combatEventEffect.__getAppliesToTurnEntityObj()
 
+                    if(helper_is_not_definied(owner)) {
+                        LOG_CRITICAL_MESSAGE("owner is not defined in COMBAT_EVENT_EFFECT_EXPLODE");
+                        return;
+                    }
+
                     // var targetTile = getTileBehind(_actionContextStruct.getAction().getInvokerTuEnStruct().getTileLocationStruct(), 
                     //             _actionContextStruct.getAction().getTargetTile().getTileLocationStruct()) ;
 
@@ -38,7 +43,7 @@ function COMBAT_EVENT_EFFECT_EXPLODE(_ownerTurnEntityObj) {
                     // var surroundingTiles = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.getSurroundingTiles(_actionContextStruct.getAction().getOriginTargetTile());
 
                     var getInvokerTile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.getTileByLocationStruct(owner.getTileLocationStruct());
-
+                    
                     var actionStruct = new ActionStructBuilder(global.ENUMS.ACTION_TYPE.ATTACK)
                         .withInvokerTurnEntityObj(__combatEventEffect.__getAppliesToTurnEntityObj())
                         .withOriginTargetMapTile([getInvokerTile], new ActionTargetResolver_SURROUNDING_TILES())

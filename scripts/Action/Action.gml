@@ -51,6 +51,10 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 	};
 
     build = function() {
+		if(helper_is_not_definied(__actionTypeEnum)) {
+			LOG_CRITICAL_MESSAGE("[ActionStructBuilder] withTargetMapTile: __actionTypeEnum is not defined. This is unexpected.");
+		}
+
         var effectiveEventTypes = helper_is_definied(__eventTypesEnumArray)
             ? __eventTypesEnumArray
             : global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(__actionTypeEnum);

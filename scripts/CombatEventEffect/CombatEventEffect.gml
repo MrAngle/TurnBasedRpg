@@ -21,6 +21,8 @@ function CombatEventEffectFunction(__function) constructor {
 function CombatEventEffect(_eventSubtypesEnums, _shouldTriggerFunc, _onTriggerFunc, _appliesToTurnEntityObj, _eventEffectName) constructor {
 
     __eventSubtypesEnums            = _eventSubtypesEnums;
+
+    // __1_filterEventsByType          = _1_filterEventsByType(eventList, type)
     __shouldTriggerFunc             = _shouldTriggerFunc.toReturn(self).toReturn;
     __onTriggerFunc                 = _onTriggerFunc.toReturn(self).toReturn;
     __appliesToTurnEntityObj        = _appliesToTurnEntityObj;
@@ -29,6 +31,7 @@ function CombatEventEffect(_eventSubtypesEnums, _shouldTriggerFunc, _onTriggerFu
         __name: _eventEffectName
     }
 
+    /// GETTERS
     /// @returns {Id.Instance<TurnEntity>}
     __getAppliesToTurnEntityObj = function() {
         return __appliesToTurnEntityObj;
@@ -36,24 +39,25 @@ function CombatEventEffect(_eventSubtypesEnums, _shouldTriggerFunc, _onTriggerFu
 
     /// @returns {Struct.TurnEntityStruct}
     __getAppliesToTurnEntityStruct = function() {
-        return getTurnEntityStruct(__appliesToTurnEntityObj);
+        return __appliesToTurnEntityObj.getTurnEntity();
     }
 
     getEventSubtypesEnums = function() {
         return __eventSubtypesEnums;
     }
 
-    /// @param {Struct.ActionContextStruct} _actionContextStruct
-    /// @returns {Bool}
-    shouldTrigger = function(_actionContextStruct) {
-        return __shouldTriggerFunc(_actionContextStruct);
-    }
+    // /// 
+    // /// @param {Struct.ActionContextStruct} _actionContextStruct
+    // /// @returns {Bool}
+    // shouldTrigger = function(_actionContextStruct) {
+    //     return __shouldTriggerFunc(_actionContextStruct);
+    // }
 
-    /// @param {Struct.ActionContextStruct} _actionContextStruct
-    /// @returns {Void}
-    onTrigger = function(_actionContextStruct) {
-        return __shouldTriggerFunc(_actionContextStruct);
-    }
+    // /// @param {Struct.ActionContextStruct} _actionContextStruct
+    // /// @returns {Void}
+    // onTrigger = function(_actionContextStruct) {
+    //     return __shouldTriggerFunc(_actionContextStruct);
+    // }
 
     /// @param {Struct.ActionContextStruct} _actionContextStruct
     /// @returns {Bool} czy efekt się aktywował

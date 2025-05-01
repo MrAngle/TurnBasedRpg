@@ -10,5 +10,8 @@ function helper_throw_exception(arg_message) {
 }
 
 function helper_throw_exception_not_ignore(arg_message) {
+	if(helper_is_definied(arg_message)) {
+		arg_message = "THROW EXCEPTION: arg_message is undefined";
+	}
 	show_error("THROW EXCEPTION: " + string(arg_message), true);
 }

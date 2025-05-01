@@ -24,10 +24,16 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 	}
 
 	get_tile = function(_row, _col) { // MyMapTile
+		if (_row < 0 || _row >= self.__rows || _col < 0 || _col >= self.__cols) {
+			return undefined; // Out of bounds
+		}
 		return self.__map_holder[_row][_col];
 	}
 
 	get_tile_centrum_coodinators = function(_row, _col) { // MyMapTile
+		if (_row < 0 || _row >= self.__rows || _col < 0 || _col >= self.__cols) {
+			return undefined; // Out of bounds
+		}
 		return [self.__map_holder[_row][_col].getXPosition(), self.__map_holder[_row][_col].getYPosition()];
 	}
 
