@@ -31,6 +31,48 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 		return [self.__map_holder[_row][_col].getXPosition(), self.__map_holder[_row][_col].getYPosition()];
 	}
 
+    /// @desc Returns the tile in a given direction from a base tile (taking hex parity into account).
+    /// @param {Struct.TileLocationStruct} _tileLocationStruct
+    /// @param {Enum.DirectionId} _directionId
+    /// @returns {Struct.MyMapTile | undefined}
+    getTileInDirection = function(_tileLocationStruct, _directionId) {
+        var row = _tileLocationStruct.getRow();
+        var col = _tileLocationStruct.getCol();
+
+        var offset = helper_get_direction_offset(_directionId, row);
+        var newRow = row + offset[0];
+        var newCol = col + offset[1];
+
+        return get_tile(newRow, newCol);
+    }
+
+	/// @desc Returns all neighboring tiles (hex-adjacent) around a given tile.
+	/// @param {Struct.MyMapTile} _tile
+	/// @returns {Array<Struct.MyMapTile>}
+	getSurroundingTiles = function(_tile) {
+		var directions = [
+			DirectionId.LEFT,
+			DirectionId.RIGHT,
+			DirectionId.UP_LEFT,
+			DirectionId.UP_RIGHT,
+			DirectionId.DOWN_LEFT,
+			DirectionId.DOWN_RIGHT
+		];
+
+		var surroundingTiles = [];
+
+		for (var i = 0; i < array_length(directions); i++) {
+			var dirId = directions[i];
+			var neighborTile = getTileInDirection(_tile.getTileLocationStruct(), dirId);
+
+			if (neighborTile != undefined) {
+				array_push(surroundingTiles, neighborTile);
+			}
+		}
+
+		return surroundingTiles;
+	}
+
 	show_tiles = function() {
 		__my_show_tiles(self);
 	}
@@ -41,6 +83,12 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 
 	getTileByTurnEntityObj = function(_character) { // _filter_function(element) - return true 
 		return  get_tile(_character.getRow(), _character.getCol());
+	}
+
+	/// @param {Struct.TileLocationStruct} _tileLocationStruct
+	/// @returns {Struct.MyMapTile}
+	getTileByLocationStruct = function(_tileLocationStruct) { // _filter_function(element) - return true 
+		return  get_tile(_tileLocationStruct.getRow(), _tileLocationStruct.getCol());
 	}
 	
 	get_tile_by_character = function(_character) { // _filter_function(element) - return true 
