@@ -6,8 +6,8 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 	__actionTypeEnum = _actionTypeEnum;
 	/// @type {Id.Instance<Id.Instance.AbstTurnEntity>} The entity performing the action.
 	__invokerTurnEntityObj = noone;
-	/// @type {Struct.MyMapTile} The tile targeted by the action.
-	__originMapTile = noone;
+	/// @type {Array<Struct.MyMapTile>} The tile targeted by the action.
+	__arrayOriginTargetMapTile = noone;
 	/// @type {Struct.ActionTargetResolverInterface} The intent from which this action originated.
 	__actionTargetResolverStruct = noone;
 	/// @type {ActionIntentId} The intent from which this action originated.
@@ -22,15 +22,15 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 		return self;
 	};
 
-	/// @param {Struct.MyMapTile} _originMapTile
+	/// @param {Array<Struct.MyMapTile>} _arrayOriginTargetMapTile
 	/// @param {Struct.ActionTargetResolverInterface} _actionTargetResolverStruct
-	withTargetMapTile = function(_originMapTile, _actionTargetResolverStruct) {
-		if(helper_is_definied(_originMapTile) && helper_is_not_definied(_actionTargetResolverStruct)) {
+	withOriginTargetMapTile = function(_arrayOriginTargetMapTile, _actionTargetResolverStruct) {
+		if(helper_is_definied(_arrayOriginTargetMapTile) && helper_is_not_definied(_actionTargetResolverStruct)) {
 			LOG_CRITICAL_MESSAGE(
-				"[ActionStructBuilder] withTargetMapTile: _originMapTile is defined but _actionTargetResolverStruct is not. This is unexpected. TILE STRUCT:" + string(_originMapTile));
+				"[ActionStructBuilder] withTargetMapTile: _originMapTile is defined but _actionTargetResolverStruct is not. This is unexpected. TILE STRUCT:" + string(_arrayOriginTargetMapTile));
 		}
 
-		__originMapTile = _originMapTile;
+		__arrayOriginTargetMapTile = _arrayOriginTargetMapTile;
 		__actionTargetResolverStruct = _actionTargetResolverStruct;
 		return self;
 	};
@@ -62,7 +62,7 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
         return new __ActionStruct(
             __actionTypeEnum,
 			__invokerTurnEntityObj,
-			__originMapTile,
+			__arrayOriginTargetMapTile,
 			__actionIntentId,
 			effectiveEventTypes,
 			__parentActionStruct,
@@ -84,7 +84,7 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 ///
 /// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
-/// @param {Struct.MyMapTile} _originTargetTile - Kafelek, na który akcja jest skierowana.
+/// @param {Array<Struct.MyMapTile>} _arrayOriginTargetTiles - Kafelek, na który akcja jest skierowana.
 /// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
 /// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
 /// @param {Struct.__ActionStruct} _origin_action - Akcja, z której wynikła ta akcja.
@@ -93,7 +93,7 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 /// @returns {Struct.__ActionStruct}
 function __ActionStruct(	_type, 
 						_invoker_obj, 
-						_originTargetTile, 
+						_arrayOriginTargetTiles, 
 						_from_intent, 
 						_eventTypesOnTriggerEnums,
 						_origin_action,
@@ -105,8 +105,8 @@ function __ActionStruct(	_type,
 	__type = _type;
 	/// @type {Id.Instance<Id.Instance.AbstTurnEntity>} The entity performing the action.
 	__invokerTuEnObj = _invoker_obj;
-	/// @type {Struct.MyMapTile} The tile targeted by the action.
-	__originTargetTile = _originTargetTile;
+	/// @type {Array<Struct.MyMapTile>} The tile targeted by the action.
+	__arrayOriginTargetTiles = _arrayOriginTargetTiles;
 	/// @type {Struct.ActionTargetResolverInterface} Interface for resolving action targets.
 	__actionTargetResolverStruct = _actionTargetResolverStruct;
 	/// @type {ActionIntentId} The intent from which this action originated.
@@ -132,9 +132,9 @@ function __ActionStruct(	_type,
 	getType = function() { return __type; };
 	getInvokerTuEnObj = function() { return __invokerTuEnObj; };
 	getInvokerTuEnStruct = function() { return getTurnEntityStruct(__invokerTuEnObj); };
-	getOriginTargetTile = function() { return __originTargetTile; };
-	getOriginTargetTuEnObj = function() { return __originTargetTile.getTurnEntityObj(); };
-	getOriginTargetTuEnStruct = function() { return getTurnEntityStruct(getOriginTargetTuEnObj()); };
+	getArrayOriginTargetTiles = function() { return __arrayOriginTargetTiles; };
+	// getOriginTargetTuEnObj = function() { return __originTargetTile.getTurnEntityObj(); };
+	// getOriginTargetTuEnStruct = function() { return getTurnEntityStruct(getOriginTargetTuEnObj()); };
 	getFromIntent = function() { return __from_intent; };
 	getParentAction = function() { return __parent_action; };
 	getOriginAction = function() { return __origin_action; };
@@ -166,7 +166,7 @@ function resolveActionFromIntent(intent_id, turnEntity) {
 
 	return new ActionStructBuilder(ACTION_TYPE_ENUM)
 		.withInvokerTurnEntityObj(turnEntity)
-		.withTargetMapTile(targetTile, new ActionTargetResolver_OriginTileAsTarget())
+		.withOriginTargetMapTile([targetTile], new ActionTargetResolver_OriginTileAsTarget())
 		.withActionIntentId(intent_id)
 		.withEventTypesEnumArray(global.COMBAT_GLOBALS.MAPPERS.ACTION_TO_EVENT_TYPE.mapToEventTypeEnum(ACTION_TYPE_ENUM))
 		.build();

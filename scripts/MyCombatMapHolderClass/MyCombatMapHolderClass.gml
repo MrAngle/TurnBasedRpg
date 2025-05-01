@@ -49,7 +49,7 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 	/// @desc Returns all neighboring tiles (hex-adjacent) around a given tile.
 	/// @param {Struct.MyMapTile} _tile
 	/// @returns {Array<Struct.MyMapTile>}
-	getSurroundingTiles = function(_tile) {
+	getSurroundingArrayTiles = function(_tile) {
 		var directions = [
 			DirectionId.LEFT,
 			DirectionId.RIGHT,
@@ -71,6 +71,24 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 		}
 
 		return surroundingTiles;
+	}
+
+	/// @param {Struct.TileLocationStruct} _fromTile
+	/// @param {Struct.TileLocationStruct} _toTile
+	/// @returns {Struct.MyMapTile|Undefined}
+	function getTileBehind(_fromTile, _toTile) {
+		var fromRow = _fromTile.getRow();
+		var fromCol = _fromTile.getCol();
+		var toRow = _toTile.getRow();
+		var toCol = _toTile.getCol();
+
+		var _direction = getDirectionBetweenTiles(fromRow, fromCol, toRow, toCol);
+		if (_direction == undefined) return undefined;
+
+		// var oppositeDirection = getOppositeDirection(_direction);
+		var rowCol = helper_calculate_row_and_col_for_direction(_direction, toRow, toCol);
+		
+		return get_tile(rowCol[0], rowCol[1]);
 	}
 
 	show_tiles = function() {

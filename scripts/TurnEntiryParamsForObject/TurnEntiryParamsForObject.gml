@@ -1,5 +1,7 @@
 /// @param {Id.Instance<AbstTurnEntity>} _objReference
-function properties_load_turn_entity(_objTurnEntity) {
+function properties_load_turn_entity(_objTurnEntityFunc) {
+	var _objTurnEntity = self;
+
 	__TURN_ENTITY_ATTRIBUTES = new TurnEntityStruct(_objTurnEntity);
 
 	/// @type {Struct.TurnEntityStruct}

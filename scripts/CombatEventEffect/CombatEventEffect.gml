@@ -11,9 +11,9 @@ function CombatEventEffectFunction(__function) constructor {
 /// @constructor
 ///
 /// @param {Array<Struct.ENUM_STRUCT>} _eventSubtypesEnums - List of event subtype IDs this effect reacts to (e.g. [ON_STEP, ON_ATTACK]).
-/// @param {CombatEventEffectFunction} _shouldTriggerFunc - Condition for triggering the effect. Function<Struct.ActionContextStruct, Boolean>
+/// @param {Struct.CombatEventEffectFunction} _shouldTriggerFunc - Condition for triggering the effect. Function<Struct.ActionContextStruct, Boolean>
 ///// @param {Function<Struct.ActionContextStruct, Boolean>} _shouldTriggerFunc - Condition for triggering the effect. Function<Struct.ActionContextStruct, Boolean>
-/// @param {CombatEventEffectFunction} _onTriggerFunc - Function that performs the effect when triggered. Function<Struct.ActionContextStruct, void>
+/// @param {Struct.CombatEventEffectFunction} _onTriggerFunc - Function that performs the effect when triggered. Function<Struct.ActionContextStruct, void>
 ///// @param {Function<Struct.ActionContextStruct, void>} _onTriggerFunc - Function that performs the effect when triggered. Function<Struct.ActionContextStruct, void>
 /// @param {Id.Instance<TurnEntity>} __appliesToTurnEntityObj - The unit that owns this effect and listens for event triggers.
 ///

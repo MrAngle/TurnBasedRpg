@@ -58,20 +58,3 @@ function getOppositeDirection(direction) {
 }
 
 
-/// @param {Struct.TileLocationStruct} _fromTile
-/// @param {Struct.TileLocationStruct} _toTile
-/// @returns {Struct.MyMapTile|Undefined}
-function getTileBehind(_fromTile, _toTile) {
-    var fromRow = _fromTile.getRow();
-    var fromCol = _fromTile.getCol();
-    var toRow = _toTile.getRow();
-    var toCol = _toTile.getCol();
-
-    var _direction = getDirectionBetweenTiles(fromRow, fromCol, toRow, toCol);
-    if (_direction == undefined) return undefined;
-
-    // var oppositeDirection = getOppositeDirection(_direction);
-    var rowCol = helper_calculate_row_and_col_for_direction(_direction, toRow, toCol);
-	
-	return global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(rowCol[0], rowCol[1]);
-}

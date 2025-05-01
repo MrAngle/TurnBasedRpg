@@ -49,35 +49,35 @@ function __ActionResolvedStruct(_context_struct) constructor {
 	}
 }
 
-/// @param {Struct.__ActionResolvedStruct} _arStruct
-/// @returns {Struct.ActionExecutorUnitStruct}
-function __defineActionExecutorUnitStruct(_arStruct) {
-    var action = _arStruct.__getAction();
-	var actionType = action.getType()
-	switch (actionType.id) {
-		case global.ENUMS.ACTION_TYPE.ATTACK.id:
-			return new ActionAttackExecutorUnitStruct(
-				action.getInvokerTuEnObj(), 
-				action.getOriginTargetTile());
-			break;
+// /// @param {Struct.__ActionResolvedStruct} _arStruct
+///// @returns {Struct.ActionExecutorUnitStruct}
+// function __defineActionExecutorUnitStruct(_arStruct) {
+//     var action = _arStruct.__getAction();
+// 	var actionType = action.getType()
+// 	switch (actionType.id) {
+// 		case global.ENUMS.ACTION_TYPE.ATTACK.id:
+// 			return new ActionAttackExecutorUnitStruct(
+// 				action.getInvokerTuEnObj(), 
+// 				action.getArrayOriginTargetTiles());
+// 			break;
 	
-		case global.ENUMS.ACTION_TYPE.STEP.id:
-			return new ActionStepExecutorUnitStruct(
-				action.getInvokerTuEnObj(), 
-				action.getOriginTargetTile().getRow(), 
-				action.getOriginTargetTile().getCol())
-			break;
+// 		case global.ENUMS.ACTION_TYPE.STEP.id:
+// 			return new ActionStepExecutorUnitStruct(
+// 				action.getInvokerTuEnObj(), 
+// 				action.getArrayOriginTargetTiles().getRow(), 
+// 				action.getArrayOriginTargetTiles().getCol())
+// 			break;
 	
-		case global.ENUMS.ACTION_TYPE.STAND.id:
-			return new ActionStandExecutorUnitStruct();
-			break;
+// 		case global.ENUMS.ACTION_TYPE.STAND.id:
+// 			return new ActionStandExecutorUnitStruct();
+// 			break;
 
-		case global.ENUMS.ACTION_TYPE.ON_GAME_TURN.id:
-			return new ActionGameTurnExecutorUnitStruct();
-			break;
+// 		case global.ENUMS.ACTION_TYPE.ON_GAME_TURN.id:
+// 			return new ActionGameTurnExecutorUnitStruct();
+// 			break;
 	
-		default:
-			LOG_CRITICAL_MESSAGE("⚠️ Nieznany typ akcji: " + string(actionType));
-			break;
-	}
-}
+// 		default:
+// 			LOG_CRITICAL_MESSAGE("⚠️ Nieznany typ akcji: " + string(actionType));
+// 			break;
+// 	}
+// }

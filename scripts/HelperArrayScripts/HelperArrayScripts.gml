@@ -27,3 +27,25 @@ function helper_array_tiles_to_characters(struct_array) {
     
     return character_array; // Zwracamy nową tablicę
 }
+
+function helper_array_is_not_empty(array) {
+    return helper_is_definied(array) && array_length(array) > 0;
+}
+
+function helper_array_is_empty(array) {
+    return !helper_is_definied(array) || array_length(array) == 0;
+}
+
+/// @function array_merge_in_place
+/// @desc Dodaje wszystkie elementy z tablicy source do tablicy dest (modyfikuje ją in-place).
+/// @param {Array} dest
+/// @param {Array} source
+function helper_array_concat(_dest, _source) {
+    if (helper_is_not_definied(_dest) || helper_is_not_definied(_source)) {
+        return [];
+    }
+
+    for (var i = 0; i < array_length(_source); i++) {
+        array_push(_dest, _source[i]);
+    }
+}

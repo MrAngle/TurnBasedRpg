@@ -27,13 +27,16 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
                 /// @param {Struct.ActionContextStruct} _actionContextStruct
                 toReturn: function(_actionContextStruct) {
 
-                    var invokerLocation = _actionContextStruct.getAction().getInvokerTuEnStruct().getTileLocationStruct();
-                    var targetLocation = _actionContextStruct.getAction().getOriginTargetTile().getTileLocationStruct();
-                    var targetTile = getTileBehind(invokerLocation, targetLocation);
+                    // var invokerLocation = _actionContextStruct.getAction().getInvokerTuEnStruct().getTileLocationStruct();
+                    // var targetLocation = _actionContextStruct.getAction().getArrayOriginTargetTiles().getTileLocationStruct();
+                    // var targets = _actionContextStruct.getAction().calculateGetTargetTiles();
+                    // var targetTile = getTileBehind(invokerLocation, targetLocation);
                     
                     var actionStruct = new ActionStructBuilder(global.ENUMS.ACTION_TYPE.ATTACK)
                         .withInvokerTurnEntityObj(_actionContextStruct.getAction().getInvokerTuEnObj())
-                        .withTargetMapTile(targetTile, new ActionTargetResolver_OriginTileAsTarget())
+                        .withOriginTargetMapTile(
+                            _actionContextStruct.getAction().calculateGetTargetTiles(), 
+                            new ActionTargetResolver_TargetBehind())
                         .withActionIntentId(_actionContextStruct.getAction().getFromIntent())
                         .withEventTypesEnumArray([global.EVENT_TYPES_ENUM.ON_STAND])
                         .build()
@@ -53,7 +56,7 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
         _shouldTrigger,
         _onTriggerFunc,
         _ownerTurnEntityObj,
-        "REAR_ASSAULT"
+        "SLAM"
     );
 
     return effect;
