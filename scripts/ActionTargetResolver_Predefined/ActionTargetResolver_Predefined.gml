@@ -4,6 +4,7 @@
 function __ACTION_TARGET_RESOLVER_TYPE_ENUM() constructor {
     /// Target is a single tile (e.g., basic attack)
     ORIGIN_TARGET_TILE  = new ENUM_STRUCT(50, "ORIGIN_TARGET_TILE");
+    CLOSEST_ENEMY  = new ENUM_STRUCT(51, "CLOSEST_ENEMY");
 
     /// Targets all tiles in a cone shape from origin to target (e.g., flame breath)
     CONE                = new ENUM_STRUCT(52, "CONE");
@@ -132,7 +133,6 @@ function ActionTargetResolver_TargetBehind() constructor {
             return [];
         }
 
-
         var resultTargetTiles = [];
 
         for (var i = 0; i < array_length(arrayTargetTiles); i++) {
@@ -151,3 +151,44 @@ function ActionTargetResolver_TargetBehind() constructor {
     }
 }
 
+/// @function ActionTargetResolver_SingleTile()
+/// @desc Returns a resolver that targets a single tile from context.
+/// @param {Struct.MyMapTile}
+/// @returns {ActionTargetResolverInterface}
+function ActionTargetResolver_ClosedEnemy() constructor {
+    type = global.ENUMS.ACTION_TARGET_RESOLVER_TYPE.CLOSEST_ENEMY;
+
+    /// @param {Struct.__ActionStruct} _actionStruct
+    getTargetTiles = function(_actionStruct) {
+        var originTiles = _actionStruct.getArrayOriginTargetTiles();
+        if (helper_array_is_empty(originTiles)) return [];
+
+        var invokerStruct = _actionStruct.getInvokerTuEnStruct();
+        var invokerTeam = invokerStruct.getFaction();
+        var mapHolder = global.COMBAT_GLOBALS.MAP.MAP_HOLDER;
+
+        var radius = 3; // lub inna wartość
+        var foundTile = undefined;
+
+        for (var i = 0; i < array_length(originTiles); i++) {
+            var origin = originTiles[i];
+            var tilesInDistance = mapTile_filter_within_distance(invokerStruct.getTileLocationStruct(), 5);
+			var surrounding = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tiles([tilesInDistance]);
+            // var surrounding = mapHolder.getTilesInRadius(origin, radius);
+
+            for (var j = 0; j < array_length(surrounding); j++) {
+                var tile = surrounding[j];
+                var entity = tile.getTurnEntityStruct();
+
+                if (entity != undefined && entity.getFaction() != invokerTeam) {
+                    foundTile = tile;
+                    break;
+                }
+            }
+
+            if (foundTile != undefined) break;
+        }
+
+        return foundTile != undefined ? [foundTile] : [];
+    };
+}

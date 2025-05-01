@@ -1,6 +1,5 @@
-
 /// @returns {Struct.CombatEventEffect}
-function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
+function COMBAT_EVENT_EFFECT_DASHATTACK(_ownerTurnEntityObj) {
 
     var _shouldTrigger = new CombatEventEffectFunction(
         /// @param {Struct.CombatEventEffect}
@@ -26,19 +25,13 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
                 __combatEventEffect: _combatEventEffect,
                 /// @param {Struct.ActionContextStruct} _actionContextStruct
                 toReturn: function(_actionContextStruct) {
-
-                    // var invokerLocation = _actionContextStruct.getAction().getInvokerTuEnStruct().getTileLocationStruct();
-                    // var targetLocation = _actionContextStruct.getAction().getArrayOriginTargetTiles().getTileLocationStruct();
-                    // var targets = _actionContextStruct.getAction().calculateGetTargetTiles();
-                    // var targetTile = getTileBehind(invokerLocation, targetLocation);
-                    
                     var actionStruct = new ActionStructBuilder(global.ENUMS.ACTION_TYPE.ATTACK)
                         .withInvokerTurnEntityObj(_actionContextStruct.getAction().getInvokerTuEnObj())
                         .withOriginTargetMapTile(
                             _actionContextStruct.getAction().calculateGetTargetTiles(), 
-                            new ActionTargetResolver_TargetBehind())
+                            new ActionTargetResolver_ClosedEnemy())
                         .withActionIntentId(_actionContextStruct.getAction().getFromIntent())
-                        .withEventTypesEnumArray([global.EVENT_TYPES_ENUM.ON_STAND])
+                        .withEventTypesEnumArray([])
                         .build()
 
                     var newContext = new ActionContextStruct(actionStruct);
@@ -52,13 +45,12 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
 
     var effect = new CombatEventEffect(
         // _eventSubtypesEnums
-        [global.EVENT_TYPES_ENUM.ON_ATTACK],
+        [global.EVENT_TYPES_ENUM.ON_STEP],
         _shouldTrigger,
         _onTriggerFunc,
         _ownerTurnEntityObj,
-        "SLAM"
+        "DASH_ATTACK"
     );
 
     return effect;
 }
-

@@ -99,11 +99,11 @@ function mapTile_filter_element_NOT_contains_character() {
 	return closedFunction;
 }
 
-/// @param {Struct.MyMapTile} _myMapTileSource
-function mapTile_filter_within_distance(_myMapTileSource, _distance) {
+/// @param {Struct.TileLocationStruct} _locationStruct
+function mapTile_filter_within_distance(_locationStruct, _distance) {
     var closedFunction = {
-        __source_row: _myMapTileSource.getRow(),
-        __source_col: _myMapTileSource.getCol(),
+        __source_row: _locationStruct.getRow(),
+        __source_col: _locationStruct.getCol(),
         __distance: _distance,
         filterFunc: function(_myMapTileObjectToCheck) {
             // Przekształcenie współrzędnych źródła na axial

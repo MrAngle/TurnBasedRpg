@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DashAttack",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DashAttack",
+  "parent":{
+    "name":"PredefinedCombatEventEffect",
+    "path":"folders/Hex/Combat/CombatEventEffect/PredefinedCombatEventEffect.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

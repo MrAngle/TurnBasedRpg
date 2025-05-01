@@ -331,6 +331,7 @@
     {"id":{"name":"CombatManagerScripts","path":"scripts/CombatManagerScripts/CombatManagerScripts.yy",},},
     {"id":{"name":"CombatMapGeneratorFlood","path":"scripts/CombatMapGeneratorFlood/CombatMapGeneratorFlood.yy",},},
     {"id":{"name":"CombatMapGeneratorScript","path":"scripts/CombatMapGeneratorScript/CombatMapGeneratorScript.yy",},},
+    {"id":{"name":"DashAttack","path":"scripts/DashAttack/DashAttack.yy",},},
     {"id":{"name":"draw_text_scribble_ext","path":"scripts/draw_text_scribble_ext/draw_text_scribble_ext.yy",},},
     {"id":{"name":"draw_text_scribble","path":"scripts/draw_text_scribble/draw_text_scribble.yy",},},
     {"id":{"name":"Enums","path":"scripts/Enums/Enums.yy",},},
