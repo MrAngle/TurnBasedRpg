@@ -15,6 +15,6 @@ function INIT_NECRO_STATS(_turnEntityStruct) {
     _turnEntityStatsStruct.PHYSICAL_ATTACK.BASE = 101;
 
     array_push(_turnEntityStruct.__EVENT_EFFECTS, COMBAT_EVENT_EFFECT_SLAM(_turnEntityStruct.__OBJECT_REFERENCE));
-    array_push(_turnEntityStruct.__EVENT_EFFECTS, COMBAT_EVENT_EFFECT_EXPLODE(_turnEntityStruct.__OBJECT_REFERENCE));
-    array_push(_turnEntityStruct.__EVENT_EFFECTS, COMBAT_EVENT_EFFECT_DASHATTACK(_turnEntityStruct.__OBJECT_REFERENCE));
+    // array_push(_turnEntityStruct.__EVENT_EFFECTS, COMBAT_EVENT_EFFECT_EXPLODE(_turnEntityStruct.__OBJECT_REFERENCE));
+    // array_push(_turnEntityStruct.__EVENT_EFFECTS, COMBAT_EVENT_EFFECT_DASHATTACK(_turnEntityStruct.__OBJECT_REFERENCE));
 }

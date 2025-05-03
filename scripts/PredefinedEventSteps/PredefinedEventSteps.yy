@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PredefinedEventSteps",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PredefinedEventSteps",
+  "parent":{
+    "name":"helpers",
+    "path":"folders/Hex/Combat/CombatEventEffect/PredefinedCombatEventEffect/helpers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

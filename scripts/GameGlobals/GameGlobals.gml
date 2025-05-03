@@ -2,6 +2,7 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
 global.LOG_LEVEL = {
+    DEBUG: "DEBUG",
     INFO: "INFO",
     ERROR: "ERROR",
 	CRITICAL: "CRITICAL"
@@ -13,6 +14,18 @@ global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION = {
 
 	/// @param {String} log_level
     ON_FAIL_ON_CRIT: function(msg, log_level) { 
+		show_debug_message("[" + log_level +"]" + msg);
+		if(log_level == global.LOG_LEVEL.CRITICAL) {
+			helper_throw_exception_not_ignore(msg);
+		}
+	},
+
+	/// @param {String} log_level
+	ON_FAIL_ON_CRIT_IGNORE_DEBUG: function(msg, log_level) {
+		if(log_level == global.LOG_LEVEL.DEBUG) {
+			return;
+		}
+
 		show_debug_message("[" + log_level +"]" + msg);
 		if(log_level == global.LOG_LEVEL.CRITICAL) {
 			helper_throw_exception_not_ignore(msg);
@@ -41,7 +54,7 @@ global.____INIT_GAME_GLOBAL = function() {
 		},
 		DEVELOPER_SETTINGS: {
 			IGNORE_EXCEPTIONS: false,
-			LOG_FUNCTION: global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION.ON_FAIL_ON_CRIT
+			LOG_FUNCTION: global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION.ON_FAIL_ON_CRIT_IGNORE_DEBUG
 		}
     };
     

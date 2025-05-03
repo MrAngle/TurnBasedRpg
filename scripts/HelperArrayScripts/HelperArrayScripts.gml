@@ -48,4 +48,17 @@ function helper_array_concat(_dest, _source) {
     for (var i = 0; i < array_length(_source); i++) {
         array_push(_dest, _source[i]);
     }
+
+    return _dest;
+}
+
+
+function helper_array_concat_front(_headElements, _arrayTail) {
+    if (helper_is_not_definied(_headElements) || helper_is_not_definied(_arrayTail)) {
+        return [];
+    }
+
+    var result = [];
+    result = helper_array_concat(result, _headElements);
+    return helper_array_concat(result, _arrayTail);
 }

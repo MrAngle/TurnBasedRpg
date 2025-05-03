@@ -10,7 +10,7 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 	__arrayOriginTargetMapTile = noone;
 	/// @type {Struct.ActionTargetResolverInterface} The intent from which this action originated.
 	__actionTargetResolverStruct = noone;
-	/// @type {ActionIntentId} The intent from which this action originated.
+	/// @type {Enum.ACTION_INTENT_ENUM} The intent from which this action originated.
 	__actionIntentId = false;
 	/// @type {Array<Struct.__EventTypesEnum>} Event types triggered by the action.
 	__eventTypesEnumArray = undefined;
@@ -73,6 +73,12 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 			actionTargetResolverStruct
         );
     };
+
+    buildAsActionResolver = function() {
+		var actionStruct = build()
+		var newContext = new ActionContextStruct(actionStruct);
+		return ActionResolvedStructBuilder(newContext);
+    };
 }
 
 // ActionStruct	Definicja co ma się wydarzyć	Atakuj tile[5, 3]
@@ -89,7 +95,7 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
 /// @param {Struct.ENUM_STRUCT} _type - Obiekt reprezentujący typ akcji (np. global.ENUMS.ACTION_TYPE.ATTACK)
 /// @param {Id.Instance<Id.Instance.AbstTurnEntity>} _invoker - Obiekt postaci wykonującej akcję.
 /// @param {Array<Struct.MyMapTile>} _arrayOriginTargetTiles - Kafelek, na który akcja jest skierowana.
-/// @param {ActionIntentId} _from_intent - Intencja, z której wynikła ta akcja.
+/// @param {Enum.ACTION_INTENT_ENUM} _from_intent - Intencja, z której wynikła ta akcja.
 /// @param {Array<Struct.__EventTypesEnum>} _eventTypesOnTriggerEnums - Intencja, z której wynikła ta akcja.
 /// @param {Struct.__ActionStruct} _origin_action - Akcja, z której wynikła ta akcja.
 /// @param {Struct.ActionTargetResolverInterface} _actionTargetResolverStruct - Interfejs do rozwiązywania celów akcji.
@@ -113,7 +119,7 @@ function __ActionStruct(	_type,
 	__arrayOriginTargetTiles = _arrayOriginTargetTiles;
 	/// @type {Struct.ActionTargetResolverInterface} Interface for resolving action targets.
 	__actionTargetResolverStruct = _actionTargetResolverStruct;
-	/// @type {ActionIntentId} The intent from which this action originated.
+	/// @type {Enum.ACTION_INTENT_ENUM} The intent from which this action originated.
 	__from_intent = _from_intent;
 	/// @type {Array<Struct.__EventTypesEnum>} Event types triggered by the action.
 	__eventTypesOnTriggerEnums = _eventTypesOnTriggerEnums;

@@ -1,26 +1,45 @@
 
 /// @returns {Struct.CombatEventEffect}
-function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
-    var actionName = "SLAM";
+function COMBAT_EVENT_EFFECT_EXAMPLE(_ownerTurnEntityObj) {
+    var actionName = "COMBAT_EVENT_EFFECT_EXAMPLE";
     var PIPE_FLOW = global.COMBAT_COMBAT_EVENT_PIPE_PARAM_KEYS.EVENT_EFFECT_FLOW;
 
     var pipelineContext = {
         // INIT
         actionInvokerObj: PIPE_FLOW.ACTION_CONTEXT.ACTION_INVOKER_OBJ,
         actionInvokerStruct: PIPE_FLOW.ACTION_CONTEXT.ACTION_INVOKER_STRUCT,
+        appliesToTurnEntityStruct: PIPE_FLOW.COMBAT_EVENT_EFFECT.APPLIES_TO_TURN_ENTITY_STRUCT,
 
         // PREPARE
-        appliesToTurnEntityStruct: PIPE_FLOW.COMBAT_EVENT_EFFECT.APPLIES_TO_TURN_ENTITY_STRUCT,
         actionCalcTargetTiles: PIPE_FLOW.ACTION_CONTEXT.ACTION_CALC_TARGET_TILES,
     }
 
-    var _1_checkIfValuesForTriggerCheckConditionAreSet = helper_event_step_AllFieldsMustBeFilled(
-        [
-            pipelineContext.actionInvokerStruct,
-            pipelineContext.appliesToTurnEntityStruct
-        ], 
-        actionName
-    )
+    var _0_checkIfValuesForTriggerCheckConditionAreSet = {
+        __pipelineContext: pipelineContext,
+        /// @param {Struct.CombatEventEffect} _combatEventEffect
+        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        /// @returns {Bool} pass if the effect should be triggered
+        run: function(_combatEventEffect, _actionContextStruct) {
+            return undefined;
+        },
+        stepName: actionName + "checkIfValuesForTriggerCheckConditionAreSet",
+    }
+
+
+
+    var _1_checkIfValuesForTriggerCheckConditionAreSet = {
+        __pipelineContext: pipelineContext,
+        /// @param {Struct.CombatEventEffect} _combatEventEffect
+        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        /// @returns {Bool} pass if the effect should be triggered
+        run: function(_combatEventEffect, _actionContextStruct) {
+            return _combatEventEffect.__tryAssignAll([
+                __pipelineContext.actionInvokerObj,
+                __pipelineContext.actionInvokerStruct,
+                __pipelineContext.appliesToTurnEntityStruct], _actionContextStruct)
+        },
+        stepName: actionName + "checkIfValuesForTriggerCheckConditionAreSet",
+    }
 
     var _2_checkShouldTrigger = {
         __pipelineContext: pipelineContext,
@@ -35,16 +54,19 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
 
             return actionInvokerStruct.isSameTurnEntityStruct(appliesToTurnEntityStruct);
         },
-        stepName: actionName + "_invokerIsSameTurnEntityStruct",
+        stepName: actionName + "checkShouldTrigger",
     }
 
-    var _3_prepareDataForAction = helper_event_step_AllFieldsMustBeFilled(
-        [
-            pipelineContext.actionInvokerObj,
-            pipelineContext.actionCalcTargetTiles
-        ], 
-        actionName
-    )
+    var _3_prepareDataForAction = {
+        __pipelineContext: pipelineContext,
+        /// @param {Struct.CombatEventEffect} _combatEventEffect
+        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        /// @returns {Bool} pass if the effect should be triggered
+        run: function(_combatEventEffect, _actionContextStruct) {
+            return _combatEventEffect.__tryAssignAll([__pipelineContext.actionCalcTargetTiles], _actionContextStruct)
+        },
+        stepName: actionName + "prepareDataForAction",
+    }
 
     var _4_createResolvedAction = {
         __pipelineContext: pipelineContext,
@@ -70,12 +92,7 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
 
 
     var effect = new CombatEventEffect(
-        [   
-            _1_checkIfValuesForTriggerCheckConditionAreSet,
-            _2_checkShouldTrigger,
-            _3_prepareDataForAction,
-            _4_createResolvedAction
-        ],
+        [_1_checkIfValuesForTriggerCheckConditionAreSet,_2_checkShouldTrigger,_3_prepareDataForAction,_4_createResolvedAction],
         [global.EVENT_TYPES_ENUM.ON_ATTACK],
         _ownerTurnEntityObj,
         actionName

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"combatEventPipeParamKeys",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"combatEventPipeParamKeys",
+  "parent":{
+    "name":"EventPipeParams",
+    "path":"folders/Hex/Combat/CombatEventEffect/EventPipeParams.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

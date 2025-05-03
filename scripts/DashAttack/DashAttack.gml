@@ -3,18 +3,13 @@ function COMBAT_EVENT_EFFECT_DASHATTACK(_ownerTurnEntityObj) {
 
     var _shouldTrigger = new CombatEventEffectFunction(
         /// @param {Struct.CombatEventEffect}
-        function(_combatEventEffect) {
-			return {
-                /// @type {Struct.CombatEventEffect} __combatEventEffect
-                __combatEventEffect: _combatEventEffect,
-                /// @param {Struct.ActionContextStruct} _actionContextStruct
-                toReturn: function(_actionContextStruct) {
-                    return _actionContextStruct
-                    .getActionInvokerStruct()
-                    .isSameTurnEntityStruct(__combatEventEffect.__getAppliesToTurnEntityStruct());
-                }
-            }
-		}
+        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        /// @returns {Bool} pass if the effect should be triggered
+        function(_combatEventEffect, _actionContextStruct) {
+            return _actionContextStruct
+            .getActionInvokerStruct()
+            .isSameTurnEntityStruct(__combatEventEffect.getAppliesToTurnEntityStruct());
+        }
     )
 
 

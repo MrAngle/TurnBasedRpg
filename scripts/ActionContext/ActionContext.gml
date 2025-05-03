@@ -19,6 +19,7 @@ function ActionContextStruct(_action_struct, _evaluation_mode = ACTION_MODE_ENUM
     getAction           		= function() { return __action_struct };
 
     getActionInvokerStruct    	= function() { return getAction().getInvokerTuEnStruct() };
+	getActionInvokerObj    		= function() { return getAction().getInvokerTuEnObj() };
 
 	/// @returns {Array<Struct.__EventTypesEnum>}
 	getEventsTypeEnumsToTrigger = function() { return getAction().getEventTypesToTrigger() };

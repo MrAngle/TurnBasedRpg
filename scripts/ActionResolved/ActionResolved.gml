@@ -35,7 +35,7 @@ function __ActionResolvedStruct(_context_struct) constructor {
 		// __actionExecutorUnit.execute();
 
 		global.COMBAT_GLOBALS.MANAGERS.COMBAT_EVENT_SERVICE.emitOnTriggerEvents(__getContext())
-		__finalizeAction();
+		return __finalizeAction();
 	}
 
 	__finalizeAction = function() {
@@ -43,9 +43,9 @@ function __ActionResolvedStruct(_context_struct) constructor {
 		if(helper_is_definied(_invoker)) {
 			_invoker.consumeActionPoints(__context_struct);
 		} else {
-			LOG_INFO_MESSAGE("try to finalize action but invoker is not exists: " + string(_invoker))
+			LOG_INFO_MESSAGE("try to finalize action but invoker is not exists: " + string(_invoker));
 		}
-		
+		return true
 	}
 }
 

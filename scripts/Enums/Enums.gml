@@ -51,7 +51,9 @@ enum ACTION_INTENT_ENUM {
     // Przyszłościowo – dla menu, dialogów, itp.
     CONFIRM,
     CANCEL,
-    INTERACT
+    INTERACT,
+
+    EVENT
 }
 
 

@@ -13,7 +13,7 @@ function CombatEventService() constructor {
 				var effect = effects[j];
 
 
-				effect.tryTrigger(_actionContextStruct);
+				effect.execute(_actionContextStruct);
 			}
 		}
 	};
