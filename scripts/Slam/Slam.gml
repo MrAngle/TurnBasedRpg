@@ -24,14 +24,13 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
 
     var _2_checkShouldTrigger = {
         __pipelineContext: pipelineContext,
-        /// @param {Struct.CombatEventEffect} _combatEventEffect
-        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        /// @param {Struct.PipelineStepContext} _pipelineStepContext
         /// @returns {Bool} pass if the effect should be triggered
-        run: function(_combatEventEffect, _actionContextStruct) {
+        run: function(_pipelineStepContext) {
             /// @type {Struct.TurnEntityStruct} appliesToTurnEntityStruct
-            var appliesToTurnEntityStruct = _combatEventEffect.__get(__pipelineContext.appliesToTurnEntityStruct);
+            var appliesToTurnEntityStruct = _pipelineStepContext.get(__pipelineContext.appliesToTurnEntityStruct);
             /// @type {Struct.TurnEntityStruct} actionInvokerStruct
-            var actionInvokerStruct = _combatEventEffect.__get(__pipelineContext.actionInvokerStruct);
+            var actionInvokerStruct = _pipelineStepContext.get(__pipelineContext.actionInvokerStruct);
 
             return actionInvokerStruct.isSameTurnEntityStruct(appliesToTurnEntityStruct);
         },
@@ -48,12 +47,11 @@ function COMBAT_EVENT_EFFECT_SLAM(_ownerTurnEntityObj) {
 
     var _4_createResolvedAction = {
         __pipelineContext: pipelineContext,
-        /// @param {Struct.CombatEventEffect} _combatEventEffect
-        /// @param {Struct.ActionContextStruct} _actionContextStruct
+        /// @param {Struct.PipelineStepContext} _pipelineStepContext
         /// @returns {Struct.ActionResolvedStruct}
-        run: function(_combatEventEffect, _actionContextStruct) {
-            var invokerObj = _combatEventEffect.__get(__pipelineContext.actionInvokerObj);
-            var calculatedTargetTiles = _combatEventEffect.__get(__pipelineContext.actionCalcTargetTiles);
+        run: function(_pipelineStepContext) {
+            var invokerObj = _pipelineStepContext.get(__pipelineContext.actionInvokerObj);
+            var calculatedTargetTiles = _pipelineStepContext.get(__pipelineContext.actionCalcTargetTiles);
 
             var actionResolver = new ActionStructBuilder(global.ENUMS.ACTION_TYPE.ATTACK)
                 .withInvokerTurnEntityObj(invokerObj)

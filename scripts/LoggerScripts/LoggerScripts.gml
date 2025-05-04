@@ -22,3 +22,8 @@ function LOG_CRITICAL_MESSAGE(arg_mgs)
 {
 	global.GAME_GLOBALS.DEVELOPER_SETTINGS.LOG_FUNCTION(string(arg_mgs), global.LOG_LEVEL.CRITICAL)
 }
+
+function __LOG_DEFINITION(log_level, msg) 
+{
+	show_debug_message("[" + log_level +"]" + msg);
+}

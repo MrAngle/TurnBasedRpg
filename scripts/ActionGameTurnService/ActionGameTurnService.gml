@@ -25,9 +25,10 @@ function tryProcessGameTurn(unitApValue) {
         var context = new ActionContextStruct(actionStruct);
         var resolvedAction = ActionResolvedStructBuilder(context);
 
+        LOG_INFO_MESSAGE("[*******GAME TURN*******] New turn started: " + string(gameTurn.TURN_INDEX) + " Threshold: " + string(gameTurn.LAST_TURN_AP_BOUNDARY));
         resolvedAction.execute();
+        LOG_INFO_MESSAGE("[*******GAME TURN*******] Finished new turn actions: " + string(gameTurn.TURN_INDEX) + " Threshold: " + string(gameTurn.LAST_TURN_AP_BOUNDARY));
 
-        LOG_INFO_MESSAGE("[GAME TURN] New turn started: " + string(gameTurn.TURN_INDEX) + " Threshold: " + string(gameTurn.LAST_TURN_AP_BOUNDARY));
     } else {
         global.COMBAT_GLOBALS.GAME_TURN.CURRENT_MIN_ACTION_POINTS = unitApValue;
     }
