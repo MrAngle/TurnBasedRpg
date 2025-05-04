@@ -71,6 +71,7 @@ function CombatEventEffect(
     /// @param {Struct.ActionContextStruct} _actionContextStruct
     /// @returns {Bool} true if triggered, false if not
     __executeSteps = function(_actionContextStruct) {
+        logStepStart(__appliesToTurnEntityObj);
         if(__eventExecutionSteps == undefined) {
             LOG_CRITICAL_MESSAGE("CombatEventEffect: executeSteps: __eventExecutionSteps is undefined. EventEffect: " + self.__meta.__name);
             return false;
@@ -78,16 +79,14 @@ function CombatEventEffect(
 
         for (var i = 0; i < array_length(__eventExecutionSteps); i++) {
             var step = __eventExecutionSteps[i];
+            logStepProcessing(step, __appliesToTurnEntityObj, i);
             var result = step.run(__pipelineStepContext);
             if (!result) {
                 logStepFailure(step, __appliesToTurnEntityObj, i);
-                // LOG_DEBUG_MESSAGE("🔸 Step failed: " + step.stepName + " | Effect: " + string(self.__meta.__name) + " | Index: " + string(i));
                 return false;
             }
         }
         logStepSuccess(step, __appliesToTurnEntityObj);
-        // LOG_INFO_MESSAGE("🔸 AppliesToTurnEntity: ID = " + string(__appliesToTurnEntityObj) + ", Name = " + string(getTurnEntityStruct(__appliesToTurnEntityObj).name));
-        // LOG_INFO_MESSAGE("🔸 Step passed: " + step.stepName + " | Effect: " + string(self.__meta.__name) + " | Index: " + string(i));
         return true;
     }
 
@@ -105,12 +104,39 @@ function CombatEventEffect(
         LOG_DEBUG_MESSAGE(message);
     }
 
+    logStepProcessing = function(step, appliesToObj, stepIndex) {
+        var appliesToStruct = getTurnEntityStruct(appliesToObj);
+        var name = helper_is_definied(appliesToStruct) ? appliesToObj.my_obj_name : "UNKNOWN";
+        var idValue = helper_is_definied(appliesToStruct) ? appliesToStruct.getId() : "???";
+    
+        var message = "⚙️ Step Processing [" + string(step.stepName) + "]"
+                    + " | Effect: " + string(self.__meta.__name)
+                    + " | Index: " + string(stepIndex)
+                    + " | Owner: ID = " + string(idValue)
+                    + ", Name = " + string(name);
+    
+        LOG_DEBUG_MESSAGE(message);
+    }
+
+    logStepStart = function(appliesToObj) {
+        var turnEntityStruct = getTurnEntityStruct(appliesToObj);
+        var name = helper_is_definied(turnEntityStruct) ? appliesToObj.my_obj_name : "UNKNOWN";
+        var tuEnId = helper_is_definied(turnEntityStruct) ? turnEntityStruct.getId() : "UNKNOWN";
+    
+        var message = "🚀 Effect Start [" + string(self.__meta.__name) + "]"
+                    + " | Owner: ID = " + string(tuEnId)
+                    + ", Name = " + string(name);
+    
+        LOG_DEBUG_MESSAGE(message);
+    }
+
     logStepSuccess = function(step, appliesToObj) {
         var turnEntityStruct = getTurnEntityStruct(appliesToObj);
         var name = helper_is_definied(turnEntityStruct) ? appliesToObj.my_obj_name : "UNKNOWN";
+        var tuEnId = helper_is_definied(turnEntityStruct) ? turnEntityStruct.getId() : "UNKNOWN";
     
         var message = "✔️ Effect passed [" + string(self.__meta.__name) + "]"
-                    + " | Owner: ID = " + string(turnEntityStruct.getId())
+                    + " | Owner: ID = " + string(tuEnId)
                     + ", Name = " + string(name);
     
         LOG_INFO_MESSAGE(message);

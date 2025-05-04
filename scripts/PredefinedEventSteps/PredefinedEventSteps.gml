@@ -7,7 +7,10 @@ function helper_event_step_AllFieldsMustBeFilled(_fieldsToCheck, _eventStepName)
         /// @param {Struct.PipelineStepContext} _pipelineStepContext
         /// @returns {Bool} pass if the effect should be triggered
         run: function(_pipelineStepContext) {
-            return _pipelineStepContext.tryAssignAll(__fieldsToCheck)
+            LOG_DEBUG_MESSAGE("Check fields: " + string(__fieldsToCheck));
+            var areFieldsDefined = _pipelineStepContext.tryAssignAll(__fieldsToCheck)
+            LOG_DEBUG_MESSAGE("Check status: " + string(areFieldsDefined));
+            return areFieldsDefined;
         },
         stepName: _eventStepName + "_checkIfValuesForTriggerCheckConditionAreSet",
     }
@@ -50,4 +53,66 @@ function helper_event_step_EventTypeMustMatch() {
         },
         stepName: "INIT_CheckEventTypesStep"
     }
+}
+
+/// @param {Struct.EventParamDefinition} _actionInvokerStruct
+/// @param {Struct.EventParamDefinition} _appliesToTurnEntityStruct
+/// @param {Struct.CombatEventEffectFunction} _1_checkFieldsPresentArg
+/// @param {Struct.CombatEventEffectFunction} _2_checkOwnershipArg
+/// @returns {Struct.OwnerIsInvokerEffectStepBundle}
+function OwnerIsInvokerEffectStepBundle(
+        _actionInvokerStruct, 
+        _appliesToTurnEntityStruct, 
+        _1_checkFieldsPresentArg, 
+        _2_checkOwnershipArg) constructor {
+
+    param_actionInvokerStruct = _actionInvokerStruct;
+    param_appliesToTurnEntityStruct = _appliesToTurnEntityStruct;
+
+    step_1_checkFieldsPresent = _1_checkFieldsPresentArg;
+    step_2_checkOwnershipMatch= _2_checkOwnershipArg
+}
+
+/// @desc Creates pipelineContext and steps for checking if effect applies to its invoker.
+/// @param {String} effectName - Used for labeling stepName
+/// @returns {Struct.OwnerIsInvokerEffectStepBundle}
+function helper_event_step_EventEffectsOwnerIsSameAsActionInvoker(effectName, _pipeFlow) {
+    var pipelineContext = {
+        // INIT
+        appliesToTurnEntityStruct: _pipeFlow.COMBAT_EVENT_EFFECT.APPLIES_TO_TURN_ENTITY_STRUCT,
+        actionInvokerStruct: _pipeFlow.ACTION_CONTEXT.ACTION_INVOKER_STRUCT,
+    };
+
+    var step1_checkFieldsPresent = helper_event_step_AllFieldsMustBeFilled(
+        [        
+            pipelineContext.actionInvokerStruct,
+            pipelineContext.appliesToTurnEntityStruct
+        ],
+        effectName + "_requiredFieldsCheck"
+    );
+
+    var step2_checkOwnershipMatch = {
+        __pipelineContext: pipelineContext,
+        stepName: effectName + "_invokerIsSameTurnEntityStruct",
+
+        /// @param {Struct.PipelineStepContext} _pipelineStepContext
+        run: function(_pipelineStepContext) {
+            var appliesTo = _pipelineStepContext.get(__pipelineContext.appliesToTurnEntityStruct);
+            /// @type {Struct.TurnEntityStruct}
+            var invoker = _pipelineStepContext.get(__pipelineContext.actionInvokerStruct);
+
+            return invoker.isSameTurnEntityStruct(appliesTo);
+        }
+    };
+
+    // return {
+    //     pipelineContext: pipelineContext,
+    //     steps: [step1_checkFieldsPresent, step2_checkOwnershipMatch]
+    // };
+
+    return new OwnerIsInvokerEffectStepBundle(
+        pipelineContext.actionInvokerStruct, 
+        pipelineContext.appliesToTurnEntityStruct, 
+        step1_checkFieldsPresent, 
+        step2_checkOwnershipMatch);
 }

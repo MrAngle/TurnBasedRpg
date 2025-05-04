@@ -2,10 +2,10 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
 global.LOG_LEVEL = {
-    DEBUG: 		"DEBUG 🐛	",
-    INFO: 		"INFO ℹ️	",
-    ERROR: 		"ERROR ❌   ",
-	CRITICAL: 	"CRITICAL ⚠️"
+    DEBUG: 		"DEBUG 	 🐛",
+    INFO: 		"INFO 	 ℹ️",
+    ERROR: 		"ERROR   ❌",
+	CRITICAL: 	"CRITICAL⚠️"
 };
 
 global.PRIVATE_SHOULD_BE_USED_ONLY_IN_SETTINGS_LOG_FUNCTION = {
