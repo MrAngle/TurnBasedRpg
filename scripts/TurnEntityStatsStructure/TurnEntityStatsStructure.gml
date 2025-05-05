@@ -82,6 +82,7 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 
 		__PREVIOUS_ACTION_POINTS = self.__ACTION_POINTS;
 		self.__ACTION_POINTS += apToApply;
+		return apToApply;
 	}
 
 	/// @param {Real} ap_to_subtract - Wartość AP, którą odejmujemy z każdej jednostki.

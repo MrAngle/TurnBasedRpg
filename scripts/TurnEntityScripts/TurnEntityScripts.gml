@@ -78,8 +78,10 @@ function TurnEntityStruct(_objectReference) constructor {
 	}
 		
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
+	/// @returns {real} -1 if no action points were consumed, otherwise the number of action points consumed.
 	consumeActionPoints = function(_actionContextStruct) {
 		var actionsToConsume = __STATS.applyActionPoints(_actionContextStruct);
+		return actionsToConsume;
 	}
 
 	/// @param {Real} ap_to_subtract - Wartość AP, którą odejmujemy z każdej jednostki.

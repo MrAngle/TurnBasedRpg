@@ -4,6 +4,7 @@
 /// @returns {Struct.ActionExecutorUnitStruct}
 function ActionExecutorUnitStruct() constructor {
     execute = function() {};
+    predict = function() {};
 }
 
 /// @function performMoveAction(source_char, destination_row, destination_col)
@@ -25,6 +26,8 @@ function ActionStepExecutorUnitStruct(_source_char, _dest_row, _dest_col) constr
             __source_char
         );
     };
+
+    predict = function() {};
 }
 
 /// @param {Id.Instance.AbstTurnEntity} arg_source_char
@@ -47,6 +50,8 @@ function ActionAttackExecutorUnitStruct(arg_source_char, arg_target_tile) constr
         __performAttackOnTile();
     };
 
+    predict = function() {};
+
     __performAttackOnTile = function() {
         if(__arg_target_tile.hasTurnEntity()) {
             var targetStruct = __arg_target_tile.getTurnEntityStruct();
@@ -62,6 +67,8 @@ function ActionStandExecutorUnitStruct() constructor {
     execute = function() {
         // do nothing
     };
+
+    predict = function() {};
 }
 
 
@@ -71,4 +78,6 @@ function ActionGameTurnExecutorUnitStruct() constructor {
     execute = function() {
         // do nothing
     };
+
+    predict = function() {};
 }

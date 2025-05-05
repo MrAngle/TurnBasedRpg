@@ -1,7 +1,25 @@
 
+
+/// @param {Struct.ActionContextStruct} _context_struct
 /// @returns {Struct.__ActionResolvedStruct}
 function ActionResolvedStructBuilder(_context_struct) {
-    var ars = new __ActionResolvedStruct(_context_struct);
+    var strategy;
+
+    switch (_context_struct.getEvaluationMode()) {
+        case ACTION_MODE_ENUM.APPLY:
+            strategy = ApplyActionResolvedStrategy();
+            break;
+
+        case ACTION_MODE_ENUM.PREDICT:
+            strategy = PredictActionResolvedStrategy();
+            break;
+
+        default:
+            LOG_CRITICAL_MESSAGE("Unknown ACTION_MODE_ENUM: " + string(_context_struct.getEvaluationMode()));
+            strategy = ApplyActionResolvedStrategy(); // fallback to safe default
+    }
+
+    var ars = new __ActionResolvedStruct(_context_struct, strategy);
     ars.__INIT();
 
     return ars;
@@ -10,19 +28,18 @@ function ActionResolvedStructBuilder(_context_struct) {
 /// @function ActionResolvedStruct
 /// @desc Struktura zawierająca pełną akcję (z kontekstem), gotową do predykcji lub wykonania.
 ///       Umożliwia obliczenie kosztu, predykcję efektów i wykonanie.
-/// @param {Struct.ActionContextStruct} _context_struct - Pełny kontekst akcji.
+/// @param {Struct.ActionContextStruct} _context_struct
+/// @param {Struct.__ActionResolvedExecutionStrategy} _strategy
 /// @returns {Struct.__ActionResolvedStruct}
-function __ActionResolvedStruct(_context_struct) constructor {
+function __ActionResolvedStruct(_context_struct, _strategy) constructor {
 	__context_struct = _context_struct;
-    /// @type {Struct.ActionExecutorUnitStruct}
-    __actionExecutorUnit = noone; //Set by INIT
-	/// @type {Struct.ActionAttackExecutorUnitWrapper}
+	__strategy = _strategy;
+	/// @type {Struct.ActionExecutorUnitWrapper}
 	__actionExecutorUnitWrapper = noone; //Set by INIT
 
     /// INIT
     __INIT = function() {
-		__actionExecutorUnitWrapper = new ActionAttackExecutorUnitWrapper(self);
-        // __actionExecutorUnit = __defineActionExecutorUnitStruct(self);
+		__actionExecutorUnitWrapper = __strategy.actionExecutorUnitWrapperCreator(self); //new ActionExecutorUnitWrapper(self, ApplyWrapperExecutorStrategy()) ;
     }
 
     // GETTERS
@@ -31,53 +48,27 @@ function __ActionResolvedStruct(_context_struct) constructor {
     __getInvokerStruct = function() { return __getAction().getInvokerTuEnStruct() }
 
 	execute = function() {
-		__actionExecutorUnitWrapper.execute();
-		// __actionExecutorUnit.execute();
+		return __strategy.execute(self);
 
-		global.COMBAT_GLOBALS.MANAGERS.COMBAT_EVENT_SERVICE.emitOnTriggerEvents(__getContext())
-		return __finalizeAction();
+		// __actionExecutorUnitWrapper.execute();
+
+		// global.COMBAT_GLOBALS.MANAGERS.COMBAT_EVENT_SERVICE.emitOnTriggerEvents(__getContext())
+		// return __finalizeAction();
 	}
 
 	__finalizeAction = function() {
-        var _invoker =  __getInvokerStruct();
-		if(helper_is_definied(_invoker)) {
-			_invoker.consumeActionPoints(__context_struct);
-		} else {
-			LOG_INFO_MESSAGE("try to finalize action but invoker is not exists: " + string(_invoker));
-		}
-		return true
+		return __strategy.__finalize(self);
 	}
+
+	// __finalizeAction = function() {
+	// 	return __strategy.(self);
+
+        // var _invoker =  __getInvokerStruct();
+		// if(helper_is_definied(_invoker) && __context_struct.getAction().getFromIntent() != ACTION_INTENT_ENUM.EVENT) {
+		// 	_invoker.consumeActionPoints(__context_struct);
+		// } else {
+		// 	LOG_INFO_MESSAGE("try to finalize action but invoker is not exists: " + string(_invoker));
+		// }
+		// return true
+	// }
 }
-
-// /// @param {Struct.__ActionResolvedStruct} _arStruct
-///// @returns {Struct.ActionExecutorUnitStruct}
-// function __defineActionExecutorUnitStruct(_arStruct) {
-//     var action = _arStruct.__getAction();
-// 	var actionType = action.getType()
-// 	switch (actionType.id) {
-// 		case global.ENUMS.ACTION_TYPE.ATTACK.id:
-// 			return new ActionAttackExecutorUnitStruct(
-// 				action.getInvokerTuEnObj(), 
-// 				action.getArrayOriginTargetTiles());
-// 			break;
-	
-// 		case global.ENUMS.ACTION_TYPE.STEP.id:
-// 			return new ActionStepExecutorUnitStruct(
-// 				action.getInvokerTuEnObj(), 
-// 				action.getArrayOriginTargetTiles().getRow(), 
-// 				action.getArrayOriginTargetTiles().getCol())
-// 			break;
-	
-// 		case global.ENUMS.ACTION_TYPE.STAND.id:
-// 			return new ActionStandExecutorUnitStruct();
-// 			break;
-
-// 		case global.ENUMS.ACTION_TYPE.ON_GAME_TURN.id:
-// 			return new ActionGameTurnExecutorUnitStruct();
-// 			break;
-	
-// 		default:
-// 			LOG_CRITICAL_MESSAGE("⚠️ Nieznany typ akcji: " + string(actionType));
-// 			break;
-// 	}
-// }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ApplyActionResolvedStrategy",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ApplyActionResolvedStrategy",
+  "parent":{
+    "name":"Strategy",
+    "path":"folders/Hex/Combat/CombatAction/ActionStructs/ActionResolvedGroup/Strategy.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

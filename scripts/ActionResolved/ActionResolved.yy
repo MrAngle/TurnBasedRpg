@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ActionResolved",
   "parent":{
-    "name":"ActionStructs",
-    "path":"folders/Hex/Combat/CombatAction/ActionStructs.yy",
+    "name":"ActionResolvedGroup",
+    "path":"folders/Hex/Combat/CombatAction/ActionStructs/ActionResolvedGroup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

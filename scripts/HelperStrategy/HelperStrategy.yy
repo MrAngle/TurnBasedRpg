@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"HelperStrategy",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"HelperStrategy",
+  "parent":{
+    "name":"Helpers",
+    "path":"folders/Hex/Combat/Scripts/Helpers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

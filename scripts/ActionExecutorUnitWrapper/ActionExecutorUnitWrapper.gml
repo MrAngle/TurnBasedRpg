@@ -1,9 +1,32 @@
 
 
+/// @returns {Struct.ExecutionStrategy}
+function ApplyWrapperExecutorStrategy() {
+    return new ExecutionStrategy(
+        "ApplyWrapperExecutorStrategy",
+        /// @param {Struct.ActionExecutorUnitStruct} unitStruct
+        function(unitStruct) {
+            unitStruct.execute();
+        }
+    )
+}
+
+function PredictWrapperExecutorStrategy() {
+    return new ExecutionStrategy(
+        "PredictWrapperExecutorStrategy",
+        /// @param {Struct.ActionExecutorUnitStruct} unitStruct
+        function(unitStruct) {
+            unitStruct.predict();
+        }
+    )
+};
+
 /// @param {Struct.__ActionResolvedStruct} _actionResolvedStruct
-/// @returns {ActionAttackExecutorUnitWrapper}
-function ActionAttackExecutorUnitWrapper(_actionResolvedStruct) constructor {
+/// @param {Struct.ExecutionStrategy} _executionStrategy - ApplyWrapperExecutorStrategy|PredictWrapperExecutorStrategy
+/// @returns {Struct.ActionExecutorUnitWrapper}
+function ActionExecutorUnitWrapper(_actionResolvedStruct, _executionStrategy) constructor {
     __actionExecutorUnitStructs = __defineActionExecutorUnitStructArray(_actionResolvedStruct);
+    __executionStrategy = _executionStrategy;
     execute = function() {
         if(helper_is_not_definied(__actionExecutorUnitStructs)) {
             LOG_CRITICAL_MESSAGE("actionExecutorUnitStructs is not defined");
@@ -12,7 +35,7 @@ function ActionAttackExecutorUnitWrapper(_actionResolvedStruct) constructor {
 
         for (var i = 0; i < array_length(__actionExecutorUnitStructs); i++) {
             var unitStruct = __actionExecutorUnitStructs[i];
-            unitStruct.execute();
+            __executionStrategy.run(unitStruct);
         }
     };
 }
