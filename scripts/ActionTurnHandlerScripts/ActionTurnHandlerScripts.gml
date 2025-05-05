@@ -3,6 +3,7 @@ enum ACTION_TURN_STATE_ENUM {
 	FORCE_WAIT_TURN_PHASE,
 	
 	WAITING_FOR_USER_INPUT, // -> PERFORM ACTION
+	PREPARE_WAITING_FOR_USER_INPUT, // -> PERFORM ACTION
 	PROCESS_AI_INTENT,
 	PREPARE_ACTION_RESOLVE,
 	PERFORM_ACTION,
@@ -33,6 +34,12 @@ function onStepTurnProcessor() {
 				autoActionResolveIntent(global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ);
 		
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.PREPARE_ACTION_RESOLVE;
+			onStepTurnProcessor();
+			break;
+		
+		case ACTION_TURN_STATE_ENUM.PREPARE_WAITING_FOR_USER_INPUT:
+			prepareWaitingForUserInput()
+			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_STATE_ENUM = ACTION_TURN_STATE_ENUM.WAITING_FOR_USER_INPUT;
 			onStepTurnProcessor();
 			break;
 
@@ -86,6 +93,21 @@ function processNextStepAfterActionResolvedPreparation() {
 	}
 }
 
+function prepareWaitingForUserInput() {
+	var obj = global.COMBAT_GLOBALS.ACTION.CURRENT_INVOKER_TURN_ENTITY_OBJ;
+
+	if(helper_object_not_exists(obj)) {
+		LOG_ERROR_MESSAGE("⚠️ Nie można ustalić stanu tury dla jednostki (Obj): " + string(obj));
+		return;
+	}
+
+	var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.getTileByTurnEntityObj(obj);
+	helper_visuals_HighliteObject(obj);
+	if (tile != undefined) {
+		global.COMBAT_GLOBALS.MANAGERS.CAMERA.centerCameraOnPosition(tile.getXPosition(), tile.getYPosition());
+	}
+}
+
 function waitingForUserInput() {
 	
 	if(isLastInputAutoAction()) {
@@ -100,7 +122,7 @@ function waitingForUserInput() {
 	}
 }
 
-/// @param {Id.Instance<Id.Instance.AbstTurnEntity>} arg_objTurnEntity
+/// @param {Id.Instance<AbstTurnEntity>} arg_objTurnEntity
 function getNextStateBasedOnSideForObj(arg_objTurnEntity) {
 	if(helper_object_not_exists(arg_objTurnEntity)) {
 		LOG_ERROR_MESSAGE("⚠️ Nie można ustalić stanu tury dla jednostki (Obj): " + string(arg_objTurnEntity));
@@ -118,9 +140,8 @@ function getNextStateBasedOnSide(arg_turnEntity) {
 	}
 
 	if(arg_turnEntity.getFaction() == FACTION_ENUM.PLAYER) {
-		return ACTION_TURN_STATE_ENUM.WAITING_FOR_USER_INPUT;
+		return ACTION_TURN_STATE_ENUM.PREPARE_WAITING_FOR_USER_INPUT;
 	} else {
-		//global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_INTENT_ID = ActionIntentId.AUTO_ACTION;
 		return ACTION_TURN_STATE_ENUM.PROCESS_AI_INTENT
 	}
 }

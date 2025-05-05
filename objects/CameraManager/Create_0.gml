@@ -40,3 +40,18 @@ move_left = false;
 move_right = false;
 move_up = false;
 move_down = false;
+
+/// @function centerCameraOnPosition
+/// @desc Centers the camera on a given world position (x, y).
+/// @param {Real} x - X position in world space.
+/// @param {Real} y - Y position in world space.
+centerCameraOnPosition = function(x, y) {
+    var cam = view_camera[0];
+    var w = camera_get_view_width(cam);
+    var h = camera_get_view_height(cam);
+
+    var targetX = x - w / 2;
+    var targetY = y - h / 2;
+
+    camera_set_view_pos(cam, targetX, targetY);
+}

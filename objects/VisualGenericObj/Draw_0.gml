@@ -4,5 +4,5 @@ draw_self();
 var vgs = visualGenericStruct;
 
 
-vgs.onDraw();
+vgs.onDraw(self);
 

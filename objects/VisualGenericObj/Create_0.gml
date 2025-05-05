@@ -1,5 +1,5 @@
 /// @type {Struct.VisualGenericStruct}
-var vgs = visualGenericStruct;
+vgs = visualGenericStruct;
 
 var fields = ["onCreate", "onStep", "onDestroy", "onDraw", "shouldDestroy"];
 

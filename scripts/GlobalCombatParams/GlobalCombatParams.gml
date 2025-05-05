@@ -21,7 +21,9 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 		COMBAT_TURN: noone, // CombatTurnManager
 		SELECTOR: noone, // SelectorManager
 		ACTION_SELECTOR: noone, // ActionSelectorManager
-		COMBAT_EVENT_SERVICE: new CombatEventService()
+		COMBAT_EVENT_SERVICE: new CombatEventService(),
+		/// @type {Id.Instance.CameraManager}
+		CAMERA: noone, // CameraManager
 	}
 	MENU = {
 		TOOLTIP: noone, // MenuToolTipManager

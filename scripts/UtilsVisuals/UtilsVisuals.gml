@@ -39,18 +39,50 @@ function createVisualGeneric(_visualGenericStruct, layerId = global.LAYERS.gui_e
     );
 }
 
+
+/// @function draw_scribble_with_background(txt, pos_x, pos_y, bg_color, margin, alpha)
+/// @description Rysuje tekst Scribble z dopasowanym tłem.
+/// @param txt       Obiekt Scribble (np. scribble("tekst"))
+/// @param pos_x     Pozycja X (środek tekstu)
+/// @param pos_y     Pozycja Y (środek tekstu)
+/// @param bg_color  Kolor tła (np. c_black)
+/// @param margin    Margines wokół tekstu (np. 4)
+/// @param alpha     Przezroczystość tła (0.0 - 1.0)
+
+function draw_scribble_with_background(txt, pos_x, pos_y, bg_color) {
+    var margin = 2;
+
+    // Obliczenie wymiarów tekstu z uwzględnieniem skali
+    var text_width = txt.get_width();
+    var text_height = 40;
+
+    // Obliczenie pozycji prostokąta tła
+    var x1 = pos_x - margin ;
+    var y1 = pos_y - margin + 20;
+    var x2 = pos_x + text_width + margin;
+    var y2 = pos_y + text_height + 20 + margin;
+
+    // Rysowanie prostokąta tła
+    draw_set_color(bg_color);
+    draw_rectangle(x1, y1, x2, y2, false);
+    draw_set_alpha(1); // Przywrócenie pełnej nieprzezroczystości
+
+    // Rysowanie tekstu
+    txt.draw(pos_x, pos_y);
+}
+
+
 /// @function shakeObject(objToShake, intensity, duration)
 /// @param {object} objToShake - Obiekt, który ma drgać
 /// @param {real} intensity - Intensywność drgania
 /// @param {real} duration - Czas trwania drgania w klatkach
 function visualsShakeObject(
-            objToShake, 
-            intensity = global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_RADIUS * 0.2, 
-            duration = global.MY_ROOM_SPEED * 0.3) {
-    
+    objToShake, 
+    intensity = global.COMBAT_GLOBALS.VISUAL_PROPERTIES.TILE_RADIUS * 0.2, 
+    duration = global.MY_ROOM_SPEED * 0.3) {
+
     var _tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.getTileByTurnEntityObj(objToShake);
-                
-    
+
     var closedOnStep = {
         target: objToShake,
         intensity: intensity,
@@ -84,33 +116,63 @@ function visualsShakeObject(
     createVisualGenericObjForObj(objToShake, closedOnStep);
 }
 
-/// @function draw_scribble_with_background(txt, pos_x, pos_y, bg_color, margin, alpha)
-/// @description Rysuje tekst Scribble z dopasowanym tłem.
-/// @param txt       Obiekt Scribble (np. scribble("tekst"))
-/// @param pos_x     Pozycja X (środek tekstu)
-/// @param pos_y     Pozycja Y (środek tekstu)
-/// @param bg_color  Kolor tła (np. c_black)
-/// @param margin    Margines wokół tekstu (np. 4)
-/// @param alpha     Przezroczystość tła (0.0 - 1.0)
+/// @function helper_visuals_HighliteObject
+/// @desc Creates a visual effect that highlights an object (e.g. active unit) for a limited duration.
+/// @param {Id.Instance.AbstTurnEntity} objToHighlight
+function helper_visuals_HighliteObject(objToHighlight) {
+    
+    /// @type {Struct.VisualGenericStruct}
+    var visualGenericStruct = {
+        /// @param {Id.Instance.AbstTurnEntity} _target
+        _target: objToHighlight,
+        _duration: 60 * global.MY_ROOM_SPEED,
 
-function draw_scribble_with_background(txt, pos_x, pos_y, bg_color) {
-    var margin = 2;
+        /// @param {Id.Instance.VisualGenericObj} _self
+        onCreate: function(_self) {
+            _self.target = _target
+            _self.duration = _duration
+        },
 
-    // Obliczenie wymiarów tekstu z uwzględnieniem skali
-    var text_width = txt.get_width();
-    var text_height = 40;
+        onStep: function(_self) {
+            _self.duration -= 1;
+        },
 
-    // Obliczenie pozycji prostokąta tła
-    var x1 = pos_x - margin ;
-    var y1 = pos_y - margin + 20;
-    var x2 = pos_x + text_width + margin;
-    var y2 = pos_y + text_height + 20 + margin;
+        onDestroy: function(_self) {
+            with (_self.target) {
+                if (!instance_exists(self)) return;
+                self.image_alpha = 1;
+            }
+        },
 
-    // Rysowanie prostokąta tła
-    draw_set_color(bg_color);
-    draw_rectangle(x1, y1, x2, y2, false);
-    draw_set_alpha(1); // Przywrócenie pełnej nieprzezroczystości
+        shouldDestroy: function(_self) {
+            return _self.duration < 1;
+        },
 
-    // Rysowanie tekstu
-    txt.draw(pos_x, pos_y);
+        onDraw: function(_self) {
+            with (_self.target) {
+                var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
+                    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, pulse);
+                //if (!instance_exists(self)) return;
+            //
+                //var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
+            //
+                //draw_set_alpha(pulse);
+                //draw_set_color(c_lime);
+            //
+                //draw_sprite_ext(
+                    //sprite_index,
+                    //image_index,
+                    //x, y,
+                    //1.0, 1.0, 0,
+                    //c_lime,
+                    //pulse
+                //);
+            //
+                //draw_set_alpha(1);
+                //draw_set_color(c_white);
+            }
+        }
+    };
+
+    createVisualGeneric(visualGenericStruct, global.LAYERS.visual_effects.id);
 }
