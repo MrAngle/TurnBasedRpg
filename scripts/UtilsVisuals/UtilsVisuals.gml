@@ -124,13 +124,32 @@ function helper_visuals_HighliteObject(objToHighlight) {
     /// @type {Struct.VisualGenericStruct}
     var visualGenericStruct = {
         /// @param {Id.Instance.AbstTurnEntity} _target
+        _drawId: "Highlight",
         _target: objToHighlight,
-        _duration: 60 * global.MY_ROOM_SPEED,
+        _duration: 2 * global.MY_ROOM_SPEED,
 
         /// @param {Id.Instance.VisualGenericObj} _self
         onCreate: function(_self) {
             _self.target = _target
             _self.duration = _duration
+            _self.drawId = _drawId
+
+            
+            var drawFunction = function(_objSelf){
+                var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
+                draw_sprite_ext(
+                    _objSelf.sprite_index,
+                    _objSelf.image_index,
+                    _objSelf.x, _objSelf.y,
+                    1.0, 1.0, 0,
+                    c_lime,
+                    pulse
+                );
+            }
+            /// @type {Id.Instance.super_abst_drawable}
+            var drawableObj = _self.target;
+
+            drawableObj.drawAddEffect(new DrawFunction(_self.drawId, drawFunction));
         },
 
         onStep: function(_self) {
@@ -138,40 +157,47 @@ function helper_visuals_HighliteObject(objToHighlight) {
         },
 
         onDestroy: function(_self) {
-            with (_self.target) {
-                if (!instance_exists(self)) return;
+            /// @type {Id.Instance.super_abst_drawable}
+            var drawableObj = _self.target;
+
+            if (!instance_exists(drawableObj)) return;
+
+            with (drawableObj) {
                 self.image_alpha = 1;
             }
+            drawableObj.drawRemoveEffect(_self.drawId);
         },
 
         shouldDestroy: function(_self) {
             return _self.duration < 1;
         },
 
-        onDraw: function(_self) {
-            with (_self.target) {
-                var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
-                    draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, pulse);
-                //if (!instance_exists(self)) return;
-            //
-                //var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
-            //
-                //draw_set_alpha(pulse);
-                //draw_set_color(c_lime);
-            //
-                //draw_sprite_ext(
-                    //sprite_index,
-                    //image_index,
-                    //x, y,
-                    //1.0, 1.0, 0,
-                    //c_lime,
-                    //pulse
-                //);
-            //
-                //draw_set_alpha(1);
-                //draw_set_color(c_white);
-            }
-        }
+        // onDraw: function(_self) {
+
+
+        //     // with (_self.target) {
+        //     //     var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
+        //     //         // draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, pulse);
+        //     //     if (!instance_exists(self)) return;
+
+        //     //     var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
+
+        //     //     draw_set_alpha(pulse);
+        //     //     draw_set_color(c_lime);
+
+        //     //     draw_sprite_ext(
+        //     //         sprite_index,
+        //     //         image_index,
+        //     //         x, y,
+        //     //         1.0, 1.0, 0,
+        //     //         c_lime,
+        //     //         pulse
+        //     //     );
+
+        //     //     draw_set_alpha(1);
+        //     //     draw_set_color(c_white);
+        //     // }
+        // }
     };
 
     createVisualGeneric(visualGenericStruct, global.LAYERS.visual_effects.id);

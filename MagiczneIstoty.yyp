@@ -351,6 +351,7 @@
     {"id":{"name":"HelperArrayScripts","path":"scripts/HelperArrayScripts/HelperArrayScripts.yy",},},
     {"id":{"name":"HelperCharacterScripts","path":"scripts/HelperCharacterScripts/HelperCharacterScripts.yy",},},
     {"id":{"name":"HelperDirectionsOffsets","path":"scripts/HelperDirectionsOffsets/HelperDirectionsOffsets.yy",},},
+    {"id":{"name":"HelperDraw","path":"scripts/HelperDraw/HelperDraw.yy",},},
     {"id":{"name":"HelperEvents","path":"scripts/HelperEvents/HelperEvents.yy",},},
     {"id":{"name":"HelperFilterFunctions","path":"scripts/HelperFilterFunctions/HelperFilterFunctions.yy",},},
     {"id":{"name":"HelperFunctionsModifiers","path":"scripts/HelperFunctionsModifiers/HelperFunctionsModifiers.yy",},},
