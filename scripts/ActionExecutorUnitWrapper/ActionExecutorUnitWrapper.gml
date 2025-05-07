@@ -71,6 +71,7 @@ function __defineActionExecutorUnitStructFactory(actionType) {
         case global.ENUMS.ACTION_TYPE.STEP.id:
             return function(_action, _tile) {
                 return new ActionStepExecutorUnitStruct(
+                    _action,
                     _action.getInvokerTuEnObj(),
                     _tile.getRow(),
                     _tile.getCol()

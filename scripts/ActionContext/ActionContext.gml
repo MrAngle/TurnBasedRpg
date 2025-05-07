@@ -12,8 +12,10 @@ function ActionContextStruct(_action_struct, _evaluation_mode = ACTION_MODE_ENUM
 
 	__effects = [];
 	__target_effects = [];
-	__metadata = {};
+	__actionStats = new ActionStats();
 	__source_intent = noone;
+
+
 
 	// Getters
     getAction           		= function() { return __action_struct };
@@ -28,17 +30,39 @@ function ActionContextStruct(_action_struct, _evaluation_mode = ACTION_MODE_ENUM
 
 	getEvaluationMode   		= function() { return __evaluation_mode; };
 
-	getEffects          		= function() { return __effects; };
+	// getEffects          		= function() { return __effects; };
 
-	getTargetEffects    		= function() { return __target_effects; };
+	// getTargetEffects    		= function() { return __target_effects; };
 
-	getMetadata         		= function() { return __metadata; };
+	getActionStats         		= function() { return __actionStats; };
 
-	getSourceIntent     		= function() { return __source_intent; };
+	// getSourceIntent     		= function() { return __source_intent; };
 
 	// Setters
-	setEffects          		= function(list) { __effects = list; };
-	setTargetEffects    		= function(list) { __target_effects = list; };
-	setMetadata         		= function(m) { __metadata = m; };
-	setSourceIntent     		= function(i) { __source_intent = i; };
+	// setEffects          		= function(list) { __effects = list; };
+	// setTargetEffects    		= function(list) { __target_effects = list; };
+	// setMetadata         		= function(m) { __actionStats = m; };
+	// setSourceIntent     		= function(i) { __source_intent = i; };
+
+	// LOGIC
+	calculateActionCost    		= function() {
+		var tuEn = __action_struct.getInvokerTuEnStruct();
+
+		if(helper_is_not_definied(tuEn)) {
+			LOG_DEBUG_MESSAGE("ActionContextStruct: calculateActionCost: tuEn is noone");
+			return 0;
+		}
+
+		var apCost = tuEn.getActionPointsCost(self)
+
+		return apCost;
+	};
+
+	var tuEn = __action_struct.getInvokerTuEnStruct();
+	if (!helper_is_not_definied(tuEn)) {
+		__actionStats.action_cost = tuEn.getActionPointsCost(self);
+	} else {
+		__actionStats.action_cost = 0;
+		LOG_DEBUG_MESSAGE("ActionContextStruct: constructor: tuEn is noone");
+	}
 }

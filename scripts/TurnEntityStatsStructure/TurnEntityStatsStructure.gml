@@ -68,7 +68,7 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 	//
 
 	/// @param {Struct.ActionContextStruct} _actionContextStruct
-	__getActionCostToConsume = function (_actionContextStruct) {
+	getActionCostToConsume = function (_actionContextStruct) {
 		
 		/// @param {Struct.ActionCostStruct}
 		var actionCostStruct = variable_struct_get(__ACTION_COST_STAT, _actionContextStruct.getAction().getType().label);
@@ -78,7 +78,7 @@ function TurnEntityStatsStruct(_overrides = {}) constructor {
 	}
 
 	applyActionPoints = function(_actionContextStruct) {
-		var apToApply = __getActionCostToConsume(_actionContextStruct);
+		var apToApply = getActionCostToConsume(_actionContextStruct);
 
 		__PREVIOUS_ACTION_POINTS = self.__ACTION_POINTS;
 		self.__ACTION_POINTS += apToApply;

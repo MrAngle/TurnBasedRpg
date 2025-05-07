@@ -42,7 +42,7 @@ function createVisualGeneric(_visualGenericStruct, layerId = global.LAYERS.gui_e
 
 /// @function draw_scribble_with_background(txt, pos_x, pos_y, bg_color, margin, alpha)
 /// @description Rysuje tekst Scribble z dopasowanym tłem.
-/// @param txt       Obiekt Scribble (np. scribble("tekst"))
+/// @param {Struct.__scribble_class_element} txt Scribble (np. scribble("tekst"))
 /// @param pos_x     Pozycja X (środek tekstu)
 /// @param pos_y     Pozycja Y (środek tekstu)
 /// @param bg_color  Kolor tła (np. c_black)
@@ -50,17 +50,17 @@ function createVisualGeneric(_visualGenericStruct, layerId = global.LAYERS.gui_e
 /// @param alpha     Przezroczystość tła (0.0 - 1.0)
 
 function draw_scribble_with_background(txt, pos_x, pos_y, bg_color) {
-    var margin = 2;
+    var margin = 0;
 
     // Obliczenie wymiarów tekstu z uwzględnieniem skali
     var text_width = txt.get_width();
-    var text_height = 40;
+    var text_height = txt.get_height();
 
     // Obliczenie pozycji prostokąta tła
     var x1 = pos_x - margin ;
-    var y1 = pos_y - margin + 20;
+    var y1 = pos_y - margin + 15;
     var x2 = pos_x + text_width + margin;
-    var y2 = pos_y + text_height + 20 + margin;
+    var y2 = pos_y + text_height + margin - 10;
 
     // Rysowanie prostokąta tła
     draw_set_color(bg_color);

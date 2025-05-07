@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionStats",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionStats",
+  "parent":{
+    "name":"ActionStructs",
+    "path":"folders/Hex/Combat/CombatAction/ActionStructs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

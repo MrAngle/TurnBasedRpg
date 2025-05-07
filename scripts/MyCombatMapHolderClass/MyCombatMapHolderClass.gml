@@ -52,10 +52,10 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
         return get_tile(newRow, newCol);
     }
 
-	/// @desc Returns all neighboring tiles (hex-adjacent) around a given tile.
-	/// @param {Struct.MyMapTile} _tile
+		/// @desc Returns all neighboring tiles (hex-adjacent) around a given tile.
+	/// @param {Struct.TileLocationStruct} _tileLocationStruct
 	/// @returns {Array<Struct.MyMapTile>}
-	getSurroundingArrayTiles = function(_tile) {
+	getSurroundingArrayTilesByTileLocation = function(_tileLocationStruct) {
 		var directions = [
 			DirectionId.LEFT,
 			DirectionId.RIGHT,
@@ -69,7 +69,7 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 
 		for (var i = 0; i < array_length(directions); i++) {
 			var dirId = directions[i];
-			var neighborTile = getTileInDirection(_tile.getTileLocationStruct(), dirId);
+			var neighborTile = getTileInDirection(_tileLocationStruct, dirId);
 
 			if (neighborTile != undefined) {
 				array_push(surroundingTiles, neighborTile);
@@ -77,6 +77,34 @@ function __MyCombatMapHolder(_init_rows, _init_cols) constructor {
 		}
 
 		return surroundingTiles;
+	}
+
+	/// @desc Returns all neighboring tiles (hex-adjacent) around a given tile.
+	/// @param {Struct.MyMapTile} _tile
+	/// @returns {Array<Struct.MyMapTile>}
+	getSurroundingArrayTiles = function(_tile) {
+		return getSurroundingArrayTilesByTileLocation(_tile.getTileLocationStruct());
+		// var directions = [
+		// 	DirectionId.LEFT,
+		// 	DirectionId.RIGHT,
+		// 	DirectionId.UP_LEFT,
+		// 	DirectionId.UP_RIGHT,
+		// 	DirectionId.DOWN_LEFT,
+		// 	DirectionId.DOWN_RIGHT
+		// ];
+
+		// var surroundingTiles = [];
+
+		// for (var i = 0; i < array_length(directions); i++) {
+		// 	var dirId = directions[i];
+		// 	var neighborTile = getTileInDirection(_tile.getTileLocationStruct(), dirId);
+
+		// 	if (neighborTile != undefined) {
+		// 		array_push(surroundingTiles, neighborTile);
+		// 	}
+		// }
+
+		// return surroundingTiles;
 	}
 
 	/// @param {Struct.TileLocationStruct} _fromTile

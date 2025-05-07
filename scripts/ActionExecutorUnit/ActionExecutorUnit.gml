@@ -9,11 +9,13 @@ function ActionExecutorUnitStruct() constructor {
 
 /// @function performMoveAction(source_char, destination_row, destination_col)
 /// @description Wykonuje akcję ruchu postaci na wskazane pole mapy.
+/// @param {Struct.__ActionResolvedStruct} _arStruct
 /// @param {Id.Instance} arg_source_char - Instancja postaci wykonującej ruch.
 /// @param {Real} arg_destinarion_row - Docelowy wiersz na mapie.
 /// @param {Real} arg_destination_col - Docelowa kolumna na mapie.
 /// @returns {Struct.ActionExecutorUnitStruct}
-function ActionStepExecutorUnitStruct(_source_char, _dest_row, _dest_col) constructor {
+function ActionStepExecutorUnitStruct(_arStruct, _source_char, _dest_row, _dest_col) constructor {
+    __arStruct = _arStruct;
     __source_char = _source_char;
     __dest_row = _dest_row;
     __dest_col = _dest_col;

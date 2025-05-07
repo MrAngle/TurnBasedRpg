@@ -58,12 +58,12 @@ function COMBAT_GLOBALS_STRUCT(arg_onDefaultClickEvent, arg_defaultAlarmPeriodMi
 		/// @type {Struct.__ActionResolvedStruct}
 		CURRENT_TURN_ACTION_RESOLVED_STRUCT: noone, //
 		/// @type {Enum.ACTION_INTENT_ENUM}
-		CURRENT_TURN_ACTION_INTENT_ENUM: noone //
-		// /// @type {number}
-		// CURRENT_MIN_ACTION_POINTS: 0, // 
+		CURRENT_TURN_ACTION_INTENT_ENUM: noone, //
+		/// @type {number}
+		SUB_TURN_COUNT: 0,
 	}
 	GAME_TURN = {
-		TURN_INDEX: 1,
+		GAME_TURN_INDEX: 1,
 		CURRENT_TURN_AP_THRESHOLD: 20,
 		LAST_TURN_AP_BOUNDARY: 0,
 		CURRENT_MIN_ACTION_POINTS: 0

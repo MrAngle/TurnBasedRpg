@@ -84,6 +84,10 @@ function TurnEntityStruct(_objectReference) constructor {
 		return actionsToConsume;
 	}
 
+	getActionPointsCost = function(_actionContextStruct) {
+		return __STATS.getActionCostToConsume(_actionContextStruct);
+	}
+
 	/// @param {Real} ap_to_subtract - Wartość AP, którą odejmujemy z każdej jednostki.
 	prepareActionPointsForNextTurn = function(ap_to_subtract) {
 		__STATS.prepareActionPointsForNextTurn(ap_to_subtract);

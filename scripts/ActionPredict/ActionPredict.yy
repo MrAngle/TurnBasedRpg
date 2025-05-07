@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ActionPredict",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ActionPredict",
+  "parent":{
+    "name":"ActionPrediction",
+    "path":"folders/Hex/Combat/CombatAction/ActionStructs/ActionPrediction.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

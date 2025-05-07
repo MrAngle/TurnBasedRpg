@@ -74,9 +74,9 @@ function ActionStructBuilder(_actionTypeEnum) constructor {
         );
     };
 
-    buildAsActionResolver = function() {
+    buildAsActionResolver = function(_evaluation_mode = ACTION_MODE_ENUM.APPLY) {
 		var actionStruct = build()
-		var newContext = new ActionContextStruct(actionStruct);
+		var newContext = new ActionContextStruct(actionStruct, _evaluation_mode);
 		return ActionResolvedStructBuilder(newContext);
     };
 }

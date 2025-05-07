@@ -57,6 +57,9 @@ function onStepTurnProcessor() {
 	    case ACTION_TURN_STATE_ENUM.PERFORM_ACTION:
 			global.COMBAT_GLOBALS.ACTION.CURRENT_TURN_ACTION_RESOLVED_STRUCT.execute();
 
+			global.COMBAT_GLOBALS.ACTION.SUB_TURN_COUNT += 1;
+
+
 			// remove?
 			global.INPUT_LAST_TRIGGER = undefined;
 			global.COMBAT_GLOBALS.EVENT.CLICK.INPUT_LAST_TRIGGER = noone;
@@ -100,6 +103,8 @@ function prepareWaitingForUserInput() {
 		LOG_ERROR_MESSAGE("⚠️ Nie można ustalić stanu tury dla jednostki (Obj): " + string(obj));
 		return;
 	}
+
+	getActionCostPredict(obj);
 
 	var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.getTileByTurnEntityObj(obj);
 	helper_visuals_HighliteObject(obj);
