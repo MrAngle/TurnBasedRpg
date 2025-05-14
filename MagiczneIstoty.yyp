@@ -390,6 +390,7 @@
     {"id":{"name":"public_camera","path":"scripts/public_camera/public_camera.yy",},},
     {"id":{"name":"public_font_scripts","path":"scripts/public_font_scripts/public_font_scripts.yy",},},
     {"id":{"name":"QueueAction","path":"scripts/QueueAction/QueueAction.yy",},},
+    {"id":{"name":"ROADMAP","path":"scripts/ROADMAP/ROADMAP.yy",},},
     {"id":{"name":"scribble_add_macro","path":"scripts/scribble_add_macro/scribble_add_macro.yy",},},
     {"id":{"name":"scribble_anim_blink","path":"scripts/scribble_anim_blink/scribble_anim_blink.yy",},},
     {"id":{"name":"scribble_anim_cycle","path":"scripts/scribble_anim_cycle/scribble_anim_cycle.yy",},},

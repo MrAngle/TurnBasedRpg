@@ -5,6 +5,7 @@
 enum MapElementObjectTypeEnum {
 	TERRAIN,
 	CHARACTER,
+	TURN_ENTITY,
 	SELECTOR,
 	OBSTACLE,
 	NONE
@@ -23,14 +24,11 @@ function MyMapTileBuilder(properties_map_element_row_index, properties_map_eleme
 
 /// @constructor
 /// @returns {Struct.MyMapTile}
-function MyMapTile(properties_map_element_row_index, properties_map_element_col_index, _x_position, _y_position, _obj_terrain, _obj_character) constructor {
-    // _properties_map_element_row_index = properties_map_element_row_index;
-    // _properties_map_element_col_index = properties_map_element_col_index;
-    // __x_position = _x_position;
-    // __y_position = _y_position;
+function MyMapTile(properties_map_element_row_index, properties_map_element_col_index, _x_position, _y_position, _obj_terrain, _obj_turnEntity) constructor {
     __terrain = _obj_terrain;
-    __character = _obj_character;
-    __obstacle = _obj_character;
+    __turnEntity = _obj_turnEntity;
+    // __turnEntity = _obj_character;
+    __obstacle = noone;
     __shape_selector = noone;
 
     __tileLocationStruct = new TileLocationStruct(
@@ -68,23 +66,23 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
         return __tileLocationStruct.getYPosition()// __y_position;
     };
 
-    has_character = function() {
-        return helper_object_exists(__character);
-    };
+    // has_character = function() {
+    //     return helper_object_exists(__character);
+    // };
 
     /// @returns {Bool}
     hasTurnEntity = function() {
-        return helper_object_exists(__character);
+        return helper_object_exists(__turnEntity);
     };
 
     /// @returns {Struct.TurnEntityStruct}
     getTurnEntityStruct = function() {
-        return getTurnEntityStruct(__character);
+        return getTurnEntityStruct(__turnEntity);
     };
 
     /// @returns {Id.Instance}
     getTurnEntityObj = function() {
-        return __character;
+        return __turnEntity;
     };
 
     is_walkable = function() {
@@ -96,8 +94,8 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
             __terrain.visible = true;
         if (__obstacle != noone)
             __obstacle.visible = true;
-        if (__character != noone)
-            __character.visible = true;
+        if (__turnEntity != noone)
+            __turnEntity.visible = true;
     };
 
     set_tile = function(_obj_tile, MapElementObjectTypeEnum) {
@@ -119,8 +117,9 @@ function MyMapTile(properties_map_element_row_index, properties_map_element_col_
     global.COMBAT_GLOBALS.METRICS.TILE_COUNT += 1;
 }
 
-function __my_set_tile(_obj, _obj_tile, MapElementObjectTypeEnum) {
-	switch MapElementObjectTypeEnum {
+/// @param {Enum.MapElementObjectTypeEnum} mapElementObjectTypeEnum
+function __my_set_tile(_obj, _obj_tile, mapElementObjectTypeEnum) {
+	switch (mapElementObjectTypeEnum) {
 		case MapElementObjectTypeEnum.TERRAIN:
 			_obj.__terrain = _obj_tile;
 	        break;
@@ -128,7 +127,9 @@ function __my_set_tile(_obj, _obj_tile, MapElementObjectTypeEnum) {
 			_obj.__obstacle = _obj_tile;
 	        break;
 	    case MapElementObjectTypeEnum.CHARACTER:
-	        _obj.__character = _obj_tile;
+	        _obj.__turnEntity = _obj_tile;
+        case MapElementObjectTypeEnum.TURN_ENTITY:
+            _obj.__turnEntity = _obj_tile;
 	        break;
 	}
 	

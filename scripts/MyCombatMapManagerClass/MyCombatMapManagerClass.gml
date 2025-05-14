@@ -59,10 +59,12 @@ function __get_all_characters_on_map(_obj) {
     return [players, enemies, neutrals];
 };
 
+/// @param {Struct.MyCombatMapManager} _obj
 function __my_move_to(_obj,_targetproperties_map_element_row_index, _targetproperties_map_element_col_index, _target_obj) {
 	var currentPositionMyMapTile = __combat_map_holder.get_tile(_target_obj.getRow(), _target_obj.getCol());
 	var destinationMyMapTile = __combat_map_holder.get_tile(_targetproperties_map_element_row_index, _targetproperties_map_element_col_index);
 	
-	currentPositionMyMapTile.set_tile(noone, MapElementObjectTypeEnum.CHARACTER);
+	// currentPositionMyMapTile.set_tile(noone, MapElementObjectTypeEnum.CHARACTER);
+	currentPositionMyMapTile.set_tile(noone, MapElementObjectTypeEnum.TURN_ENTITY);
 	destinationMyMapTile.set_tile_auto_type(_target_obj);
 }

@@ -171,33 +171,6 @@ function helper_visuals_HighliteObject(objToHighlight) {
         shouldDestroy: function(_self) {
             return _self.duration < 1;
         },
-
-        // onDraw: function(_self) {
-
-
-        //     // with (_self.target) {
-        //     //     var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
-        //     //         // draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, pulse);
-        //     //     if (!instance_exists(self)) return;
-
-        //     //     var pulse = 0.3 + 0.2 * sin(current_time * 0.02);
-
-        //     //     draw_set_alpha(pulse);
-        //     //     draw_set_color(c_lime);
-
-        //     //     draw_sprite_ext(
-        //     //         sprite_index,
-        //     //         image_index,
-        //     //         x, y,
-        //     //         1.0, 1.0, 0,
-        //     //         c_lime,
-        //     //         pulse
-        //     //     );
-
-        //     //     draw_set_alpha(1);
-        //     //     draw_set_color(c_white);
-        //     // }
-        // }
     };
 
     createVisualGeneric(visualGenericStruct, global.LAYERS.visual_effects.id);

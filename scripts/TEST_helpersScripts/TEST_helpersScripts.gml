@@ -100,7 +100,7 @@ function helper_check_if_char_in_tile(arg_x_index, arg_y_index, arg_objType) {
 		
 		toReturn: function() {
 			var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.get_tile(_x_index, _y_index);
-			if(tile.__character.object_index == _objType) {
+			if(tile.__turnEntity.object_index == _objType) {
 				show_debug_message("object in  INDEX (" + string(_x_index) + ", " + string(_y_index) + ")");
 			} else {
 				show_debug_message("[FAIL] object is not in  INDEX (" + string(_x_index) + ", " + string(_y_index) + ")");

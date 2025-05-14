@@ -128,13 +128,6 @@ function __ActionStruct(	_type,
 	/// @type {Struct.__ActionStruct} The parent action, if any.
 	__parent_action = noone;
 
-	// __type = _ActionStruct_ParamFactory.getType();
-	// __invokerTuEnObj = _ActionStruct_ParamFactory.getInvokerObj();
-	// __target_tile = _ActionStruct_ParamFactory.getTargetTile();
-	// __from_intent = _ActionStruct_ParamFactory.getFromIntent();
-	// __parent_action = _ActionStruct_ParamFactory.getParentAction();
-	// __eventTypesOnTriggerEnums = _ActionStruct_ParamFactory.getEventTypesOnTrigger();
-
 	__recursion_depth = 0;
 
 	// Getters

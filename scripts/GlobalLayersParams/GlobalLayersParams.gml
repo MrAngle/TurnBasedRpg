@@ -11,7 +11,8 @@ function init_layers() {
 	var SELECTORS_DEPTH = GUI_EFFECTS_DEPTH + 50;
     var ATTACKS_DEPTH = SELECTORS_DEPTH + 50;
     var CHARACTERS_DEPTH = ATTACKS_DEPTH + 1000;
-    var VISUAL_EFFECTS_DEPTH = CHARACTERS_DEPTH + 1000;
+    var TURN_ENTITY_DEPTH = CHARACTERS_DEPTH + 10;
+    var VISUAL_EFFECTS_DEPTH = TURN_ENTITY_DEPTH + 1000;
     var OBSTACLES_DEPTH = VISUAL_EFFECTS_DEPTH + 1000;
     var DECORATION_DEPTH = OBSTACLES_DEPTH + 1000;
     var GROUND_DEPTH = DECORATION_DEPTH + 1000;
@@ -50,6 +51,10 @@ function init_layers() {
         characters: {
             id: layer_create(CHARACTERS_DEPTH),
             depth: CHARACTERS_DEPTH
+        },
+        turn_entities: {
+            id: layer_create(TURN_ENTITY_DEPTH),
+            depth: TURN_ENTITY_DEPTH
         },
         visual_effects: {
             id: layer_create(VISUAL_EFFECTS_DEPTH),

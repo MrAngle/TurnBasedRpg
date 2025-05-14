@@ -32,7 +32,7 @@ function select_map_tile(_row_index, _col_index) {
 		global.COMBAT_GLOBALS.MAP.SELECTED_TILE = selectedTile;
 		
 		if(global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER == noone) {
-			global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER = selectedTile.__character;
+			global.COMBAT_GLOBALS.MAP.SELECTED_CHARACTER = selectedTile.__turnEntity;
 		}
 		
 	} else {

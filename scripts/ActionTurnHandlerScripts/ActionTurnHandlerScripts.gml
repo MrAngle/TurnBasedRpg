@@ -107,7 +107,7 @@ function prepareWaitingForUserInput() {
 	getActionCostPredict(obj);
 
 	var tile = global.COMBAT_GLOBALS.MAP.MAP_HOLDER.getTileByTurnEntityObj(obj);
-	helper_visuals_HighliteObject(obj);
+	// helper_visuals_HighliteObject(obj);
 	if (tile != undefined) {
 		global.COMBAT_GLOBALS.MANAGERS.CAMERA.centerCameraOnPosition(tile.getXPosition(), tile.getYPosition());
 	}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ROADMAP",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ROADMAP",
+  "parent":{
+    "name":"Hex",
+    "path":"folders/Hex.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

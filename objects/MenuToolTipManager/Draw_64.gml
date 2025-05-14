@@ -40,7 +40,7 @@ function show_tooltip() {
 		info += "Obstacle: " + obs.my_obj_name + "\n";
 	}
 	
-	if(myToolTipTile.has_character()) {
+	if(myToolTipTile.hasTurnEntity()) {
 		var tooltipChar = myToolTipTile.getTurnEntityObj();
 		var tooltipCharStruct = myToolTipTile.getTurnEntityStruct();
 		info += "Character: " + tooltipChar.my_obj_name + "\n";
